@@ -22,7 +22,7 @@ const LandingHero = () => {
   };
 
     return (
-      <section className=' flex md:items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[90vh] md:min-h-[100vh] w-full md:pt-[6rem] pt-[2rem]'> 
+      <section className=' flex md:items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[80vh] md:min-h-[100vh] w-full md:pt-[6rem] pt-[2rem]'> 
         <div className="mx-auto w-[95%] space-y-7 ">
           {/* main */}
           <div className="md:flex justify-between">
