@@ -23,7 +23,7 @@ const LandingHero = () => {
   };
 
     return (
-      <section className=' flex items-end pb-7 bg-hero-bg bg-cover bg-top min-h-[100vh] w-full border-b-2 pt-[6rem]'> 
+      <section className=' flex items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[90vh] md:min-h-[100vh] w-full border-b-2 pt-[6rem]'> 
         <div className="mx-auto w-[95%] space-y-7 ">
           {/* main */}
           <div className="md:flex justify-between">
@@ -32,7 +32,7 @@ const LandingHero = () => {
               <div className="bg-slate-950 px-4 py-2 text-white font-semibold w-fit">
                 $999 - <span className="line-through">$1200</span>
               </div>
-              <h1 className="md:text-6xl text-4xl font-bold text-white uppercase"> REACT INFINITY </h1>
+              <h1 className="md:text-6xl text-5xl font-bold text-white uppercase"> REACT INFINITY </h1>
               <button className="rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 transition-all duration-500"> SHOP NOW </button>
             </div>
             <div className="w-full overflow-hidden">
