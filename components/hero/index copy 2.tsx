@@ -41,32 +41,28 @@ const LandingHero = () => {
             </div>
             <div className="w-full overflow-hidden">
               <Swiper
-                ref={swiperRef}
-                spaceBetween={50}
-                slidesPerView={1}
-                loop={true}
-                onSlideChange={handleSlideChange}
-                autoplay={{
-                  delay: 100,                 // Auto-play delay
-                  disableOnInteraction: false, // Continue autoplay after interaction
-                }}
+              ref={swiperRef}
+              spaceBetween={50}
+              slidesPerView={1}
+              loop={true}
+              onSlideChange={handleSlideChange}
 
               >
               <SwiperSlide>
                 <img
-                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[70%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
+                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
                   src="/hero/shoes-white.png" alt="shoe"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[70%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
+                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
                   src="/hero/shoes-blue.png" alt="shoe"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[70%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
+                  className='hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
                   src="/hero/shoes-orange.png" alt="shoe"
                 />
               </SwiperSlide>
@@ -81,7 +77,7 @@ const LandingHero = () => {
             </div>
           </div>
           {/* play button & switch btn */}
-          <div className="flex gap-8 ml-auto pt-4 md:pt-5 w-fit">
+          <div className="flex gap-8 ml-auto pt-4 md:pt-8 w-fit">
               <div className="drop-shadow-lg rounded-full cursor-pointer bg-white bg-opacity-45 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(0)}  
               >

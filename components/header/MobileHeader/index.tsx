@@ -4,13 +4,11 @@ import React from 'react'
 
 const MobileHeader = () => {
     return (
-        <header className="md:hidden w-full bg-white px-8 py-8 ">
-            <div className="flex justify-between items-center">
+        <header className="md:hidden w-full bg-white py-5 ">
+            <div className="flex justify-between items-center mx-auto w-[95%]">
                 {/* navs */}
-                <div className="space-y-1">
-                    <div className="px-3 py-[.09rem] bg-black"></div>
-                    <div className="px-3 py-[.09rem] bg-black"></div>
-                    <div className="px-3 py-[.09rem] bg-black"></div>
+                <div className="">
+                    <img width={30} src="/icons/menu.png" alt="" />
                 </div>
                 {/* logo */}
                 <div className="logo ">
@@ -18,7 +16,9 @@ const MobileHeader = () => {
                 </div>
                 {/* chats */}
                 <div className="">
-                    <button className="text-slate-950 rounded-full p-2">Chat</button>
+                    <Link href="/" className="block">
+                        <img width={25} src="/icons/bag.png" alt="collection" />
+                    </Link>
                 </div>
             </div>
       </header>
