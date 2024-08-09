@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 
 const LandingHero = () => {
 

@@ -31,7 +31,7 @@ const HeaderComponent = () => {
                                 <a href='#' className="text-[#797979] font-bold text-xs md:text-sm "> SUPPORT </a>
                         </SwiperSlide>
                         <SwiperSlide className=''>
-                            <a href='#' className="text-[#797979] font-bold text-xs md:text-sm "> FREE EXPRESS SHIPPING WITH ORDERS OVER $200 </a>
+                            <a href='#' className="text-[#797979] font-bold text-xs md:text-sm "> FREE EXPRESS SHIPPING </a>
                         </SwiperSlide>
                     </Swiper>
                 </div>
