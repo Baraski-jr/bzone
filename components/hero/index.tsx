@@ -22,7 +22,7 @@ const LandingHero = () => {
   };
 
     return (
-      <section className=' flex items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[90vh] md:min-h-[100vh] w-full border-b-2 pt-[6rem]'> 
+      <section className=' flex md:items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[90vh] md:min-h-[100vh] w-full md:pt-[6rem] pt-[2rem]'> 
         <div className="mx-auto w-[95%] space-y-7 ">
           {/* main */}
           <div className="md:flex justify-between">
@@ -73,7 +73,7 @@ const LandingHero = () => {
             </div>
           </div>
           {/* play button & switch btn */}
-          <div className="flex gap-8 ml-auto w-fit">
+          <div className="flex gap-8 ml-auto pt-4 md:pt-8 w-fit">
               <div className="drop-shadow-lg rounded-full cursor-pointer bg-white bg-opacity-45 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(0)}  
               >
