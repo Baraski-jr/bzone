@@ -31,7 +31,7 @@ const Collections = ({title, subTitle, bgUrl}: ProductCartProps) => {
           </header>
           <div className="sm:flex lg:gap-4 gap-2 gap-y-3">
               <Image className='object-cover object-right-bottom w-full sm:w-1/2 lg:w-1/3 xl:w-1/4' src={bgUrl} alt={title} width={200} height={250} />
-            <div className="sm:w-full overflow-hidden gap-5 md:gap-0">
+          <div className="sm:w-full overflow-hidden gap-5 md:gap-0 relative">
               <Swiper className='h-full'
                   modules={[Navigation, Pagination]}
                   spaceBetween={10}
