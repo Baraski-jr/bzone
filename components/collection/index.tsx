@@ -22,17 +22,17 @@ interface ProductCartProps {
 
 const Collections = ({title, subTitle, bgUrl}: ProductCartProps) => {
   return (
-      <section className="py-6 flex items-center xl:min-h-[85vh] 2xl:min-h-full">
+      <section className="mt-6 flex items-center xl:min-h-[75vh] 2xl:min-h-full">
         {/* header */}
         <div className="container">
           <header className="text-center space-y-2 py-3">
             <h1 className="font-bold text-slate-700 text-2xl">{title}</h1>
             <p className="text-slate-500"> {subTitle}</p>
-          </header>`
+          </header>
           <div className="sm:flex lg:gap-4 gap-y-3">
               <Image className='object-cover object-right-bottom w-full sm:w-1/2 lg:w-1/3 xl:w-1/4' src={bgUrl} alt={title} width={200} height={250} />
-            <div className="sm:w-full overflow-hidden">
-              <Swiper
+            <div className="sm:w-full overflow-hidden ">
+            <Swiper className='h-full'
                 modules={[Navigation, Pagination]}
                 spaceBetween={20}
                 slidesPerView={2}
@@ -48,28 +48,34 @@ const Collections = ({title, subTitle, bgUrl}: ProductCartProps) => {
                 }}
                 >
                 <SwiperSlide>
-                  <ProductCart name={'air'} url={'/products/marbo-shoes-product-01 (1).jpeg'} />
+                  <ProductCart name={'air'} url={'/products/a1.png'} price={300} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'nike'} url={'/products/marbo-shoes-product-03 (1).jpeg'} />
+                  <ProductCart name={'nike'} url={'/products/b1.png'} price={200} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'adidas'} url={'/products/marbo-shoes-product-04-a (1).jpeg'} />
+                  <ProductCart name={'adidas'} url={'/products/c1.png'} price={2500} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'pumer'} url={'/products/marbo-shoes-product-05-a (1).jpeg'} />
+                  <ProductCart name={'pumer'} url={'/products/d1.png'} price={500} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'air'} url={'/products/marbo-shoes-product-01 (1).jpeg'} />
+                  <ProductCart name={'air'} url={'/products/e1.png'} price={700} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'nike'} url={'/products/marbo-shoes-product-03 (1).jpeg'} />
+                  <ProductCart name={'nike'} url={'/products/f1.png'} price={1000} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'adidas'} url={'/products/marbo-shoes-product-04-a (1).jpeg'} />
+                  <ProductCart name={'adidas'} url={'/products/g1.png'} price={1000} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ProductCart name={'pumer'} url={'/products/marbo-shoes-product-05-a (1).jpeg'} />
+                  <ProductCart name={'pumer'} url={'/products/h1.png'} price={600} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ProductCart name={'pumer'} url={'/products/i1.png'} price={550} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ProductCart name={'pumer'} url={'/products/j1.png'} price={950} />
                 </SwiperSlide>
               </Swiper>
             </div>
