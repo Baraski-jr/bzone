@@ -14,23 +14,23 @@ import ProductCart from '../ui/cart';
 
 const FeatureProducts = () => {
     return (
-        <section className="container">
-          <header className="text-center space-y-2 py-3">
-                <h1 className="font-bold text-slate-700 text-2xl"> FEATURED PRODUCTS </h1>
-                <p className="text-slate-500">The most prominent product in the store, which was bought with the highest number </p>
+        <section className="container py-1 my-3 mb-9">
+          <header className="text-center space-y-2 py-5">
+                <h1 className="font-bold text-slate-700 text-xl md:text-2xl"> FEATURED PRODUCTS </h1>
+                <p className="text-slate-500 text-sm md:text-base">The most prominent product in the store, which was bought with the highest number </p>
             </header>
             <div className="sm:w-full overflow-hidden ">
                 <Swiper className='h-full'
                     modules={[Navigation, Pagination]}
-                    spaceBetween={20}
+                    spaceBetween={10}
                     slidesPerView={2}
-                    navigation
+                    // navigation
                     breakpoints={{
                     640: { slidesPerView: 2, },
                     768: { slidesPerView: 2, },
                     1024: { slidesPerView: 3, },
                     1280: { slidesPerView: 4, },
-                    1536: { slidesPerView: 5, },
+                    1536: { slidesPerView: 4, },
                     11920: { slidesPerView: 6, },
 
                     }}
