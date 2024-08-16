@@ -7,9 +7,9 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 
 const LandingHero = () => {
-
 
   const swiperRef = useRef<any>(null);
 
@@ -26,7 +26,7 @@ const LandingHero = () => {
   };
 
     return (
-      <section className=' flex md:items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[80vh] md:min-h-[90vh] w-full md:pt-[6rem] pt-[2rem]'> 
+      <section className=' flex md:items-center pb-7 bg-hero-bg bg-cover bg-top min-h-[70vh] md:min-h-[90vh] w-full md:pt-[6rem] pt-[2rem]'> 
         <div className="mx-auto w-[95%] space-y-7 ">
           {/* main */}
           <div className="md:flex justify-between">
@@ -36,7 +36,7 @@ const LandingHero = () => {
                 $999 - <span className="line-through">$1200</span>
               </div>
               <h1 className="md:text-6xl text-5xl font-bold text-white uppercase"> REACT INFINITY </h1>
-              <button className="rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </button>
+              <Link href='/#men' className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
             </div>
             <div className="w-full overflow-hidden">
               <Swiper

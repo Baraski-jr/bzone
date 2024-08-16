@@ -6,14 +6,11 @@ import DesktopHeader from '../DesktopHeader'
 
 
 const HeaderComponent = () => {
-    
     return (
-        
         <header className=''>
             <div className="relative">
                 <MobileHeader />
                 <DesktopHeader />
-
             </div>
         </header>
   )
