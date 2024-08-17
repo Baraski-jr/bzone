@@ -80,7 +80,7 @@ const LandingHero = () => {
             </div>
           </div>
           {/* play button & switch btn */}
-          <div className="flex gap-8 ml-auto pt-4 md:pt-5 w-fit">
+          <div className="flex justify-center md:justify-end gap-8 pt-4 md:pt-5 w-full">
               <div className="drop-shadow-lg rounded-full cursor-pointer bg-white bg-opacity-45 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(0)}  
               >
