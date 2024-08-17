@@ -14,7 +14,7 @@ import ProductCart from '../productCart';
 
 const FeatureProducts = () => {
     return (
-        <section className="container py-1 my-3 mb-9">
+        <section className="w-[95%] mx-auto py-1 my-3 mb-9">
           <header className="text-center space-y-2 py-5">
                 <h1 className="font-bold text-slate-700 text-xl md:text-2xl"> FEATURED PRODUCTS </h1>
                 <p className="text-slate-500 text-sm md:text-base">The most prominent product in the store, which was bought with the highest number </p>
