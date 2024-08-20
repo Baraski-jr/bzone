@@ -3,15 +3,16 @@ import React from 'react'
 import MobileHeader from '../MobileHeader'
 import DesktopHeader from '../DesktopHeader'
 
+interface HeaderComponentProps {
+    colour: string;
+    logoUrl: string;
+}
 
-
-const HeaderComponent = () => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ colour, logoUrl }) => {
     return (
         <header className=''>
-            <div className="relative">
-                <MobileHeader />
-                <DesktopHeader />
-            </div>
+            <MobileHeader />
+            <DesktopHeader colour={colour} logoUrl={logoUrl} />
         </header>
   )
 }

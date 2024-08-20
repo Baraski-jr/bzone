@@ -7,8 +7,10 @@ export default function RootLayout({
 }>) {
     return (
       <section className="">
-        <HeaderComponent />
-        <main className="main">{children}</main>
+        <div className="relative">
+          <HeaderComponent colour={'#000'} logoUrl={"/icons/logo-mobile.png"} />
+        </div>
+        <main>{children}</main>
       </section>
   );
 }

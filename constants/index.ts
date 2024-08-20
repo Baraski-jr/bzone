@@ -7,20 +7,38 @@ export const navLinks = [
         'label': 'products',
         'url': '/Products',
     },
-    {
-        'label': 'Sign Up',
-        'url': '/signUp',
-    },
-    {
-        'label': 'Login',
-        'url': '/signIn',
-    },
-    {
-        'label': 'Log out',
-        'url': '/sign-out',
-    }
 ];
 
+export const shoeSlides = [
+    {
+        'id':0,
+        'name': 'React Infinity',
+        'imageUrl': '/hero/shoes-white.png',
+        'price': {
+            'originalPrice': 1200,
+            'discountPrice': 999,
+        },
+    },
+    {
+        'id':1,
+        'name': 'Airmax Racing',
+        'imageUrl': '/hero/shoes-blue.png',
+        'price': {
+            'originalPrice': 1000,
+            'discountPrice': 799,
+        },    
+    },
+    {
+        'id':2,
+        'name': 'Running Airmax',
+        'imageUrl': '/hero/shoes-orange.png',
+        'price': {
+            'originalPrice': 1100,
+            'discountPrice': 899,
+        },
+    },
+
+];
 
 
 export const products = [

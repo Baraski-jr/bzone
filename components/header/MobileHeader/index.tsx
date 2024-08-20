@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 import React from 'react'
 
@@ -10,10 +9,10 @@ const MobileHeader = () => {
                 <div className="">
                     <img width={30} src="/icons/menu.png" alt="" />
                 </div>
-                {/* logo */}
-                <div className="logo ">
+                {/* logo */} 
+                <Link href='/' className="inline-block">
                     <img className='' src="/icons/logo-mobile.png" alt="Logo" width={130}/>
-                </div>
+                </Link>
                 {/* chats */}
                 <div className="">
                     <Link href="/" className="block">

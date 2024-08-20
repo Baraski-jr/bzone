@@ -20,7 +20,8 @@ const config = {
     extend: {
       backgroundImage: {
         'hero-bg': "url('/hero/hero-bg.jpeg')",
-        'subHero-bg':"url(/background/bg-shoes.jpg)",
+        'Promotion-bg':"url(/background/bg-shoes.jpg)",
+        'subHero-bg':"url(/background/bg-shoes-slide.jpeg)",
       },
     },
   },
