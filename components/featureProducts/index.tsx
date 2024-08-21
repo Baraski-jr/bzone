@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import ProductCart from '../productCart';
+import { products } from '@/constants';
 
 
 
@@ -19,7 +20,7 @@ const FeatureProducts = () => {
                 <h1 className="font-bold text-slate-700 text-xl md:text-2xl"> FEATURED PRODUCTS </h1>
                 <p className="text-slate-500 text-sm md:text-base">The most prominent product in the store, which was bought with the highest number </p>
             </header>
-            <div className="sm:w-full overflow-hidden ">
+            <div className="sm:w-full overflow-hidden">
                 <Swiper className='h-full'
                     modules={[Navigation, Pagination]}
                     spaceBetween={10}
@@ -28,42 +29,19 @@ const FeatureProducts = () => {
                     breakpoints={{
                     640: { slidesPerView: 2, },
                     768: { slidesPerView: 2, },
-                    1024: { slidesPerView: 3, },
+                    1024: { slidesPerView: 4, },
                     1280: { slidesPerView: 4, },
                     1536: { slidesPerView: 4, },
                     11920: { slidesPerView: 6, },
                 }}
-                    >
-                    <SwiperSlide>
-                    <ProductCart name={'air'} imageUrl={'/products/a1.png'} price={300} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'nike'} imageUrl={'/products/b1.png'} price={200} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'adidas'} imageUrl={'/products/c1.png'} price={2500} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'pumer'} imageUrl={'/products/d1.png'} price={500} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'air'} imageUrl={'/products/e1.png'} price={700} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'nike'} imageUrl={'/products/f1.png'} price={1000} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'adidas'} imageUrl={'/products/g1.png'} price={1000} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'pumer'} imageUrl={'/products/h1.png'} price={600} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'pumer'} imageUrl={'/products/i1.png'} price={550} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <ProductCart name={'pumer'} imageUrl={'/products/j1.png'} price={950} />
-                    </SwiperSlide>
+            >
+                {
+                    products.map(({ id, name, imageURl, price }) => (
+                      <SwiperSlide>
+                        <ProductCart key={id} name={name} imageUrl={imageURl} price={price} />
+                      </SwiperSlide>
+                    ) )
+                }
                 </Swiper>
             </div>
       </section>

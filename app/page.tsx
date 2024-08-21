@@ -4,6 +4,7 @@ import Collections from "@/components/collection";
 import FeatureProducts from "@/components/featureProducts";
 import CollectionCategory from "@/components/collectionCategories";
 import Promotion from "@/components/promotion";
+import FooterComponent from "@/components/ui/footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Collections title="KID'S SHOE COLLECTION " subTitle="Discover the latest kid's shoe collection from our brand" bgUrl="/kid-shoes-bg.jpeg" />
       <Promotion />
       <FeatureProducts />
+      <FooterComponent />
     </section>
   );
 }
