@@ -52,8 +52,8 @@ const Collection = ({title, subTitle, bgUrl}: ProductCartProps) => {
               >
                 {
                     products.map(({ id, name, imageURl, price }) => (
-                      <SwiperSlide>
-                        <ProductCart key={id} name={name} imageUrl={imageURl} price={price} />
+                      <SwiperSlide key={id} >
+                        <ProductCart name={name} imageUrl={imageURl} price={price} />
                       </SwiperSlide>
                     ) )
                 }

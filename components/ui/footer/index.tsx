@@ -80,5 +80,4 @@ const FooterComponent = () => {
         </footer>
   )
 }
-
 export default FooterComponent
