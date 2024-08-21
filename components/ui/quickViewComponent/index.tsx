@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
-
+import Image from 'next/image'
 
 const QuickViewComponent = () => {
     return (
         <div className="container px-0 w-[90%] shadow-md mx-auto mt-[5rem] md:flex max-w-[50rem] relative">
             {/* Image Left */}
             <div className="md:w-1/2 w-full relative">
-                <img className='h-full object-contain' src="/phone.jpeg" alt="Phone" />
+                <Image className='h-full object-contain' src="/phone.jpeg" alt="Phone" />
                 {/* Pagination */}
                 <button className="absolute left-0 top-[50%] translate-y-[-50%] px-1 text-xl bg-red-500 text-white" >-</button>
                 <button className="absolute right-0 top-[50%] translate-y-[-50%] px-1 text-xl bg-red-500 text-white" >-</button>

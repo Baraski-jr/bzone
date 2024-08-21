@@ -1,9 +1,8 @@
 import { navLinks } from '@/constants'
-import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import React from 'react'
-
+import Image from 'next/image'
 interface NavLinkProps {
     label: string;
     url: string;
@@ -25,7 +24,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = ({ colour, logoUrl }) => {
             <div className="flex items-center justify-between h-16">
                 {/* logo */}
                 <Link href='/' className="inline-block">
-                    <img className='' src={ logoUrl } alt="Logo" width={130}/>
+                    <Image src={logoUrl} alt="Logo" width={130} />
                 </Link>
                 {/* navs */} 
                 <nav className="flex gap-5">

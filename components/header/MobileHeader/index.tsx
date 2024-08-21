@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 const MobileHeader = () => {
     return (
@@ -7,16 +8,16 @@ const MobileHeader = () => {
             <div className="flex justify-between items-center mx-auto w-[95%]">
                 {/* navs */}
                 <div className="">
-                    <img width={30} src="/icons/menu.png" alt="" />
+                    <Image width={30} src="/icons/menu.png" alt="" />
                 </div>
                 {/* logo */} 
                 <Link href='/' className="inline-block">
-                    <img className='' src="/icons/logo-mobile.png" alt="Logo" width={130}/>
+                    <Image className='' src="/icons/logo-mobile.png" alt="Logo" width={130}/>
                 </Link>
                 {/* chats */}
                 <div className="">
                     <Link href="/" className="block">
-                        <img width={25} src="/icons/bag.png" alt="collection" />
+                        <Image width={25} src="/icons/bag.png" alt="collection" />
                     </Link>
                 </div>
             </div>

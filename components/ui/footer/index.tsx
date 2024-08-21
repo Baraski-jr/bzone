@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -10,7 +11,7 @@ const FooterComponent = () => {
                     {/* First Col*/}
                     <div className="space-y-2">
                         <div className="flex items-center space-x-1">
-                            <img src="/icons/logo.png" alt="Logo" width={130} />
+                            <Image src="/icons/logo.png" alt="Logo" width={130} />
                         </div>
                         <div className="w-full md:w-[90%]">
                             <p className="">

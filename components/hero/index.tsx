@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import Image from 'next/image';
+import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -26,7 +27,7 @@ const LandingHero = () => {
   
   const handleSlideChange = () => {
     const swiperInstance = swiperRef.current.swiper;
-    const slides = document.querySelectorAll('.swiper-slide img');
+    const slides = document.querySelectorAll('.swiper-slide Image');
     
     slides.forEach((slide, index) => {
       if (index === swiperInstance.realIndex) {
@@ -67,7 +68,7 @@ const LandingHero = () => {
                       </div>
                       {/* middle */}
                       <div className="w-full flex items-center justify-center">
-                        <img
+                        <Image
                           className='hover:drop-shadow-xl drop-shadow-md mx-automax-w-full w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-2 ease-in-out transition-all duration-1000'
                           src={ imageUrl } alt="shoe"
                         />
@@ -90,16 +91,16 @@ const LandingHero = () => {
               <div className="drop-shadow-lg rounded-full cursor-pointer bg-white bg-opacity-45 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(0)}  
               >
-                <img className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-white.png" alt="shoes" />
+                <Image className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-white.png" alt="shoes" />
               </div>
               <div className="hover:drop-shadow-md rounded-full cursor-pointer bg-white bg-opacity-15 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(1)}
               >
-                <img className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-blue.png" alt="shoes" />
+                <Image className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-blue.png" alt="shoes" />
               </div>
               <div className="hover:drop-shadow-md rounded-full cursor-pointer bg-white bg-opacity-15 w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500"
                 onClick={() => swiperRef.current.swiper.slideTo(2)}>
-                <img className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-orange.png" alt="shoes" />
+                <Image className='drop-shadow-xl w-[6.5rem] max-w-[8rem]  absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700' src="/hero/shoes-orange.png" alt="shoes" />
               </div>
           </div>
         </div>
