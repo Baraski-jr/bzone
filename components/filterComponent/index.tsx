@@ -6,7 +6,7 @@ const FilterComponent = () => {
       <div className="flex justify-between">
         {/* Filter */}
         <button className="flex items-center gap-2 border-2 px-4 py-2 text-base uppercase hover:border-slate-700 transition-all duration-300">
-          <Image className='size-4' src="/icons/filter-icon.png" alt="" />
+          <Image width={50} height={50} className='size-4' src="/icons/filter-icon.png" alt="" />
           Filter
         </button>
         <select name="" id="" className='space-y-2 border-2 px-3 py-2 text-base uppercase hover:border-slate-700 transition-all duration-300'>

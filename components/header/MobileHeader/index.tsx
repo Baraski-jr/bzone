@@ -8,16 +8,16 @@ const MobileHeader = () => {
             <div className="flex justify-between items-center mx-auto w-[95%]">
                 {/* navs */}
                 <div className="">
-                    <Image width={30} src="/icons/menu.png" alt="" />
+                    <Image width={30} height={50} src="/icons/menu.png"  alt="" />
                 </div>
                 {/* logo */} 
                 <Link href='/' className="inline-block">
-                    <Image className='' src="/icons/logo-mobile.png" alt="Logo" width={130}/>
+                    <Image width={130} height={50} src="/icons/logo-mobile.png" alt="Logo" />
                 </Link>
                 {/* chats */}
                 <div className="">
                     <Link href="/" className="block">
-                        <Image width={25} src="/icons/bag.png" alt="collection" />
+                        <Image width={25} height={50} src="/icons/bag.png" alt="collection" />
                     </Link>
                 </div>
             </div>

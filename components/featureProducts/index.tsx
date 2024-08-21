@@ -25,20 +25,20 @@ const FeatureProducts = () => {
                     modules={[Navigation, Pagination]}
                     spaceBetween={10}
                     slidesPerView={2}
-                    // navigation
+                    navigation={true}
                     breakpoints={{
                     640: { slidesPerView: 2, },
                     768: { slidesPerView: 2, },
-                    1024: { slidesPerView: 4, },
-                    1280: { slidesPerView: 4, },
-                    1536: { slidesPerView: 4, },
+                    1024: { slidesPerView: 4.2, },
+                    1280: { slidesPerView: 4.2, },
+                    1536: { slidesPerView: 4.2, },
                     11920: { slidesPerView: 6, },
                 }}
             >
                 {
                     products.map(({ id, name, imageURl, price }) => (
                       <SwiperSlide key={id}>
-                        <ProductCart name={name} imageUrl={imageURl} price={price} />
+                        <ProductCart name={name} imageUrl={imageURl} price={price} id={id} />
                       </SwiperSlide>
                     ) )
                 }

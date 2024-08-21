@@ -10,7 +10,7 @@ const ShopCollection = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-5">
                 {
                     products.map(({ id, name, imageURl, price }) => (
-                        <ProductCart key={id} name={name} imageUrl={imageURl} price={price} />
+                        <ProductCart key={id} name={name} imageUrl={imageURl} price={price} id={id} />
                     ) )
                 }
             </div>

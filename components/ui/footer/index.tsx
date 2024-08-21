@@ -4,14 +4,14 @@ import React from 'react'
 
 const FooterComponent = () => {
     return (
-        <footer className="bg-slate-800 text-gray-300">
-            <div className="container w-[95%]  mx-auto ">
+        <footer className="bg-slate-800 text-gray-300 ">
+            <div className="container w-[95%] mx-auto">
                 {/* The First Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
                     {/* First Col*/}
                     <div className="space-y-2">
                         <div className="flex items-center space-x-1">
-                            <Image src="/icons/logo.png" alt="Logo" width={130} />
+                            <Image src="/icons/logo.png" alt="Logo" width={130} height={50} />
                         </div>
                         <div className="w-full md:w-[90%]">
                             <p className="">

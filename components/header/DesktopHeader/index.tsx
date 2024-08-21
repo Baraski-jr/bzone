@@ -24,7 +24,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = ({ colour, logoUrl }) => {
             <div className="flex items-center justify-between h-16">
                 {/* logo */}
                 <Link href='/' className="inline-block">
-                    <Image src={logoUrl} alt="Logo" width={130} />
+                    <Image src={logoUrl} alt="Logo" width={130} height={70} />
                 </Link>
                 {/* navs */} 
                 <nav className="flex gap-5">
