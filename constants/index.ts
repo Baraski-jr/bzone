@@ -130,3 +130,19 @@ export const products = [
         'imageURl': '/products/f1.png',
     },
 ];
+
+export const prodcs = [
+    {
+        _id: 1,
+        name: 'Nike Air Force 1',
+        description: '',
+        price: 80.00,
+        imageURl: '/products/a1.png',
+        catergory: '',
+        subCatergory: '',
+        sizes: ['S', 'M', 'L',],
+        date: '',
+        colors: ['Red', 'Blue'],
+        bestseller: true,
+    },
+]

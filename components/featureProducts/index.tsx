@@ -30,9 +30,9 @@ const FeatureProducts = () => {
                     640: { slidesPerView: 2, },
                     768: { slidesPerView: 2, },
                     1024: { slidesPerView: 4.2, },
-                    1280: { slidesPerView: 4.2, },
-                    1536: { slidesPerView: 4.2, },
-                    11920: { slidesPerView: 6, },
+                    1280: { slidesPerView: 5.6, },
+                    1536: { slidesPerView: 6.2, },
+                    11920: { slidesPerView: 7.2, },
                 }}
             >
                 {
