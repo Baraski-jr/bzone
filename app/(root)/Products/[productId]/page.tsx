@@ -1,8 +1,9 @@
-'use client'
+'use client';
+
 export const runtime = 'edge';
 
 import Image from 'next/image';
-import React from 'react'
+import React from 'react';
 
 const ProductDetail = ({ params }: { params: { productId: number }}) => {
   console.log(params)
