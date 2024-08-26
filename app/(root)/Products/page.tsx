@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import ShopCollection from '@/components/shopCollection'
 import SubHero from '@/components/subHero'
 import React from 'react'

@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import HeaderComponent from "@/components/header/headerComponent";
 import LandingHero from "@/components/hero";
 import Collections from "@/components/collection";
