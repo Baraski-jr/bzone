@@ -10,17 +10,39 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import Link from 'next/link';
-import { products } from '@/constants';
+
+import { gql, useQuery } from '@apollo/client';
 
 interface ProductCartProps {
   title: string;
   subTitle: string;
   bgUrl: string;
+  id: string;
 }
 
-const Collection = ({title, subTitle, bgUrl}: ProductCartProps) => {
+const Collection = ({ title, subTitle, bgUrl, id }: ProductCartProps) => {
+  console.log(id)
+  const GET_DATA = gql`
+    query {
+      products(categoryId: ${id}) {
+        id
+        title
+        price
+        images
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(GET_DATA);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const products = data.products;
+
+
   return (
-      <section className="mt-6 md:mt-10 flex items-center">
+    <section className="mt-6 md:mt-10 flex items-center">
         {/* header */}
         <div className="w-[95%] mx-auto">
           <header className="text-center space-y-2 py-5 px-2">
@@ -53,9 +75,9 @@ const Collection = ({title, subTitle, bgUrl}: ProductCartProps) => {
                   }}
               >
                 {
-                    products.map(({ id, name, imageURl, price }) => (
+                    products.slice(1, 10).map(({ id, title, images, price }) => (
                       <SwiperSlide key={id} >
-                        <ProductCart id={id} name={name} imageUrl={imageURl} price={price} />
+                        <ProductCart id={id} title={title} image={images[0]} price={price} />
                       </SwiperSlide>
                     ) )
                 }

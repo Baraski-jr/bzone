@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.5",
     "@react-three/drei": "^9.111.2",
     "@react-three/fiber": "^8.17.5",
+    "apollo-server-micro": "^3.13.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
     "lucide-react": "^0.424.0",
     "next": "14.2.5",
     "react": "^18",
@@ -23,7 +27,7 @@
     "three": "^0.167.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.16.2",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/swiper": "^5.4.3",
