@@ -4,9 +4,10 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import React from 'react';
 
-const ProductDetail = async ({ params }: { params: { id: string } }) => {
+const ProductDetail = async ({ params }: { params: {
+  productId: any; id: string 
+} }) => {
   const id = params.productId;
-  console.log(id)
 
   const GET_DATA = gql`
     query {

@@ -39,8 +39,7 @@ const Collection = ({ title, subTitle, bgUrl, id }: ProductCartProps) => {
   if (error) return <p>Error: {error.message}</p>;
 
   const products = data.products;
-
-
+  
   return (
     <section className="mt-6 md:mt-10 flex items-center">
         {/* header */}

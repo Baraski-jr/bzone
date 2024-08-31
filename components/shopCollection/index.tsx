@@ -23,7 +23,7 @@ const ShopCollection = async () => {
             <FilterComponent />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-5">
                 { data.products.map(({ id, title, images, price }) => (
-                    < ProductCart id = { id } title = { title } image = { images[1]} price = { price } />
+                    < ProductCart key={id} id={ id } title = { title } image = { images[1]} price = { price } />
                     ))
                 }
             </div>
