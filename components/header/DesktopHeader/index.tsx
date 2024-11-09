@@ -1,53 +1,67 @@
 import { navLinks } from '@/constants'
 import Link from 'next/link'
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react'
-import Image from 'next/image'
-interface NavLinkProps {
-    label: string;
-    url: string;
-}
+import { NavLinkProps } from '@/types';
+import SearchComponent from '@/components/searchComponent';
 
-interface DesktopHeaderProps {
-    colour: string;
-    logoUrl: string;
-}
-
-const DesktopHeader: React.FC<DesktopHeaderProps> = ({ colour, logoUrl }) => {
+const DesktopHeader = () => {
 
     const pathname = usePathname()
 
-    const isHomePage = pathname === '/'
-    const headerClass = isHomePage && 'absolute top-0'
     return (
-        <div className={`${headerClass} hidden md:block w-full px-8`}>
-            <div className="flex items-center justify-between h-16">
+        <div className={`fixed top-0 z-50 hidden md:block w-full bg-[#84BA86] shadow-sm`}>
+            {/* <AutoScroll /> */}
+            <div className="flex items-center justify-between h-24 mx-8">
                 {/* logo */}
-                <Link href='/' className="inline-block">
-                    <Image src={logoUrl} alt="Logo" width={130} height={70} />
-                </Link>
+                <Link href='/' className="font-bold text-3xl font-serif italic text-white"> B-ZONE </Link>
                 {/* navs */} 
                 <nav className="flex gap-5">
-                    {
-                        navLinks.map((navLink: NavLinkProps) => {
-                            const isActive = pathname === navLink.url
-                            const linkClass = isActive ? `font-semibold text-green-600` : `text-base font-medium text-${[colour]}`
-                            return (
-                                <Link
-                                    key={navLink.label}
-                                    className={`inline-block capitalize text-base  ${linkClass}`} href={navLink.url}>
-                                    {navLink.label}
-                                </Link>
-                            )
+                    { navLinks.map(({url, label}: NavLinkProps) => {
+                        const isActive = pathname === url
+                        const linkClass = isActive ? `font-semibold text-green-600` : `text-base text-white`
+                        return (
+                            <Link
+                                key={label}
+                                className={`inline-block capitalize font-medium  text-base  ${linkClass}`} href={url}>
+                                {label}
+                            </Link>)
                         })
                     }
-    
                 </nav>
+                <SearchComponent />
                 {/* chats */}
-                <div className="">
-                    <button className="text-white rounded-full p-2">Chat</button>
-                    <button className="text-white rounded-full p-2">Chat</button>
-                    <button className="text-white rounded-full p-2">Chat</button>
+                <div className="flex gap-3">
+                    <Link href="/" className="block">
+                        <Image 
+                            width={25} 
+                            height={50} 
+                            src="/icons/profile.png"
+                            alt="profile" 
+                            className='w-auto' 
+                        />
+                    </Link> 
+                    <Link href="/" className="flex w-10 relative">
+                        <Image
+                            width={25} 
+                            height={50} 
+                            src="/icons/notification.png"
+                            alt="Cart" 
+                            className='w-auto'
+                        />
+                            <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>
+                    </Link>
+                    <div className="flex w-10 relative">
+                        <Image 
+                            width={25} 
+                            height={50} 
+                            src="/icons/cart.png"
+                            alt="Cart" 
+                            className='w-auto' 
+                        />
+                        <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>
+                    </div>
                 </div>
             </div>
       </div>

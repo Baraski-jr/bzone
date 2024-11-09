@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import CustomApolloProvider from '../components/Graphql/ApolloProvider';
+import CustomApolloProvider from '../Graphql/ApolloProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Oshoes",
-  description: "O.shoes and amaizing e-commerce site",
+  title: "B-ZONE",
+  description: "B-ZONE and amaizing e-commerce site",
 };
 
 export default function RootLayout({

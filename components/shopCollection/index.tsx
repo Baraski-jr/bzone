@@ -1,34 +1,34 @@
-import React from 'react'
-import ProductCart from '../productCart'
-import FilterComponent from '../filterComponent'
-import client from '@/lib/apollo-client'
-import { gql } from '@apollo/client'
+import React from 'react';
+import { products } from '@/constants';
+import FilterComponent from '../filterComponent/topFilter';
+import ProductCart from '../ui/productCart';
+import SideBarFilter from '../filterComponent/sideBarFilter';
+import CustomNav from '../CustomNav';
 
-const GET_DATA = gql`
-  query {
-    products {
-      id
-      title
-      price
-      images
-    }
-  }
-`;
-
-const ShopCollection = async () => {
-  const { data } = await client.query({ query: GET_DATA });
-
+const ShopCollection = () => {
     return (
-        <section className="w-[95%] mx-auto py-8 space-y-2 md:space-y-4">
-            <FilterComponent />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-5">
-                { data.products.map(({ id, title, images, price }) => (
-                    < ProductCart key={id} id={ id } title = { title } image = { images[1]} price = { price } />
-                    ))
-                }
+        <>
+            <div className="flex gap-x-4 w-[95%] mx-auto py-8">
+                <SideBarFilter />
+                <section className="space-y-2 md:space-y-4">
+                    <FilterComponent />
+                    <CustomNav />
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-3 md:gap-5">
+                        {products.map(({ id, title, images, price, items, colours, sizes }) => (
+                            <ProductCart 
+                                key={id}
+                                id={id}
+                                title={title}
+                                images={images}
+                                price={price}
+                                items={items}
+                                colours={colours} sizes={sizes}                    />
+                        ))}
+                    </div>
+                </section>
             </div>
-        </section>
-  )
-}
+        </>
+    );
+};
 
-export default ShopCollection
+export default ShopCollection;

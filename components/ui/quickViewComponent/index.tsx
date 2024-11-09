@@ -1,13 +1,19 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import { products } from '@/constants'
+import Add from '@/components/AddToCart'
 
 const QuickViewComponent = () => {
+    const image = products[4].images[0]
     return (
-        <div className="container px-0 w-[90%] shadow-md mx-auto mt-[5rem] md:flex max-w-[50rem] relative">
+        <div className="px-0 w-[90%] shadow-md mx-auto mt-[5rem] md:flex max-w-[50rem]">
             {/* Image Left */}
             <div className="md:w-1/2 w-full relative">
-                <Image className='h-full object-contain' src="/phone.jpeg" alt="Phone" />
+                <Image
+                    width={100}
+                    height={100}
+                    className='h-full w-auto object-contain' src={image} alt={products[4].title} />
                 {/* Pagination */}
                 <button className="absolute left-0 top-[50%] translate-y-[-50%] px-1 text-xl bg-red-500 text-white" >-</button>
                 <button className="absolute right-0 top-[50%] translate-y-[-50%] px-1 text-xl bg-red-500 text-white" >-</button>
@@ -26,19 +32,7 @@ const QuickViewComponent = () => {
                         <p className="text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nulla consequatur sequi suscipit, consequuntur.</p>
                     </div>
                     {/* add to cart button */}
-                    <div className="flex items-center gap-2">
-                        {/* Add or  item */}
-                        <div className="flex border-slate-200 gap-2 items-center py-2 border-2 rounded-sm">
-                            <div className="px-2 font-bold text-xl text-slate-300 cursor-pointer">-</div>
-                            <div className="px-3">1</div>
-                            <div className="px-2 font-bold text-xl text-slate-300 cursor-pointer">+</div>
-                        </div>
-                        <button className="bg-slate-900 w-full text-white font-medium text-base rounded-sm py-3 uppercase">Add to Cart</button>
-                    </div>
-                    <div className="flex items-center gap-3 cursor-pointer">
-                        <span className="w-[2rem] h-[2rem] border border-slate-900 rounded-full grid place-content-center">+</span>
-                        <p className="font-semibold text-black text-sm">Login to use Wishlist</p>
-                    </div>
+                    <Add items={4} />
                 </div>
                 <div className="pt-3">
                     <button className='font-semibold'> View full details  <span className='pl-3'>--+</span></button>

@@ -12,8 +12,9 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ colour, logoUrl }) =>
     return (
         <header className=''>
             <MobileHeader />
-            <DesktopHeader colour={colour} logoUrl={logoUrl} />
+            <DesktopHeader  />
         </header>
+        
   )
 }
 

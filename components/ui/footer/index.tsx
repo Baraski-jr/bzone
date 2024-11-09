@@ -10,9 +10,11 @@ const FooterComponent = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
                     {/* First Col*/}
                     <div className="space-y-2">
-                        <div className="flex items-center space-x-1">
+                        <Link href='/' className="font-bold text-3xl font-serif italic text-white"> B-ZONE </Link>
+
+                        {/* <div className="flex items-center space-x-1">
                             <Image src="/icons/logo.png" alt="Logo" width={130} height={50} />
-                        </div>
+                        </div> */}
                         <div className="w-full md:w-[90%]">
                             <p className="">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eaque animi doloribus itaque obcaecati est!
