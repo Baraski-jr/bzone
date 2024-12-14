@@ -8,6 +8,14 @@ export interface ColourComponentPropType {
     colours: coloursType[];
     setColour:  React.Dispatch<React.SetStateAction<string>>;
   }
+
+export interface SubHeroPropType {
+    title: string;
+    links?: {
+        name: string;
+        url: string;
+    }[];
+}
   
 export interface sizesType {
     name: string;

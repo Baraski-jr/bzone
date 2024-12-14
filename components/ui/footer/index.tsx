@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const FooterComponent = () => {
+    const currentYear = new Date().getFullYear();
     return (
         <footer className="bg-slate-800 text-gray-300 ">
             <div className="container w-[95%] mx-auto">
@@ -69,15 +70,8 @@ const FooterComponent = () => {
                     </div> 
                 </div>
                 {/* Second Row */}
-                <div className="flex justify-between py-6">
-                    <div className="flex items-center space-x-1">
-                        <div className=""> Copyright </div> 
-                        <div className=""> c </div>
-                        <div className="">2024</div>
-                    </div>
-                    <div className="">
-                        <p className="">Reserved B-zone</p>
-                    </div>
+                <div className="text-center py-6">
+                    <p className=""> &copy; {currentYear} Reserved B-zone</p>
                 </div>
             </div>
         </footer>

@@ -5,15 +5,19 @@ import CollectionCategory from "@/components/collectionCategories";
 import Promotion from "@/components/promotion";
 import FooterComponent from "@/components/ui/footer";
 import Gutter from "@/components/Gutter";
+// import QuickViewComponent from "@/components/ui/quickViewComponent";
 
 export default async function Home () {
 
   return (
     <section className="relative">
+      {/* Temporal remove it later */}
+      {/* <QuickCartView /> */}
       <HeaderComponent colour={"white"} logoUrl={"/icons/logo.png"} />
       <Gutter />
       <LandingHero />
       <CollectionCategory />
+      {/* <QuickViewComponent /> */}
       <Collections
         id={'0'}
         title="Men's Shoes"

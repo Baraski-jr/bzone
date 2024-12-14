@@ -9,7 +9,7 @@
 //         subCatergory: '',
 //         sizes: ['S', 'M', 'L',],
 //         date: '',
-//         colors: ['blue', 'red'],
+//         colors: ['red', 'red'],
 //         bestseller: true,
 //     },
 // ]
@@ -27,8 +27,8 @@ export const navLinks = [
         'url': '/about',
     },
     {
-        'label': 'Contact Us',
-        'url': '/contact',
+        'label': 'Carts',
+        'url': '/cart',
     },
 ];
 
@@ -45,7 +45,7 @@ export const shoeSlides = [
     {
         'id':1,       
         'name': 'Airmax Racing',
-        'image': '/hero/shoes-red.png',
+        'image': '/hero/shoes-blue.png',
         'price': {
             'originalPrice': 1000,
             'discountPrice': 799,
@@ -70,19 +70,16 @@ export const products = [
         'price': 90.00,
         'images': [
             '/products/a1.png',
-            '/products/b1.png',
-            '/products/c1.png',
+            '/products/a2.png',
         ],
-        'sizes': [ 
-           
-            {'name': 's', 'items': 4},
+        'sizes': [
             {'name': 'm', 'items': 3}, 
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
-            {'name': 'green', 'items': 3}
+            {'name': 'green', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
+            {'name': 'red', 'items': 3}
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'inventory': 7,
@@ -93,8 +90,8 @@ export const products = [
         'title': 'Adidas Ultraboost 21',
         'price': 180.00,
         'images': [
-            '/products/a1.png',
             '/products/b1.png',
+            '/products/b2.png',
             '/products/c1.png',
         ],
         'sizes': [ 
@@ -104,8 +101,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -113,12 +110,12 @@ export const products = [
     },
     {
         'id': 2,
-        'title': 'Puma RS-X',
+        'title': 'Puma RSX',
         'price': 110.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
             '/products/c1.png',
+            '/products/c2.png',
+            '/products/f1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -128,8 +125,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
         'inventory': 5,
@@ -139,8 +136,8 @@ export const products = [
         'title': 'Jordan 1 Retro High',
         'price': 170.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
+            '/products/d1.png',
+            '/products/d2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -151,8 +148,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
         'inventory': 7,
@@ -162,8 +159,8 @@ export const products = [
         'title': 'Nike Air Max 270',
         'price': 150.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
+            '/products/e1.png',
+            '/products/e2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -174,19 +171,19 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
-        'inventory': 5,
+        'inventory': 0,
     },
     {
         'id': 5,
         'title': 'New Balance 990v5',
         'price': 175.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
+            '/products/f1.png',
+            '/products/f2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -197,8 +194,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -210,8 +207,8 @@ export const products = [
         'title': 'Converse Chuck Taylor All Star',
         'price': 55.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
+            '/products/g1.png',
+            '/products/g2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -222,12 +219,12 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
-        'inventory': 5,
+        'inventory': 0,
 
     },
     {
@@ -236,8 +233,8 @@ export const products = [
         'price': 60.00,
 
         'images': [
-            '/products/d1.png',
-            '/products/b1.png',
+            '/products/h1.png',
+            '/products/h2.png',
             '/products/k1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -248,8 +245,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -261,7 +258,7 @@ export const products = [
         'price': 70.00,
         'images': [
             '/products/e1.png',
-            '/products/b1.png',
+            '/products/e2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -272,20 +269,20 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
-        'inventory': 5,
+        'inventory': 0,
     },
     {
         'id': 9,
         'title': 'Asics Gel-Kayano 27',
         'price': 160.00,
         'images': [
-            '/products/a1.png',
-            '/products/b1.png',
+            '/products/j1.png',
+            '/products/j2.png',
             '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -296,8 +293,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -307,7 +304,11 @@ export const products = [
         'id': 10,
         'title': 'Saucony Shadow 6000',
         'price': 100.00,
-        'images': ['/products/k1.png'],
+        'images': [
+            '/products/k1.png',
+            '/products/k2.png',
+            '/products/c1.png',
+        ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
            
@@ -316,8 +317,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3} 
         ],
 
@@ -329,7 +330,7 @@ export const products = [
         'price': 220.00,
         'images': [
             '/products/f1.png',
-            '/products/e1.png',
+            '/products/f2.png',
             '/products/e1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -340,8 +341,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -352,8 +353,8 @@ export const products = [
         'title': 'Nike Dunk Low',
         'price': 100.00,
         'images': [
-            '/products/f1.png',
-            '/products/e1.png',
+            '/products/j1.png',
+            '/products/j2.png',
             '/products/e1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -364,8 +365,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -376,8 +377,8 @@ export const products = [
         'title': 'Adidas NMD R1',
         'price': 140.00,
         'images': [
-            '/products/f1.png',
-            '/products/e1.png',
+            '/products/i1.png',
+            '/products/i2.png',
             '/products/e1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -388,8 +389,8 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
@@ -400,8 +401,8 @@ export const products = [
         'title': 'Under Armour HOVR Phantom 2',
         'price': 140.00,
         'images': [
-            '/products/f1.png',
-            '/products/e1.png',
+            '/products/h1.png',
+            '/products/h2.png',
             '/products/e1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
@@ -412,11 +413,11 @@ export const products = [
             {'name': 'l', 'items': 2},            
         ],
         'colours': [ 
-            {'name': 'blue', 'items': 3},
-            {'name': 'red', 'items': 0}, 
+            {'name': 'red', 'items': 3},
+            {'name': 'gray', 'items': 0}, 
             {'name': 'green', 'items': 3}
         ],
 
-        'inventory': 5,
+        'inventory': 0,
     },
 ];

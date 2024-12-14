@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 
-const Add: React.FC<{inventory: number}> = ({inventory}) => {
+const Add: React.FC<{inventory: number, ControlQuantity: boolean}> = ({inventory, ControlQuantity}) => {
+  // console.log(ControlQuantity)
   const [quantity, setQuantity] = useState(1)
 
   const handleQuantity = (type: 'i' | 'd') => {
@@ -12,8 +13,10 @@ const Add: React.FC<{inventory: number}> = ({inventory}) => {
   };
 
   return (
-    <div className='flex  items-center gap-x-5 border-y-4 border-gray-50 py-3'>    
-      {/* Quantity button */}
+    <div className='flex items-center gap-x-5'>    
+      
+    {/* Quantity button */}
+    { ControlQuantity && (
       <div className="flex flex-2 justify-center items-center border-2 w-fit h-12">
         <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={() => handleQuantity("d")}
@@ -25,6 +28,8 @@ const Add: React.FC<{inventory: number}> = ({inventory}) => {
         > +
         </div>
       </div>
+    )
+    }
       {/* Add Cart button */}
       <button
         onClick={() => setQuantity(1)}

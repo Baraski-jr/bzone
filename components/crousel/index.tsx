@@ -17,7 +17,6 @@ const Crousel: React.FC<CrouselType> = ({
   // scrollbar = false,
 }) => {
 
-
   const visibleProducts = displayLimit? products.slice(0, displayLimit) : products
 
   return (

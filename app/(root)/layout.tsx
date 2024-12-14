@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
     return (
-      <section className="">
+      <section className="relative">
         <div className="relative">
           <HeaderComponent colour={'#000'} logoUrl={"/icons/logo-mobile.png"} />
         </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import CustomApolloProvider from '../Graphql/ApolloProvider';
+import { QuickCartView } from "@/components/ui/QuickCartView";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CustomApolloProvider>
+        {/* <WixClientContextProvider> */}
           {children}
-        </CustomApolloProvider>
+        {/* </WixClientContextProvider> */}
       </body>
     </html>
   );

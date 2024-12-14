@@ -41,7 +41,7 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
             </div>
             {/* Main product image */}
             <div className="">
-              <div className="bg-[#F5F5F5] p-5 md:w-full min-h-[70vh] flex items-start pt-16">
+              <div className="bg-[#F5F5F5] p-5 md:w-full max-h-[30rem] flex items-start pt-16">
                 <Image 
                   width={700} 
                   height={700} 
@@ -70,7 +70,9 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
           </div>
           <p className="font-normal text-slate-500">{product.description}</p>
             <CustomizeProduct colours={product.colours} sizes={products[id].sizes} />
-            <Add inventory={product.inventory} />
+            <div className="border-y-4 border-gray-50 py-3">
+              <Add inventory={product.inventory} ControlQuantity={true} />
+            </div>
             <Buy />
         </div>
       </div>

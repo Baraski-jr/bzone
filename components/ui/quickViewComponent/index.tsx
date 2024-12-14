@@ -32,7 +32,7 @@ const QuickViewComponent = () => {
                         <p className="text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nulla consequatur sequi suscipit, consequuntur.</p>
                     </div>
                     {/* add to cart button */}
-                    <Add items={4} />
+                    <Add inventory={4} />
                 </div>
                 <div className="pt-3">
                     <button className='font-semibold'> View full details  <span className='pl-3'>--+</span></button>
