@@ -85,16 +85,19 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                     </div>
                     {/* Button */}
                     <div className="flex gap-x-5">
-
                         <Link
                              onClick={() =>setIsOpen((prev) => !prev)}
                              href={'/cart'} 
                              className="grid place-content-center border-2 flex-1 ">
                             View cart
                         </Link>
-                        <div className="flex-1">
+                        <Link
+                            href={'/checkout'}
+                            onClick={() =>setIsOpen((prev) => !prev)}
+                            className="flex-1 ">
                             <CheckoutBtn />
-                        </div>
+
+                        </Link>
                     </div>
                 </div>
                 

@@ -19,6 +19,35 @@
   opacity: 0;
 }
 
+/* Customize the prev and next button from cousrel package for sliding */
+.swiper-button-next::after, .swiper-button-prev::after {
+  width: 2.5rem !important; 
+  height: 1.8rem !important; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  font-size: .7rem !important;
+  font-weight: bolder;
+  border-radius: 100% ;
+  color: black;
+  line-height: 0 !important;
+}
+.swiper-button-next:hover::after, .swiper-button-prev:hover::after {
+  color: white;
+  background-color: green;
+  transition-property: linear;
+  transition-duration: 300;
+}
+.swiper-button-next, .swiper-button-prev {
+  top: 40% !important;
+
+}
+
+/* .swiper-pagination-horizontal {
+  background-color: pink;
+  z-index: 100 !important;
+} */
 
 /* Adding animation to Add button when appearance on hover on product cart  */
 

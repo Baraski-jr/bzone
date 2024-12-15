@@ -5,7 +5,7 @@ import React from 'react'
 const FooterComponent = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <footer className="bg-slate-800 text-gray-300 ">
+        <footer className="bg-slate-800 text-gray-300">
             <div className="container w-[95%] mx-auto">
                 {/* The First Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react'
 import { NavLinkProps } from '@/types';
-import SearchComponent from '@/components/searchComponent';
 import { QuickCartView } from '@/components/ui/QuickCartView';
 
 const DesktopHeader = () => {
@@ -32,13 +31,12 @@ const DesktopHeader = () => {
                         return (
                             <Link
                                 key={label}
-                                className={`inline-block capitalize font-medium text-white text-base  ${linkClass}`} href={url}>
+                                className={`inline-block capitalize font-light text-white text-base  ${linkClass}`} href={url}>
                                 {label}
                             </Link>)
                         })
                     }
                 </nav>
-                <SearchComponent />
                 {/* chats */}
                 <div className="flex gap-3">
                     <Link href="/" className="block">
@@ -47,7 +45,7 @@ const DesktopHeader = () => {
                             height={50} 
                             src="/icons/profile.png"
                             alt="profile" 
-                            className='w-auto' 
+                            className='w-auto'
                         />
                     </Link> 
                     <Link href="/" className="flex w-10 relative">
@@ -67,7 +65,7 @@ const DesktopHeader = () => {
                             width={25} 
                             height={50} 
                             src="/icons/cart.png"
-                            alt="Cart" 
+                            alt="Cart"  
                             className='w-auto' 
                         />
                         <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>

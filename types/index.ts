@@ -29,6 +29,11 @@ export interface ThumbnailsType {
     setIndex:  React.Dispatch<React.SetStateAction<number>>;
 }
 
+export interface MagnifyImageProps {
+    url: string; 
+    alt?: string; 
+  };
+
 export interface ProductsType {
     id: number;
     title: string;

@@ -16,19 +16,19 @@ const Add: React.FC<{inventory: number, ControlQuantity: boolean}> = ({inventory
     <div className='flex items-center gap-x-5'>    
       
     {/* Quantity button */}
-    { ControlQuantity && (
-      <div className="flex flex-2 justify-center items-center border-2 w-fit h-12">
-        <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => handleQuantity("d")}
-        > -
+      { ControlQuantity && (
+        <div className="flex flex-2 justify-center items-center border-2 w-fit h-12">
+          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
+            onClick={() => handleQuantity("d")}
+          > -
+          </div>
+          <div className="px-3">{ quantity }</div>
+          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
+            onClick={() => handleQuantity("i")}
+          > +
+          </div>
         </div>
-        <div className="px-3">{ quantity }</div>
-        <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => handleQuantity("i")}
-        > +
-        </div>
-      </div>
-    )
+      )
     }
       {/* Add Cart button */}
       <button

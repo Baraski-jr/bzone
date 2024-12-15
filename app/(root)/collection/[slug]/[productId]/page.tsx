@@ -1,4 +1,5 @@
 'use client';
+import ReactImageMagnify from 'react-image-magnify';
 import Add from '@/components/AddToCart';
 import Buy from '@/components/buyButton';
 import CustomizeProduct from '@/components/customizeProduct';
@@ -8,8 +9,9 @@ import Gutter from '@/components/Gutter';
 import Thumbnails from '@/components/thumbnails';
 import { products } from '@/constants';
 import { ProductsType } from '@/types';
-import Image from 'next/image';
+// import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { MagnifyImage } from '@/components/MagnifyImage';
 
 const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) => {
   const pat = params.productId.replace(/-/g, ' ');
@@ -40,18 +42,18 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
               <Thumbnails direction={'flex-col'} id={id} images={product.images} setIndex={ setIndex } />
             </div>
             {/* Main product image */}
-            <div className="">
-              <div className="bg-[#F5F5F5] p-5 md:w-full max-h-[30rem] flex items-start pt-16">
-                <Image 
-                  width={700} 
-                  height={700} 
-                  quality={100} 
-                  priority
-                  src={product.images[index]} 
-                  alt={product.title} 
-                  className='w-1/2 md:w-full max-w-full mx-auto hover:scale-105 transition-all duration-300' 
-                />
-              </div>
+            <div className="bg-[#F5F5F5]">
+
+              <MagnifyImage url={product.images[index]} alt={product.title} />
+              {/* <Image 
+                width={700} 
+                height={700} 
+                quality={100} 
+                priority
+                src={product.images[index]} 
+                alt={product.title} 
+                className='w-1/2 md:w-full max-w-full mx-auto hover:scale-105 transition-all duration-300' 
+              /> */}
             </div>
             {/* Thumbnails for mobile view */}
             <div className="md:hidden pt-5">

@@ -18,6 +18,7 @@ const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, id }) =
           <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
         </header>
         <div className="sm:flex lg:gap-4 gap-2 gap-y-3 md:gap-y-0 md:space-x-4">
+          
           {/* Nav link on the collection */}
           <Link href={`/collection/${title.replace(/ /g, '-')}`} className="block relative w-full h-2/3 sm:w-1/2 lg:w-1/3 xl:w-1/4">
             <div className="absolute flex items-center justify-center py-5 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-700">
@@ -32,8 +33,11 @@ const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, id }) =
             <div className="md:hidden">
               <Crousel products={products} slidePerView={2} navigation={true} />
             </div>
-            <div className="hidden md:block">
+            <div className="hidden md:block lg:hidden">
               <Crousel products={products} slidePerView={3} navigation={true} />
+            </div>
+            <div className="hidden lg:block">
+              <Crousel products={products} slidePerView={4} navigation={true} />
             </div>
           </div>
         </div>
