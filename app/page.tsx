@@ -27,6 +27,7 @@ export default async function Home () {
         subTitle="Discover the latest woemen's shoe collection from our brand"
         bgUrl='/women-shoes-bg_2.jpg'
       />
+      <Promotion />
       <Collections
         id={'2'}
         title="Kid's Shoes"
@@ -44,7 +45,6 @@ export default async function Home () {
             bgUrl={category.image} />
         ))
       } */}
-      <Promotion />
       <FooterComponent />
     </section>
   );

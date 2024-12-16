@@ -54,7 +54,7 @@ export default function page() {
         </section>
 
         {/* Product information */}
-        <section className="w-full bg-slate-100 space-y-4 px-6 py-12 order-1 lg:order-2">
+        <section className="w-full h-fit bg-slate-100 space-y-4 px-6 py-12 order-1 lg:order-2">
           {/* product items */}
           <section className="space-y-4">
             <CheckoutProductCard />

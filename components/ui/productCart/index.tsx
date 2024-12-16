@@ -38,7 +38,12 @@ const ProductCart: React.FC<ProductsType> = ({ title, images, price, inventory, 
         <div className='flex flex-col justify-center gap-3 pt-3 px-2'>
           <h2 className='text-lg capitalize line-clamp-1'>{title}</h2>
           <p className='text-sm font-semibold text-slate-500'>GMD{price}.00</p>
-          <Add inventory={inventory} ControlQuantity={false} />
+          {inventory === 0 ? 
+
+           <Add inventory={inventory} disable={true} /> :
+           <Add inventory={inventory}  />
+
+          }
         </div>
         {/* The sold out card */}
         {(inventory === 0) && (

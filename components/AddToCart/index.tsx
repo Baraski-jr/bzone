@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-const Add: React.FC<{inventory: number, ControlQuantity: boolean}> = ({inventory, ControlQuantity}) => {
-  // console.log(ControlQuantity)
+const Add: React.FC<{inventory: number, ControlQuantity?: boolean, disable?: boolean}> = ({inventory, ControlQuantity = false, disable=false}) => {
   const [quantity, setQuantity] = useState(1)
 
   const handleQuantity = (type: 'i' | 'd') => {
@@ -33,7 +32,8 @@ const Add: React.FC<{inventory: number, ControlQuantity: boolean}> = ({inventory
       {/* Add Cart button */}
       <button
         onClick={() => setQuantity(1)}
-        className="flex-1 bg-slate-950 text-base text-white h-12 hover:bg-opacity-95 transition-colors duration-300"
+        disabled={disable}
+        className={`flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 ${disable? 'bg-opacity-70 cursor-not-allowed': 'hover:bg-opacity-95'}`}
       >
         ADD TO CART
       </button>

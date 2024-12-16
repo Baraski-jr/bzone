@@ -14,7 +14,6 @@ const Crousel: React.FC<CrouselType> = ({
   products,
   slidePerView = 2,
   navigation = false,
-  // scrollbar = false,
 }) => {
 
   const visibleProducts = displayLimit? products.slice(0, displayLimit) : products
@@ -27,8 +26,6 @@ const Crousel: React.FC<CrouselType> = ({
         spaceBetween={10}
         slidesPerView = {slidePerView}
         navigation={navigation}
-        // breakpoints={breakpoint}
-        // Scrollbar={scrollbar}
 
         >
         {visibleProducts.map(({ id, title, images, price, inventory, colours }: ProductsType) =>  (

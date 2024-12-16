@@ -7,7 +7,7 @@ import { CheckoutBtn } from "@/components/CheckoutButton";
 export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     return ( 
-        <div className="fixed top-0 right-0  w-2/4 z-50">
+        <div className="fixed top-0 right-0 w-[90%] lg:w-2/4 z-50">
             <div className=" bg-white min-h-[100vh] px-12 shadow-xl">
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-14 ">
@@ -16,12 +16,12 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                 </header>
                 <ShippingCard />
                 {/* Product Listing */}
-                <div className="overflow-y-scroll h-[40vh]">
+                <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] ">
                 {/* 1 */}
                 <ul className="">
                     <li className="py-7 border-b-2 border-slate-100">
                         <figure className='flex gap-x-4'>
-                            <Image width={150} height={180} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
+                            <Image width={100} height={130} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
                             <figcaption className="space-y-2">
                                 {/* Title */}
                                 <Link href='/collection/shoes/Adidas-Ultraboost-21' className="hover:underline underline-offset-2">Puma RSX</Link>
@@ -38,7 +38,7 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                 <ul className="">
                     <li className="py-7 border-b-2 border-slate-100">
                         <figure className='flex gap-x-4'>
-                            <Image width={150} height={180} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
+                            <Image width={100} height={130} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
                             <figcaption className="space-y-2">
                                 {/* Title */}
                                 <Link href='/collection/shoes/Adidas-Ultraboost-21' className="hover:underline underline-offset-2">Puma RSX</Link>
@@ -55,7 +55,7 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                 <ul className="">
                     <li className="py-7 border-b-2 border-slate-100">
                         <figure className='flex gap-x-4'>
-                            <Image width={150} height={180} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
+                            <Image width={100} height={130} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
                             <figcaption className="space-y-2">
                                 {/* Title */}
                                 <Link href='/collection/shoes/Adidas-Ultraboost-21' className="hover:underline underline-offset-2">Puma RSX</Link>

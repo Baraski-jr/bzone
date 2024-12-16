@@ -86,6 +86,7 @@ export interface shoeSlide {
     id: number,
     name: string,
     image: string,
+    color: string,
     price: {
       discountPrice : number,
       originalPrice: number,

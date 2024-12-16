@@ -12,10 +12,6 @@ const FooterComponent = () => {
                     {/* First Col*/}
                     <div className="space-y-2">
                         <Link href='/' className="font-bold text-3xl font-serif italic text-white"> B-ZONE </Link>
-
-                        {/* <div className="flex items-center space-x-1">
-                            <Image src="/icons/logo.png" alt="Logo" width={130} height={50} />
-                        </div> */}
                         <div className="w-full md:w-[90%]">
                             <p className="">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eaque animi doloribus itaque obcaecati est!
@@ -32,39 +28,21 @@ const FooterComponent = () => {
                     {/* Second */}
                     <div className="flex w-full justify-between">
                         <div className="">
-                            <div className="">
-                                <h1 className="text-lg text-white font-semibold pb-2">Quick Links</h1>
-                            </div>
+                            <h1 className="text-lg text-white font-semibold pb-2">Quick Links</h1>
                             <div className=""> 
-                                <div className="">
-                                    <a href="#hero" className="">Home</a>
-                                </div>
-                                <div className="">
-                                    <a href="#about" className="">About Us</a>
-                                </div>
-                                <div className="">
-                                    <a href="#activities" className="">Activities</a>
-                                </div>
-                                <div className="">
-                                    <a href="#contact" className="">Contact Us</a>
-                                </div>
+                                <Link href="/" className="block">Home</Link>
+                                <Link href="/collection/shoes" className="block">Collection</Link>
+                                <Link href="/cart" className="block">Carts</Link>
+                                <Link href="/about" className="block">About Us</Link>
                             </div>
                         </div>
                         {/* Third */}
                         <div className="">
-                            <div className="">
-                                <h1 className="text-lg text-white font-semibold pb-2">Get In Touch</h1>
-                            </div>
+                            <h1 className="text-lg text-white font-semibold pb-2">Get In Touch</h1>
                             <div className=""> 
-                                <div className="">
-                                    <a href="/">Busumbala</a>
-                                </div>
-                                <div className="">
-                                    <a href="mailto:yigda@gmail.com">b-zone@gmail.com</a>
-                                </div>
-                                <div className="">
-                                    <a href="tel:+220 000 0000">+200 000 0000</a>
-                                </div>
+                                <h2>Busumbala</h2>
+                                <a className='block' href="mailto:yigda@gmail.com">b-zone@gmail.com</a>
+                                <a className='block' href="tel:+220 000 0000">+200 000 0000</a>
                             </div>
                         </div>
                     </div> 
