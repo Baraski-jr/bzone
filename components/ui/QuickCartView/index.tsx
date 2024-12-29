@@ -7,8 +7,8 @@ import { CheckoutBtn } from "@/components/CheckoutButton";
 export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     return ( 
-        <div className="fixed top-0 right-0 w-[90%] lg:w-2/4 z-50">
-            <div className=" bg-white min-h-[100vh] px-12 shadow-xl">
+        <div className="fixed top-0 right-0 w-full lg:w-2/4 z-50 bg-pink-300">
+            <div className=" bg-white min-h-[100vh] px-5 md:px-12 shadow-xl">
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-14 ">
                     <h2 className="">Shopping cart</h2>
