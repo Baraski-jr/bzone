@@ -8,9 +8,7 @@ export default function RootLayout({
 }>) {
     return (
       <section className="relative">
-        <div className="relative">
-          <HeaderComponent colour={'#000'} logoUrl={"/icons/logo-mobile.png"} />
-        </div>
+        <HeaderComponent colour={'#000'} logoUrl={"/icons/logo-mobile.png"} />
         <main>{children}</main>
         <FooterComponent />
       </section>
