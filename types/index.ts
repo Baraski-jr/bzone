@@ -9,6 +9,10 @@ export interface ColourComponentPropType {
     setColour:  React.Dispatch<React.SetStateAction<string>>;
   }
 
+export interface HeaderComponentProps {
+    colour: string;
+    logoUrl: string;
+}
 export interface SubHeroPropType {
     title: string;
     links?: {

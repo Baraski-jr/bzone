@@ -11,7 +11,7 @@ export default async function Home () {
   return (
     <section className="relative">
       {/* Temporal remove it later */}
-      <HeaderComponent colour={"white"} logoUrl={"/icons/logo.png"} />
+      <HeaderComponent />
       <Gutter />
       <LandingHero />
       <CollectionCategory />
@@ -27,7 +27,9 @@ export default async function Home () {
         subTitle="Discover the latest woemen's shoe collection from our brand"
         bgUrl='/women-shoes-bg_2.jpg'
       />
+      
       <Promotion />
+
       <Collections
         id={'2'}
         title="Kid's Shoes"
@@ -35,16 +37,6 @@ export default async function Home () {
         bgUrl='/kid-shoes-bg.jpeg'
       />
 
-      {/* {
-        categories.slice(1, 4).map((category: { id: string; name: string; image: string; }) => (
-          <Collections
-            key={category.id}
-            id={category.id}
-            title={category.name}
-            subTitle="Discover the latest men's shoe collection from our brand"
-            bgUrl={category.image} />
-        ))
-      } */}
       <FooterComponent />
     </section>
   );

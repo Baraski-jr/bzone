@@ -1,16 +1,10 @@
-'use client'
 import React from 'react'
 import MobileHeader from '../MobileHeader'
 import DesktopHeader from '../DesktopHeader'
 
-interface HeaderComponentProps {
-    colour: string;
-    logoUrl: string;
-}
-
-const HeaderComponent: React.FC<HeaderComponentProps> = ({ colour, logoUrl }) => {
+const HeaderComponent = () => {
     return (
-        <header className=''>
+        <header>
             <MobileHeader />
             <DesktopHeader  />
         </header>

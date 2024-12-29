@@ -70,15 +70,14 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
           <p className="font-normal text-slate-500">{product.description}</p>
             <CustomizeProduct colours={product.colours} sizes={products[id].sizes} />
             <div className="border-y-4 border-gray-50 py-3">
-              {product.inventory === 0 ? 
+            {/* Controlling the disability of the Adding BTN */}
+            {product.inventory === 0 ? 
                 <Add inventory={product.inventory} disable={true} ControlQuantity={true} /> :
                 <Add inventory={product.inventory} ControlQuantity={true} />
               }
             </div>
-            {product.inventory === 0 ? 
-                <Buy disable={true} /> :
-                <Buy />
-            }
+            {/* Controlling the disability of the buying BTN */}
+            {product.inventory === 0 ? <Buy disable={true} /> : <Buy /> }
             {/* <Buy /> */}
         </div>
       </div>

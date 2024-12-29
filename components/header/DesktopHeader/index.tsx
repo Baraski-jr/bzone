@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import React, { useState } from 'react'
 import { NavLinkProps } from '@/types';
 import { QuickCartView } from '@/components/ui/QuickCartView';
-import AutoScroll from '../autoScrollHeader';
 
 const DesktopHeader = () => {
     const [isOpen, setIsOpen] = useState(false)

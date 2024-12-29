@@ -34,27 +34,20 @@ const MobileHeader = () => {
                 {/* logo */} 
                 <Link href='/' className="font-bold text-2xl )font-serif italic text-slate-50"> B-ZONE </Link>
                 {/* Cart icons */}
-                {
-                    !openMenu && (
-                        <Image
-                            width={25}
-                            height={50}
-                            src="/icons/bag.png"
-                            alt="Cart"
-                            className='cursor-pointer'
-                            onClick={() => setOpenCart((prev) => !prev)}
-                        />
-                    )
+                {!openMenu && (
+                    <Image
+                        width={25}
+                        height={50}
+                        src="/icons/bag.png"
+                        alt="Cart"
+                        className='cursor-pointer'
+                        onClick={() => setOpenCart((prev) => !prev)}
+                    />)
                 }
-
                 {/* Open the quick cart view */}
-                {
-                    openCart && <QuickCartView setIsOpen={setOpenCart} />
-                }
+                { openCart && <QuickCartView setIsOpen={setOpenCart} /> }
 
-
-                {/* <div className={`z-50 flex flex-col gap-5 px-5 py-5 h-[calc(100vh-21rem)] w-full bg-slate-900 absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}> */}
-                <div className={`z-30 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5.1rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}>
+                <div className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}>
                     { navLinks.map(({label, url}: NavLinkProps) => {
                         const isActive = pathname === url
                         const linkClass = isActive ? `font-bold underline-` : `font-light`

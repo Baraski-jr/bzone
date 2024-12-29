@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import React, { useRef, useState } from 'react'
+import Link from 'next/link';
+import { shoeSlides } from '@/constants';
+import { shoeSlide } from '@/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { shoeSlides } from '@/constants';
-import Link from 'next/link';
-import { shoeSlide } from '@/types';
 
 const LandingHero = () => {
   const [slide, setSlide] = useState('React Infinity')
@@ -67,10 +67,10 @@ const LandingHero = () => {
                       </div>
                       {/* social media icons */}
                       <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white hover:cursor-[url('/icons/cursor.svg'),_auto]">f</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white hover:cursor-[url('/icons/cursor.svg'),_auto]">X</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white hover:cursor-[url('/icons/cursor.svg'),_auto]">in</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white hover:cursor-[url('/icons/cursor.svg'),_auto]">T</a>
+                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">f</a>
+                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">X</a>
+                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">ln</a>
+                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">T</a>
                       </div>
                     </div>
                   </SwiperSlide>

@@ -7,8 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
     return (
-      <section className="relative">
-        <HeaderComponent colour={'#000'} logoUrl={"/icons/logo-mobile.png"} />
+      <section>
+        <HeaderComponent />
         <main>{children}</main>
         <FooterComponent />
       </section>
