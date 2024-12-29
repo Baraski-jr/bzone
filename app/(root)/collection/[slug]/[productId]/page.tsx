@@ -7,15 +7,26 @@ import FeatureProducts from '@/components/featureProducts';
 import Gutter from '@/components/Gutter';
 import Thumbnails from '@/components/thumbnails';
 import { products } from '@/constants';
+import { PageProps } from '@/types';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Page: React.FC = () => {
-  const id = 0;
+export default function Page({params}: PageProps) {
+  const [productId, setProductId] = useState<string | null>(null)
   const [index, setIndex] = useState(0);
   const discount = 10;
+  
+  useEffect(() => {
+    params.then(data => {
+      setProductId(data.productId);
+    });
+  }, [params]);
 
-  const product = products[id]
+  console.log(params)
+  if (!productId) return <div>Loading</div>;
+  
+  const product = products.find(product => product.title === productId.replaceAll(/-/g, ' '));
+  console.log(productId)
 
   if (!product) return <div>Product not found.</div>;
 
@@ -30,7 +41,7 @@ const Page: React.FC = () => {
         <div className="md:flex">
             {/* Thumbnails for larger screens */}
             <div className="hidden md:block">
-              <Thumbnails direction={'flex-col'} id={id} images={product.images} setIndex={ setIndex } />
+              <Thumbnails direction={'flex-col'} id={product.id} images={product.images} setIndex={ setIndex } />
             </div>
             {/* Main product image */}
             <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center">
@@ -45,7 +56,7 @@ const Page: React.FC = () => {
             </div>
             {/* Thumbnails for mobile view */}
             <div className="md:hidden pt-5">
-              <Thumbnails id={id} images={product.images} setIndex={ setIndex } />
+              <Thumbnails id={product.id} images={product.images} setIndex={ setIndex } />
             </div>
         </div>
         {/* Product details */}
@@ -59,7 +70,7 @@ const Page: React.FC = () => {
             </h1> 
           </div>
           <p className="font-normal text-slate-500">{product.description}</p>
-            <CustomizeProduct colours={product.colours} sizes={products[id].sizes} />
+            <CustomizeProduct colours={product.colours} sizes={products[product.id].sizes} />
             <div className="border-y-4 border-gray-50 py-3">
             {/* Controlling the disability of the Adding BTN */}
             {product.inventory === 0 ? 
@@ -81,5 +92,3 @@ const Page: React.FC = () => {
     </div>
   );
 }
-
-export default Page;

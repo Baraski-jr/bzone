@@ -10,9 +10,8 @@ export interface ColourComponentPropType {
   }
 
  export interface PageProps {
-    params: {
-      productId: string;
-    };
+    params: Promise<{ productId: string }>;
+
   }
 export interface HeaderComponentProps {
     colour: string;
