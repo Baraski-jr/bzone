@@ -10,14 +10,12 @@ import { products } from '@/constants';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-
 const Page: React.FC = () => {
   const id = 0;
   const [index, setIndex] = useState(0);
   const discount = 10;
 
-  const product = products[0]
-  console.log(product)
+  const product = products[id]
 
   if (!product) return <div>Product not found.</div>;
 
