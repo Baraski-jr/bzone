@@ -12,7 +12,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 
-const ProductDetail = ({params}: PageProps) => {
+const ProductDetail: React.FC<PageProps> = ({ params }) => {
   const pat = params.productId.replace(/-/g, ' ');
   const [id, setId] = useState(0);
   const [product, setProduct] = useState<ProductsType>()
@@ -22,7 +22,7 @@ const ProductDetail = ({params}: PageProps) => {
   useEffect(() => {
     const filt = products.filter((items) => (items.title === pat))
     setProduct(filt[0])
-    setId(filt[0].id)
+    setId(filt[0]?.id)
   },[pat])
 
   if (!product) return <div>Product not found.</div>;
