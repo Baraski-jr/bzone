@@ -7,12 +7,11 @@ import FeatureProducts from '@/components/featureProducts';
 import Gutter from '@/components/Gutter';
 import Thumbnails from '@/components/thumbnails';
 import { products } from '@/constants';
-import { PageProps, ProductsType } from '@/types';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
 
-const ProductDetail: React.FC = () => {
+const Page: React.FC = () => {
   const id = 0;
   const [index, setIndex] = useState(0);
   const discount = 10;
@@ -85,4 +84,4 @@ const ProductDetail: React.FC = () => {
   );
 }
 
-export default ProductDetail;
+export default Page;
