@@ -10,7 +10,7 @@ import { products } from '@/constants';
 import { ProductsType } from '@/types';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-// import { MagnifyImage } from '@/components/MagnifyImage';
+
 
 const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) => {
   const pat = params.productId.replace(/-/g, ' ');
@@ -43,7 +43,6 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
             {/* Main product image */}
             <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center">
 
-              {/* <MagnifyImage url={product.images[index]} alt={product.title} /> */}
               <Image 
                 width={700} 
                 height={700} 
@@ -72,9 +71,16 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
           <p className="font-normal text-slate-500">{product.description}</p>
             <CustomizeProduct colours={product.colours} sizes={products[id].sizes} />
             <div className="border-y-4 border-gray-50 py-3">
-              <Add inventory={product.inventory} ControlQuantity={true} />
+              {product.inventory === 0 ? 
+                <Add inventory={product.inventory} disable={true} ControlQuantity={true} /> :
+                <Add inventory={product.inventory} ControlQuantity={true} />
+              }
             </div>
-            <Buy />
+            {product.inventory === 0 ? 
+                <Buy disable={true} /> :
+                <Buy />
+            }
+            {/* <Buy /> */}
         </div>
       </div>
       </section>

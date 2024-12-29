@@ -70,7 +70,7 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                 </ul>
                 </div>
                 {/* Sub footer */}
-                <div className="py-6 space-y-3 mb-auto absolute bottom-0 w-[85%]">
+                <div className="py-6 pr-2 space-y-3 mb-auto absolute bottom-0 w-[85%] bg-white">
                 {/* Total */}
                 <div className="flex justify-between items-center">
                         <h3 className="text-xl">Subtotal</h3>

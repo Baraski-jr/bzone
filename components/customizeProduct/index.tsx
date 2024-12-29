@@ -31,7 +31,7 @@ const CustomizeProduct: React.FC<{colours: coloursType[], sizes: sizesType[],}> 
       }
         {/* Colour */}
         { colours.length > 0 &&
-          <div className="space-y-4 py-3 border-y-4 border-gray-50">
+          <div className="space-y-4 py-3">
             <h3 className="font-normal">Colour: {colour} </h3>
             <ColourComponent colours={colours} colour={colour} setColour={setColour} />
           </div>

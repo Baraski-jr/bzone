@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 const Add: React.FC<{inventory: number, ControlQuantity?: boolean, disable?: boolean}> = ({inventory, ControlQuantity = false, disable=false}) => {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(0)
 
   const handleQuantity = (type: 'i' | 'd') => {
 
