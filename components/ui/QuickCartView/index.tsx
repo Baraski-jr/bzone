@@ -100,7 +100,6 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                         </Link>
                     </div>
                 </div>
-                
             </div>
         </div>
     );

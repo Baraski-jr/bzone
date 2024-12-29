@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import ColourComponent from '../ColoursComponent'
 
 const CustomizeProduct: React.FC<{colours: coloursType[], sizes: sizesType[],}> = ({sizes, colours}) => {
-  const id = 2
 
   const [colour, setColour] = useState(colours[0].name)
   const [size, setSize] = useState(sizes[0].name)
@@ -29,13 +28,13 @@ const CustomizeProduct: React.FC<{colours: coloursType[], sizes: sizesType[],}> 
             </div>
         </div>
       }
-        {/* Colour */}
-        { colours.length > 0 &&
-          <div className="space-y-4 py-3">
-            <h3 className="font-normal">Colour: {colour} </h3>
-            <ColourComponent colours={colours} colour={colour} setColour={setColour} />
-          </div>
-        }
+      {/* Colour */}
+      { colours.length > 0 &&
+        <div className="space-y-4 py-3">
+          <h3 className="font-normal">Colour: {colour} </h3>
+          <ColourComponent colours={colours} colour={colour} setColour={setColour} />
+        </div>
+      }
 
 
     </div>

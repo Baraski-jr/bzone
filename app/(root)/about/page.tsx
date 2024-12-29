@@ -1,9 +1,13 @@
+import Gutter from '@/components/Gutter'
 import React from 'react'
 
-const About = () => {
+function page() {
   return (
-    <div>About</div>
+    <div>
+        <Gutter />
+        About      
+    </div>
   )
 }
 
-export default About
+export default page

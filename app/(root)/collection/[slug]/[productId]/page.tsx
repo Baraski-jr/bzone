@@ -42,7 +42,6 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
             </div>
             {/* Main product image */}
             <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center">
-
               <Image 
                 width={700} 
                 height={700} 
