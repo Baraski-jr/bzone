@@ -23,7 +23,7 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
     const filt = products.filter((items) => (items.title === pat))
     setProduct(filt[0])
     setId(filt[0].id)
-  },[])
+  },[id])
 
   if (!product) return <div>Product not found.</div>;
 
