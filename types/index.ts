@@ -9,6 +9,11 @@ export interface ColourComponentPropType {
     setColour:  React.Dispatch<React.SetStateAction<string>>;
   }
 
+ export interface PageProps {
+    params: {
+      productId: string;
+    };
+  }
 export interface HeaderComponentProps {
     colour: string;
     logoUrl: string;

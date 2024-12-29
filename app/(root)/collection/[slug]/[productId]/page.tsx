@@ -7,12 +7,12 @@ import FeatureProducts from '@/components/featureProducts';
 import Gutter from '@/components/Gutter';
 import Thumbnails from '@/components/thumbnails';
 import { products } from '@/constants';
-import { ProductsType } from '@/types';
+import { PageProps, ProductsType } from '@/types';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 
-const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) => {
+const ProductDetail = ({params}: PageProps) => {
   const pat = params.productId.replace(/-/g, ' ');
   const [id, setId] = useState(0);
   const [product, setProduct] = useState<ProductsType>()
@@ -23,7 +23,7 @@ const ProductDetail: React.FC<{ params: { productId: string } }> = ({params}) =>
     const filt = products.filter((items) => (items.title === pat))
     setProduct(filt[0])
     setId(filt[0].id)
-  },[id])
+  },[pat])
 
   if (!product) return <div>Product not found.</div>;
 
