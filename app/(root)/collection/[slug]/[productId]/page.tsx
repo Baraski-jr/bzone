@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 
 
 const ProductDetail: React.FC = () => {
-  const [id, setId] = useState(0);
+  const id = 0;
   const [index, setIndex] = useState(0);
   const discount = 10;
 
