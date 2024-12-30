@@ -11,8 +11,10 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Gutter from '@/components/Gutter';
 
 const LandingHero = () => {
+
   const [slide, setSlide] = useState('React Infinity')
 
   const swiperRef = useRef<any>(null);
@@ -31,9 +33,10 @@ const LandingHero = () => {
 
     return (
       <section className='flex md:items-center pb-7 bg-hero-bg bg-cover bg-top w-full pt-5'> 
-        <div className="mx-auto w-[95%] space-y-7 "> 
+        <div className="mx-auto w-[95%] space-y-7 pt-12 md:pt-0"> 
           {/* main */}
           {/* Start here */}
+          <Gutter />
           <div className="w-full overflow-hidden">
             <Swiper
               ref={swiperRef}
@@ -45,9 +48,9 @@ const LandingHero = () => {
             >
               {shoeSlides.map(({ id, name, image, price }: shoeSlide) => (
                 <SwiperSlide key={id}>
-                    <div className="md:flex justify-between ">
+                    <div className="md:flex justify-between">
                       {/* left */}
-                      <div className="flex-2 place-content-center w-full md:w-1/4 md:space-y-8 space-y-5">
+                      <div className="place-content-center w-full md:w-1/4 md:space-y-8 space-y-5">
                         <div className="bg-slate-950 px-4 py-2 text-white font-semibold w-fit">
                           ${price.discountPrice} - <span className="line-through">${price.originalPrice}</span>
                         </div>
@@ -57,12 +60,12 @@ const LandingHero = () => {
                       {/* middle */}
                       <div className="md:pt-16 md:pr-28 flex items-center justify-center">
                         <Image
-                          width={300}
-                          height={100}
+                          width={844}
+                          height={530}
                           priority
                           src={image}
                           alt={name}
-                          className="flex-1 hover:drop-shadow-2xl drop-shadow-md mx-auto max-w-full w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
+                          className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
                         />
                       </div>
                       {/* social media icons */}

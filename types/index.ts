@@ -51,6 +51,10 @@ export interface ProductsType {
     colours: coloursType[];
     price: number; 
     inventory: number;
+    category?: string,
+    isNew?: boolean,
+    isFeatured?: boolean,
+    isBestSeller?: boolean
 }
 export interface BreakpointsType {
     640?: { slidesPerView: number }
@@ -78,6 +82,7 @@ export interface CollectionProps {
     subTitle: string;
     bgUrl: string;
     id: string;
+    category: string;
   }
   
 export interface NavLinkProps {

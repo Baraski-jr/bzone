@@ -7,8 +7,11 @@ import Link from 'next/link';
 import Crousel from '../crousel';
 import { products } from '@/constants';
 
-const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, id }) => {
+const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, category }) => {
 
+  const filteredProducts = products.filter((product) => ( product.category === category ))
+
+  console.log(filteredProducts)
   return (
     <section className="mt-6 md:mt-10 flex items-center">
       {/* Header */}
@@ -31,13 +34,13 @@ const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, id }) =
 
           <div className="overflow-hidden sm:w-full h-fit gap-5 md:gap-0 relative">
             <div className="md:hidden">
-              <Crousel products={products} slidePerView={2} navigation={true} />
+              <Crousel products={filteredProducts} slidePerView={2} navigation={true} />
             </div>
             <div className="hidden md:block lg:hidden">
-              <Crousel products={products} slidePerView={3} navigation={true} />
+              <Crousel products={filteredProducts} slidePerView={3} navigation={true} />
             </div>
             <div className="hidden lg:block">
-              <Crousel products={products} slidePerView={4} navigation={true} />
+              <Crousel products={filteredProducts} slidePerView={4} navigation={true} />
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ const Add: React.FC<{inventory: number, ControlQuantity?: boolean, disable?: boo
       <button
         onClick={() => setQuantity(1)}
         disabled={disable}
-        className={`flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 ${disable? 'bg-opacity-70 cursor-not-allowed': 'hover:bg-opacity-95'}`}
+        className={`flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 ${disable? 'bg-opacity-80 cursor-not-allowed': 'hover:bg-opacity-95'}`}
       >
         ADD TO CART
       </button>

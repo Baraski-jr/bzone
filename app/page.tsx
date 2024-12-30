@@ -5,6 +5,7 @@ import CollectionCategory from "@/components/collectionCategories";
 import Promotion from "@/components/promotion";
 import FooterComponent from "@/components/ui/footer";
 import Gutter from "@/components/Gutter";
+import FreeReview from "@/components/FreeReview";
 
 export default async function Home () {
 
@@ -12,7 +13,6 @@ export default async function Home () {
     <section className="relative">
       {/* Temporal remove it later */}
       <HeaderComponent />
-      <Gutter />
       <LandingHero />
       <CollectionCategory />
       <Collections
@@ -20,23 +20,25 @@ export default async function Home () {
         title="Men's Shoes"
         subTitle="Discover the latest men's shoe collection from our brand"
         bgUrl='/men-shoes-collection.jpg'
+        category={'men'}
       />
       <Collections
         id={'1'}
         title="Women's Shoes"
         subTitle="Discover the latest woemen's shoe collection from our brand"
-        bgUrl='/women-shoes-bg_2.jpg'
-      />
+        bgUrl='/women-shoes-bg_2.jpg' 
+        category={"women"}      />
       
-      <Promotion />
 
       <Collections
         id={'2'}
         title="Kid's Shoes"
         subTitle="Discover the latest kid's shoe collection from our brand"
-        bgUrl='/kid-shoes-bg.jpeg'
+        bgUrl='/kid-shoes-bg.jpeg' 
+        category={"kid"}
       />
-
+      <Promotion />
+      <FreeReview />
       <FooterComponent />
     </section>
   );

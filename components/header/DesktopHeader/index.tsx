@@ -3,18 +3,39 @@ import { navLinks } from '@/constants'
 import Link from 'next/link'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLinkProps } from '@/types';
 import { QuickCartView } from '@/components/ui/QuickCartView';
 
 const DesktopHeader = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false);
 
+    useEffect(() => {
+      // Function to handle scroll event
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setIsScrolled(true); // Change the background color when scrolled more than 50px
+        } else {
+          setIsScrolled(false); // Reset the background when scrolled back up
+        }
+      };
+  
+      // Attach the scroll event listener
+      window.addEventListener('scroll', handleScroll);
+  
+      // Cleanup the event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+  
+    const [isOpen, setIsOpen] = useState(false)
     const pathname = usePathname()
-    
+    const homePage = pathname === '/' && !isScrolled ? 'bg-opacity-0' : 'bg-[#84BA86] shadow-sm bg-opacity-100'; 
 
     return (
-        <div className={`fixed top-0 z-50 hidden md:block w-full bg-[#84BA86] shadow-sm`}>
+        // <div className={`fixed top-0 z-50 hidden md:block w-full bg-[#84BA86] ${homePage} shadow-sm`}>
+        <div className={`fixed top-0 z-50 hidden md:block w-full ${homePage} transition-all duration-300`}>
             {/* Control for the opening and closing of QuickCartView*/}
             { isOpen && <QuickCartView setIsOpen={setIsOpen} /> }
             
@@ -43,7 +64,7 @@ const DesktopHeader = () => {
                     <Image 
                         width={25} 
                         height={50} 
-                        src="/icons/cart.png"
+                        src="/icons/bag.png"
                         alt="Cart"  
                         className='w-auto' 
                     />

@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { navLinks } from '@/constants'
 import { NavLinkProps } from '@/types'
@@ -8,6 +8,29 @@ import { usePathname } from 'next/navigation'
 import { QuickCartView } from '@/components/ui/QuickCartView'
 
 const MobileHeader = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      // Function to handle scroll event
+      const handleScroll = () => {
+        if (window.scrollY > 30) {
+          setIsScrolled(true); // Change the background color when scrolled more than 50px
+        } else {
+          setIsScrolled(false); // Reset the background when scrolled back up
+        }
+      };
+    
+      // Attach the scroll event listener
+      window.addEventListener('scroll', handleScroll);
+    
+      // Cleanup the event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+      
+        
     const [openMenu, setOpenMenu] = useState(false)
     const [openCart, setOpenCart] = useState(false)
     const pathname = usePathname()
@@ -17,32 +40,39 @@ const MobileHeader = () => {
         setOpenMenu((prev) => !prev)
     }
 
-    const animation = openMenu ? 'translate-y-0' : 'translate-y-[100rem]'
+    const menu = openMenu ? '/icons/close-menu.png': '/icons/open-menu.png';
+    const animation = openMenu ? 'translate-y-0' : 'translate-y-[100rem]';
+    const homePage = pathname === '/' && !isScrolled ? 'bg-opacity-0' : 'bg-[#84BA86] shadow-md bg-opacity-100'; 
 
     return (
-        <div className="z-50 md:hidden w-full flex drop-shadow-md items-center h-20 fixed bg-[#84BA86] top-0 shadow-md">
+        <div className={`z-50 md:hidden w-full flex drop-shadow-md items-center h-20 fixed ${homePage} top-0 transition-all duration-300`}>
             <div className="flex justify-between items-center mx-auto w-[95%] ">
                 {/* Menu */}
                 <Image
-                    width={30}
-                    height={50}
-                    src="/icons/menu.png"
+                    width={40}
+                    height={40}
+                    src={menu}
                     alt="menu"
-                    className='cursor-pointer'
+                    className='cursor-pointer '
                     onClick={() => handleMenue()}
                 />
                 {/* logo */} 
                 <Link href='/' className="font-bold text-2xl )font-serif italic text-slate-50"> B-ZONE </Link>
                 {/* Cart icons */}
                 {!openMenu && (
-                    <Image
-                        width={25}
-                        height={50}
+                  <div
+                      onClick={() =>setOpenCart((prev) => !prev)}
+                      className="flex w-10 relative cursor-pointer">
+                      <Image 
+                        width={40}
+                        height={40}
                         src="/icons/bag.png"
                         alt="Cart"
                         className='cursor-pointer'
-                        onClick={() => setOpenCart((prev) => !prev)}
-                    />)
+                        />
+                        <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>
+                      </div>
+                    )
                 }
                 {/* Open the quick cart view */}
                 { openCart && <QuickCartView setIsOpen={setOpenCart} /> }

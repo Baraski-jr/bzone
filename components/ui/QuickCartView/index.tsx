@@ -10,16 +10,23 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
         <div className="fixed top-0 right-0 w-full lg:w-2/4 z-50 bg-pink-300">
             <div className=" bg-white min-h-[100vh] px-5 md:px-12 shadow-xl">
                 {/* header section */}
-                <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-14 ">
+                <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
                     <h2 className="">Shopping cart</h2>
-                    <span className="cursor-pointer" onClick={() =>setIsOpen((prev) => !prev)}>X</span>
+                    <Image 
+                        onClick={() =>setIsOpen((prev) => !prev)}
+                        width={25} 
+                        height={50} 
+                        src="/icons/close-black.png"
+                        alt="Cart"  
+                        className='cursor-pointer' 
+                    />
                 </header>
                 <ShippingCard />
                 {/* Product Listing */}
-                <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] ">
+                <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] divide-y-2 divide-slate-100 ">
                 {/* 1 */}
                 <ul className="">
-                    <li className="py-7 border-b-2 border-slate-100">
+                    <li className="py-7 border-b-2 ">
                         <figure className='flex gap-x-4'>
                             <Image width={100} height={130} src="/products/c1.png"  alt='' quality={100} className='bg-[#F5F5F5] object-cover' />
                             <figcaption className="space-y-2">
