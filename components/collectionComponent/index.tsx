@@ -8,10 +8,8 @@ import Crousel from '../crousel';
 import { products } from '@/constants';
 
 const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, category }) => {
-
   const filteredProducts = products.filter((product) => ( product.category === category ))
 
-  console.log(filteredProducts)
   return (
     <section className="mt-6 md:mt-10 flex items-center">
       {/* Header */}

@@ -1,16 +1,23 @@
 'use client'
+import { useCart } from '@/libs/CartContext';
+import { ProductsType } from '@/types';
 import React, { useState } from 'react'
 
-const Add: React.FC<{inventory: number, ControlQuantity?: boolean, disable?: boolean}> = ({inventory, ControlQuantity = false, disable=false}) => {
+const Add: React.FC<{ControlQuantity?: boolean, disable?: boolean, product: ProductsType}> = ({ product, ControlQuantity = false, disable=false}) => {
   const [quantity, setQuantity] = useState(0)
 
   const handleQuantity = (type: 'i' | 'd') => {
 
-    if (type === 'i' && quantity < inventory) { setQuantity((prev) => prev + 1) }
+    if (type === 'i' && quantity < product.inventory) { setQuantity((prev) => prev + 1) }
     else if (type === 'd' && quantity > 1) { setQuantity((prev) => prev - 1) }
-    
   };
 
+  const { addToCart } = useCart();
+
+  const handleAddBtn = () => {
+      addToCart(product);
+      setQuantity(1);
+  }
   return (
     <div className='flex items-center gap-x-5'>    
       
@@ -31,7 +38,7 @@ const Add: React.FC<{inventory: number, ControlQuantity?: boolean, disable?: boo
     }
       {/* Add Cart button */}
       <button
-        onClick={() => setQuantity(1)}
+        onClick={() => handleAddBtn()}
         disabled={disable}
         className={`flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 ${disable? 'bg-opacity-80 cursor-not-allowed': 'hover:bg-opacity-95'}`}
       >

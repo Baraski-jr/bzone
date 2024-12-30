@@ -6,8 +6,11 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { NavLinkProps } from '@/types';
 import { QuickCartView } from '@/components/ui/QuickCartView';
+import { useCart } from '@/libs/CartContext';
 
 const DesktopHeader = () => {
+  const {cart} = useCart();
+
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -68,7 +71,9 @@ const DesktopHeader = () => {
                         alt="Cart"  
                         className='w-auto' 
                     />
-                    <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>
+                    <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
+                      {cart.length}
+                    </span>
                 </div>
             </div>
       </div>

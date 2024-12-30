@@ -12,7 +12,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { ProductsType } from '@/types';
 import Add from '@/components/AddToCart';
 
-const ProductCart: React.FC<ProductsType> = ({ title, images, price, inventory, }) => {
+const ProductCart: React.FC<ProductsType> = (product) => {
 
   return (
     <>
@@ -25,19 +25,20 @@ const ProductCart: React.FC<ProductsType> = ({ title, images, price, inventory, 
             pagination={{clickable: true}}
             navigation={false} // to add the navigation arrows
             >
-            { images.map((url: string, index) => (
+            { product.images.map((url: string, index) => (
               <SwiperSlide key={index}   >
-                <Link href={`/collection/shoes/${title.replace(/ /g, '-')}`} className="overflow-hidden bg-[#F5F5F5] block h-60">
+                <Link href={`/collection/shoes/${product.title.replace(/ /g, '-')}`} className="overflow-hidden bg-[#F5F5F5] block h-60">
                   {/* The sold out card */}
-                  {(inventory === 0) && (
+                  {(product.inventory === 0) && (
                     <div className="bg-red-500 py-2 px-3 aspect-auto rounded-md grid place-content-center absolute top-2 right-2 z-40">
                       <p className="text-base font-mono text-white font-medium tracking-wide">Sold</p>
                     </div>
                   )}
+                  
                   <Image 
                     width={300}
                     height={300}
-                    src={url} alt={title} 
+                    src={url} alt={product.title} 
                     className='mx-auto w-full h-full text-center object-cover hover:scale-105 transition-all duration-700 ' 
                   />
                   
@@ -47,12 +48,12 @@ const ProductCart: React.FC<ProductsType> = ({ title, images, price, inventory, 
           </Swiper>
         </div>
         <div className='flex flex-col justify-center gap-3 pt-3 px-2'>
-          <h2 className='text-sm capitalize line-clamp-1'>{title}</h2>
-          <p className='text-sm font-semibold text-slate-500'>GMD{price}.00</p>
-          {inventory === 0 ? 
+          <h2 className='text-sm capitalize line-clamp-1'>{product.title}</h2>
+          <p className='text-sm font-semibold text-slate-500'>GMD{product.price}.00</p>
+          {product.inventory === 0 ? 
 
-           <Add inventory={inventory} disable={true} /> :
-           <Add inventory={inventory}  />
+           <Add product={product} disable={true} /> :
+           <Add product={product}  />
 
           }
         </div>

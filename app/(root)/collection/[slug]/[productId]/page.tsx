@@ -22,12 +22,8 @@ export default function Page({params}: PageProps) {
     });
   }, [params]);
 
-  console.log(params)
   if (!productId) return <div>Loading</div>;
-  
   const product = products.find(product => product.title === productId.replaceAll(/-/g, ' '));
-  console.log(productId)
-
   if (!product) return <div>Product not found.</div>;
 
   return (
@@ -70,17 +66,21 @@ export default function Page({params}: PageProps) {
             </h1> 
           </div>
           <p className="font-normal text-slate-500">{product.description}</p>
+            
             <CustomizeProduct colours={product.colours} sizes={products[product.id].sizes} />
+            
             <div className="border-y-4 border-gray-50 py-3">
+            
             {/* Controlling the disability of the Adding BTN */}
             {product.inventory === 0 ? 
-                <Add inventory={product.inventory} disable={true} ControlQuantity={true} /> :
-                <Add inventory={product.inventory} ControlQuantity={true} />
-              }
+                <Add product={product} disable={true} ControlQuantity={true} /> :
+                <Add product={product} ControlQuantity={true} />
+            }
             </div>
+            
             {/* Controlling the disability of the buying BTN */}
-            {product.inventory === 0 ? <Buy disable={true} /> : <Buy /> }
             {/* <Buy /> */}
+            {product.inventory === 0 ? <Buy disable={true} /> : <Buy /> }
         </div>
       </div>
       </section>

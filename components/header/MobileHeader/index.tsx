@@ -6,8 +6,11 @@ import { navLinks } from '@/constants'
 import { NavLinkProps } from '@/types'
 import { usePathname } from 'next/navigation'
 import { QuickCartView } from '@/components/ui/QuickCartView'
+import { useCart } from '@/libs/CartContext'
 
 const MobileHeader = () => {
+
+    const {cart} = useCart();
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -70,7 +73,9 @@ const MobileHeader = () => {
                         alt="Cart"
                         className='cursor-pointer'
                         />
-                        <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">3</span>
+                        <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
+                          {cart.length}
+                        </span>
                       </div>
                     )
                 }

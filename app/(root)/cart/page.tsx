@@ -1,11 +1,11 @@
 
 import { CartProductList } from '@/components/cartProductList'
 import { EstimateCard } from '@/components/ui/EstimateCard'
-import ShippingCard from '@/components/ui/shippingCard'
 import SubHero from '@/components/ui/subHero'
 import React from 'react'
 
 function CartPage() {
+
   return (
     <div className=''>
       <SubHero title={'Shopping Cart'} />
@@ -19,7 +19,6 @@ function CartPage() {
           </div>
         </div>
         <div className="space-y-5">
-          <ShippingCard padding={'6'} border={'[1.5px]'} />
           <EstimateCard />
         </div>
       </section>

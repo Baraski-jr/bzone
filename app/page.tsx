@@ -4,7 +4,6 @@ import Collections from "@/components/collectionComponent";
 import CollectionCategory from "@/components/collectionCategories";
 import Promotion from "@/components/promotion";
 import FooterComponent from "@/components/ui/footer";
-import Gutter from "@/components/Gutter";
 import FreeReview from "@/components/FreeReview";
 
 export default async function Home () {
