@@ -106,3 +106,12 @@ export interface shoeSlide {
     },
 }
   
+export interface CartItem extends ProductsType {
+    quantity: number;
+  }
+  
+export interface CartContextType {
+    cart: CartItem[];
+    addToCart: (product: ProductsType) => void;
+    removeFromCart: (productId: number) => void;
+  }

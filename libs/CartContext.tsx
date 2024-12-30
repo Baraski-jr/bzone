@@ -1,16 +1,8 @@
 'use client'
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { ProductsType } from '@/types';
+import { CartContextType, CartItem, ProductsType } from '@/types';
 
-interface CartItem extends ProductsType {
-  quantity: number;
-}
 
-interface CartContextType {
-  cart: CartItem[];
-  addToCart: (product: ProductsType) => void;
-  removeFromCart: (productId: number) => void;
-}
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
