@@ -522,8 +522,8 @@ export const products = [
         'title': 'Mizuno Wave Rider 26',
         'price': 140.00,
         'images': [
+            '/products/c1.png',
             '/products/c2.png',
-            '/products/c3.png',
         ],
         'description': 'The Mizuno Wave Rider 26 offers a responsive and dynamic ride, ideal for daily training or long-distance runs. Durable and sleek design.',
         'sizes': [ 
