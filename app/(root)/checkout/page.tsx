@@ -11,6 +11,7 @@ export default function Page() {
   const { cart } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  const shiipingCost = 200;
 
   useEffect (() => {
     setTotalPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0));
@@ -96,11 +97,11 @@ export default function Page() {
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-sm">Shipping &copy;</p>
-                  <p className="text-sm">Busumbala</p>
+                  <p className="text-sm">GMD{shiipingCost}.00</p>
                 </div>
                 <div className="flex items-center justify-between pt-2">
                   <p className="font-bold text-lg">Total</p>
-                  <p className="font-bold text-lg">GMD{totalPrice}.00</p>
+                  <p className="font-bold text-lg">GMD{totalPrice + shiipingCost}.00</p>
                 </div>
               </div>
             </section>

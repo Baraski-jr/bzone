@@ -20,7 +20,7 @@ export const navLinks = [
     },
     {
         'label': 'Products',
-        'url': '/products/shoes',
+        'url': '/products/shoes?category=all',
     },
 ];
 

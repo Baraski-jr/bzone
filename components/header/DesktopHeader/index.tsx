@@ -54,9 +54,11 @@ const DesktopHeader = () => {
                         return (
                             <Link
                                 key={label}
-                                className={`inline-block capitalize text-white text-base  ${linkClass}`} href={url}>
-                                {label}
-                            </Link>)
+                                className={`inline-block capitalize text-white text-base hover:underline ${linkClass} transition-all duration-200`} 
+                                href={url}>
+                                  {label}
+                            </Link>
+                            )
                         })
                     }
                 </nav>

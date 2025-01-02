@@ -17,21 +17,21 @@ export default async function Home () {
       <CollectionCategory />
       <Collections
         id={'0'}
-        title="Men's Shoes"
+        title="men"
         subTitle="Discover the latest men's shoe collection from our brand"
         bgUrl='/men-shoes-collection.jpg'
         category={'men'}
       />
       <Collections
         id={'1'}
-        title="Women's Shoes"
+        title="women"
         subTitle="Discover the latest woemen's shoe collection from our brand"
         bgUrl={'/women-shoes-bg_2.jpg'}
         category={"women"}      
       />
       <Collections
         id={'2'}
-        title="Kid's Shoes"
+        title="kid"
         subTitle="Discover the latest kid's shoe collection from our brand"
         bgUrl='/kid-shoes-bg.jpeg' 
         category={"kid"}

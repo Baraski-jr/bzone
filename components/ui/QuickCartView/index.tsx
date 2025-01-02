@@ -23,7 +23,7 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
 
 
     return ( 
-        <div className={`fixed top-0 ${animation} w-full md:w-10/12 lg:w-2/4 z-50 bg-pink-300 transition-all duration-500`}>
+        <div className={`fixed top-0 ${animation} w-full md:w-10/12 lg:w-2/4 z-50 transition-all duration-500`}>
             <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
@@ -58,7 +58,7 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                                             {/* Remove button */}
                                             <p 
                                                 onClick={() => removeFromCart(item.id, true)}
-                                                className="underline text-xs text-slate-600 cursor-pointer">
+                                                className="hover:underline text-xs text-slate-600 cursor-pointer">
                                                 Remove
                                             </p>
                                             <ControlQuantity product={item} />

@@ -55,7 +55,7 @@ const LandingHero = () => {
                           ${price.discountPrice} - <span className="line-through">${price.originalPrice}</span>
                         </div>
                         <h1 className="md:text-6xl text-5xl font-bold text-white uppercase"> {name} </h1>
-                        <Link href={`/products/${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
+                        <Link href={`/products/shoes?category=${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
                       </div>
                       {/* middle */}
                       <div className="md:pt-16 md:pr-28 flex items-center justify-center">
@@ -69,10 +69,10 @@ const LandingHero = () => {
                       </div>
                       {/* social media icons */}
                       <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
-                        <a title='facebook' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">f</a>
-                        <a title='X' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">X</a>
-                        <a title='lindkin' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">ln</a>
-                        <a title='telegram' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">T</a>
+                        <a title='facebook' href="#" className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200">f</a>
+                        <a title='X' href="#" className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200">X</a>
+                        <a title='lindkin' href="#" className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200">ln</a>
+                        <a title='telegram' href="#" className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200">T</a>
                       </div>
                     </div>
                   </SwiperSlide>

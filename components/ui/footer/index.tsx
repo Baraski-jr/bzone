@@ -24,9 +24,9 @@ const FooterComponent = () => {
                         </div>
                         {/* Social Media Links */}
                         <div className="flex space-x-2 pt-2">
-                            <Link title='facebook' href='/' className="rounded-full border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">f</Link>
-                            <Link title='Lindkin' href='/' className="rounded-full border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">ln</Link>
-                            <Link title='X' href='/' className="rounded-full border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">X</Link>
+                            <Link title='facebook' href='/' className="rounded-lg border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">f</Link>
+                            <Link title='Lindkin' href='/' className="rounded-lg border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">ln</Link>
+                            <Link title='X' href='/' className="rounded-lg border-2 border-slate-500 p-1 text-blue-400 text-xl font-semibold grid place-content-center w-[2.5rem] h-[2.5rem] hover:bg-slate-200 transition-all duration-700">X</Link>
                         </div>
                     </div>
                     {/* Second */}

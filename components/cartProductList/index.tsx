@@ -34,7 +34,7 @@ export const CartProductList = () => {
                                         {item.title}
                                     </Link>
                                     <button
-                                        onClick={() => removeFromCart(item.id)}
+                                        onClick={() => removeFromCart(item.id, true)}
                                         className="block underline text-xs text-slate-600 cursor-pointer">
                                         Remove
                                     </button>

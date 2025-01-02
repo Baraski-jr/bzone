@@ -56,7 +56,7 @@ export default function PaymentComponent() {
                 </div>
             </div>
             {/* Pay now button */}
-            <Link href={'/'} className="block w-full py-3 bg-[#105889] text-white rounded-sm hover:bg-[#2c71a1] transition-all duration-200"> Pay now </Link>
+            <Link href={'/'} className="block w-full py-3 bg-[#105889] text-white text-center rounded-sm hover:bg-[#2c71a1] transition-all duration-200"> Pay now </Link>
         </form>
     </div>
   )

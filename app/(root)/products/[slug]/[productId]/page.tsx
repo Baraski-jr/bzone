@@ -11,6 +11,7 @@ import Thumbnails from '@/components/thumbnails';
 import { products } from '@/constants';
 import { PageProps } from '@/types';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 export default function Page({params}: PageProps) {
@@ -74,7 +75,6 @@ export default function Page({params}: PageProps) {
             <div className="border-y-4 border-gray-50 py-3">
             
             {/* Controlling the disability of the Adding BTN */}
-            {/* <ControlQuantity product={product} /> */}
               {product.inventory === 0 ? 
                   <Add product={product} disable={true}  /> :
                   <Add product={product} />
@@ -83,7 +83,11 @@ export default function Page({params}: PageProps) {
             
             {/* Controlling the disability of the buying BTN */}
             {/* <Buy /> */}
-            {product.inventory === 0 ? <Buy disable={true} /> : <Buy /> }
+            {product.inventory === 0 ? 
+            
+              <Link className='block w-full' href={'/checkout'}> <Buy disable={true} /> </Link>  : 
+              <Link className='block w-full' href={'/checkout'}> <Buy /> </Link> 
+              }
         </div>
       </div>
       </section>

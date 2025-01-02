@@ -15,12 +15,15 @@ const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, categor
       {/* Header */}
       <div className="w-[95%] mx-auto">
         <header className="text-center space-y-2 py-5 px-2">
-          <h1 className="font-bold text-slate-700 text-xl md:text-2xl">{title}</h1>
+          <h1 className="font-bold text-slate-700 text-xl md:text-2xl capitalize">{title}'s Shoes</h1>
           <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
         </header>
         <div className="sm:flex lg:gap-4 gap-2 gap-y-3 md:gap-y-0 md:space-x-4">
 
-          <CollectionBanner url={`/products/${title.replace(/ /g, '-')}`} bgUrl={bgUrl} />
+          <CollectionBanner 
+            url={`/products/shoes?category=${title.replace(/ /g, '-')}`} 
+            bgUrl={bgUrl} 
+          />
 
           <div className="overflow-hidden sm:w-full h-fit gap-5 md:gap-0 relative">
             <div className="md:hidden">
