@@ -560,7 +560,7 @@ export const products = [
             {'name': 'white', 'items': 4}, 
         ],
         'inventory': 9,
-        'category': 'unisex',
+        'category': 'kid',
         'isNew': false,
         'isFeatured': false,
         'isBestSeller': true
