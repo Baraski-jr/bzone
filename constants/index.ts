@@ -92,7 +92,6 @@ export const products = [
         'images': [
             '/products/b1.png',
             '/products/b2.png',
-            '/products/c1.png',
         ],
         'sizes': [ 
            
@@ -119,7 +118,6 @@ export const products = [
         'images': [
             '/products/c1.png',
             '/products/c2.png',
-            '/products/f1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -146,7 +144,6 @@ export const products = [
         'images': [
             '/products/d1.png',
             '/products/d2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -173,7 +170,6 @@ export const products = [
         'images': [
             '/products/e1.png',
             '/products/e2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -200,7 +196,6 @@ export const products = [
         'images': [
             '/products/f1.png',
             '/products/f2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -229,7 +224,6 @@ export const products = [
         'images': [
             '/products/g1.png',
             '/products/g2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -287,7 +281,6 @@ export const products = [
         'images': [
             '/products/e1.png',
             '/products/e2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -315,7 +308,6 @@ export const products = [
         'images': [
             '/products/j1.png',
             '/products/j2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -343,7 +335,6 @@ export const products = [
         'images': [
             '/products/k1.png',
             '/products/k2.png',
-            '/products/c1.png',
         ],
         'description': 'Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.',
         'sizes': [ 
@@ -484,7 +475,6 @@ export const products = [
         'images': [
             '/products/a1.png',
             '/products/a2.png',
-            '/products/a3.png',
         ],
         'description': 'Experience plush cushioning and smooth rides with the Hoka Clifton 8, perfect for running and all-day wear. Designed for ultimate comfort and performance.',
         'sizes': [ 
@@ -532,7 +522,6 @@ export const products = [
         'title': 'Mizuno Wave Rider 26',
         'price': 140.00,
         'images': [
-            '/products/c1.png',
             '/products/c2.png',
             '/products/c3.png',
         ],
@@ -625,57 +614,5 @@ export const products = [
         'isFeatured': false,
         'isBestSeller': false
     },
-    {
-        'id': 21,
-        'title': 'React Infinity',
-        'price': 999.00,
-        'images': [
-            '/hero/slider-img2.webp',
-        ],
-        'description': 'The On React Infinity combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
-        'sizes': [ 
-            {'name': 'm', 'items': 3},            
-        ],
-        'colours': [ 
-            {'name': 'gray', 'items': 2},
-        ],
-        'inventory': 2,
-        'category': 'men',
-        'isNew': true,
-        'isFeatured': false,
-        'isBestSeller': false
-    },
-    {
-        'id': 22,
-        'title': 'Airmax Racing',
-        'price': 999.00,
-        'images': [ '/hero/slider-img3.webp'],
-        'description': 'The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
-        'sizes': [  {'name': 'm', 'items': 1}, ],
-        'colours': [  {'name': 'blue', 'items': 2}, ],
-        'inventory': 2,
-        'category': 'men',
-        'isNew': true,
-        'isFeatured': true,
-        'isBestSeller': false
-    },
-    {
-        'id': 23,
-        'title': 'Running Airmax',
-        'price': 1100.00,
-        'images': [ '/hero/slider-img1.webp',],
-        'description': 'The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
-        'sizes': [ 
-            {'name': 'm', 'items': 3},            
-        ],
-        'colours': [ 
-            {'name': 'orange', 'items': 2},
-        ],
-        'inventory': 2,
-        'category': 'men',
-        'isNew': true,
-        'isFeatured': false,
-        'isBestSeller': false
-    }
 ];
 

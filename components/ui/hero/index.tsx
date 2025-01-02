@@ -55,7 +55,7 @@ const LandingHero = () => {
                           ${price.discountPrice} - <span className="line-through">${price.originalPrice}</span>
                         </div>
                         <h1 className="md:text-6xl text-5xl font-bold text-white uppercase"> {name} </h1>
-                        <Link href={`/products/shoes/${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
+                        <Link href={`/products/${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
                       </div>
                       {/* middle */}
                       <div className="md:pt-16 md:pr-28 flex items-center justify-center">

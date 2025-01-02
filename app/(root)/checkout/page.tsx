@@ -13,8 +13,6 @@ export default function Page() {
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect (() => {
-    // const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    // const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     setTotalPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0));
     setTotalItems(cart.reduce((sum, item) => sum + item.quantity, 0))
 }, [cart])
