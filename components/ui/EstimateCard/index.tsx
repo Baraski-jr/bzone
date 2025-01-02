@@ -1,4 +1,5 @@
 'use client'
+
 import { CheckoutBtn } from "@/components/CheckoutButton";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";

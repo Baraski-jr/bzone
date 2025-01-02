@@ -1,4 +1,5 @@
 'use client'
+
 import { navLinks } from '@/constants'
 import Link from 'next/link'
 import Image from 'next/image';
@@ -9,9 +10,9 @@ import { QuickCartView } from '@/components/ui/QuickCartView';
 import { useCart } from '@/context/CartContext';
 
 const DesktopHeader = () => {
-  const {cart} = useCart();
 
-    const [isScrolled, setIsScrolled] = useState(false);
+  const {cart} = useCart();
+  const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
       // Function to handle scroll event
@@ -40,11 +41,8 @@ const DesktopHeader = () => {
         // <div className={`fixed top-0 z-50 hidden md:block w-full bg-[#84BA86] ${homePage} shadow-sm`}>
         <div className={`fixed top-0 z-50 hidden md:block w-full ${homePage} transition-all duration-300`}>
             {/* Control for the opening and closing of QuickCartView*/}
-            {/* { isOpen && <QuickCartView setIsOpen={setIsOpen} /> } */}
             <QuickCartView openCart={isOpen} setIsOpen={setIsOpen} />
             
-            
-            {/* <AutoScroll /> */}
             <div className="flex items-center justify-between h-24 mx-8">
                 {/* logo */}
                 <Link href='/' className="font-bold text-3xl font-serif italic text-white"> B-ZONE </Link>

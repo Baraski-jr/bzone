@@ -3,13 +3,21 @@ import Gutter from '@/components/Gutter'
 import PaymentComponent from '@/components/PaymentComponent'
 import { useCart } from '@/context/CartContext'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 
 export default function Page() {
   
   const { cart } = useCart();
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect (() => {
+    // const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    // const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    setTotalPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0));
+    setTotalItems(cart.reduce((sum, item) => sum + item.quantity, 0))
+}, [cart])
 
   return (
     <section className='w-[85%] mx-auto'>

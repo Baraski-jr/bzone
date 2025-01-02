@@ -1,14 +1,13 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { CollectionProps } from '@/types';
-import Link from 'next/link';
 import Crousel from '../crousel';
 import { products } from '@/constants';
 import CollectionBanner from '../ui/CollectionBanner';
 
 const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, category }) => {
+
   const filteredProducts = products.filter((product) => ( product.category === category ))
 
   return (

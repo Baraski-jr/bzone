@@ -1,4 +1,6 @@
 'use client'
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { ControlQuantity } from "@/components/ControlQuantity";
@@ -26,7 +28,7 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
                     <h2 className="">Shopping cart</h2>
-                    <Image 
+                    <Image
                         onClick={() =>setIsOpen((prev) => !prev)}
                         width={25} 
                         height={50} 
@@ -67,7 +69,6 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                         </ul>
                     </div>
                     )
-
                 }
                 {/* Sub footer */}
                 <div className="py-6 pr-2 space-y-3 mb-auto absolute bottom-0 w-[85%] bg-white">
@@ -96,11 +97,6 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                             >
                             <CheckoutBtn />
                         </div>
-                        {/* <Link
-                            href={'/checkout'}
-                            className="flex-1 ">
-                            <CheckoutBtn />
-                        </Link> */}
                     </div>
                 </div>
             </div>

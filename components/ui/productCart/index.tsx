@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import React from 'react'
 import Image from 'next/image';
@@ -7,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+
 import { Navigation, Pagination } from 'swiper/modules';
 import {  ProductsType } from '@/types';
 import Add from '@/components/AddToCart';

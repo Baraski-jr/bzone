@@ -1,8 +1,9 @@
+'use client'
+
 import Link from "next/link";
 import { ControlQuantity } from "../ControlQuantity";
 import Image from "next/image";
 import { useCart} from "@/context/CartContext";
-
 
 export const CartProductList = () => {
     const { cart, removeFromCart } = useCart()
@@ -22,14 +23,14 @@ export const CartProductList = () => {
                     </div>
                 </header>
 
-                <ul className="">
+                <div className="">
                     {cart.map(item => (
-                        <li key={item.id} className="flex py-7 border-b-2 border-slate-100">
+                        <div key={item.id} className="flex py-7 border-b-2 border-slate-100">
                             <figure className='flex flex-col md:flex-row gap-x-4 w-[50%]'>
                                 <Image width={100} height={180} src={item.images[0]}  alt={item.title} quality={100} className='bg-[#F5F5F5] object-cover' />
                                 <figcaption className="space-y-2">
                                     {/* Title */}
-                                    <Link href={`/collection/shoes/${item.title}`} className="hover:underline text-xs md:text-sm lg:text-base underline-offset-2">
+                                    <Link href={`/products/shoes/${item.title}`} className="hover:underline text-xs md:text-sm lg:text-base underline-offset-2">
                                         {item.title}
                                     </Link>
                                     <button
@@ -45,12 +46,12 @@ export const CartProductList = () => {
                                 <div className="order-3 md:order-2"><ControlQuantity product={item} /></div>
                                 <p className="text-slate-700 text-sm order-2 md:order-3"><span className="md:hidden">Total price:</span> GMD{item.price * item.quantity}.00</p>
                             </div>
-                        </li>
+                        </div>
                     ))
                         
                     }
 
-                </ul>
+                </div>
             </>) 
         }
         </section>

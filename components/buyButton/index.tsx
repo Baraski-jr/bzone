@@ -1,6 +1,5 @@
 import React from 'react'
 
-// const Buy: React.FC  = () => {
 const Buy: React.FC<{disable?: boolean}> = ({ disable=false}) => {
 
   return (

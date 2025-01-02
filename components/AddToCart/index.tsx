@@ -1,4 +1,5 @@
 'use client'
+
 import { useCart } from '@/context/CartContext';
 import { ProductsType } from '@/types';
 import React, { useEffect } from 'react'
@@ -13,8 +14,7 @@ const Add: React.FC<{ disable?: boolean, product: ProductsType}> = ({ product,  
     if(existingProduct) {
       setQuantitiy(existingProduct.quantity);
     }
-  }, [cart])
-
+  }, [cart, product.id])
 
   const handleAddBtn = () => {
     if(product.inventory < 1) return;

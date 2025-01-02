@@ -3,7 +3,7 @@ import { SubHeroPropType } from '@/types'
 import Link from 'next/link'
 import React from 'react'
 
-const SubHero = ({title, links}: SubHeroPropType) => {
+const SubHero = ({title}: SubHeroPropType) => {
   return (
       <>
       <Gutter />

@@ -1,4 +1,6 @@
- import { useCart } from "@/context/CartContext";
+'use client'
+
+import { useCart } from "@/context/CartContext";
 import { CartItem } from "@/types";
 
 export const ControlQuantity = ({ product}: {product: CartItem} ) => {

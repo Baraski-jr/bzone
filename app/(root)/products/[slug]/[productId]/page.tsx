@@ -1,6 +1,8 @@
 'use client';
+
 import Add from '@/components/AddToCart';
 import Buy from '@/components/buyButton';
+import { ControlQuantity } from '@/components/ControlQuantity';
 import CustomizeProduct from '@/components/customizeProduct';
 import CustomNav from '@/components/CustomNav';
 import FeatureProducts from '@/components/featureProducts';
@@ -72,10 +74,11 @@ export default function Page({params}: PageProps) {
             <div className="border-y-4 border-gray-50 py-3">
             
             {/* Controlling the disability of the Adding BTN */}
-            {product.inventory === 0 ? 
-                <Add product={product} disable={true}  /> :
-                <Add product={product} />
-            }
+            {/* <ControlQuantity product={product} /> */}
+              {product.inventory === 0 ? 
+                  <Add product={product} disable={true}  /> :
+                  <Add product={product} />
+              }
             </div>
             
             {/* Controlling the disability of the buying BTN */}

@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { products as initialProducts } from '@/constants';
 import FilterComponent from '../filterComponent';
 import ProductCart from '../ui/productCart';
@@ -8,8 +9,13 @@ import { ProductsType } from '@/types';
 
 const ShopCollection = () => {
 
-    const [products, setProducts] = useState<ProductsType[]>(initialProducts);
-    const [filteredProducts, setFilteredProducts] = useState<ProductsType[]>(initialProducts);
+    const [products, setProducts] = useState<ProductsType[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<ProductsType[]>([]);
+
+    useEffect(() => {
+        setProducts(initialProducts);
+        setFilteredProducts(initialProducts);
+    }, []);
 
     const handleFilter = (category: string) => {
         if (category === '') {

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function PaymentComponent() {
@@ -45,10 +46,6 @@ export default function PaymentComponent() {
                 <div className="border-[.1rem] rounded-b-md p-3">
                     <div className="flex justify-between">
                         <div className="flex gap-x-2 items-center">
-                            {/* Rounded  */}
-                            {/* <div className="border-2 rounded-full w-[1rem] h-[1rem] grid place-content-center">
-                                <div className="rounded-full bg-white w-[.4rem] h-[.4rem]"></div>
-                            </div> */}
                             <input type="radio" name="" id="" />
                             <p className="">PayPal</p>
                         </div>
@@ -60,7 +57,7 @@ export default function PaymentComponent() {
             </div>
             {/* Pay now button */}
             <div className="">
-                <button type='submit' className="w-full py-3 bg-[#105889] text-white rounded-sm hover:bg-[#2c71a1] transition-all duration-200">Pay now</button>
+                <Link href={'/'} className="w-full py-3 bg-[#105889] text-white rounded-sm hover:bg-[#2c71a1] transition-all duration-200">Pay now</Link>
             </div>
         </form>
     </div>

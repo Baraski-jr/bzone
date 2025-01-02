@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-type Props = {
- 
-}
-export const CheckoutBtn = ({}: Props) => {
+export const CheckoutBtn = () => {
     return ( 
         <Link
             href={'/checkout'}
