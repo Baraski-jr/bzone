@@ -6,7 +6,7 @@ import { navLinks } from '@/constants'
 import { NavLinkProps } from '@/types'
 import { usePathname } from 'next/navigation'
 import { QuickCartView } from '@/components/ui/QuickCartView'
-import { useCart } from '@/libs/CartContext'
+import { useCart } from '@/context/CartContext'
 
 const MobileHeader = () => {
 
@@ -80,7 +80,8 @@ const MobileHeader = () => {
                     )
                 }
                 {/* Open the quick cart view */}
-                { openCart && <QuickCartView setIsOpen={setOpenCart} /> }
+                {/* { openCart && <QuickCartView setIsOpen={setOpenCart} /> } */}
+                <QuickCartView openCart={openCart} setIsOpen={setOpenCart} />
 
                 <div className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}>
                     { navLinks.map(({label, url}: NavLinkProps) => {

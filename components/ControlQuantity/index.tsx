@@ -1,15 +1,15 @@
-'use client'
-import { useState } from "react";
+ import { useCart } from "@/context/CartContext";
+import { CartItem } from "@/types";
 
-export const ControlQuantity = ({inventory,}: {inventory: number} ) => {
-    const [quantity, setQuantity] = useState(1)
-
+export const ControlQuantity = ({ product}: {product: CartItem} ) => {
+    const { addToCart, removeFromCart } = useCart();
+    
     const handleQuantity = (type: 'i' | 'd') => {
-      if (type === 'i' && quantity < inventory) { 
-        setQuantity((prev) => prev + 1)
+      if (type === 'i' && product.quantity < product.inventory) { 
+        addToCart(product)
       }
-      else if (type === 'd' && quantity > 1) { 
-        setQuantity((prev) => prev - 1)
+      else if (type === 'd' && product.quantity > 1) { 
+        removeFromCart(product.id)
       }
       
     };
@@ -18,12 +18,12 @@ export const ControlQuantity = ({inventory,}: {inventory: number} ) => {
       <div>     
       {/* Quantity button */}
         <div className="flex flex-2 justify-center items-center border-2 border-slate-100 w-fit h-8">
-          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
+          <div className="px-3 cursor-pointer hover:bg-slate-300 transition-transform duration-200"
             onClick={() => handleQuantity("d")}
           > -
           </div>
-          <div className="px-3">{ quantity }</div>
-          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
+          <div className="px-3">{ product.quantity }</div>
+          <div className="px-3 cursor-pointer hover:bg-slate-300 transition-all duration-300"
             onClick={() => handleQuantity("i")}
           > +
           </div>

@@ -56,6 +56,8 @@ export interface ProductsType {
     isFeatured?: boolean,
     isBestSeller?: boolean
 }
+
+
 export interface BreakpointsType {
     640?: { slidesPerView: number }
     768?: { slidesPerView: number }
@@ -108,10 +110,11 @@ export interface shoeSlide {
   
 export interface CartItem extends ProductsType {
     quantity: number;
+    totalPrice?: number;
   }
   
 export interface CartContextType {
     cart: CartItem[];
     addToCart: (product: ProductsType) => void;
-    removeFromCart: (productId: number) => void;
+    removeFromCart: (productId: number, reset?: boolean) => void;
   }

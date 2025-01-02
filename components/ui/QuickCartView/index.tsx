@@ -3,12 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ControlQuantity } from "@/components/ControlQuantity";
 import { CheckoutBtn } from "@/components/CheckoutButton";
-import { useCart } from "@/libs/CartContext";
+import { useCart } from "@/context/CartContext";
 import { useEffect, useState } from "react";
 
-export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+
+export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+    
     const { cart, removeFromCart } = useCart();
     const [totalPrice, setTotalPrice] = useState(0);
+    const animation = openCart ? 'right-0' : '-right-[100%]';
+
 
     useEffect (() => {
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -17,7 +21,7 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
 
 
     return ( 
-        <div className="fixed top-0 right-0 w-full md:w-10/12 lg:w-2/4 z-50 bg-pink-300">
+        <div className={`fixed top-0 ${animation} w-full md:w-10/12 lg:w-2/4 z-50 bg-pink-300 transition-all duration-500`}>
             <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
@@ -28,7 +32,7 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                         height={50} 
                         src="/icons/close-black.png"
                         alt="Cart"  
-                        className='cursor-pointer w-auto h-auto' 
+                        className='cursor-pointer w-auto h-auto hover:bg-red-700 transition-all duration-200' 
                     />
                 </header>
                 {cart.length === 0 ? 
@@ -48,14 +52,14 @@ export const QuickCartView = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetS
                                                 {item.title}
                                             </Link>
                                             {/* Colour & size */}
-                                            <p className="text-slate-700 text-sm"> GMD{item.price}.00 </p>
+                                            <p className="text-slate-700 text-sm"> GMD{item.price * item.quantity}.00 </p>
                                             {/* Remove button */}
                                             <p 
-                                                onClick={() => removeFromCart(item.id)}
+                                                onClick={() => removeFromCart(item.id, true)}
                                                 className="underline text-xs text-slate-600 cursor-pointer">
                                                 Remove
                                             </p>
-                                            <ControlQuantity inventory={item.inventory} />
+                                            <ControlQuantity product={item} />
                                         </figcaption>
                                     </figure>
                                 </li>

@@ -25,10 +25,9 @@ export default async function Home () {
         id={'1'}
         title="Women's Shoes"
         subTitle="Discover the latest woemen's shoe collection from our brand"
-        bgUrl='/women-shoes-bg_2.jpg' 
-        category={"women"}      />
-      
-
+        bgUrl={'/women-shoes-bg_2.jpg'}
+        category={"women"}      
+      />
       <Collections
         id={'2'}
         title="Kid's Shoes"

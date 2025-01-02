@@ -73,8 +73,8 @@ export default function Page({params}: PageProps) {
             
             {/* Controlling the disability of the Adding BTN */}
             {product.inventory === 0 ? 
-                <Add product={product} disable={true} ControlQuantity={true} /> :
-                <Add product={product} ControlQuantity={true} />
+                <Add product={product} disable={true}  /> :
+                <Add product={product} />
             }
             </div>
             

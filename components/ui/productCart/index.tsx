@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link';
 import React from 'react'
 import Image from 'next/image';
@@ -9,10 +8,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation, Pagination } from 'swiper/modules';
-import { ProductsType } from '@/types';
+import {  ProductsType } from '@/types';
 import Add from '@/components/AddToCart';
 
-const ProductCart: React.FC<ProductsType> = (product) => {
+const ProductCart = (product: ProductsType) => {
 
   return (
     <>
@@ -27,7 +26,7 @@ const ProductCart: React.FC<ProductsType> = (product) => {
             >
             { product.images.map((url: string, index) => (
               <SwiperSlide key={index}   >
-                <Link href={`/collection/shoes/${product.title.replace(/ /g, '-')}`} className="overflow-hidden bg-[#F5F5F5] block h-60">
+                <Link href={`/products/shoes/${product.title.replace(/ /g, '-')}`} className="overflow-hidden bg-[#F5F5F5] block h-60">
                   {/* The sold out card */}
                   {(product.inventory === 0) && (
                     <div className="bg-red-500 py-2 px-3 aspect-auto rounded-md grid place-content-center absolute top-2 right-2 z-40">

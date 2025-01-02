@@ -21,7 +21,6 @@ const ShopCollection = () => {
         }
       };
 
-
     return (
         <>
           <div className="flex gap-x-4 w-[85%] mx-auto py-8">
@@ -38,7 +37,8 @@ const ShopCollection = () => {
                               images={images}
                               price={price}
                               inventory={inventory}
-                              colours={colours} sizes={sizes}                   />
+                              colours={colours} sizes={sizes}                   
+                            />
                       ))}
                   </div>
               </section>

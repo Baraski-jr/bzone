@@ -1,6 +1,6 @@
 'use client'
 import { CheckoutBtn } from "@/components/CheckoutButton";
-import { useCart } from "@/libs/CartContext";
+import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 

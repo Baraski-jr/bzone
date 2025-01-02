@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import React, { useRef, useState } from 'react'
 import Link from 'next/link';
+import Gutter from '@/components/Gutter';
 import { shoeSlides } from '@/constants';
 import { shoeSlide } from '@/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +12,6 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Gutter from '@/components/Gutter';
 
 const LandingHero = () => {
 
@@ -55,14 +55,13 @@ const LandingHero = () => {
                           ${price.discountPrice} - <span className="line-through">${price.originalPrice}</span>
                         </div>
                         <h1 className="md:text-6xl text-5xl font-bold text-white uppercase"> {name} </h1>
-                        <Link href={`/collection/${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
+                        <Link href={`/products/shoes/${name.replace(/ /g, '-')}`} className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"> SHOP NOW </Link>
                       </div>
                       {/* middle */}
                       <div className="md:pt-16 md:pr-28 flex items-center justify-center">
                         <Image
                           width={844}
                           height={530}
-                          priority
                           src={image}
                           alt={name}
                           className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[90%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
@@ -70,10 +69,10 @@ const LandingHero = () => {
                       </div>
                       {/* social media icons */}
                       <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">f</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">X</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">ln</a>
-                        <a href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">T</a>
+                        <a title='facebook' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">f</a>
+                        <a title='X' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">X</a>
+                        <a title='lindkin' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">ln</a>
+                        <a title='telegram' href="#" className="text-green-500 grid place-content-center rounded-full w-[2rem] h-[2rem] font-bold text-base bg-white">T</a>
                       </div>
                     </div>
                   </SwiperSlide>

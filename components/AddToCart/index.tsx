@@ -1,41 +1,29 @@
 'use client'
-import { useCart } from '@/libs/CartContext';
+import { useCart } from '@/context/CartContext';
 import { ProductsType } from '@/types';
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 
-const Add: React.FC<{ControlQuantity?: boolean, disable?: boolean, product: ProductsType}> = ({ product, ControlQuantity = false, disable=false}) => {
-  const [quantity, setQuantity] = useState(0)
+const Add: React.FC<{ disable?: boolean, product: ProductsType}> = ({ product,  disable=false}) => {
 
-  const handleQuantity = (type: 'i' | 'd') => {
+  const [Quantitiy, setQuantitiy] = React.useState(1);
+  const { cart, addToCart } = useCart();
 
-    if (type === 'i' && quantity < product.inventory) { setQuantity((prev) => prev + 1) }
-    else if (type === 'd' && quantity > 1) { setQuantity((prev) => prev - 1) }
-  };
+  useEffect(() => {
+    const existingProduct = cart.find(item => item.id === product.id);
+    if(existingProduct) {
+      setQuantitiy(existingProduct.quantity);
+    }
+  }, [cart])
 
-  const { addToCart } = useCart();
 
   const handleAddBtn = () => {
-      addToCart(product);
-      setQuantity(1);
+    if(product.inventory < 1) return;
+    if(product.inventory <= Quantitiy) return;
+    addToCart(product);
   }
   return (
     <div className='flex items-center gap-x-5'>    
       
-    {/* Quantity button */}
-      { ControlQuantity && (
-        <div className="flex flex-2 justify-center items-center border-2 w-fit h-12">
-          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
-            onClick={() => handleQuantity("d")}
-          > -
-          </div>
-          <div className="px-3">{ quantity }</div>
-          <div className="px-3 cursor-pointer hover:scale-105 transition-transform duration-200"
-            onClick={() => handleQuantity("i")}
-          > +
-          </div>
-        </div>
-      )
-    }
       {/* Add Cart button */}
       <button
         onClick={() => handleAddBtn()}

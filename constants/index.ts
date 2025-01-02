@@ -19,12 +19,8 @@ export const navLinks = [
         'url': '/',
     },
     {
-        'label': 'Collection',
-        'url': '/collection/shoes',
-    },
-    {
-        'label': 'About',
-        'url': '/about',
+        'label': 'Products',
+        'url': '/products/shoes',
     },
 ];
 
@@ -62,7 +58,6 @@ export const shoeSlides = [
     },
 
 ];
-
 
 export const products = [
     {
@@ -629,5 +624,58 @@ export const products = [
         'isNew': true,
         'isFeatured': false,
         'isBestSeller': false
+    },
+    {
+        'id': 21,
+        'title': 'React Infinity',
+        'price': 999.00,
+        'images': [
+            '/hero/slider-img2.webp',
+        ],
+        'description': 'The On React Infinity combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
+        'sizes': [ 
+            {'name': 'm', 'items': 3},            
+        ],
+        'colours': [ 
+            {'name': 'gray', 'items': 2},
+        ],
+        'inventory': 2,
+        'category': 'men',
+        'isNew': true,
+        'isFeatured': false,
+        'isBestSeller': false
+    },
+    {
+        'id': 22,
+        'title': 'Airmax Racing',
+        'price': 999.00,
+        'images': [ '/hero/slider-img3.webp'],
+        'description': 'The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
+        'sizes': [  {'name': 'm', 'items': 1}, ],
+        'colours': [  {'name': 'blue', 'items': 2}, ],
+        'inventory': 2,
+        'category': 'men',
+        'isNew': true,
+        'isFeatured': true,
+        'isBestSeller': false
+    },
+    {
+        'id': 23,
+        'title': 'Running Airmax',
+        'price': 1100.00,
+        'images': [ '/hero/slider-img1.webp',],
+        'description': 'The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
+        'sizes': [ 
+            {'name': 'm', 'items': 3},            
+        ],
+        'colours': [ 
+            {'name': 'orange', 'items': 2},
+        ],
+        'inventory': 2,
+        'category': 'men',
+        'isNew': true,
+        'isFeatured': false,
+        'isBestSeller': false
     }
 ];
+

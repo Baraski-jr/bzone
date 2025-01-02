@@ -1,8 +1,7 @@
-'use client'
 import Link from "next/link";
 import { ControlQuantity } from "../ControlQuantity";
 import Image from "next/image";
-import { useCart} from "@/libs/CartContext";
+import { useCart} from "@/context/CartContext";
 
 
 export const CartProductList = () => {
@@ -10,7 +9,7 @@ export const CartProductList = () => {
     return ( 
         <section>
         {cart.length === 0 ? 
-            ( <p className="">No product found</p> ) : 
+            ( <p className=""> The Cart is empty </p> ) : 
             
             (<> 
                 <header className='h-20 border-b-2 border-slate-100 flex items-center '>
@@ -43,8 +42,8 @@ export const CartProductList = () => {
                             {/* Right side */}
                             <div className="flex flex-col md:flex-row gap-4 md justify-end md:justify-between w-[50%]">
                                 <p className="text-slate-700 text-sm order-1"><span className="md:hidden">Price:</span> GMD{item.price}.00</p>
-                                <div className="order-3 md:order-2"><ControlQuantity inventory={item.inventory} /></div>
-                                <p className="text-slate-700 text-sm order-2 md:order-3"><span className="md:hidden">Total price:</span> GMD{item.price}.00</p>
+                                <div className="order-3 md:order-2"><ControlQuantity product={item} /></div>
+                                <p className="text-slate-700 text-sm order-2 md:order-3"><span className="md:hidden">Total price:</span> GMD{item.price * item.quantity}.00</p>
                             </div>
                         </li>
                     ))
