@@ -9,6 +9,6 @@ const CustomNav = ({title}: {title?: string}) => {
           { title &&  <span className="pl-2"> / { title }</span> }
       </div>
   )
-}
+} 
 
 export default CustomNav
