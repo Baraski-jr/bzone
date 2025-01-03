@@ -2,7 +2,6 @@
 
 import Add from '@/components/AddToCart';
 import Buy from '@/components/buyButton';
-import { ControlQuantity } from '@/components/ControlQuantity';
 import CustomizeProduct from '@/components/customizeProduct';
 import CustomNav from '@/components/CustomNav';
 import FeatureProducts from '@/components/featureProducts';
