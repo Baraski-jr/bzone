@@ -11,8 +11,8 @@ const SubHero = ({title}: SubHeroPropType) => {
         <h1 className="text-center text-base text-slate-200 md:font-semibold pb-2">{title}</h1>
         <div className="text-center font-semibold text-sm text-slate-100">
           <Link href='/'> Home </Link> /
-          <Link href='/collection/shoes'> Collections </Link> /
-          <Link href='/collection/shoes'> Shoe </Link>
+          <Link href='/products/shoes'> Products </Link> /
+          <Link href='/products/shoes'> Shoe </Link>
        </div>
       </section>
       </>

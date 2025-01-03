@@ -25,7 +25,7 @@ export default function Page({params}: PageProps) {
     });
   }, [params]);
 
-  if (!productId) return <div>Loading</div>;
+  if (!productId) return <div>Loading...</div>;
   const product = products.find(product => product.title === productId.replaceAll(/-/g, ' '));
   if (!product) return <div>Product not found.</div>;
 
