@@ -38,27 +38,27 @@ const DesktopHeader = () => {
     const homePage = pathname === '/' && !isScrolled ? 'bg-opacity-0' : 'bg-[#84BA86] shadow-sm bg-opacity-100'; 
 
     return (
-        // <div className={`fixed top-0 z-50 hidden md:block w-full bg-[#84BA86] ${homePage} shadow-sm`}>
         <div className={`fixed top-0 z-50 hidden md:block w-full ${homePage} transition-all duration-300`}>
+            
             {/* Control for the opening and closing of QuickCartView*/}
             <QuickCartView openCart={isOpen} setIsOpen={setIsOpen} />
             
             <div className="flex items-center justify-between h-24 mx-8">
                 {/* logo */}
                 <Link href='/' className="font-bold text-3xl font-serif italic text-white"> B-ZONE </Link>
-                {/* navs */} 
+                {/* navs */}
                 <nav className="flex gap-5">
                     { navLinks.map(({url, label}: NavLinkProps) => {
-                        const isActive = pathname === url
+                        const isActive = pathname.split('?')[0].toLowerCase() === url.toLowerCase()
                         const linkClass = isActive ? `font-bold underline-offset-3` : `font-light`
                         return (
-                            <Link
-                                key={label}
-                                className={`inline-block capitalize text-white text-base hover:underline ${linkClass} transition-all duration-200`} 
-                                href={url}>
-                                  {label}
-                            </Link>
-                            )
+                          <Link
+                              key={label}
+                              className={`inline-block capitalize text-white text-base hover:underline ${linkClass} transition-all duration-200`} 
+                              href={url}>
+                                {label}
+                          </Link>
+                          )
                         })
                     }
                 </nav>

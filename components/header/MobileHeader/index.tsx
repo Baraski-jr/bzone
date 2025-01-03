@@ -88,12 +88,12 @@ const MobileHeader = () => {
                         const isActive = pathname === url
                         const linkClass = isActive ? `font-bold underline-` : `font-light`
                         return (
-                            <Link
-                                key={label}
-                                className={`inline-block capitalize text-white text-xl  ${linkClass}`} href={url}>
-                                {label}
-                            </Link>
-                            )
+                          <Link
+                              key={label}
+                              className={`inline-block capitalize text-white text-xl  ${linkClass}`} href={url}>
+                              {label}
+                          </Link>
+                          ) 
                         }) }
                 </div>
             </div>

@@ -14,7 +14,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ onFilter }) => {
     const value = event.target.value;
     setCategory(value);
     onFilter(value);
-    router.push(`/products/shoes?category=${value}`);
+    if (value === 'all') {
+      router.push('/products/shoes');
+    } else {
+      router.push(`/products/shoes?category=${value}`);
+    }
   };
 
   return (
