@@ -85,7 +85,7 @@ const MobileHeader = () => {
 
                 <div className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}>
                     { navLinks.map(({label, url}: NavLinkProps) => {
-                        const isActive = pathname === url
+                        const isActive = pathname.split('?')[0].toLowerCase() === url.toLowerCase()
                         const linkClass = isActive ? `font-bold underline-` : `font-light`
                         return (
                           <Link
