@@ -22,7 +22,7 @@ const Add: React.FC<{ disable?: boolean, product: ProductsType}> = ({ product,  
     addToCart(product);
   }
   return (
-    <div className='flex items-center gap-x-5'>    
+    <div className='flex-1 flex items-center gap-x-5'>    
       
       {/* Add Cart button */}
       <button

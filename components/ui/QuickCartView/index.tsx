@@ -1,6 +1,5 @@
 'use client'
 
-
 import Image from "next/image";
 import Link from "next/link";
 import { ControlQuantity } from "@/components/ControlQuantity";
@@ -14,6 +13,7 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
     const { cart, removeFromCart } = useCart();
     const [totalPrice, setTotalPrice] = useState(0);
     const animation = openCart ? 'right-0' : '-right-[100%]';
+    const [closeIcon, SetCloseIcon] = useState('close-black');
 
 
     useEffect (() => {
@@ -27,15 +27,22 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
             <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
                 {/* header section */}
                 <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
-                    <h2 className="">Shopping cart</h2>
-                    <Image
+                    <h2 className="">Shopping cart ({cart.length})</h2>
+                    <div 
+                        onMouseOver={()=> SetCloseIcon('close-menu')}
+                        onMouseLeave={()=> SetCloseIcon('close-black')}
                         onClick={() =>setIsOpen((prev) => !prev)}
-                        width={25} 
-                        height={50} 
-                        src="/icons/close-black.png"
-                        alt="Cart"  
-                        className='cursor-pointer w-auto h-auto hover:bg-red-700 transition-all duration-200' 
-                    />
+                        className="p-2 cursor-pointer hover:bg-red-500 transition-all duration-200"
+                    >
+                            <Image
+                                width={15}
+                                height={15}
+                                src={`/icons/${closeIcon}.png`}
+                                alt="Cart"  
+                                className='w-auto h-auto' 
+                            />
+
+                    </div>
                 </header>
                 {cart.length === 0 ? 
                     ( <p className="">Your cart is empty</p> ):
@@ -45,18 +52,21 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                             {cart.map(item => (
                                 <li key={item.id} className="py-7 border-b-2 border-slate-100">
                                     <figure className='flex gap-x-4'>
-                                        <Image width={100} height={130} src={item.images[0]}  alt={item.title} className='bg-[#F5F5F5] object-cover' />
+                                        
+                                        <Link href={`/products/shoes/${item.title.replace(/ /g, '-')}`}>
+                                                <Image width={100} height={130} src={item.images[0]}  alt={item.title} className='bg-[#F5F5F5] object-cover' />
+                                            </Link>
                                         <figcaption className="space-y-2">
                                             {/* Title */}
                                             <Link
-                                                href={`/collection/shoes/${item.title}`} 
+                                                href={`/products/shoes/${item.title.replace(/ /g, '-')}`} 
                                                 className="hover:underline underline-offset-2">
                                                 {item.title}
                                             </Link>
                                             {/* Colour & size */}
-                                            <p className="text-slate-700 text-sm"> GMD{item.price * item.quantity}.00 </p>
+                                            <p className="text-slate-700 text-sm"> GMD{item.price}.00 </p>
                                             {/* Remove button */}
-                                            <p 
+                                            <p
                                                 onClick={() => removeFromCart(item.id, true)}
                                                 className="hover:underline text-xs text-slate-600 cursor-pointer">
                                                 Remove
@@ -91,7 +101,7 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                             href={'/cart'} 
                             className="grid place-content-center border-2 flex-1 ">
                             View cart
-                        </Link>
+                        </Link> 
                         <div className="flex-1"
                             onClick={() =>setIsOpen((prev) => !prev)}
                             >

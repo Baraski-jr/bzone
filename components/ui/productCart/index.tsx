@@ -49,7 +49,7 @@ const ProductCart = (product: ProductsType) => {
             ))}
           </Swiper>
         </div>
-        <div className='flex flex-col justify-center gap-3 pt-3 px-2'>
+        <div className='space-y-[12px] pt-3 px-2'>
           <h2 className='text-sm capitalize line-clamp-1'>{product.title}</h2>
           <p className='text-sm font-semibold text-slate-500'>GMD{product.price}.00</p>
           {product.inventory === 0 ? 

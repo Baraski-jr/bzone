@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { CollectionProps } from '@/types';
 import Crousel from '../crousel';
@@ -18,7 +16,7 @@ const Collection: React.FC<CollectionProps> = ({ title, subTitle, bgUrl, categor
           <h1 className="font-bold text-slate-700 text-xl md:text-2xl capitalize">{title}</h1>
           <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
         </header>
-        <div className="sm:flex lg:gap-4 gap-2 gap-y-3 md:gap-y-0 md:space-x-4">
+        <div className="sm:flex sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
 
           <CollectionBanner 
             url={`/products/shoes?category=${title.replace(/ /g, '-')}`} 

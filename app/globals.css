@@ -43,3 +43,30 @@
   top: 40% !important;
 
 }
+
+/* Anime */
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.overlay-skeleton {
+  animation: overlay-skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes overlay-skeleton-loading {
+  0% {
+    background-color: hsl(206, 4%, 67%);
+  }
+  100% {
+    background-color: hsl(206, 4%, 69%);
+  }
+}

@@ -1,4 +1,5 @@
 import { CartProductList } from '@/components/cartProductList'
+import Gutter from '@/components/Gutter'
 import { EstimateCard } from '@/components/ui/EstimateCard'
 import SubHero from '@/components/ui/subHero'
 import React from 'react'
@@ -7,6 +8,7 @@ function CartPage() {
 
   return (
     <div className=''>
+      <Gutter />
       <SubHero title={'Shopping Cart'} />
       <section className="w-[90%] mx-auto lg:flex justify-between gap-x-5 mt-20">
         <div className="flex-1">

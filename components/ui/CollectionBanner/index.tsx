@@ -10,7 +10,7 @@ function CollectionBanner({url, bgUrl}: {url:string, bgUrl:string}) {
         SHOP NOW
       </button>
     </div>
-    <Image width={400} height={50} className="w-full h-96 object-cover object-center" src={bgUrl} alt={url} />
+    <Image width={400} height={50} className="w-full h-96 sm:h-[370px] object-cover object-center" src={bgUrl} alt={url} />
   </Link>
   )
 }

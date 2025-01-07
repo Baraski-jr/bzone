@@ -6,7 +6,6 @@ import Promotion from "@/components/promotion";
 import FooterComponent from "@/components/ui/footer";
 import FreeReview from "@/components/FreeReview";
 import React from "react";
-
 export default async function Home () {
 
   return (
@@ -36,8 +35,9 @@ export default async function Home () {
         bgUrl='/kid-shoes-bg.jpeg' 
         category={"kid"}
       />
-      <Promotion />
       <FreeReview />
+      <Promotion />
+
       <FooterComponent />
     </section>
   );

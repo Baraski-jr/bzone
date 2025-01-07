@@ -18,9 +18,7 @@ const ShopCollection = () => {
     }, []);
 
     const handleFilter = (category: string) => {
-        if (category === 'all') {
-          setFilteredProducts(products);
-        } 
+        if (category === 'all') { setFilteredProducts(products); } 
         else {
           const filtered = products.filter(product => product.category === category);
           setFilteredProducts(filtered);

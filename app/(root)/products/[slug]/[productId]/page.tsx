@@ -71,22 +71,22 @@ export default function Page({params}: PageProps) {
             
             <CustomizeProduct colours={product.colours} sizes={products[product.id].sizes} />
             
-            <div className="border-y-4 border-gray-50 py-3">
+            <div className="border-y-4 border-gray-50 py-3 flex gap-x-3">
             
             {/* Controlling the disability of the Adding BTN */}
               {product.inventory === 0 ? 
                   <Add product={product} disable={true}  /> :
                   <Add product={product} />
               }
+              {/* <Buy /> */}
+              {product.inventory === 0 ? 
+              
+                <Link className='block flex-1 w-full' href={'/checkout'}> <Buy disable={true} /> </Link>  : 
+                <Link className='block flex-1 w-full' href={'/checkout'}> <Buy /> </Link> 
+                }
             </div>
             
             {/* Controlling the disability of the buying BTN */}
-            {/* <Buy /> */}
-            {product.inventory === 0 ? 
-            
-              <Link className='block w-full' href={'/checkout'}> <Buy disable={true} /> </Link>  : 
-              <Link className='block w-full' href={'/checkout'}> <Buy /> </Link> 
-              }
         </div>
       </div>
       </section>
