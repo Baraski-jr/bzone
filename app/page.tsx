@@ -35,9 +35,8 @@ export default async function Home () {
         bgUrl='/kid-shoes-bg.jpeg' 
         category={"kid"}
       />
-      <FreeReview />
       <Promotion />
-
+      <FreeReview />
       <FooterComponent />
     </section>
   );
