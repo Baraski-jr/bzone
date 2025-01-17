@@ -27,7 +27,7 @@ export const CartProductList = () => {
                     {cart.map(item => (
                         <div key={item.id} className="flex py-7 border-b-2 border-slate-100">
                             <figure className='flex flex-col md:flex-row gap-x-4 w-[50%]'>
-                                <Image width={100} height={180} src={item.images[0]}  alt={item.title} quality={100} className='bg-[#F5F5F5] object-cover' />
+                                <Image width={100} height={100} src={item.images[0]}  alt={item.title} quality={100} className='bg-[#F5F5F5] object-cover' />
                                 <figcaption className="space-y-2">
                                     {/* Title */}
                                     <Link href={`/products/shoes/${item.title}`} className="hover:underline text-xs md:text-sm lg:text-base underline-offset-2">

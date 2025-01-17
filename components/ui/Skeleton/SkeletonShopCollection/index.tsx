@@ -16,10 +16,6 @@ const SkeletonShopCollection = () => {
                 <SkeletonProductCart />
                 <SkeletonProductCart />
                 <SkeletonProductCart />
-                <SkeletonProductCart />
-                <SkeletonProductCart />
-                <SkeletonProductCart />
-                <SkeletonProductCart />
             </div>
         </div>
      );

@@ -34,14 +34,13 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                         onClick={() =>setIsOpen((prev) => !prev)}
                         className="p-2 cursor-pointer hover:bg-red-500 transition-all duration-200"
                     >
-                            <Image
-                                width={15}
-                                height={15}
-                                src={`/icons/${closeIcon}.png`}
-                                alt="Cart"  
-                                className='w-auto h-auto' 
-                            />
-
+                    <Image
+                        width={16}
+                        height={16}
+                        src={`/icons/${closeIcon}.png`}
+                        alt="Cart"  
+                        className='w-auto h-auto' 
+                    />
                     </div>
                 </header>
                 {cart.length === 0 ? 
@@ -52,10 +51,9 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                             {cart.map(item => (
                                 <li key={item.id} className="py-7 border-b-2 border-slate-100">
                                     <figure className='flex gap-x-4'>
-                                        
                                         <Link href={`/products/shoes/${item.title.replace(/ /g, '-')}`}>
-                                                <Image width={100} height={130} src={item.images[0]}  alt={item.title} className='bg-[#F5F5F5] object-cover' />
-                                            </Link>
+                                            <Image width={100} height={100} src={item.images[0]}  alt={item.title} className='bg-[#F5F5F5] object-cover' />
+                                        </Link>
                                         <figcaption className="space-y-2">
                                             {/* Title */}
                                             <Link
@@ -66,11 +64,11 @@ export const QuickCartView = ({setIsOpen, openCart}: {openCart:boolean, setIsOpe
                                             {/* Colour & size */}
                                             <p className="text-slate-700 text-sm"> GMD{item.price}.00 </p>
                                             {/* Remove button */}
-                                            <p
+                                            <div
                                                 onClick={() => removeFromCart(item.id, true)}
                                                 className="hover:underline text-xs text-slate-600 cursor-pointer">
                                                 Remove
-                                            </p>
+                                            </div>
                                             <ControlQuantity product={item} />
                                         </figcaption>
                                     </figure>

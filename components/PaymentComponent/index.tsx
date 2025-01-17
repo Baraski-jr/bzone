@@ -2,6 +2,10 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function PaymentComponent() {
+    function EmptyTheCart(): React.MouseEventHandler<HTMLAnchorElement> | undefined {
+        throw new Error('Function not implemented.')
+    }
+
   return (
     <div className="py-3 space-y-3">
         <h3 className="text-xl">Payment</h3>
@@ -56,7 +60,7 @@ export default function PaymentComponent() {
                 </div>
             </div>
             {/* Pay now button */}
-            <Link href={'/'} className="block w-full py-3 bg-[#105889] text-white text-center rounded-sm hover:bg-[#2c71a1] transition-all duration-200"> Pay now </Link>
+            <button type='submit' className="block w-full py-3 bg-[#105889] text-white text-center rounded-sm hover:bg-[#2c71a1] transition-all duration-200"> Pay now </button>
         </form>
     </div>
   )

@@ -7,6 +7,7 @@ import CustomNav from '@/components/CustomNav';
 import FeatureProducts from '@/components/featureProducts';
 import Gutter from '@/components/Gutter';
 import Thumbnails from '@/components/thumbnails';
+import SkeletonProductDetailPage from '@/components/ui/Skeleton/SkeletonProductDetailPage';
 import { products } from '@/constants';
 import { PageProps } from '@/types';
 import Image from 'next/image';
@@ -24,7 +25,7 @@ export default function Page({params}: PageProps) {
     });
   }, [params]);
 
-  if (!productId) return <div>Loading...</div>;
+  if (!productId) return <SkeletonProductDetailPage />;
   const product = products.find(product => product.title === productId.replaceAll(/-/g, ' '));
   if (!product) return <div>Product not found.</div>;
 
@@ -42,14 +43,14 @@ export default function Page({params}: PageProps) {
               <Thumbnails direction={'flex-col'} id={product.id} images={product.images} setIndex={ setIndex } />
             </div>
             {/* Main product image */}
-            <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center">
+            <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center overflow-hidden">
               <Image 
                 width={700}
                 height={700} 
                 quality={100} 
                 src={product.images[index]} 
                 alt={product.title} 
-                className='w-1/2 md:w-full max-w-full mx-auto hover:scale-105 transition-all duration-300' 
+                className='w-10/12 md:w-full max-w-full md:max-w-none mx-auto hover:scale-105 hover:-translate-y-2 transition-all duration-300' 
               />
             </div>
             {/* Thumbnails for mobile view */}

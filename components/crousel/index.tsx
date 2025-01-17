@@ -15,7 +15,6 @@ const Crousel: React.FC<CrouselType> = ({ displayLimit, products, slidePerView =
   const visibleProducts = displayLimit? products.slice(0, displayLimit) : products
 
     return (
-      <>
         <Swiper 
           className='h-full'
           modules={[Navigation, Pagination, Scrollbar]}
@@ -23,15 +22,13 @@ const Crousel: React.FC<CrouselType> = ({ displayLimit, products, slidePerView =
           slidesPerView = {slidePerView}
           navigation={navigation}
           >
-            
           {visibleProducts.map(({ id, title, images, price, inventory, colours }: ProductsType) =>  (
-              <SwiperSlide key={id}>
-                <ProductCart id={id} title={title} images={images} price={price} inventory={inventory} colours={colours} />
-              </SwiperSlide>
+            <SwiperSlide key={id}>
+              <ProductCart id={id} title={title} images={images} price={price} inventory={inventory} colours={colours} />
+            </SwiperSlide>
             ))
           }
           </Swiper>
-      </>
     )
 }
 

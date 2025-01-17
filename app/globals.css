@@ -41,7 +41,6 @@
 }
 .swiper-button-next, .swiper-button-prev {
   top: 40% !important;
-
 }
 
 /* Anime */
@@ -51,7 +50,7 @@
 
 @keyframes skeleton-loading {
   0% {
-    background-color: hsl(200, 20%, 80%);
+    background-color: hsl(200, 20%, 95%);
   }
   100% {
     background-color: hsl(200, 20%, 95%);

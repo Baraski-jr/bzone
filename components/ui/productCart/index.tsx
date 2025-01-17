@@ -25,10 +25,10 @@ const ProductCart = (product: ProductsType) => {
             spaceBetween={10}
             slidesPerView={1}
             pagination={{clickable: true}}
-            navigation={false} // to add the navigation arrows
+            navigation={false} 
             >
             { product.images.map((url: string, index) => (
-              <SwiperSlide key={index}   >
+              <SwiperSlide key={index} >
                 <Link href={`/products/shoes/${product.title.replace(/ /g, '-')}`} className="overflow-hidden bg-[#F5F5F5] block h-60">
                   {/* The sold out card */}
                   {(product.inventory === 0) && (
@@ -41,7 +41,8 @@ const ProductCart = (product: ProductsType) => {
                     width={300}
                     height={300}
                     src={url} alt={product.title} 
-                    className='mx-auto w-full h-full text-center object-cover hover:scale-105 transition-all duration-700 ' 
+                    priority={true}
+                    className='mx-auto w-full h-full object-cover hover:scale-105 hover:-translate-y-2 transition-all duration-700 ' 
                   />
                   
                 </Link>
