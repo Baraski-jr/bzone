@@ -536,28 +536,6 @@ export const products = [
     },
     // added
     {
-        'id': 20,
-        'title': 'adidas x disney mickey',
-        'price': 170.00,
-        'images': [
-            '/products/adidas-x-disney-mickey-and-friends-grand-court-mid-shoes-Kids (1).jpg',
-            '/products/adidas-x-disney-mickey-and-friends-grand-court-mid-shoes-kids.jpg',
-        ],
-        'description': 'The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.',
-        'sizes': [ 
-            {'name': 's', 'items': 3},
-            {'name': 'm', 'items': 4}, 
-        ],
-        'colours': [ 
-            {'name': 'white', 'items': 3}, 
-        ],
-        'inventory': 8,
-        'category': 'kid',
-        'isNew': true,
-        'isFeatured': false,
-        'isBestSeller': false
-    },
-    {
         'id': 21,
         'title': 'On Cloudmonster',
         'price': 170.00,
