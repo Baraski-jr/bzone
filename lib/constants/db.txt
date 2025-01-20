@@ -1,0 +1,120 @@
+{
+    "productId": "string",
+    "name": "string",
+    "category": "string",
+    "description": "string",
+    "brand": "string",
+    "images": ["string"],
+    "basePrice": "number",
+    "variants": [
+      {
+        "variantId": "string",
+        "properties": {
+          "color": "string",
+          "size": "string",
+          "material": "string"
+        },
+        "price": "number",
+        "images": ["string"],
+        "sku": "string",
+        "stock": "number"
+      }
+    ],
+    "attributes": {
+      "weight": "number",
+      "dimensions": {
+        "width": "number",
+        "height": "number",
+        "depth": "number"
+      },
+      "manufacturer": "string",
+      "warranty": "string",
+      "countryOfOrigin": "string"
+    },
+    "reviews": [
+      {
+        "reviewId": "string",
+        "userId": "string",
+        "rating": "number",
+        "comment": "string",
+        "timestamp": "ISO 8601 timestamp"
+      }
+    ],
+    "ratings": {
+      "averageRating": "number",
+      "totalReviews": "number"
+    },
+    "tags": ["string"],
+    "createdAt": "ISO 8601 timestamp",
+    "updatedAt": "ISO 8601 timestamp"
+  }
+  
+  {
+    "productId": "12345",
+    "name": "Nike Air Max 2024",
+    "category": "Shoes > Sneakers",
+    "description": "Experience unmatched comfort with the Nike Air Max 2024 sneakers, designed for everyday wear.",
+    "brand": "Nike",
+    "images": [
+      "https://example.com/images/airmax-2024-main.jpg"
+    ],
+    "basePrice": 150,
+    "variants": [
+      {
+        "variantId": "12345-red-10",
+        "properties": {
+          "color": "Red",
+          "size": "10",
+          "material": "Leather"
+        },
+        "price": 155,
+        "images": [
+          "https://example.com/images/airmax-2024-red.jpg"
+        ],
+        "sku": "AM2024-RED-10",
+        "stock": 25
+      },
+      {
+        "variantId": "12345-blue-11",
+        "properties": {
+          "color": "Blue",
+          "size": "11",
+          "material": "Mesh"
+        },
+        "price": 150,
+        "images": [
+          "https://example.com/images/airmax-2024-blue.jpg"
+        ],
+        "sku": "AM2024-BLUE-11",
+        "stock": 15
+      }
+    ],
+    "attributes": {
+      "weight": 1.2,
+      "dimensions": {
+        "width": 10,
+        "height": 5,
+        "depth": 12
+      },
+      "manufacturer": "Nike Inc.",
+      "warranty": "1 year manufacturer warranty",
+      "countryOfOrigin": "Vietnam"
+    },
+    "reviews": [
+      {
+        "reviewId": "r1",
+        "userId": "u123",
+        "rating": 5,
+        "comment": "Super comfortable and stylish!",
+        "timestamp": "2025-01-15T10:00:00Z"
+      }
+    ],
+    "ratings": {
+      "averageRating": 5,
+      "totalReviews": 1
+    },
+    "tags": ["sneakers", "nike", "air max", "shoes"],
+    "createdAt": "2025-01-01T12:00:00Z",
+    "updatedAt": "2025-01-15T12:00:00Z"
+  }
+  

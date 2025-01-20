@@ -1,29 +1,34 @@
-'use client'
-import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+"use client"
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface FilterComponentProps {
-  onFilter: (filterVisible: string) => void;
+  onFilter: (filterVisible: string) => void
 }
 
 const FilterComponent: React.FC<FilterComponentProps> = ({ onFilter }) => {
-  const [category, setCategory] = useState('');
-  const router = useRouter();
+  const [category, setCategory] = useState("")
+  const router = useRouter()
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    setCategory(value);
-    onFilter(value);
-    if (value === 'all') {
-      router.push('/products/shoes');
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value = event.target.value
+    setCategory(value)
+    onFilter(value)
+    if (value === "all") {
+      router.push("/products/shoes")
     } else {
-      router.push(`/products/shoes?category=${value}`);
+      router.push(`/products/shoes?category=${value}`)
     }
-  };
+  }
 
   return (
     <>
       {/* Filter */}
+      <label htmlFor="category" className="sr-only">
+        Category
+      </label>
       <select
         name="category"
         id="category"
