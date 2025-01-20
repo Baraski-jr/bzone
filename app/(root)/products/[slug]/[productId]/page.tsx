@@ -37,7 +37,7 @@ export default function Page({ params }: PageProps) {
         <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
           {product.title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-7 md:gap-x-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
           {/* Product image display section */}
           <ProductGallary product={product} />
 
@@ -67,21 +67,22 @@ export default function Page({ params }: PageProps) {
             <div className="border-y-4 border-gray-50 py-3 flex gap-x-3">
               {/* Controlling the disability of the Adding BTN */}
               {product.inventory === 0 ? (
-                <Add product={product} disable={true} />
+                <>
+                  {/* Add to cart */}
+                  <Add product={product} disable={true} />
+                  {/* Buy now btn */}
+                  <Link className="block flex-1 w-full" href={"/checkout"}>
+                    <Add product={product} name="By Now" disable={true} />
+                  </Link>
+                </>
               ) : (
-                <Add product={product} />
-              )}
-              {/* <Buy /> */}
-              {product.inventory === 0 ? (
-                <Link className="block flex-1 w-full" href={"/checkout"}>
-                  {" "}
-                  <Buy disable={true} />{" "}
-                </Link>
-              ) : (
-                <Link className="block flex-1 w-full" href={"/checkout"}>
-                  {" "}
-                  <Buy />{" "}
-                </Link>
+                <>
+                  <Add product={product} />
+                  {/* Buy now btn */}
+                  <Link className="block flex-1 w-full" href={"/checkout"}>
+                    <Add product={product} name="By Now" />
+                  </Link>
+                </>
               )}
             </div>
 

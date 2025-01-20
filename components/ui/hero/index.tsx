@@ -12,6 +12,7 @@ import "swiper/css"
 import "swiper/css/autoplay"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import slugify from "slugify"
 
 const LandingHero = () => {
   const [slide, setSlide] = useState("React Infinity")
@@ -61,14 +62,11 @@ const LandingHero = () => {
                       {name}{" "}
                     </h1>
                     <Link
-                      href={`/products/shoes?category=${name.replace(
-                        / /g,
-                        "-"
-                      )}`}
+                      // href={`/products/shoes/${slugify(product.title)}`}
+                      href={"/products/shoes?category=men"}
                       className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"
                     >
-                      {" "}
-                      SHOP NOW{" "}
+                      SHOP NOW
                     </Link>
                   </div>
                   {/* middle */}

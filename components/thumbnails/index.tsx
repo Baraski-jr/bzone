@@ -16,7 +16,7 @@ const Thumbnails = ({
         <div
           onMouseOver={() => setSelectedImage(imgIndex)}
           key={imgIndex}
-          className="overflow-hidden bg-[#F5F5F5] p-1 px-2 border-2 border-transparent hover:border-slate-300 h-fit transition-all duration-300"
+          className="overflow-hidden bg-[#F5F5F5] px-2 border-2 border-transparent hover:border-slate-300 h-fit transition-all duration-300"
         >
           <Image
             width={60}

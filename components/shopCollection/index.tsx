@@ -37,20 +37,9 @@ const ShopCollection = () => {
         <FilterComponent onFilter={handleFilter} />
         <CustomNav />
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-7">
-          {filteredProducts.map(
-            ({ id, title, images, price, inventory, colours, sizes }) => (
-              <ProductCart
-                key={id}
-                id={id}
-                title={title}
-                images={images}
-                price={price}
-                inventory={inventory}
-                colours={colours}
-                sizes={sizes}
-              />
-            )
-          )}
+          {filteredProducts.map((product) => (
+            <ProductCart key={product.id} product={product} />
+          ))}
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { CollectionProps } from "@/types"
 import Crousel from "../crousel"
 import { products } from "@/lib/constants"
 import CollectionBanner from "../ui/CollectionBanner"
+import slugify from "slugify"
 
 const Collection: React.FC<CollectionProps> = ({
   title,
@@ -26,7 +27,7 @@ const Collection: React.FC<CollectionProps> = ({
         </header>
         <div className="sm:flex sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
           <CollectionBanner
-            url={`/products/shoes?category=${title.replace(/ /g, "-")}`}
+            url={`/products/shoes?category=${slugify(title)}`}
             bgUrl={bgUrl}
           />
 

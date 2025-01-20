@@ -20,17 +20,15 @@ function ProductGallary({ product }: { product: ProductsType }) {
         />
       </div>
       {/* Main product image */}
-      <div className="flex gap-2">
-        <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit flex items-center overflow-hidden">
+      <div className="relative md:w-full overflow-hidden">
+        <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit">
           <Zoom>
             <Image
-              width={700}
-              height={700}
-              quality={100}
+              fill={true}
               src={product.images[SelectedImage]}
               alt={product.title}
               title="Click to zoom"
-              className="w-10/12 md:w-full max-w-full md:max-w-none mx-auto hover:scale-105 hover:-translate-y-2 transition-all duration-300"
+              className="align-middle mx-auto max-w-max hover:scale-105 hover:-translate-y-2 transition-all duration-300"
             />
           </Zoom>
         </div>
