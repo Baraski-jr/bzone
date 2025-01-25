@@ -2,11 +2,6 @@ export interface coloursType {
   name: string
   items: number
 }
-export interface ColourComponentPropType {
-  colour: string
-  colours: coloursType[]
-  setColour: React.Dispatch<React.SetStateAction<string>>
-}
 export interface PageProps {
   params: Promise<{ productId: string }>
 }
@@ -29,6 +24,7 @@ export interface sizesType {
 
 export interface ThumbnailsType {
   id: number
+  title: string
   direction?: string
   images: string[]
   setSelectedImage: React.Dispatch<React.SetStateAction<number>>

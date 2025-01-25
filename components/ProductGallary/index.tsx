@@ -15,16 +15,18 @@ function ProductGallary({ product }: { product: ProductsType }) {
         <Thumbnails
           direction={"flex-col"}
           id={product.id}
+          title={product.title}
           images={product.images}
           setSelectedImage={setSelectedImage}
         />
       </div>
       {/* Main product image */}
-      <div className="relative md:w-full overflow-hidden">
-        <div className="bg-[#F5F5F5] min-h-[15rem] md:min-h-fit">
+      <div className="relative bg-[#F5F5F5]  flex items-center justify-center md:w-full overflow-hidden">
+        <div className="min-h-[15rem] md:min-h-fit">
           <Zoom>
             <Image
-              fill={true}
+              width={600}
+              height={700}
               src={product.images[SelectedImage]}
               alt={product.title}
               title="Click to zoom"
@@ -36,6 +38,7 @@ function ProductGallary({ product }: { product: ProductsType }) {
       {/* Thumbnails for mobile view */}
       <div className="md:hidden pt-5">
         <Thumbnails
+          title={product.title}
           id={product.id}
           images={product.images}
           setSelectedImage={setSelectedImage}

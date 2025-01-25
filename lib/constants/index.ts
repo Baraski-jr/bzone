@@ -50,8 +50,8 @@ export const products = [
     price: 90.0,
     images: ["/products/a1.png", "/products/a2.png"],
     sizes: [
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "green", items: 3 },
@@ -72,9 +72,9 @@ export const products = [
     price: 180.0,
     images: ["/products/b1.png", "/products/b2.png"],
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -97,9 +97,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -120,9 +120,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -143,9 +143,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -167,9 +167,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -192,9 +192,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -216,9 +216,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -240,9 +240,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -264,9 +264,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -290,7 +290,7 @@ export const products = [
     ],
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
-    sizes: [{ name: "m", items: 3 }],
+    sizes: [{ name: "Medium", items: 3 }],
     colours: [{ name: "black", items: 3 }],
 
     inventory: 7,
@@ -307,9 +307,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -334,9 +334,9 @@ export const products = [
     description:
       "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in, this hoodie is a versatile addition to any wardrobe.",
     sizes: [
-      { name: "s", items: 4 },
-      { name: "m", items: 3 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 4 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "red", items: 3 },
@@ -359,9 +359,9 @@ export const products = [
     description:
       "Experience plush cushioning and smooth rides with the Hoka Clifton 8, perfect for running and all-day wear. Designed for ultimate comfort and performance.",
     sizes: [
-      { name: "s", items: 2 },
-      { name: "m", items: 5 },
-      { name: "l", items: 4 },
+      { name: "Small", items: 2 },
+      { name: "Medium", items: 5 },
+      { name: "Large", items: 4 },
     ],
     colours: [
       { name: "blue", items: 3 },
@@ -382,8 +382,8 @@ export const products = [
     description:
       "Smooth, balanced, and reliable, the Brooks Ghost 14 is the ultimate go-to running shoe for neutral runners seeking cushioning and flexibility.",
     sizes: [
-      { name: "m", items: 6 },
-      { name: "l", items: 5 },
+      { name: "Medium", items: 6 },
+      { name: "Large", items: 5 },
     ],
     colours: [
       { name: "gray", items: 3 },
@@ -404,9 +404,9 @@ export const products = [
     description:
       "The Mizuno Wave Rider 26 offers a responsive and dynamic ride, ideal for daily training or long-distance runs. Durable and sleek design.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 5 },
-      { name: "l", items: 4 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 5 },
+      { name: "Large", items: 4 },
     ],
     colours: [
       { name: "navy", items: 3 },
@@ -427,8 +427,8 @@ export const products = [
     description:
       "The ultimate walking shoe for comfort and support, the Skechers Go Walk 6 is lightweight and versatile, designed for active lifestyles.",
     sizes: [
-      { name: "m", items: 3 },
-      { name: "l", items: 6 },
+      { name: "Medium", items: 3 },
+      { name: "Large", items: 6 },
     ],
     colours: [
       { name: "black", items: 5 },
@@ -448,9 +448,9 @@ export const products = [
     description:
       "Elevate your race-day performance with the Nike Vaporfly Next% 3, featuring cutting-edge technology for maximum speed and energy return.",
     sizes: [
-      { name: "s", items: 2 },
-      { name: "m", items: 4 },
-      { name: "l", items: 2 },
+      { name: "Small", items: 2 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 2 },
     ],
     colours: [
       { name: "neon green", items: 2 },
@@ -472,7 +472,7 @@ export const products = [
     ],
     description:
       "Elevate your race-day performance with the Nike Vaporfly Next% 3, featuring cutting-edge technology for maximum speed and energy return.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 5,
     category: "kid",
@@ -492,9 +492,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -518,9 +518,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -544,9 +544,9 @@ export const products = [
     description:
       "The adilette-aqua-slides combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -571,9 +571,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -597,9 +597,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -623,9 +623,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -649,9 +649,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -675,9 +675,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -701,9 +701,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -728,9 +728,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -754,9 +754,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -777,9 +777,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -800,9 +800,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -826,8 +826,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
     ],
     colours: [{ name: "gray", items: 3 }],
     inventory: 8,
@@ -847,8 +847,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "green", items: 3 }],
     inventory: 0,
@@ -870,8 +870,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "green", items: 3 }],
     inventory: 8,
@@ -891,8 +891,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "green", items: 3 }],
     inventory: 8,
@@ -911,7 +911,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 1,
     category: "men",
@@ -931,9 +931,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "black", items: 2 }],
     inventory: 2,
@@ -953,8 +953,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "white", items: 2 }],
     inventory: 2,
@@ -974,8 +974,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "white", items: 3 }],
     inventory: 3,
@@ -995,9 +995,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -1020,7 +1020,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "green", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1036,9 +1036,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -1064,9 +1064,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -1092,8 +1092,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
@@ -1112,7 +1112,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1130,7 +1130,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "blue", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1148,7 +1148,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1166,7 +1166,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1181,7 +1181,7 @@ export const products = [
     images: ["/products/nlg25 (1).jpg", "/products/nlg25.jpg"],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1200,7 +1200,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [
       { name: "black", items: 2 },
       { name: "white", items: 3 },
@@ -1222,7 +1222,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1240,7 +1240,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1259,8 +1259,8 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
@@ -1281,9 +1281,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -1307,7 +1307,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1326,7 +1326,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [{ name: "black", items: 2 }],
     inventory: 8,
     category: "kid",
@@ -1345,7 +1345,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 4 }],
+    sizes: [{ name: "Medium", items: 4 }],
     colours: [
       { name: "white", items: 3 },
       { name: "blue", items: 3 },
@@ -1367,9 +1367,9 @@ export const products = [
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
     sizes: [
-      { name: "s", items: 3 },
-      { name: "m", items: 4 },
-      { name: "l", items: 3 },
+      { name: "Small", items: 3 },
+      { name: "Medium", items: 4 },
+      { name: "Large", items: 3 },
     ],
     colours: [
       { name: "black", items: 2 },
@@ -1392,7 +1392,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1410,7 +1410,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1428,7 +1428,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "yellow", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1446,7 +1446,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "pink", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1464,7 +1464,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "men",
@@ -1483,7 +1483,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1501,7 +1501,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "white", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1519,7 +1519,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "orange", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1537,7 +1537,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1552,7 +1552,7 @@ export const products = [
     images: ["/products/don-issue-6-panama-basketball-shoes-kids.jpg"],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1570,7 +1570,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1588,7 +1588,7 @@ export const products = [
     ],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "m", items: 3 }],
+    sizes: [{ name: "Medium", items: 3 }],
     colours: [{ name: "green", items: 3 }],
     inventory: 8,
     category: "kid",
@@ -1603,7 +1603,7 @@ export const products = [
     images: ["/products/university-of-louisville-centennial-rm-shoes (1).jpg"],
     description:
       "The On Cloudmonster combines a unique design with extreme cushioning for an effortless run or all-day comfort.",
-    sizes: [{ name: "s", items: 3 }],
+    sizes: [{ name: "Small", items: 3 }],
     colours: [{ name: "black", items: 3 }],
     inventory: 8,
     category: "kid",

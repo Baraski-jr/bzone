@@ -1,7 +1,6 @@
 "use client"
 
 import Add from "@/components/AddToCart"
-import Buy from "@/components/buyButton"
 import CustomizeProduct from "@/components/customizeProduct"
 import CustomNav from "@/components/CustomNav"
 import FeatureProducts from "@/components/featureProducts"
@@ -40,7 +39,6 @@ export default function Page({ params }: PageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
           {/* Product image display section */}
           <ProductGallary product={product} />
-
           {/* Product details */}
           <div className="w-full flex flex-col gap-6">
             <h2 className="hidden md:block font-semibold text-xl md:text-2xl">
@@ -59,10 +57,7 @@ export default function Page({ params }: PageProps) {
             </div>
             <p className="font-normal text-slate-500">{product.description}</p>
 
-            <CustomizeProduct
-              colours={product.colours}
-              sizes={products[product.id].sizes}
-            />
+            <CustomizeProduct colours={product.colours} sizes={product.sizes} />
 
             <div className="border-y-4 border-gray-50 py-3 flex gap-x-3">
               {/* Controlling the disability of the Adding BTN */}
@@ -85,8 +80,6 @@ export default function Page({ params }: PageProps) {
                 </>
               )}
             </div>
-
-            {/* Controlling the disability of the buying BTN */}
           </div>
         </div>
       </section>
