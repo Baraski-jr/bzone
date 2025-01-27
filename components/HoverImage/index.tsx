@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -26,20 +27,20 @@ export const ImageHover = ({ url, hoverUrl, alt }: Props) => {
       <Image
         src={url}
         alt={alt}
-        fill
-        loading="lazy"
-        sizes="80vw"
-        className={`object-contain transition-opacity duration-500 ${
+        priority
+        width={600}
+        height={400}
+        className={`object-contain transition-opacity duration-500 w-auto ${
           isHovered ? "opacity-0" : "opacity-100"
         }`}
       />
       <Image
         src={hoverUrl}
         alt={alt}
-        fill
-        loading="lazy"
-        sizes="80vw"
-        className={`absolute inset-0  object-contain transition-opacity duration-500 ${
+        width={600}
+        height={400}
+        priority
+        className={`absolute inset-0  w-auto object-contain transition-opacity duration-500 ${
           isHovered ? "opacity-100 " : "opacity-0"
         }`}
       />

@@ -5,7 +5,8 @@ import CollectionCategory from "@/components/collectionCategories"
 import Promotion from "@/components/promotion"
 import FooterComponent from "@/components/ui/footer"
 import FreeReview from "@/components/FreeReview"
-import React from "react"
+import React, { Suspense } from "react"
+import { SkeletonCollection } from "@/components/ui/Skeleton/SkeletonCollection"
 
 export default async function Home() {
   return (
@@ -14,27 +15,27 @@ export default async function Home() {
       <HeaderComponent />
       <LandingHero />
       <CollectionCategory />
-      <Collections
-        id={"0"}
-        title="men"
-        subTitle="Discover the latest men's shoe collection from our brand"
-        bgUrl="/men-shoes-collection.jpg"
-        category={"men"}
-      />
-      <Collections
-        id={"1"}
-        title="women"
-        subTitle="Discover the latest woemen's shoe collection from our brand"
-        bgUrl={"/women-shoes-bg_2.jpg"}
-        category={"women"}
-      />
-      <Collections
-        id={"2"}
-        title="kid"
-        subTitle="Discover the latest kid's shoe collection from our brand"
-        bgUrl="/kid-shoes-bg.jpeg"
-        category={"kid"}
-      />
+      <Suspense fallback={<SkeletonCollection />}>
+        <Collections
+          categoryId={process.env.MEN_PRODUCTS_CATEGORY_ID!}
+          limit={8}
+          subTitle="Discover the latest men's shoe collection from our brand"
+        />
+      </Suspense>
+      <Suspense fallback={<SkeletonCollection />}>
+        <Collections
+          categoryId={process.env.WOMEN_PRODUCTS_CATEGORY_ID!}
+          limit={8}
+          subTitle="Discover the latest woemen's shoe collection from our brand"
+        />
+      </Suspense>
+      <Suspense fallback={<SkeletonCollection />}>
+        <Collections
+          categoryId={process.env.KID_PRODUCTS_CATEGORY_ID!}
+          limit={8}
+          subTitle="Discover the latest kid's shoe collection from our brand"
+        />
+      </Suspense>
       <Promotion />
       <FreeReview />
       <FooterComponent />

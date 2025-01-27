@@ -1,65 +1,49 @@
+"use client"
 import { coloursType, sizesType } from "@/types"
+import { products } from "@wix/stores"
 import React, { useState } from "react"
 
-const CustomizeProduct: React.FC<{
-  colours: coloursType[]
-  sizes: sizesType[]
-}> = ({ sizes, colours }) => {
-  const [colour, setColour] = useState(colours[0].name)
-  const [size, setSize] = useState(sizes[0].name)
+const CustomizeProduct = ({
+  productId,
+  variants,
+  productOptions,
+}: {
+  productId: string
+  variants: products.Variant[]
+  productOptions: products.ProductOption[]
+}) => {
+  const [selectedOptions, setSelectedOptions] = useState<{
+    [key: string]: string
+  }>({})
+
+  const handleOptionSelect = (optionType: string, choice: string) => {
+    setSelectedOptions((prev) => ({ ...prev, [optionType]: choice }))
+  }
 
   return (
     <div className="flex flex-col s gap-6">
       {/* Size */}
-      {size.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="font-normal">Size:</h3>
+      {productOptions.map((option) => (
+        <div className="space-y-4 py-3" key={option.name}>
+          <h3 className="font-normal">{option.name}: </h3>
           <div className="flex gap-x-2 pl-4">
-            {sizes.map(
-              ({ items, name }: sizesType) =>
-                items > 0 && (
-                  <div
-                    onClick={() => setSize(name)}
-                    key={name}
-                    className={`${
-                      name === size ? "border-slate-600" : "border-slate-200"
-                    } text-slate-800 font-medium px-4 py-2  cursor-pointer rounded-sm border-2`}
-                  >
-                    {name}
-                  </div>
-                )
-            )}
-          </div>
-        </div>
-      )}
-      {/* Colour */}
-      {colours.length > 0 && (
-        <div className="space-y-4 py-3">
-          <h3 className="font-normal">Colour: </h3>
-          <div className="flex gap-x-2 pl-4">
-            {colours.map(({ items, name }: coloursType, index: any) => (
+            {option.choices?.map((choice) => (
               <div
-                key={index}
-                onClick={() => setColour(name)}
-                className={`${
-                  name === colour ? "border-slate-600" : "border-slate-200"
-                } flex gap-x-3 text-slate-800 font-medium px-4 py-2 cursor-pointer rounded-sm border-2 `}
+                className={
+                  "border-slate-600 flex gap-x-3 text-slate-800 font-medium px-4 py-2 cursor-pointer rounded-sm border-2 "
+                }
               >
-                <div
-                  className={`${
-                    name === colour && "ring-2"
-                  } size-6 rounded-full flex items-center justify-center cursor-pointer`}
-                >
+                <div className="size-6 rounded-full flex items-center justify-center cursor-pointer">
                   <span
                     className={`h-5 w-5 bg-${name}-500 rounded-full `}
                   ></span>
+                  {choice.description}
                 </div>
-                {name}
               </div>
             ))}
           </div>
         </div>
-      )}
+      ))}
     </div>
   )
 }

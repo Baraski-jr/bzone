@@ -1,5 +1,5 @@
 import React from "react"
-import Crousel from "../crousel"
+import Crousel from "../crousel/index copy 2"
 import { products } from "@/lib/constants"
 
 const FeatureProducts = ({

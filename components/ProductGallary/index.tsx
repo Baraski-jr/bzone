@@ -1,25 +1,52 @@
+"use client"
 import React, { useState } from "react"
-import Thumbnails from "../thumbnails"
-import { ProductsType } from "@/types"
 import Image from "next/image"
 import "react-medium-image-zoom/dist/styles.css"
 import Zoom from "react-medium-image-zoom"
+import { products } from "@wix/stores"
+import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 
-function ProductGallary({ product }: { product: ProductsType }) {
-  const [SelectedImage, setSelectedImage] = useState(0)
+function ProductGallary({ items }: { items: products.MediaItem[] }) {
+  const [index, setIndex] = useState(0)
+
+  const ThumbnailImage = ({
+    direction = "flex-row",
+    items,
+  }: {
+    direction?: string
+    items: products.MediaItem[]
+  }) => {
+    return (
+      <div className={`flex ${direction} gap-3 pr-3`}>
+        {items.map((item: any, imgIndex: number) => {
+          return (
+            <div
+              onMouseOver={() => setIndex(imgIndex)}
+              key={imgIndex}
+              className={`overflow-hidden bg-[#F5F5F5] px-2 border-2 border-transparent hover:border-slate-300 h-fit transition-all duration-300`}
+            >
+              <Image
+                width={60}
+                height={60}
+                src={item.image?.url || "/product.png"}
+                alt={item.image?.altText || ""}
+                className="w-auto cursor-pointer"
+              />
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
 
   return (
     <div className="md:flex">
       {/* Thumbnails for larger screens */}
-      <div className="hidden md:block">
-        <Thumbnails
-          direction={"flex-col"}
-          id={product.id}
-          title={product.title}
-          images={product.images}
-          setSelectedImage={setSelectedImage}
-        />
-      </div>
+      {items.length > 1 && (
+        <div className="hidden md:block">
+          <ThumbnailImage items={items} direction="flex-col" />
+        </div>
+      )}
       {/* Main product image */}
       <div className="relative bg-[#F5F5F5]  flex items-center justify-center md:w-full overflow-hidden">
         <div className="min-h-[15rem] md:min-h-fit">
@@ -27,23 +54,20 @@ function ProductGallary({ product }: { product: ProductsType }) {
             <Image
               width={600}
               height={700}
-              src={product.images[SelectedImage]}
-              alt={product.title}
-              title="Click to zoom"
-              className="align-middle mx-auto max-w-max hover:scale-105 hover:-translate-y-2 transition-all duration-300"
+              src={items[index].image?.url || IMAGE_PLACEHOLDER}
+              alt={items[index].image?.altText || "product image"}
+              title="Click to zoom in"
+              className="align-middle mx-auto w-auto hover:scale-105 hover:-translate-y-2 transition-all duration-300"
             />
           </Zoom>
         </div>
       </div>
       {/* Thumbnails for mobile view */}
-      <div className="md:hidden pt-5">
-        <Thumbnails
-          title={product.title}
-          id={product.id}
-          images={product.images}
-          setSelectedImage={setSelectedImage}
-        />
-      </div>
+      {items.length > 1 && (
+        <div className="md:hidden pt-5">
+          <ThumbnailImage items={items} />
+        </div>
+      )}
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { products } from "@wix/stores"
 export interface coloursType {
   name: string
   items: number
@@ -22,15 +23,6 @@ export interface sizesType {
   items: number
 }
 
-export interface ThumbnailsType {
-  id: number
-  title: string
-  direction?: string
-  images: string[]
-  setSelectedImage: React.Dispatch<React.SetStateAction<number>>
-}
-6
-
 export interface ProductsType {
   id: number
   title: string
@@ -54,7 +46,13 @@ export interface BreakpointsType {
   1920?: { slidesPerView: number }
 }
 
+interface ProductCartProps {
+  product: products.Product
+}
+
 export interface CrouselType {
+  products: ProductCartProps[]
+  categoryId: string
   id?: string
   navigation?: boolean
   pagination?: string
@@ -62,16 +60,13 @@ export interface CrouselType {
   breakpoint?: BreakpointsType
   scrollbar?: boolean
 
-  products: ProductsType[]
   displayLimit?: number
 }
 
 export interface CollectionProps {
-  title: string
+  categoryId: string
+  limit: number
   subTitle: string
-  bgUrl: string
-  id: string
-  category: string
 }
 
 export interface NavLinkProps {
@@ -106,38 +101,107 @@ export interface CartContextType {
   removeFromCart: (productId: number, reset?: boolean) => void
 }
 
-// Testing product Type
-// export interface ProductType {
-//   ProductId: string
-//   name: string
-//   category: string
-//   description: string
-//   brand?: string // temporal
-//   images: string[]
+// Added Type Wix
 
-//   basePrice: number
+interface Product {
+  name: string
+  slug: string
+  visible: boolean
+  productType: string
+  description: string
+  sku: string
+  weight: number
+  weightRange: {
+    minValue: number
+    maxValue: number
+  }
+  stock: {
+    trackInventory: boolean
+    inStock: boolean
+    inventoryStatus: string
+  }
+  price: PriceData
+  priceData: PriceData
+  convertedPriceData: PriceData
+  priceRange: {
+    minValue: number
+    maxValue: number
+  }
+  costRange: {
+    minValue: number
+    maxValue: number
+  }
+  additionalInfoSections: AdditionalInfoSection[]
+  ribbons: string[]
+  media: Media
+  customTextFields: any[]
+  manageVariants: boolean
+  productOptions: any[]
+  productPageUrl: {
+    base: string
+    path: string
+  }
+  numericId: string
+  inventoryItemId: string
+  discount: {
+    type: string
+    value: number
+  }
+  collectionIds: string[]
+  variants: Variant[]
+  lastUpdated: string
+  ribbon: string
+  exportProductId: string
+  _id: string
+  _createdDate: string
+}
 
-//   variants: {
-//     variantId: string
-//     properties: {
-//       color: string
-//       size: string
-//     }
-//     price?: number
-//     images: string[]
-//     stock: number
-//   }[]
+interface PriceData {
+  currency: string
+  price: number
+  discountedPrice: number
+  formatted: {
+    price: string
+    discountedPrice: string
+  }
+}
 
-//   reviews?: {
-//     reviewId: number
-//     userId: number
-//     rating: number
-//     comment: string
-//     timestamp: string
-//   }[]
+interface AdditionalInfoSection {
+  title: string
+  description: string
+}
 
-//   ratings?: {
-//     averageRating: number
-//     totalReviews: number
-//   }[]
-// }
+interface Media {
+  mainMedia: MediaItem
+  items: MediaItem[]
+}
+
+interface MediaItem {
+  thumbnail: Image
+  mediaType: string
+  title: string
+  image: Image
+  _id: string
+}
+
+interface Image {
+  url: string
+  width: number
+  height: number
+}
+
+interface Variant {
+  choices: Record<string, string>
+  variant: {
+    priceData: PriceData
+    convertedPriceData: PriceData
+    weight: number
+    sku: string
+    visible: boolean
+  }
+  stock: {
+    trackQuantity: boolean
+    inStock: boolean
+  }
+  _id: string
+}

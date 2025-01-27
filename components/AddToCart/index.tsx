@@ -2,9 +2,15 @@
 
 import { useCart } from "@/context/CartContext"
 import { ProductsType } from "@/types"
+import { products } from "@wix/stores"
 import React, { useEffect } from "react"
 
+interface ProductCartProps {
+  product: products.Product
+}
+
 const Add: React.FC<{
+  productId: string
   name?: string
   disable?: boolean
   product: ProductsType

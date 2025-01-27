@@ -3,25 +3,23 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.imgur.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.pexels.com",
       },
       {
-        protocol: 'https',
-        hostname: 'www.amazon.es',  // Add amazon.es
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "static.wixstatic.com",
       },
       {
-        protocol: 'https',
-        hostname: 'r.search.yahoo.com',  // Add yahoo search pattern in case of redirection
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "people.pic1.co",
+      },
+      {
+        protocol: "https",
+        hostname: "app-uploads-cdn.fera.ai",
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

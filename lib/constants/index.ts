@@ -5,9 +5,12 @@ export const navLinks = [
   },
   {
     label: "Products",
-    url: "/products/shoes",
+    url: "/products",
   },
 ]
+
+export const IMAGE_PLACEHOLDER = "/product.png"
+export const CATERORY_IMAGE_PLACEHOLDER = "/category.png"
 
 export const shoeSlides = [
   {

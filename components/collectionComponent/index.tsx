@@ -1,19 +1,20 @@
 import React from "react"
 import { CollectionProps } from "@/types"
-import Crousel from "../crousel"
-import { products } from "@/lib/constants"
 import CollectionBanner from "../ui/CollectionBanner"
-import slugify from "slugify"
+import Crousel from "../crousel"
+import { getCategory, getProducts } from "@/lib/actions"
 
-const Collection: React.FC<CollectionProps> = ({
-  title,
+const Collection: React.FC<CollectionProps> = async ({
+  categoryId,
   subTitle,
-  bgUrl,
-  category,
+  limit,
 }) => {
-  const filteredProducts = products.filter(
-    (product) => product.category === category
-  )
+  const products = await getProducts({
+    categoryId,
+    PRODUCT_PER_PAGE: limit,
+  })
+
+  const caterory = await getCategory({ categoryId })
 
   return (
     <section className="mt-6 md:mt-10 flex items-center">
@@ -21,34 +22,37 @@ const Collection: React.FC<CollectionProps> = ({
       <div className="w-[95%] mx-auto">
         <header className="text-center space-y-2 py-5 px-2">
           <h1 className="font-bold text-slate-700 text-xl md:text-2xl capitalize">
-            {title}
+            {caterory.name}
           </h1>
+          {/* Temporal */}
           <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
         </header>
         <div className="sm:flex sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
           <CollectionBanner
-            url={`/products/shoes?category=${slugify(title)}`}
-            bgUrl={bgUrl}
+            url={`/products?category=${caterory.slug}`}
+            bgUrl={caterory.media?.items[0].image?.url || ""}
           />
-
           <div className="overflow-hidden sm:w-full h-fit gap-5 md:gap-0 relative">
             <div className="md:hidden">
               <Crousel
-                products={filteredProducts}
+                products={products.items.map((item) => ({ product: item }))}
+                categoryId={categoryId}
                 slidePerView={2}
                 navigation={true}
               />
             </div>
             <div className="hidden md:block lg:hidden">
               <Crousel
-                products={filteredProducts}
+                products={products.items.map((item) => ({ product: item }))}
+                categoryId={categoryId}
                 slidePerView={3}
                 navigation={true}
               />
             </div>
             <div className="hidden lg:block">
               <Crousel
-                products={filteredProducts}
+                products={products.items.map((item) => ({ product: item }))}
+                categoryId={categoryId}
                 slidePerView={4}
                 navigation={true}
               />

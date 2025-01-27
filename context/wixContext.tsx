@@ -1,8 +1,8 @@
 "use client"
 
 import { createClient, OAuthStrategy } from "@wix/sdk"
-import { products, collections } from "@wix/stores"
 import Cookies from "js-cookie"
+import { products, collections } from "@wix/stores"
 import { createContext, ReactNode } from "react"
 
 const refreshTokens = JSON.parse(Cookies.get("refreshToken") || "{}")
