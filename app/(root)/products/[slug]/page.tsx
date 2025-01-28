@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: any) {
         slug: params.slug,
         limit: 1,
       })
-    )[0]
+    ).items[0]
 
     if (product && product.name) {
       return {
@@ -43,7 +43,7 @@ export async function generateStaticParams(): Promise<{ slug?: string }[]> {
     limit: 10,
   })
     .then((items) =>
-      items.map((product: any) => ({
+      items.items?.map((product: any) => ({
         slug: product.slug,
       }))
     )
@@ -55,16 +55,16 @@ export async function generateStaticParams(): Promise<{ slug?: string }[]> {
 
 export default async function Page({ params }: any) {
   if (!params.slug) return notFound()
-  const product = (await queryProducts({ slug: params.slug, limit: 1 }))[0]
+  const product = (await queryProducts({ slug: params.slug, limit: 1 }))
+    .items[0]
   if (!product) return notFound()
 
-  console.log(product)
-
+  console.log()
   return (
     <div className="max-w-[300rem] w-[90%] mx-auto">
       <Gutter />
       <section className="py-7">
-        <CustomNav title={product.name!} />
+        <CustomNav name={product.name!} />
         <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
           {product.name}
         </h2>
@@ -95,6 +95,7 @@ export default async function Page({ params }: any) {
 
             {product.variants && product.productOptions && (
               <CustomizeProduct
+                product={product}
                 productId={product._id!}
                 variants={product.variants}
                 productOptions={product.productOptions}

@@ -6,8 +6,8 @@ import Image from "next/image"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
-import { QuickCartView } from "@/components/ui/QuickCartView"
 import { useCart } from "@/context/CartContext"
+import { CartModel } from "@/components/ui/cartModel"
 
 const MobileHeader = () => {
   const { cart } = useCart()
@@ -88,8 +88,7 @@ const MobileHeader = () => {
             </span>
           </div>
         )}
-        {/* Open the quick cart view */}
-        <QuickCartView openCart={openCart} setIsOpen={setOpenCart} />
+        <CartModel openCart={openCart} setIsOpen={setOpenCart} />
 
         <div
           className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}

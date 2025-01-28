@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import { ImageHover } from "@/components/HoverImage"
 import { products } from "@wix/stores"
+import Add from "@/components/AddToCart"
 
 interface ProductCartProps {
   product: products.Product
@@ -13,7 +14,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const ProductImage: React.FC = () => (
     <Link
       href={`/products/${product.slug}`}
-      className="overflow-hidden bg-[#F5F5F5] block h-60"
+      className="overflow-hidden bg-[#F5F5F5] block h-[195px]"
     >
       {product.media?.items?.length ?? 0 > 1 ? (
         <ImageHover
@@ -26,8 +27,8 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           <Image
             src={product.media?.mainMedia?.image?.url || "/product.png"}
             alt={product.media?.mainMedia?.image?.altText || ""}
-            width={600}
-            height={400}
+            width={700}
+            height={600}
             sizes="80vw"
             className=" object-contain w-auto transition-opacity duration-500 "
           />
@@ -38,7 +39,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <>
-      <div className="relative py-5 mb-1 md:py-0 h-full md:h-96 rounded-md hover:bg-slate-50 transition-all duration-200">
+      <div className="relative py-5 mb-1 md:py-0 h-full rounded-md hover:bg-slate-50 transition-all duration-200">
         <div className="block overflow-hidden bg-[#F5F5F5]">
           <ProductImage />
         </div>
@@ -48,11 +49,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             {product.priceData?.currency}
             {product.priceData?.price}.00
           </p>
-          {/* {product.stock?.quantity && (
-            <Add product={product} disable={true} />
-          ) : (
-            <Add product={product} />
-          )} */}
+          <Add product={product} disable={true} productId={""} />
         </div>
       </div>
     </>

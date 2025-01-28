@@ -6,7 +6,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { NavLinkProps } from "@/types"
-import { QuickCartView } from "@/components/ui/QuickCartView"
+import { CartModel } from "@/components/ui/cartModel"
 import { useCart } from "@/context/CartContext"
 
 const DesktopHeader = () => {
@@ -44,7 +44,7 @@ const DesktopHeader = () => {
       className={`fixed top-0 z-50 hidden md:block w-full ${homePage} transition-all duration-300`}
     >
       {/* Control for the opening and closing of QuickCartView*/}
-      <QuickCartView openCart={isOpen} setIsOpen={setIsOpen} />
+      <CartModel openCart={isOpen} setIsOpen={setIsOpen} />
 
       <div className="flex items-center justify-between h-24 mx-8">
         {/* logo */}

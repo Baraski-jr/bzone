@@ -2,12 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ControlQuantity } from "@/components/ControlQuantity"
 import { CheckoutBtn } from "@/components/CheckoutButton"
 import { useCart } from "@/context/CartContext"
 import { useEffect, useState } from "react"
 
-export const QuickCartView = ({
+export const CartModel = ({
   setIsOpen,
   openCart,
 }: {
@@ -93,7 +92,7 @@ export const QuickCartView = ({
                       >
                         Remove
                       </div>
-                      <ControlQuantity product={item} />
+                      {/* <ControlQuantity product={item} /> */}
                     </figcaption>
                   </figure>
                 </li>

@@ -28,7 +28,8 @@ function ProductGallary({ items }: { items: products.MediaItem[] }) {
               <Image
                 width={60}
                 height={60}
-                src={item.image?.url || "/product.png"}
+                priority
+                src={item.image?.url || IMAGE_PLACEHOLDER}
                 alt={item.image?.altText || ""}
                 className="w-auto cursor-pointer"
               />
@@ -42,16 +43,17 @@ function ProductGallary({ items }: { items: products.MediaItem[] }) {
   return (
     <div className="md:flex">
       {/* Thumbnails for larger screens */}
-      {items.length > 1 && (
+      {items.length > 0 && (
         <div className="hidden md:block">
           <ThumbnailImage items={items} direction="flex-col" />
         </div>
       )}
       {/* Main product image */}
-      <div className="relative bg-[#F5F5F5]  flex items-center justify-center md:w-full overflow-hidden">
-        <div className="min-h-[15rem] md:min-h-fit">
+      <div className="relative md:w-full overflow-hidden">
+        <div className="">
           <Zoom>
             <Image
+              priority
               width={600}
               height={700}
               src={items[index].image?.url || IMAGE_PLACEHOLDER}
@@ -63,7 +65,7 @@ function ProductGallary({ items }: { items: products.MediaItem[] }) {
         </div>
       </div>
       {/* Thumbnails for mobile view */}
-      {items.length > 1 && (
+      {items.length > 0 && (
         <div className="md:hidden pt-5">
           <ThumbnailImage items={items} />
         </div>
