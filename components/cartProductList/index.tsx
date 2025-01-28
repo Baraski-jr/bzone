@@ -60,7 +60,7 @@ export const CartProductList = () => {
                     <span className="md:hidden">Price:</span> GMD{item.price}.00
                   </p>
                   <div className="order-3 md:order-2">
-                    <ControlQuantity product={item} />
+                    {/* <ControlQuantity product={item} /> */}
                   </div>
                   <p className="text-slate-700 text-sm order-2 md:order-3">
                     <span className="md:hidden">Total price:</span> GMD
