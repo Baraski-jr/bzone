@@ -4,7 +4,7 @@ import React from "react"
 const Promotion = () => {
   return (
     <Link
-      href="products/shoes/Air-Jordn-5-Retro"
+      href="products/category?=men"
       className="py-5 md:mt-10 h-full bg-Promotion-bg bg-cover bg-no-repeat bg-center md:py-20 px-5 w-full mx-auto flex items-center "
     >
       <div className="mr-auto py-4">

@@ -49,7 +49,12 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             {product.priceData?.currency}
             {product.priceData?.price}.00
           </p>
-          <Add product={product} disable={true} productId={""} />
+          <Add
+            varianId="00000000-0000-0000-0000-000000000000"
+            productId={product._id!}
+            product={product}
+            stockNumber={product.stock?.quantity || 0}
+          />
         </div>
       </div>
     </>

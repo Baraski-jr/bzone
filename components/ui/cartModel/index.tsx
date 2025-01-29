@@ -3,9 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { CheckoutBtn } from "@/components/CheckoutButton"
-import { useCart } from "@/context/CartContext"
-import { useEffect, useState } from "react"
-
+import { useState } from "react"
+import { useWixClient } from "@/hooks/useWixCient"
+import { useCartStore } from "@/hooks/useCartStore"
+import { media as wixMedia } from "@wix/sdk"
 export const CartModel = ({
   setIsOpen,
   openCart,
@@ -13,27 +14,21 @@ export const CartModel = ({
   openCart: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-  const { cart, removeFromCart } = useCart()
-  const [totalPrice, setTotalPrice] = useState(0)
   const animation = openCart ? "right-0" : "-right-[100%]"
   const [closeIcon, SetCloseIcon] = useState("close-black")
 
-  useEffect(() => {
-    const total = cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    )
-    setTotalPrice(total)
-  }, [cart])
+  const wixClient = useWixClient()
+
+  const { cart, isLoading, removeItem } = useCartStore()
 
   return (
     <div
-      className={`fixed top-0 ${animation} w-full md:w-10/12 lg:w-2/4 z-50 transition-all duration-500`}
+      className={`fixed top-0 ${animation} w-10/12 lg:w-2/4 z-50 transition-all duration-500`}
     >
       <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
         {/* header section */}
         <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
-          <h2 className="">Shopping cart ({cart.length})</h2>
+          <h2 className="">Shopping cart ()</h2>
           <div
             onMouseOver={() => SetCloseIcon("close-menu")}
             onMouseLeave={() => SetCloseIcon("close-black")}
@@ -49,50 +44,48 @@ export const CartModel = ({
             />
           </div>
         </header>
-        {cart.length === 0 ? (
+        {isLoading ? (
+          "Loading...."
+        ) : !cart ? (
           <p className="">Your cart is empty</p>
         ) : (
           <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] divide-y-2 divide-slate-100 ">
-            {/* 1 */}
             <ul className="pb-8">
-              {cart.map((item) => (
-                <li key={item.id} className="py-7 border-b-2 border-slate-100">
+              {cart.lineItems?.map((item) => (
+                <li key={item._id} className="py-7 border-b-2 border-slate-100">
                   <figure className="flex gap-x-4">
-                    <Link
-                      href={`/products/shoes/${item.title.replace(/ /g, "-")}`}
-                    >
-                      <Image
-                        width={100}
-                        height={100}
-                        src={item.images[0]}
-                        alt={item.title}
-                        className="bg-[#F5F5F5] object-cover"
-                      />
+                    <Link href={`/products/${item.url}`}>
+                      {item.image && (
+                        <Image
+                          width={100}
+                          height={100}
+                          src={wixMedia.getScaledToFillImageUrl(
+                            item.image,
+                            100,
+                            100,
+                            {}
+                          )}
+                          alt={item.productName?.original ?? ""}
+                          className="bg-[#F5F5F5] object-cover"
+                        />
+                      )}
                     </Link>
                     <figcaption className="space-y-2">
-                      {/* Title */}
                       <Link
-                        href={`/products/shoes/${item.title.replace(
-                          / /g,
-                          "-"
-                        )}`}
+                        href={item.url ?? ""}
                         className="hover:underline underline-offset-2"
                       >
-                        {item.title}
+                        {item.productName?.original ?? ""}
                       </Link>
-                      {/* Colour & size */}
                       <p className="text-slate-700 text-sm">
-                        {" "}
-                        GMD{item.price * item.quantity}.00{" "}
+                        {item.price?.amount}
                       </p>
-                      {/* Remove button */}
                       <div
-                        onClick={() => removeFromCart(item.id, true)}
+                        onClick={() => removeItem(wixClient, item._id!)}
                         className="hover:underline text-xs text-slate-600 cursor-pointer"
                       >
                         Remove
                       </div>
-                      {/* <ControlQuantity product={item} /> */}
                     </figcaption>
                   </figure>
                 </li>
@@ -105,7 +98,7 @@ export const CartModel = ({
           {/* Total */}
           <div className="flex justify-between items-center">
             <h3 className="text-xl">Subtotal</h3>
-            <h3 className="font-bold text-xl">GMD{totalPrice}.00</h3>
+            <h3 className="font-bold text-xl">GMD 00.00</h3>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
             <p className="text-sm text-slate-700">

@@ -1,15 +1,13 @@
 "use client"
 
-import { useCart } from "@/context/CartContext"
+import { useState } from "react"
 
 export const ControlQuantity = () => {
-  const { addToCart, removeFromCart } = useCart()
+  const [quantity, setQuantitiy] = useState(1)
 
   const handleQuantity = (type: "i" | "d") => {
-    // if (type === "i" && product.quantity < product.inventory) {
-    //   addToCart(product)
+    // if (type === "i" && quantity < product.inventory) {
     // } else if (type === "d" && product.quantity > 1) {
-    //   removeFromCart(product.id)
     // }
   }
 

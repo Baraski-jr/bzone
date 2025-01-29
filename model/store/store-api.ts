@@ -1,4 +1,3 @@
-import { collections } from "@wix/stores"
 import { wixClientServer } from "@/lib/wix/ClientServer"
 
 interface CollectionFilters {
@@ -14,7 +13,7 @@ interface ProductsFilters {
   max?: number
   min?: number
   sort?: any
-  pageNumber?: any
+  pageNumber?: number
 }
 // Fetch category
 export const querySingleCollectionBySlug = async ({
@@ -24,6 +23,16 @@ export const querySingleCollectionBySlug = async ({
 }) => {
   const wixCient = await wixClientServer()
   const { collection } = await wixCient.collections.getCollectionBySlug(slug)
+  return collection
+}
+// Fetch category
+export const querySingleCollectionById = async ({
+  collectionId,
+}: {
+  collectionId: string
+}) => {
+  const wixCient = await wixClientServer()
+  const collection = await wixCient.collections.getCollection(collectionId)
   return collection
 }
 
@@ -55,33 +64,23 @@ export const queryProducts = async ({
 
   let query = wixClient.products.queryProducts()
 
-  if (limit) {
-    query = query.limit(limit)
-  }
-  if (slug) {
-    query = query.eq("slug", slug)
-  }
-  if (collectionId) {
-    query = query.eq("collectionIds", collectionId)
-  }
+  if (limit) query = query.limit(limit)
+  if (slug) query = query.eq("slug", slug)
+  if (collectionId) query = query.eq("collectionIds", collectionId)
 
   // Added
-  if (max) {
-    query = query.lt("priceData.price", max || 999999)
-  }
-  if (min) {
-    query = query.gt("priceData.price", min || 0)
-  }
+  if (max) query = query.lt("priceData.price", max || 999999)
+  if (min) query = query.gt("priceData.price", min || 0)
 
   if (pageNumber) {
-    console.log(pageNumber)
-    query.skip(pageNumber ? parseInt(pageNumber) * (limit ? limit : 8) : 0)
+    query = query.skip(pageNumber)
   }
+
   // Sorting
 
   if (sort) {
     const [sortType, sortBy] = sort.split(" ")
-    if (sortType === "asc") query.ascending()
+    if (sortType === "asc") query.ascending(sortBy)
     if (sortType === "desc") query.descending(sortBy)
   }
   const items = await query.find()

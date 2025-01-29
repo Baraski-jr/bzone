@@ -2,19 +2,24 @@ import React from "react"
 import { CollectionProps } from "@/types"
 import CollectionBanner from "../ui/CollectionBanner"
 import Crousel from "../crousel"
-import { getCategory, getProducts } from "@/lib/actions"
+import {
+  queryProducts,
+  querySingleCollectionById,
+} from "@/model/store/store-api"
 
 const Collection: React.FC<CollectionProps> = async ({
   categoryId,
   subTitle,
   limit,
 }) => {
-  const products = await getProducts({
-    categoryId,
-    PRODUCT_PER_PAGE: limit,
+  const products = await queryProducts({
+    collectionId: categoryId,
+    limit: limit,
   })
 
-  const caterory = await getCategory({ categoryId })
+  const caterory = await querySingleCollectionById({
+    collectionId: categoryId,
+  })
 
   return (
     <section className="mt-6 md:mt-10 flex items-center">

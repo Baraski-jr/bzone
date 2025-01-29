@@ -7,11 +7,19 @@ import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { NavLinkProps } from "@/types"
 import { CartModel } from "@/components/ui/cartModel"
-import { useCart } from "@/context/CartContext"
+import { useWixClient } from "@/hooks/useWixCient"
+import { useCartStore } from "@/hooks/useCartStore"
 
 const DesktopHeader = () => {
-  const { cart } = useCart()
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const wixClient = useWixClient()
+
+  const { cart, counter, getCart } = useCartStore()
+
+  useEffect(() => {
+    getCart(wixClient)
+  }, [wixClient])
 
   useEffect(() => {
     // Function to handle scroll event
@@ -87,7 +95,7 @@ const DesktopHeader = () => {
             className="w-auto"
           />
           <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
-            {cart.length}
+            {counter}
           </span>
         </div>
       </div>

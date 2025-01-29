@@ -1,11 +1,17 @@
 "use client"
 
-import { useCart } from "@/context/CartContext"
+import { useCartStore } from "@/hooks/useCartStore"
+import { useWixClient } from "@/hooks/useWixCient"
 import { products } from "@wix/stores"
-import React, { useEffect } from "react"
+import React, { useState } from "react"
 
-interface ProductCartProps {
+interface AddProp {
+  productId: string
+  name?: string
+  disable?: boolean
   product: products.Product
+  stockNumber: number
+  varianId: string
 }
 
 const createProductOptions = (
@@ -20,39 +26,66 @@ const createProductOptions = (
       }
     : undefined
 
-const Add: React.FC<{
-  productId: string
-  name?: string
-  disable?: boolean
-  product: products.Product
-}> = ({ product, name = "ADD TO CART", disable = false }) => {
-  const [Quantitiy, setQuantitiy] = React.useState(1)
-  const { cart, addToCart } = useCart()
+const Add: React.FC<AddProp> = ({
+  stockNumber,
+  productId,
+  varianId,
+  product,
+  name = "ADD TO CART",
+  disable = false,
+}) => {
+  const [quantity, setQuantity] = useState<number>(1)
 
-  // useEffect(() => {
-  //   const existingProduct = cart.find((item) => item.id == product._id)
-  //   if (existingProduct) {
-  //     setQuantitiy(existingProduct.quantity)
-  //   }
-  // }, [cart, product])
-
-  const handleAddBtn = () => {
-    // if (product.inventory < 1) return
-    // if (product.inventory <= Quantitiy) return
-    // addToCart(product)
+  const handleQuantity = (type: "i" | "d") => {
+    if (type === "i" && quantity < stockNumber) {
+      setQuantity((prev) => prev + 1)
+    } else if (type === "d" && quantity > 1) {
+      setQuantity((prev) => prev - 1)
+    }
   }
+
+  const wixClient = useWixClient()
+
+  const { addItem, isLoading } = useCartStore()
+
+  const ControlQuantity = () => {
+    return (
+      <div>
+        {/* Quantity button */}
+        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 w-fit h-8">
+          <button
+            className="px-3 cursor-pointer hover:bg-slate-300 transition-transform duration-200"
+            onClick={() => handleQuantity("d")}
+            disabled={quantity === 1}
+          >
+            -
+          </button>
+          <span className="block px-3">{quantity}</span>
+          <button
+            className="px-3 cursor-pointer hover:bg-slate-300 transition-all duration-300"
+            onClick={() => handleQuantity("i")}
+            disabled={quantity === stockNumber}
+          >
+            +
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex-1 flex items-center gap-x-5">
-      {/* Add Cart button */}
-      <button
-        onClick={() => handleAddBtn()}
-        disabled={disable}
-        className={`flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 ${
-          disable ? "bg-opacity-80 cursor-not-allowed" : "hover:bg-opacity-95"
-        }`}
-      >
-        {name}
-      </button>
+    <div className="space-y-3">
+      <ControlQuantity />
+      <div className="flex-1 flex items-center gap-x-5">
+        {/* Add Cart button */}
+        <button
+          onClick={() => addItem(wixClient, productId, varianId, quantity)}
+          disabled={isLoading || stockNumber < 1}
+          className="flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed hover:bg-opacity-95"
+        >
+          {name}
+        </button>
+      </div>
     </div>
   )
 }

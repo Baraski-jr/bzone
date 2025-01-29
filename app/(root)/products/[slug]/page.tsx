@@ -6,6 +6,7 @@ import ProductGallary from "@/components/ProductGallary"
 import { queryProducts } from "@/model/store/store-api"
 import { notFound } from "next/navigation"
 import React from "react"
+import DOMPurify from "isomorphic-dompurify"
 
 export async function generateMetadata({ params }: any) {
   if (params.slug) {
@@ -59,7 +60,6 @@ export default async function Page({ params }: any) {
     .items[0]
   if (!product) return notFound()
 
-  console.log()
   return (
     <div className="max-w-[300rem] w-[90%] mx-auto">
       <Gutter />
@@ -69,7 +69,7 @@ export default async function Page({ params }: any) {
           {product.name}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
-          <ProductGallary items={product.media?.items!} />
+          <ProductGallary product={product!} />
           <div className="w-full flex flex-col gap-6">
             <h2 className="hidden md:block font-semibold text-xl md:text-2xl">
               {product.name}
@@ -86,19 +86,32 @@ export default async function Page({ params }: any) {
                 </span>
               </h1>
             </div>
-            <p
-              className="font-normal text-slate-500"
-              dangerouslySetInnerHTML={{
-                __html: product.description ?? "",
-              }}
-            ></p>
+            {product.additionalInfoSections && (
+              <p
+                className="text-sm text-gray-500"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(
+                    product.additionalInfoSections.find(
+                      (section: any) => section.title === "shortDesc"
+                    )?.description || ""
+                  ),
+                }}
+              ></p>
+            )}
 
-            {product.variants && product.productOptions && (
+            {product.variants && product.productOptions ? (
               <CustomizeProduct
                 product={product}
                 productId={product._id!}
                 variants={product.variants}
                 productOptions={product.productOptions}
+              />
+            ) : (
+              <Add
+                productId={product._id!}
+                varianId="00000000-0000-0000-0000-000000000000"
+                stockNumber={product.stock?.quantity || 0}
+                product={product}
               />
             )}
           </div>

@@ -124,15 +124,24 @@ const CustomizeProduct = ({
           </div>
         </div>
       ))}
-      <ControlQuantity />
 
       {isAvailableForPurchase ? (
         <div className="flex flex-col md:flex-row md:gap-3">
-          <Add productId={productId} product={product} />
-          {/* <Add productId={productId} product={product} /> */}
+          <Add
+            varianId="00000000-0000-0000-0000-000000000000"
+            productId={productId}
+            product={product}
+            stockNumber={product.stock?.quantity || 0}
+          />
         </div>
       ) : (
-        <Add productId={productId} disable={true} product={product} />
+        <Add
+          varianId="00000000-0000-0000-0000-000000000000"
+          productId={productId}
+          disable={true}
+          product={product}
+          stockNumber={product.stock?.quantity || 0}
+        />
       )}
     </div>
   )
