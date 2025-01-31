@@ -19,16 +19,16 @@ export const CartModel = ({
 
   const wixClient = useWixClient()
 
-  const { cart, isLoading, removeItem } = useCartStore()
+  const { cart, isLoading, counter, removeItem } = useCartStore()
 
   return (
     <div
-      className={`fixed top-0 ${animation} w-10/12 lg:w-2/4 z-50 transition-all duration-500`}
+      className={`fixed top-0 ${animation} w-10/12 lg:w-2/4 z-50 transition-all delay-150 duration-500`}
     >
       <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
         {/* header section */}
         <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
-          <h2 className="">Shopping cart ()</h2>
+          <h2 className="">Shopping cart ({counter})</h2>
           <div
             onMouseOver={() => SetCloseIcon("close-menu")}
             onMouseLeave={() => SetCloseIcon("close-black")}

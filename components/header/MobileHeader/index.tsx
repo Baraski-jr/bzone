@@ -7,39 +7,14 @@ import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
 import { CartModel } from "@/components/ui/cartModel"
-import { useWixClient } from "@/hooks/useWixCient"
-import { useCartStore } from "@/hooks/useCartStore"
 
-const MobileHeader = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  const wixClient = useWixClient()
-
-  const { cart, counter, getCart } = useCartStore()
-
-  useEffect(() => {
-    getCart(wixClient)
-  }, [wixClient])
-
-  useEffect(() => {
-    // Function to handle scroll event
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true) // Change the background color when scrolled more than 50px
-      } else {
-        setIsScrolled(false) // Reset the background when scrolled back up
-      }
-    }
-
-    // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll)
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
+const MobileHeader = ({
+  counter,
+  isScrolled,
+}: {
+  counter: number
+  isScrolled: boolean
+}) => {
   const [openMenu, setOpenMenu] = useState(false)
   const [openCart, setOpenCart] = useState(false)
   const pathname = usePathname()
@@ -95,7 +70,7 @@ const MobileHeader = () => {
             </span>
           </div>
         )}
-        <CartModel openCart={openCart} setIsOpen={setOpenCart} />
+        {openMenu && <CartModel openCart={openCart} setIsOpen={setOpenCart} />}
 
         <div
           className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}

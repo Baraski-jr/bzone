@@ -43,7 +43,7 @@ const Filter = () => {
             className="py-2 px-4 rounded-sm text-xs font-medium bg-[#EBEDED]"
             onChange={handleFilterChange}
           >
-            <option value="all-products">all-products</option>
+            <option value="all-products">Category</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
             <option value="kid">Kid</option>

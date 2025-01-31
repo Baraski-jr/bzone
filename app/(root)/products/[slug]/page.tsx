@@ -111,7 +111,6 @@ export default async function Page({ params }: any) {
                 productId={product._id!}
                 varianId="00000000-0000-0000-0000-000000000000"
                 stockNumber={product.stock?.quantity || 0}
-                product={product}
               />
             )}
           </div>

@@ -21,7 +21,7 @@ export const useCartStore = create<CartState>((set) => ({
   isLoading: true,
   counter: 0,
 
-  getCart: async (wixClient) => {
+  getCart: async () => {
     try {
       const cart = await currentCart.getCurrentCart()
       set({

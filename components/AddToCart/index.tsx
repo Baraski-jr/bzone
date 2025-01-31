@@ -9,7 +9,6 @@ interface AddProp {
   productId: string
   name?: string
   disable?: boolean
-  product: products.Product
   stockNumber: number
   varianId: string
 }
@@ -30,7 +29,6 @@ const Add: React.FC<AddProp> = ({
   stockNumber,
   productId,
   varianId,
-  product,
   name = "ADD TO CART",
   disable = false,
 }) => {
@@ -44,6 +42,7 @@ const Add: React.FC<AddProp> = ({
     }
   }
 
+  console.log(stockNumber)
   const wixClient = useWixClient()
 
   const { addItem, isLoading } = useCartStore()
@@ -74,9 +73,9 @@ const Add: React.FC<AddProp> = ({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 w-full">
       <ControlQuantity />
-      <div className="flex-1 flex items-center gap-x-5">
+      <div className="flex-1 flex items-center gap-x-5 w-full">
         {/* Add Cart button */}
         <button
           onClick={() => addItem(wixClient, productId, varianId, quantity)}

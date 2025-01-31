@@ -7,39 +7,13 @@ import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { NavLinkProps } from "@/types"
 import { CartModel } from "@/components/ui/cartModel"
-import { useWixClient } from "@/hooks/useWixCient"
-import { useCartStore } from "@/hooks/useCartStore"
-
-const DesktopHeader = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  const wixClient = useWixClient()
-
-  const { cart, counter, getCart } = useCartStore()
-
-  useEffect(() => {
-    getCart(wixClient)
-  }, [wixClient])
-
-  useEffect(() => {
-    // Function to handle scroll event
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true) // Change the background color when scrolled more than 50px
-      } else {
-        setIsScrolled(false) // Reset the background when scrolled back up
-      }
-    }
-
-    // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll)
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
+const DesktopHeader = ({
+  counter,
+  isScrolled,
+}: {
+  counter: number
+  isScrolled: boolean
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const homePage =

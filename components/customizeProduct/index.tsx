@@ -130,7 +130,6 @@ const CustomizeProduct = ({
           <Add
             varianId="00000000-0000-0000-0000-000000000000"
             productId={productId}
-            product={product}
             stockNumber={product.stock?.quantity || 0}
           />
         </div>
@@ -139,7 +138,6 @@ const CustomizeProduct = ({
           varianId="00000000-0000-0000-0000-000000000000"
           productId={productId}
           disable={true}
-          product={product}
           stockNumber={product.stock?.quantity || 0}
         />
       )}

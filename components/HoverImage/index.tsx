@@ -28,8 +28,8 @@ export const ImageHover = ({ url, hoverUrl, alt }: Props) => {
         src={url}
         alt={alt}
         priority
-        width={700}
-        height={600}
+        width={2500}
+        height={2500}
         className={`object-contain transition-opacity duration-500 w-auto ${
           isHovered ? "opacity-0" : "opacity-100"
         }`}
