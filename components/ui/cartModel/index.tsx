@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { CheckoutBtn } from "@/components/CheckoutButton"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
@@ -15,12 +15,25 @@ export const CartModel = ({
   isOpenCart: boolean
   setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
+  const [totalPrice, setTotalPrice] = useState(0)
+
   const animation = isOpenCart ? "right-0" : "-right-[100%]"
   const [closeIcon, SetCloseIcon] = useState("close-black")
 
   const wixClient = useWixClient()
 
   const { cart, counter, removeItem } = useCartStore()
+
+  useEffect(() => {
+    cart?.lineItems &&
+      setTotalPrice(
+        cart!.lineItems!.reduce(
+          (sum, item) =>
+            sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
+          0
+        )
+      )
+  }, [cart])
 
   return (
     <div
@@ -97,7 +110,7 @@ export const CartModel = ({
           {/* Total */}
           <div className="flex justify-between items-center">
             <h3 className="text-xl">Subtotal</h3>
-            <h3 className="font-bold text-xl">GMD 00.00</h3>
+            <h3 className="font-bold text-xl">GMD {totalPrice}</h3>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
             <p className="text-sm text-slate-700">

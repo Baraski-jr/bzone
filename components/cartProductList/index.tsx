@@ -3,18 +3,17 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useWixClient } from "@/hooks/useWixCient"
+import { media as wixMedia } from "@wix/sdk"
 import { useCartStore } from "@/hooks/useCartStore"
 
 export const CartProductList = () => {
-
-  
   const wixClient = useWixClient()
 
-  const { cart, removeItem, isLoading } = useCartStore()
+  const { cart, removeItem } = useCartStore()
 
   return (
     <section>
-      {cart.lineItems. === 0 ? (
+      {!cart ? (
         <p className=""> The Cart is empty </p>
       ) : (
         <>
@@ -29,30 +28,36 @@ export const CartProductList = () => {
           </header>
 
           <div className="">
-            {cart.map((item) => (
+            {cart.lineItems?.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="flex py-7 border-b-2 border-slate-100"
               >
                 <figure className="flex flex-col md:flex-row gap-x-4 w-[50%]">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={item.images[0]}
-                    alt={item.title}
-                    quality={100}
-                    className="bg-[#F5F5F5] object-cover"
-                  />
+                  {item.image && (
+                    <Image
+                      width={100}
+                      height={100}
+                      src={wixMedia.getScaledToFillImageUrl(
+                        item.image,
+                        100,
+                        100,
+                        {}
+                      )}
+                      alt={item.productName?.original ?? ""}
+                      className="bg-[#F5F5F5] object-cover"
+                    />
+                  )}
                   <figcaption className="space-y-2">
                     {/* Title */}
                     <Link
-                      href={`/products/shoes/${item.title}`}
+                      href={`/products/shoes/${item.url || ""}`}
                       className="hover:underline text-xs md:text-sm lg:text-base underline-offset-2"
                     >
-                      {item.title}
+                      {item.productName?.original}
                     </Link>
                     <button
-                      onClick={() => removeItem(wixClient, item.id)}
+                      onClick={() => removeItem(wixClient, item._id || "")}
                       className="block underline text-xs text-slate-600 cursor-pointer"
                     >
                       Remove
@@ -62,14 +67,15 @@ export const CartProductList = () => {
                 {/* Right side */}
                 <div className="flex flex-col md:flex-row gap-4 md justify-end md:justify-between w-[50%]">
                   <p className="text-slate-700 text-sm order-1">
-                    <span className="md:hidden">Price:</span> GMD{item.price}.00
+                    <span className="md:hidden">Price:</span> GMD
+                    {item.fullPrice?.amount}.00
                   </p>
                   <div className="order-3 md:order-2">
                     {/* <ControlQuantity product={item} /> */}
                   </div>
                   <p className="text-slate-700 text-sm order-2 md:order-3">
                     <span className="md:hidden">Total price:</span> GMD
-                    {item.price * item.quantity}.00
+                    {item.fullPrice?.amount}.00
                   </p>
                 </div>
               </div>

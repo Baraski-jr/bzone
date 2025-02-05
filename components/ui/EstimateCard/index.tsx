@@ -1,17 +1,20 @@
 "use client"
 
 import { CheckoutBtn } from "@/components/CheckoutButton"
-import { useCart } from "@/context/CartContext"
+import { useCartStore } from "@/hooks/useCartStore"
+import { useWixClient } from "@/hooks/useWixCient"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
 export const EstimateCard = () => {
-  const { cart } = useCart()
   const [totalPrice, setTotalPrice] = useState(0)
 
+  const { cart } = useCartStore()
+
   useEffect(() => {
-    const total = cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+    const total = cart.lineItems!.reduce(
+      (sum, item) =>
+        sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
       0
     )
     setTotalPrice(total)
@@ -102,7 +105,6 @@ export const EstimateCard = () => {
               className="hdt-icon-payment hdt-inline-block"
               viewBox="0 0 38 24"
               xmlns="http://www.w3.org/2000/svg"
-              width="38"
               height="24"
               role="img"
               aria-labelledby="pi-paypal"

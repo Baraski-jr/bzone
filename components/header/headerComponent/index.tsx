@@ -10,8 +10,6 @@ const HeaderComponent = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
 
-  console.log(cart)
-
   const wixClient = useWixClient()
   useEffect(() => {
     getCart(wixClient)
