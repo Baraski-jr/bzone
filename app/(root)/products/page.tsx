@@ -19,32 +19,45 @@ export const metadata: Metadata = {
   title: "Product listing",
   description: "",
 }
+type SearchParams = {
+  category: string
+  min: string
+  max: string
+  collectionId: string
+  limit: string
+  sort: string
+  page: string
+}
 
-export default async function Page({ searchParams }: any) {
-  let collectionId
-  let collectionName: string
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>
+}) {
+  const searchParamProps = await searchParams
 
   try {
     const collection = await querySingleCollectionBySlug({
-      slug: searchParams.category || "all-products",
+      slug: searchParamProps.category || "all-products",
     })
 
-    collectionId = collection?._id || process.env.ALL_PRODUCTS_CATEGORY_ID!
+    const collectionId =
+      collection?._id || process.env.ALL_PRODUCTS_CATEGORY_ID!
 
-    collectionName = collection?.name || ""
+    const collectionName = collection?.name || ""
     let Sort
-    if (searchParams?.sort) {
-      Sort = searchParams.sort
+    if (searchParamProps?.sort) {
+      Sort = searchParamProps.sort
     }
 
     const products = await queryProducts({
-      min: searchParams?.min,
-      max: searchParams?.max,
+      min: parseInt(searchParamProps?.min),
+      max: parseInt(searchParamProps?.max),
       collectionId: collectionId,
       limit: PRODUCT_PER_PAGE,
       sort: Sort ?? "",
-      pageNumber: searchParams?.page
-        ? parseInt(searchParams.page) * PRODUCT_PER_PAGE
+      pageNumber: parseInt(searchParamProps?.page)
+        ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
         : 0,
     })
 
@@ -83,7 +96,6 @@ export default async function Page({ searchParams }: any) {
       </>
     )
   } catch (error) {
-    console.log(error)
     return (
       <div className="relative">
         <Gutter />

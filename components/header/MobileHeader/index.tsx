@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
@@ -11,16 +11,24 @@ import { CartModel } from "@/components/ui/cartModel"
 const MobileHeader = ({
   counter,
   isScrolled,
+  isOpenCart,
+  setIsOpenCart,
 }: {
   counter: number
   isScrolled: boolean
+
+  isOpenCart: boolean
+  setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const [openMenu, setOpenMenu] = useState(false)
-  const [openCart, setOpenCart] = useState(false)
   const pathname = usePathname()
 
+  const toggleCart = useCallback(() => {
+    setIsOpenCart((prev) => !prev)
+  }, [setIsOpenCart])
+
   const handleMenue = () => {
-    setOpenCart(false)
+    // Close the cart Modal when the menu is open
     setOpenMenu((prev) => !prev)
   }
 
@@ -55,7 +63,7 @@ const MobileHeader = ({
         {/* Cart icons */}
         {!openMenu && (
           <div
-            onClick={() => setOpenCart((prev) => !prev)}
+            onClick={() => toggleCart()}
             className="flex w-10 relative cursor-pointer"
           >
             <Image
@@ -70,7 +78,9 @@ const MobileHeader = ({
             </span>
           </div>
         )}
-        {openMenu && <CartModel openCart={openCart} setIsOpen={setOpenCart} />}
+        {isOpenCart && (
+          <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
+        )}
 
         <div
           className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}

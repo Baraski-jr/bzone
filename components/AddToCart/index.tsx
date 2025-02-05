@@ -42,7 +42,6 @@ const Add: React.FC<AddProp> = ({
     }
   }
 
-  console.log(stockNumber)
   const wixClient = useWixClient()
 
   const { addItem, isLoading } = useCartStore()

@@ -7,23 +7,24 @@ import { useState } from "react"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
+
 export const CartModel = ({
-  setIsOpen,
-  openCart,
+  setIsOpenCart,
+  isOpenCart,
 }: {
-  openCart: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isOpenCart: boolean
+  setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-  const animation = openCart ? "right-0" : "-right-[100%]"
+  const animation = isOpenCart ? "right-0" : "-right-[100%]"
   const [closeIcon, SetCloseIcon] = useState("close-black")
 
   const wixClient = useWixClient()
 
-  const { cart, isLoading, counter, removeItem } = useCartStore()
+  const { cart, counter, removeItem } = useCartStore()
 
   return (
     <div
-      className={`fixed top-0 ${animation} w-10/12 lg:w-2/4 z-50 transition-all delay-150 duration-500`}
+      className={`fixed top-0 ${animation} w-10/12 lg:w-2/4 z-50 transition-all ease-linear duration-300`}
     >
       <div className=" bg-white min-h-dvh px-5 md:px-12 shadow-xl">
         {/* header section */}
@@ -32,7 +33,7 @@ export const CartModel = ({
           <div
             onMouseOver={() => SetCloseIcon("close-menu")}
             onMouseLeave={() => SetCloseIcon("close-black")}
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() => setIsOpenCart((prev) => !prev)}
             className="p-2 cursor-pointer hover:bg-red-500 transition-all duration-200"
           >
             <Image
@@ -44,9 +45,7 @@ export const CartModel = ({
             />
           </div>
         </header>
-        {isLoading ? (
-          "Loading...."
-        ) : !cart ? (
+        {!cart ? (
           <p className="">Your cart is empty</p>
         ) : (
           <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] divide-y-2 divide-slate-100 ">
@@ -78,7 +77,7 @@ export const CartModel = ({
                         {item.productName?.original ?? ""}
                       </Link>
                       <p className="text-slate-700 text-sm">
-                        {item.price?.amount}
+                        GMD{item.price?.amount}.00
                       </p>
                       <div
                         onClick={() => removeItem(wixClient, item._id!)}
@@ -126,13 +125,16 @@ export const CartModel = ({
           {/* Button */}
           <div className="flex gap-x-5">
             <Link
-              onClick={() => setIsOpen((prev) => !prev)}
+              onClick={() => setIsOpenCart((prev) => !prev)}
               href={"/cart"}
               className="grid place-content-center border-2 flex-1 "
             >
               View cart
             </Link>
-            <div className="flex-1" onClick={() => setIsOpen((prev) => !prev)}>
+            <div
+              className="flex-1"
+              onClick={() => setIsOpenCart((prev) => !prev)}
+            >
               <CheckoutBtn />
             </div>
           </div>

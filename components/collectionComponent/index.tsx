@@ -78,7 +78,6 @@ const Collection: React.FC<CollectionProps> = async ({
         <NetworkError opacity={70} link={"/"} message={"Network Error"} />
       </section>
     )
-    console.log(error)
   }
 }
 

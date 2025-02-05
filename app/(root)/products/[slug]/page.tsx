@@ -4,15 +4,24 @@ import CustomNav from "@/components/CustomNav"
 import Gutter from "@/components/Gutter"
 import ProductGallary from "@/components/ProductGallary"
 import { queryProducts } from "@/model/store/store-api"
+import { products } from "@wix/stores"
 import { notFound } from "next/navigation"
 import React from "react"
-import DOMPurify from "isomorphic-dompurify"
 
-export async function generateMetadata({ params }: any) {
-  if (params.slug) {
+type ParamType = {
+  slug: string
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<ParamType>
+}) {
+  const param = await params
+  if (param.slug) {
     const product = (
       await queryProducts({
-        slug: params.slug,
+        slug: param.slug,
         limit: 1,
       })
     ).items[0]
@@ -44,20 +53,19 @@ export async function generateStaticParams(): Promise<{ slug?: string }[]> {
     limit: 10,
   })
     .then((items) =>
-      items.items?.map((product: any) => ({
+      items.items?.map((product: products.Product) => ({
         slug: product.slug,
       }))
     )
     .catch((err) => {
-      console.error(err)
       return []
     })
 }
 
-export default async function Page({ params }: any) {
-  if (!params.slug) return notFound()
-  const product = (await queryProducts({ slug: params.slug, limit: 1 }))
-    .items[0]
+export default async function Page({ params }: { params: Promise<ParamType> }) {
+  const param = await params
+  if (!param.slug) return notFound()
+  const product = (await queryProducts({ slug: param.slug, limit: 1 })).items[0]
   if (!product) return notFound()
 
   return (

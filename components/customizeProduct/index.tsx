@@ -2,7 +2,6 @@
 import { products } from "@wix/stores"
 import React, { useEffect, useMemo, useState } from "react"
 import Add from "../AddToCart"
-import { ControlQuantity } from "../Quantity"
 
 const CustomizeProduct = ({
   productId,

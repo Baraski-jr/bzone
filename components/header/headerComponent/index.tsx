@@ -6,16 +6,18 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 
 const HeaderComponent = () => {
-  const { counter, getCart } = useCartStore()
+  const { counter, getCart, cart } = useCartStore()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpenCart, setIsOpenCart] = useState(false)
+
+  console.log(cart)
 
   const wixClient = useWixClient()
   useEffect(() => {
     getCart(wixClient)
-  }, [wixClient])
+  }, [wixClient, getCart])
 
   useEffect(() => {
-    // Function to handle scroll event
     const handleScroll = () => {
       if (window.scrollY > 30) {
         setIsScrolled(true) // Change the background color when scrolled more than 50px
@@ -23,6 +25,8 @@ const HeaderComponent = () => {
         setIsScrolled(false) // Reset the background when scrolled back up
       }
     }
+    // Function to handle scroll event
+    handleScroll()
 
     // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll)
@@ -35,8 +39,18 @@ const HeaderComponent = () => {
 
   return (
     <header>
-      <MobileHeader counter={counter} isScrolled={isScrolled} />
-      <DesktopHeader counter={counter} isScrolled={isScrolled} />
+      <MobileHeader
+        counter={counter}
+        isOpenCart={isOpenCart}
+        setIsOpenCart={setIsOpenCart}
+        isScrolled={isScrolled}
+      />
+      <DesktopHeader
+        counter={counter}
+        isOpenCart={isOpenCart}
+        setIsOpenCart={setIsOpenCart}
+        isScrolled={isScrolled}
+      />
     </header>
   )
 }

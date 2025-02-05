@@ -1,15 +1,20 @@
 "use client"
 
 import Link from "next/link"
-import { ControlQuantity } from "../Quantity"
 import Image from "next/image"
-import { useCart } from "@/context/CartContext"
+import { useWixClient } from "@/hooks/useWixCient"
+import { useCartStore } from "@/hooks/useCartStore"
 
 export const CartProductList = () => {
-  const { cart, removeFromCart } = useCart()
+
+  
+  const wixClient = useWixClient()
+
+  const { cart, removeItem, isLoading } = useCartStore()
+
   return (
     <section>
-      {cart.length === 0 ? (
+      {cart.lineItems. === 0 ? (
         <p className=""> The Cart is empty </p>
       ) : (
         <>
@@ -47,7 +52,7 @@ export const CartProductList = () => {
                       {item.title}
                     </Link>
                     <button
-                      onClick={() => removeFromCart(item.id, true)}
+                      onClick={() => removeItem(wixClient, item.id)}
                       className="block underline text-xs text-slate-600 cursor-pointer"
                     >
                       Remove
