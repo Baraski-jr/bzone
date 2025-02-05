@@ -94,18 +94,6 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 </span>
               </h1>
             </div>
-            {/* {product.additionalInfoSections && (
-              <p
-                className="text-sm text-gray-500"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(
-                    product.additionalInfoSections.find(
-                      (section: any) => section.title === "shortDesc"
-                    )?.description || ""
-                  ),
-                }}
-              ></p>
-            )} */}
             <p className="text-sm text-gray-500">{product.description}</p>
 
             {product.variants && product.productOptions ? (

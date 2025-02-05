@@ -22,6 +22,27 @@ async function getCurrentCart() {
   const response = await wixClient.currentCart.getCurrentCart()
 }
 
+export async function updateCurrentCartLineItemQuantity({
+  LineItemQuantityUpdate,
+}: {
+  LineItemQuantityUpdate: LineItemQuantityUpdate[]
+}) {
+  const response =
+    await wixClient.currentCart.updateCurrentCartLineItemQuantity(
+      LineItemQuantityUpdate
+    )
+}
+
+// Updates the quantity of one or more line items in the current site visitor's cart.
+// async function updateCurrentCartLineItemQuantity(
+//   LineItemQuantityUpdate: LineItemQuantityUpdate[]
+// ) {
+//   const response =
+//     await wixClient.currentCart.updateCurrentCartLineItemQuantity(
+//       LineItemQuantityUpdate
+//     )
+// }
+
 // Creates a checkout from the current site visitor’s cart.
 async function createCheckoutFromCurrentCart() {
   const response = await wixClient.currentCart.createCheckoutFromCurrentCart({
@@ -51,12 +72,4 @@ async function removeLineItemsFromCurrentCart(itemIds: string[]) {
 // Updates the current site visitor's cart.
 async function updateCurrentCart({ cartInfo }: { cartInfo: Cart }) {
   const response = await wixClient.currentCart.updateCurrentCart({ cartInfo })
-}
-
-// Updates the quantity of one or more line items in the current site visitor's cart.
-async function updateCurrentCartLineItemQuantity(
-  items: LineItemQuantityUpdate[]
-) {
-  const response =
-    await wixClient.currentCart.updateCurrentCartLineItemQuantity(items)
 }

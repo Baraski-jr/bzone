@@ -1,4 +1,5 @@
 import { WixClient } from "@/context/wixContext"
+import { updateCurrentCartLineItemQuantity } from "@/model/ecom/ecom-api"
 import { currentCart } from "@wix/ecom"
 import { create } from "zustand"
 
@@ -14,6 +15,11 @@ type CartState = {
     quantity: number
   ) => void
   removeItem: (wixClient: WixClient, itemId: string) => void
+  // updateQuantity: (
+  //   wixClient: WixClient,
+  //   productId: string,
+  //   quantity: number
+  // ) => void
 }
 
 export const useCartStore = create<CartState>((set) => ({
@@ -38,24 +44,46 @@ export const useCartStore = create<CartState>((set) => ({
 
   addItem: async (wixClient, productId, varianId, quantity) => {
     set((state) => ({ ...state, isLoading: true }))
-    const response = await wixClient.currentCart.addToCurrentCart({
-      lineItems: [
-        {
-          catalogReference: {
-            appId: process.env.NEXT_PUBLIC_WIX_APP_ID!,
-            catalogItemId: productId,
-            ...(varianId && { options: { varianId } }),
+    try {
+      const response = await wixClient.currentCart.addToCurrentCart({
+        lineItems: [
+          {
+            catalogReference: {
+              appId: process.env.NEXT_PUBLIC_WIX_APP_ID!,
+              catalogItemId: productId,
+              ...(varianId && { options: { varianId } }),
+            },
+            quantity: quantity,
           },
-          quantity: quantity,
-        },
-      ],
-    })
-    set({
-      cart: response.cart,
-      counter: response.cart?.lineItems.length,
-      isLoading: false,
-    })
+        ],
+      })
+      set({
+        cart: response.cart,
+        counter: response.cart?.lineItems.length,
+        isLoading: false,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   },
+  // // Update
+  // updateQuantity: async (wixClient, productId, quantity) => {
+  //   set((state) => ({ ...state, isLoading: true }))
+  //   const response =
+  //     await wixClient.currentCart.updateCurrentCartLineItemQuantity([
+  //       {
+  //         _id: productId,
+  //         quantity: quantity,
+  //       },
+  //     ])
+  //   console.log(response.cart)
+
+  //   set({
+  //     cart: response.cart,
+  //     counter: response.cart?.lineItems.length,
+  //     isLoading: false,
+  //   })
+  // },
 
   removeItem: async (wixClient, itemId) => {
     set((state) => ({ ...state, isLoading: true }))

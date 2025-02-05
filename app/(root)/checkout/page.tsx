@@ -5,20 +5,34 @@ import { useCartStore } from "@/hooks/useCartStore"
 import { useWixClient } from "@/hooks/useWixCient"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { media as wixMedia } from "@wix/sdk"
 
 export default function Page() {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
-  const shiipingCost = 200
+  const SHIPINGCOST = 200
+  const { cart } = useCartStore()
 
-  const wixClient = useWixClient()
+  useEffect(() => {
+    cart?.lineItems &&
+      setTotalPrice(
+        cart!.lineItems!.reduce(
+          (sum, item) =>
+            sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
+          0
+        )
+      )
 
-  const { addItem, isLoading } = useCartStore()
+    cart?.lineItems &&
+      setTotalItems(
+        cart!.lineItems!.reduce((sum, item) => sum + item.quantity!, 0)
+      )
+  }, [cart])
 
   return (
     <section className="w-[85%] mx-auto">
       <Gutter />
-      {cart.length === 0 ? (
+      {!cart ? (
         <p className="Cart is empty"></p>
       ) : (
         <section className="flex flex-col lg:flex-row gap-x-3">
@@ -75,26 +89,33 @@ export default function Page() {
           </section>
 
           {/* Product information */}
-          <section className="w-full h-fit bg-slate-100 space-y-4 px-6 py-12 order-1 lg:order-2">
+          <section className="mt-5 w-full h-fit bg-slate-100 space-y-4 px-6 py-12 order-1 lg:order-2">
             {/* product items */}
             <section className="space-y-4">
-              {cart.map((item) => (
-                <article key={item.id} className="flex items-center gap-x-3">
+              {cart?.lineItems?.map((item) => (
+                <article key={item._id} className="flex items-center gap-x-3">
                   <div className="relative">
-                    <Image
-                      width={100}
-                      height={180}
-                      src={item.images[0]}
-                      alt={item.title}
-                      className="bg-white border-2 rounded-md object-cover"
-                    />
+                    {item.image && (
+                      <Image
+                        width={100}
+                        height={100}
+                        src={wixMedia.getScaledToFillImageUrl(
+                          item.image,
+                          100,
+                          100,
+                          {}
+                        )}
+                        alt={item.productName?.original ?? ""}
+                        className="bg-white border-2 rounded-md object-cover"
+                      />
+                    )}
                     <p className="absolute -top-2 -right-2 w-6 h-6 bg-slate-500 text-white text-sm rounded-full grid place-content-center">
                       {item.quantity}
                     </p>
                   </div>
                   <div className="flex justify-between w-full">
-                    <p className="text-sm">{item.title}</p>
-                    <p className="text-sm">GMD{item.price}.00</p>
+                    <p className="text-sm">{item.productName?.original}</p>
+                    <p className="text-sm">GMD{item.fullPrice?.amount}.00</p>
                   </div>
                 </article>
               ))}
@@ -119,16 +140,16 @@ export default function Page() {
                 <p className="text-sm">
                   Subtotal • <span> {totalItems} items</span>
                 </p>
-                <p className="text-sm">GMD{totalPrice}.00</p>
+                <p className="text-sm">GMD {totalPrice}.00</p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm">Shipping &copy;</p>
-                <p className="text-sm">GMD{shiipingCost}.00</p>
+                <p className="text-sm">GMD{SHIPINGCOST}.00</p>
               </div>
               <div className="flex items-center justify-between pt-2">
-                <p className="font-bold text-lg">Total</p>
+                <p className="font-bold text-lg">Total Amount</p>
                 <p className="font-bold text-lg">
-                  GMD{totalPrice + shiipingCost}.00
+                  GMD{totalPrice + SHIPINGCOST}.00
                 </p>
               </div>
             </div>

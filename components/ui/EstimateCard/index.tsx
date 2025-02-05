@@ -2,7 +2,6 @@
 
 import { CheckoutBtn } from "@/components/CheckoutButton"
 import { useCartStore } from "@/hooks/useCartStore"
-import { useWixClient } from "@/hooks/useWixCient"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
@@ -12,12 +11,14 @@ export const EstimateCard = () => {
   const { cart } = useCartStore()
 
   useEffect(() => {
-    const total = cart.lineItems!.reduce(
-      (sum, item) =>
-        sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
-      0
-    )
-    setTotalPrice(total)
+    cart?.lineItems &&
+      setTotalPrice(
+        cart!.lineItems!.reduce(
+          (sum, item) =>
+            sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
+          0
+        )
+      )
   }, [cart])
 
   return (
