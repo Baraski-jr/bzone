@@ -2,7 +2,6 @@
 import Gutter from "@/components/Gutter"
 import PaymentComponent from "@/components/PaymentComponent"
 import { useCartStore } from "@/hooks/useCartStore"
-import { useWixClient } from "@/hooks/useWixCient"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { media as wixMedia } from "@wix/sdk"

@@ -7,9 +7,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <section>
-      <HeaderComponent />
-      <main>{children}</main>
+    <section className="min-h-dvh flex flex-col justify-between">
+      <div>
+        <HeaderComponent />
+        <main>{children}</main>
+      </div>
       <FooterComponent />
     </section>
   )

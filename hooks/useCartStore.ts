@@ -1,5 +1,4 @@
 import { WixClient } from "@/context/wixContext"
-import { updateCurrentCartLineItemQuantity } from "@/model/ecom/ecom-api"
 import { currentCart } from "@wix/ecom"
 import { create } from "zustand"
 
@@ -15,6 +14,7 @@ type CartState = {
     quantity: number
   ) => void
   removeItem: (wixClient: WixClient, itemId: string) => void
+  emptyCart: (wixClient: WixClient) => void
   // updateQuantity: (
   //   wixClient: WixClient,
   //   productId: string,
@@ -35,9 +35,18 @@ export const useCartStore = create<CartState>((set) => ({
         isLoading: false,
         counter: cart?.lineItems.length || 0,
       })
-      console.log("Success")
     } catch (err) {
-      console.log("fail")
+      set((prev) => ({ ...prev, isLoading: false }))
+    }
+  },
+  emptyCart: async (wixClient) => {
+    try {
+      const response = await wixClient.currentCart.deleteCurrentCart()
+      set({
+        isLoading: false,
+        counter: 0,
+      })
+    } catch (err) {
       set((prev) => ({ ...prev, isLoading: false }))
     }
   },

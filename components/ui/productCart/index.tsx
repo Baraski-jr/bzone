@@ -59,12 +59,12 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             </h3>
           ) : (
             <div className="flex items-center gap-2">
-              <h3 className="text-xs text-red-500 line-through">
-                {priceFormatter(product.priceData?.price || 0)}
-              </h3>
               <h2 className="text-sm  text-slate-500">
                 {priceFormatter(product.priceData?.discountedPrice || 0)}
               </h2>
+              <h3 className="text-xs text-red-500 line-through">
+                {priceFormatter(product.priceData?.price || 0)}
+              </h3>
             </div>
           )}
 
@@ -76,9 +76,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
                 addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
               }
               disabled={isLoading || product.stock?.quantity! < 1}
-              className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
-
-              // className="flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed hover:bg-opacity-95"
+              className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-800 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
             >
               Add to cart
             </button>
