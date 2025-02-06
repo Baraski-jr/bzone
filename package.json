@@ -11,6 +11,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
+    "@vercel/analytics": "^1.4.1",
     "@wix/ecom": "^1.0.908",
     "@wix/members": "^1.0.178",
     "@wix/redirects": "^1.0.70",
