@@ -3,10 +3,13 @@ import CustomizeProduct from "@/components/customizeProduct"
 import CustomNav from "@/components/CustomNav"
 import Gutter from "@/components/Gutter"
 import ProductGallary from "@/components/ProductGallary"
+import { VARIANT_ID } from "@/lib/constants"
+import { priceFormatter } from "@/lib/CurrencyFormatter"
 import { queryProducts } from "@/model/store/store-api"
 import { products } from "@wix/stores"
 import { notFound } from "next/navigation"
 import React from "react"
+import DOMPurify from "isomorphic-dompurify"
 
 type ParamType = {
   slug: string
@@ -83,18 +86,29 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
               {product.name}
             </h2>
             <div className="py-5 border-y-4 border-gray-50">
-              <h1 className="font-bold text-base">
-                {(product.priceData?.discountedPrice ?? 0) > 0 && (
-                  <span className="text-red-600 line-through mx-1 font-normal text-sm">
-                    {product.priceData?.formatted?.price}
-                  </span>
-                )}
-                <span className="text-slate-900">
-                  {product.priceData?.formatted?.price}
-                </span>
-              </h1>
+              {product.priceData?.price ===
+              product.priceData?.discountedPrice ? (
+                <h3 className="font-medium text-2xl">
+                  {priceFormatter(product.priceData?.price || 0)}
+                </h3>
+              ) : (
+                <div className="flex items-center gap-4">
+                  <h3 className="text-sm text-red-500 line-through">
+                    {priceFormatter(product.priceData?.price || 0)}
+                  </h3>
+                  <h2 className="font-medium text-lg">
+                    {priceFormatter(product.priceData?.discountedPrice || 0)}
+                  </h2>
+                </div>
+              )}
             </div>
-            <p className="text-sm text-gray-500">{product.description}</p>
+            <div
+              className="text-sm text-gray-500"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(product.description || ""),
+              }}
+            ></div>
+            {/* <p className="text-sm text-gray-500">{product.description}</p> */}
 
             {product.variants && product.productOptions ? (
               <CustomizeProduct
@@ -106,10 +120,21 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
             ) : (
               <Add
                 productId={product._id!}
-                varianId="00000000-0000-0000-0000-000000000000"
+                varianId={VARIANT_ID}
                 stockNumber={product.stock?.quantity || 0}
               />
             )}
+            {product.additionalInfoSections?.map((section: any) => (
+              <div className="text-sm " key={section.title}>
+                <h4 className="font-semibold mb-4">{section.title}</h4>
+                <div
+                  className="text-sm text-gray-500"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(section.description || ""),
+                  }}
+                ></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

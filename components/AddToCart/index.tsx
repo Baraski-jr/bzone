@@ -30,7 +30,6 @@ const Add: React.FC<AddProp> = ({
   productId,
   varianId,
   name = "ADD TO CART",
-  disable = false,
 }) => {
   const [quantity, setQuantity] = useState<number>(1)
 
@@ -43,16 +42,15 @@ const Add: React.FC<AddProp> = ({
   }
 
   const wixClient = useWixClient()
-
   const { addItem, isLoading } = useCartStore()
 
   const ControlQuantity = () => {
     return (
       <div>
         {/* Quantity button */}
-        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 w-fit h-8">
+        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 hover:border-slate-800 w-fit h-8">
           <button
-            className="px-3 cursor-pointer hover:bg-slate-300 transition-transform duration-200"
+            className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-transform duration-200"
             onClick={() => handleQuantity("d")}
             disabled={quantity === 1}
           >
@@ -60,7 +58,7 @@ const Add: React.FC<AddProp> = ({
           </button>
           <span className="block px-3">{quantity}</span>
           <button
-            className="px-3 cursor-pointer hover:bg-slate-300 transition-all duration-300"
+            className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-transform duration-300"
             onClick={() => handleQuantity("i")}
             disabled={quantity === stockNumber}
           >
@@ -72,14 +70,14 @@ const Add: React.FC<AddProp> = ({
   }
 
   return (
-    <div className="space-y-3 w-full">
+    <div className="w-full flex flex-col md:flex-row md:items-center gap-7">
       <ControlQuantity />
       <div className="flex-1 flex items-center gap-x-5 w-full">
         {/* Add Cart button */}
         <button
           onClick={() => addItem(wixClient, productId, varianId, quantity)}
           disabled={isLoading || stockNumber < 1}
-          className="flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed hover:bg-opacity-95"
+          className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
         >
           {name}
         </button>

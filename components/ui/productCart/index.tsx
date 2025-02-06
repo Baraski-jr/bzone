@@ -7,6 +7,8 @@ import { ImageHover } from "@/components/HoverImage"
 import { products } from "@wix/stores"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
+import { VARIANT_ID } from "@/lib/constants"
+import { priceFormatter } from "@/lib/CurrencyFormatter"
 
 interface ProductCartProps {
   product: products.Product
@@ -51,34 +53,36 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
         </div>
         <div className="space-y-[12px] pt-3 px-2">
           <h2 className="text-sm capitalize line-clamp-1">{product.name}</h2>
-          <p className="text-sm font-semibold text-slate-500">
-            {product.priceData?.currency}
-            {product.priceData?.price}.00
-          </p>
+          {product.priceData?.price === product.priceData?.discountedPrice ? (
+            <h3 className="text-sm font-semibold text-slate-500">
+              {priceFormatter(product.priceData?.price || 0)}
+            </h3>
+          ) : (
+            <div className="flex items-center gap-2">
+              <h3 className="text-xs text-red-500 line-through">
+                {priceFormatter(product.priceData?.price || 0)}
+              </h3>
+              <h2 className="text-sm  text-slate-500">
+                {priceFormatter(product.priceData?.discountedPrice || 0)}
+              </h2>
+            </div>
+          )}
 
           {/* Add to cart button */}
           <div className="flex-1 flex items-center gap-x-5 w-full">
             {/* Add Cart button */}
             <button
               onClick={() =>
-                addItem(
-                  wixClient,
-                  product._id ?? "",
-                  "00000000-0000-0000-0000-000000000000",
-                  1
-                )
+                addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
               }
               disabled={isLoading || product.stock?.quantity! < 1}
-              className="flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed hover:bg-opacity-95"
+              className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
+
+              // className="flex-1 bg-slate-950 text-base text-white h-12 transition-colors duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed hover:bg-opacity-95"
             >
               Add to cart
             </button>
           </div>
-          {/* <Add
-            varianId="00000000-0000-0000-0000-000000000000"
-            productId={product._id!}
-            stockNumber={product.stock?.quantity || 0}
-          /> */}
         </div>
       </div>
     </>

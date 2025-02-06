@@ -69,7 +69,7 @@ export default async function Page({
             {/* <SideBarFilter /> */}
             <section className="space-y-5 md:space-y-4">
               <CustomNav name={collectionName} />
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-7">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-9">
                 {products.items.map((product) => (
                   <ProductCart key={product._id} product={product} />
                 ))}
