@@ -6,7 +6,7 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 
 const HeaderComponent = () => {
-  const { counter, getCart, cart } = useCartStore()
+  const { counter, getCart } = useCartStore()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
 

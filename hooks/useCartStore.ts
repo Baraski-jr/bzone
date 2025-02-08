@@ -15,11 +15,11 @@ type CartState = {
   ) => void
   removeItem: (wixClient: WixClient, itemId: string) => void
   emptyCart: (wixClient: WixClient) => void
-  // updateQuantity: (
-  //   wixClient: WixClient,
-  //   productId: string,
-  //   quantity: number
-  // ) => void
+  updateQuantity: (
+    wixClient: WixClient,
+    productId: string,
+    quantity: number
+  ) => void
 }
 
 export const useCartStore = create<CartState>((set) => ({
@@ -27,6 +27,25 @@ export const useCartStore = create<CartState>((set) => ({
   isLoading: true,
   counter: 0,
 
+  // // Update
+  updateQuantity: async (wixClient, productId, quantity) => {
+    // set((state) => ({ ...state, isLoading: true }))
+
+    const response =
+      await wixClient.currentCart.updateCurrentCartLineItemQuantity([
+        {
+          _id: productId,
+          quantity: quantity,
+        },
+      ])
+    // console.log(response.cart?.lineItems[0].quantity)
+
+    set({
+      cart: response.cart,
+      counter: response.cart?.lineItems.length,
+      isLoading: false,
+    })
+  },
   getCart: async (wixClient) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart()
@@ -39,6 +58,7 @@ export const useCartStore = create<CartState>((set) => ({
       set((prev) => ({ ...prev, isLoading: false }))
     }
   },
+
   emptyCart: async (wixClient) => {
     try {
       const response = await wixClient.currentCart.deleteCurrentCart()
@@ -75,25 +95,6 @@ export const useCartStore = create<CartState>((set) => ({
       console.log(error)
     }
   },
-  // // Update
-  // updateQuantity: async (wixClient, productId, quantity) => {
-  //   set((state) => ({ ...state, isLoading: true }))
-  //   const response =
-  //     await wixClient.currentCart.updateCurrentCartLineItemQuantity([
-  //       {
-  //         _id: productId,
-  //         quantity: quantity,
-  //       },
-  //     ])
-  //   console.log(response.cart)
-
-  //   set({
-  //     cart: response.cart,
-  //     counter: response.cart?.lineItems.length,
-  //     isLoading: false,
-  //   })
-  // },
-
   removeItem: async (wixClient, itemId) => {
     set((state) => ({ ...state, isLoading: true }))
     const response = await wixClient.currentCart.removeLineItemsFromCurrentCart(

@@ -11,7 +11,7 @@ export default function PaymentComponent() {
 
   const sumbit = () => {
     emptyCart(wixClient)
-    router.push("/success")
+    router.push("/products")
   }
 
   return (
@@ -80,9 +80,7 @@ export default function PaymentComponent() {
                 <input type="radio" name="" id="" />
                 <p className="">PayPal</p>
               </div>
-              <div className="">
-                <p className="">PayPal</p>
-              </div>
+              <p className="">PayPal</p>
             </div>
           </div>
         </div>

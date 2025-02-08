@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 
 import { ImageHover } from "@/components/HoverImage"
@@ -8,13 +8,19 @@ import { products } from "@wix/stores"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
-import { priceFormatter } from "@/lib/CurrencyFormatter"
+import { CartModel } from "../cartModel"
 
 interface ProductCartProps {
   product: products.Product
 }
 
 const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
+  const [isOpenCart, setIsOpenCart] = useState(false)
+
+  const haddleAddToCart = () => {
+    addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
+  }
+
   const wixClient = useWixClient()
 
   const { addItem, isLoading } = useCartStore()
@@ -55,15 +61,27 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           <h2 className="text-sm capitalize line-clamp-1">{product.name}</h2>
           {product.priceData?.price === product.priceData?.discountedPrice ? (
             <h3 className="text-sm font-semibold text-slate-500">
-              {priceFormatter(product.priceData?.price || 0)}
+              {new Intl.NumberFormat("GAM", {
+                style: "currency",
+                currency: "GMD",
+              }).format(product.priceData?.price || 0)}
+              {/* {priceFormatter(product.priceData?.price || 0)} */}
             </h3>
           ) : (
             <div className="flex items-center gap-2">
               <h2 className="text-sm  text-slate-500">
-                {priceFormatter(product.priceData?.discountedPrice || 0)}
+                {new Intl.NumberFormat("GAM", {
+                  style: "currency",
+                  currency: "GMD",
+                }).format(product.priceData?.discountedPrice || 0)}
+                {/* {priceFormatter(product.priceData?.discountedPrice || 0)} */}
               </h2>
               <h3 className="text-xs text-red-500 line-through">
-                {priceFormatter(product.priceData?.price || 0)}
+                {new Intl.NumberFormat("GAM", {
+                  style: "currency",
+                  currency: "GMD",
+                }).format(product.priceData?.price || 0)}
+                {/* {priceFormatter(product.priceData?.price || 0)} */}
               </h3>
             </div>
           )}
@@ -72,14 +90,18 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           <div className="flex-1 flex items-center gap-x-5 w-full">
             {/* Add Cart button */}
             <button
-              onClick={() =>
-                addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
-              }
-              disabled={isLoading || product.stock?.quantity! < 1}
-              className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-800 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
+              type="button"
+              onClick={() => haddleAddToCart()}
+              disabled={product.stock?.quantity! < 1}
+              className={`${
+                product.stock?.quantity! < 1 ||
+                (isLoading && "cursor-not-allowed")
+              } 
+                flex-1 bg-opacity-0 hover:bg-opacity-95 bg-slate-950 border-2 border-slate-800 hover:text-white text-base h-12 transition-all duration-300`}
             >
               Add to cart
             </button>
+            <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
           </div>
         </div>
       </div>

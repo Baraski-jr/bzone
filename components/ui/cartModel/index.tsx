@@ -19,7 +19,6 @@ export const CartModel = ({
   const [totalPrice, setTotalPrice] = useState(0)
 
   const animation = isOpenCart ? "right-0" : "-right-[100%]"
-  const [closeIcon, SetCloseIcon] = useState("close-black")
 
   const wixClient = useWixClient()
 
@@ -45,15 +44,14 @@ export const CartModel = ({
         <header className="text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300 h-24">
           <h2 className="">Shopping cart ({counter})</h2>
           <button
-            onMouseOver={() => SetCloseIcon("close-menu")}
-            onMouseLeave={() => SetCloseIcon("close-black")}
+            type="button"
             onClick={() => setIsOpenCart((prev) => !prev)}
-            className="p-2 cursor-pointer hover:bg-red-500 transition-all duration-200"
+            className="p-2 cursor-pointer transition-all hover:rotate-180 duration-200"
           >
             <Image
               width={16}
               height={16}
-              src={`/icons/${closeIcon}.png`}
+              src={`/icons/close-black.png`}
               alt="Cart"
               className="w-auto h-auto"
             />
@@ -94,15 +92,28 @@ export const CartModel = ({
                         {item.productName?.original ?? ""}
                       </Link>
                       <p className="text-slate-700 text-sm">
-                        GMD {item.fullPrice?.amount!}.00
+                        {new Intl.NumberFormat("GAM", {
+                          style: "currency",
+                          currency: "GMD",
+                        }).format(parseFloat(item.fullPrice?.amount!))}
                       </p>
-                      <button
-                        disabled={isLoading}
-                        onClick={() => removeItem(wixClient, item._id!)}
-                        className="underline text-xs text-slate-600 cursor-pointer disabled:cursor-not-allowed"
-                      >
-                        Remove
-                      </button>
+                      <div className="flex justify-between pr-2">
+                        <button
+                          type="button"
+                          disabled={isLoading}
+                          onClick={() => removeItem(wixClient, item._id!)}
+                          className="underline text-xs text-slate-600 cursor-pointer disabled:cursor-not-allowed"
+                        >
+                          Remove
+                        </button>
+                        <Quantity
+                          isLoading={isLoading}
+                          stockNumber={
+                            item.availability?.quantityAvailable || 0
+                          }
+                          productId={item._id || ""}
+                        />
+                      </div>
                     </figcaption>
                   </figure>
                 </li>
@@ -115,7 +126,12 @@ export const CartModel = ({
           {/* Total */}
           <div className="flex justify-between items-center">
             <h3 className="text-xl">Subtotal</h3>
-            <h3 className="font-bold text-xl">GMD {totalPrice}</h3>
+            <h3 className="font-bold text-xl">
+              {new Intl.NumberFormat("GAM", {
+                style: "currency",
+                currency: "GMD",
+              }).format(totalPrice)}
+            </h3>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
             <p className="text-sm text-slate-700">
