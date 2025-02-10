@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import React, { useState } from "react"
+import React from "react"
 import Image from "next/image"
 
 import { ImageHover } from "@/components/HoverImage"
@@ -8,15 +8,11 @@ import { products } from "@wix/stores"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
-import { CartModel } from "../cartModel"
-
 interface ProductCartProps {
   product: products.Product
 }
 
 const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
-  const [isOpenCart, setIsOpenCart] = useState(false)
-
   const haddleAddToCart = () => {
     addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
   }
@@ -30,6 +26,14 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
       href={`/products/${product.slug}`}
       className="overflow-hidden bg-[#F5F5F5] block h-full"
     >
+      {/* To show the product is sold out */}
+      {product.stock?.quantity! < 1 && (
+        <div className="bg-red-500 py-2 px-3 aspect-auto rounded-sm grid place-content-center absolute top-2 right-0 z-40">
+          <p className="text-base font-mono text-white font-medium tracking-wide">
+            Sold Out
+          </p>
+        </div>
+      )}
       {(product.media?.items?.length || 0) > 1 ? (
         <ImageHover
           url={product.media?.items?.[0]?.image?.url || "/product.png"}
@@ -94,14 +98,14 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
               onClick={() => haddleAddToCart()}
               disabled={product.stock?.quantity! < 1}
               className={`${
-                product.stock?.quantity! < 1 ||
-                (isLoading && "cursor-not-allowed")
+                product.stock?.quantity! < 1 || isLoading
+                  ? "cursor-not-allowed bg-slate-300"
+                  : "cursor-pointer bg-slate-950 hover:text-white"
               } 
-                flex-1 bg-opacity-0 hover:bg-opacity-95 bg-slate-950 border-2 border-slate-800 hover:text-white text-base h-12 transition-all duration-300`}
+                flex-1 bg-opacity-0 hover:bg-opacity-95  border-2 border-slate-800  text-base h-12 transition-all duration-300`}
             >
               Add to cart
             </button>
-            <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
           </div>
         </div>
       </div>

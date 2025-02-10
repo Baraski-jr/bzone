@@ -85,11 +85,13 @@ const CustomizeProduct = ({
 
               return option.name === "Color" ? (
                 <div
-                  className="w-8 h-8 rounded-full ring-1 ring-gray-300 relative"
-                  style={{
-                    backgroundColor: choice.value,
-                    cursor: disabled ? "not-allowed" : "pointer",
-                  }}
+                  className={`${
+                    disabled ? "cursor-not-allowed" : "cursor-pointer"
+                  } w-8 h-8 rounded-full ring-1 ring-gray-300 relative`}
+                  // style={{
+                  //   backgroundColor: choice.value,
+                  //   cursor: disabled ? "not-allowed" : "pointer",
+                  // }}
                   onClick={clickHandler}
                   key={choice.description}
                 >

@@ -4,7 +4,6 @@ import CustomNav from "@/components/CustomNav"
 import Gutter from "@/components/Gutter"
 import ProductGallary from "@/components/ProductGallary"
 import { VARIANT_ID } from "@/lib/constants"
-import { priceFormatter } from "@/lib/CurrencyFormatter"
 import { queryProducts } from "@/model/store/store-api"
 import { products } from "@wix/stores"
 import { notFound } from "next/navigation"
@@ -89,15 +88,24 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
               {product.priceData?.price ===
               product.priceData?.discountedPrice ? (
                 <h3 className="font-medium text-2xl">
-                  {priceFormatter(product.priceData?.price || 0)}
+                  {new Intl.NumberFormat("GAM", {
+                    style: "currency",
+                    currency: "GMD",
+                  }).format(product.priceData?.price || 0)}
                 </h3>
               ) : (
                 <div className="flex items-center gap-4">
                   <h3 className="text-sm text-red-500 line-through">
-                    {priceFormatter(product.priceData?.price || 0)}
+                    {new Intl.NumberFormat("GAM", {
+                      style: "currency",
+                      currency: "GMD",
+                    }).format(product.priceData?.price || 0)}
                   </h3>
                   <h2 className="font-medium text-lg">
-                    {priceFormatter(product.priceData?.discountedPrice || 0)}
+                    {new Intl.NumberFormat("GAM", {
+                      style: "currency",
+                      currency: "GMD",
+                    }).format(product.priceData?.discountedPrice || 0)}
                   </h2>
                 </div>
               )}
