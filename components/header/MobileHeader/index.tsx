@@ -29,6 +29,8 @@ const MobileHeader = ({
 
   const handleMenue = () => {
     // Close the cart Modal when the menu is open
+    setIsOpenCart(false)
+
     setOpenMenu((prev) => !prev)
   }
 
