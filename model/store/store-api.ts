@@ -12,7 +12,7 @@ interface ProductsFilters {
   collectionId?: string
   max?: number
   min?: number
-  sort?: any
+  // sort?: any
   pageNumber?: number
 }
 // Fetch category
@@ -57,7 +57,7 @@ export const queryProducts = async ({
   collectionId,
   max,
   min,
-  sort,
+  // sort,
   pageNumber,
 }: ProductsFilters = {}) => {
   const wixClient = await wixClientServer()
@@ -78,11 +78,11 @@ export const queryProducts = async ({
 
   // Sorting
 
-  if (sort) {
-    const [sortType, sortBy] = sort.split(" ")
-    if (sortType === "asc") query.ascending(sortBy)
-    if (sortType === "desc") query.descending(sortBy)
-  }
+  // if (sort) {
+  //   const [sortType, sortBy] = sort.split(" ")
+  //   if (sortType === "asc") query.ascending(sortBy)
+  //   if (sortType === "desc") query.descending(sortBy)
+  // }
   const items = await query.find()
   return items
 }

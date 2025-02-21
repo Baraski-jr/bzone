@@ -25,7 +25,7 @@ type SearchParams = {
   max: string
   collectionId: string
   limit: string
-  sort: string
+  // sort: string
   page: string
 }
 
@@ -45,17 +45,17 @@ export default async function Page({
       collection?._id || process.env.ALL_PRODUCTS_CATEGORY_ID!
 
     const collectionName = collection?.name || ""
-    let Sort
-    if (searchParamProps?.sort) {
-      Sort = searchParamProps.sort
-    }
+    // let Sort
+    // if (searchParamProps?.sort) {
+    //   Sort = searchParamProps.sort
+    // }
 
     const products = await queryProducts({
       min: parseInt(searchParamProps?.min),
       max: parseInt(searchParamProps?.max),
       collectionId: collectionId,
       limit: PRODUCT_PER_PAGE,
-      sort: Sort ?? "",
+      // sort: Sort ?? "",
       pageNumber: parseInt(searchParamProps?.page)
         ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
         : 0,
