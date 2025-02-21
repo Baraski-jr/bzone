@@ -96,6 +96,7 @@ export default async function Page({
       </>
     )
   } catch (error) {
+    console.log(error)
     return (
       <div className="relative">
         <Gutter />

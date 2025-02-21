@@ -32,7 +32,6 @@ const MobileHeader = ({
     setOpenMenu((prev) => !prev)
   }
 
-  const menu = openMenu ? "/icons/close-menu.png" : "/icons/open-menu.png"
   const animation = openMenu ? "translate-y-0" : "translate-y-[100rem]"
   const homePage =
     pathname === "/" && !isScrolled
@@ -45,14 +44,42 @@ const MobileHeader = ({
     >
       <div className="flex justify-between items-center mx-auto w-[95%] ">
         {/* Menu */}
-        <Image
-          width={40}
-          height={40}
-          src={menu}
-          alt="menu"
-          className="cursor-pointer "
-          onClick={() => handleMenue()}
-        />
+        <div className="cursor-pointer " onClick={() => handleMenue()}>
+          {openMenu ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-menu"
+            >
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          )}
+        </div>
         {/* logo */}
         <Link
           href="/"
@@ -66,14 +93,23 @@ const MobileHeader = ({
             onClick={() => toggleCart()}
             className="flex w-10 relative cursor-pointer"
           >
-            <Image
-              width={40}
-              height={40}
-              src="/icons/bag.png"
-              alt="Cart"
-              className="cursor-pointer"
-            />
-            <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-shopping-cart"
+            >
+              <circle cx="8" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" />
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+            </svg>
+            <span className="absolute -top-2 -right-1 bg-red-500 text-white w-6 h-6 rounded-full grid place-content-center">
               {counter}
             </span>
           </div>
@@ -83,7 +119,7 @@ const MobileHeader = ({
         )}
 
         <div
-          className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 transition-transform ease-in-out duration-500 ${animation}`}
+          className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 ${animation} transition-all ease-in-out duration-500`}
         >
           {navLinks.map(({ label, url }: NavLinkProps) => {
             const isActive =

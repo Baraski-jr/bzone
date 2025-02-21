@@ -7,7 +7,6 @@ import {
   querySingleCollectionById,
 } from "@/model/store/store-api"
 import { NetworkError } from "../Erros/networkErro"
-import SkeletonProductCart from "../ui/Skeleton/SkeletonProductCart"
 import { SkeletonCollection } from "../ui/Skeleton/SkeletonCollection"
 
 const Collection: React.FC<CollectionProps> = async ({

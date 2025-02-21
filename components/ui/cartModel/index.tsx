@@ -8,6 +8,7 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
 import { Quantity } from "@/components/Quantity"
+import { SkeletonCartModal } from "../Skeleton/SkeletonCartModal"
 
 export const CartModel = ({
   setIsOpenCart,
@@ -48,17 +49,33 @@ export const CartModel = ({
             onClick={() => setIsOpenCart((prev) => !prev)}
             className="p-2 cursor-pointer transition-all hover:rotate-180 duration-200"
           >
-            <Image
-              width={16}
-              height={16}
-              src={`/icons/close-black.png`}
-              alt="Cart"
-              className="w-auto h-auto"
-            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
           </button>
         </header>
-        {!cart ? (
-          <p className="">Your cart is empty</p>
+        {!cart || counter === 0 ? (
+          <div className="flex flex-col justify-center items-center  space-y-4 min-h-[60dvh]">
+            <p className="">Your cart is empty</p>
+            <Link
+              href={"/products"}
+              className="border-b-2 hover:shadow-primary hover:shadow-sm border-b-primary block w-1/2 text-center py-2 px-3 rounded-full transition-all duration-300"
+            >
+              Go Shopping
+            </Link>
+          </div>
         ) : (
           <div className="overflow-y-scroll h-[50dvh] md:min-h-[60dvh] divide-y-2 divide-slate-100 ">
             <ul className="pb-8">

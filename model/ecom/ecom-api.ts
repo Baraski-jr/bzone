@@ -33,6 +33,11 @@ export async function updateCurrentCartLineItemQuantity({
     )
 }
 
+// async function estimateCurrentCartTotals() {
+//   const response = await wixClient.currentCart.estimateCurrentCartTotals();
+//   return response
+// }
+
 // Updates the quantity of one or more line items in the current site visitor's cart.
 // async function updateCurrentCartLineItemQuantity(
 //   LineItemQuantityUpdate: LineItemQuantityUpdate[]

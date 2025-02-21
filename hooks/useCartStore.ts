@@ -1,6 +1,7 @@
 import { WixClient } from "@/context/wixContext"
 import { currentCart } from "@wix/ecom"
 import { create } from "zustand"
+// import { persist } from "zustand/middleware"
 
 type CartState = {
   cart: currentCart.Cart
