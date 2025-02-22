@@ -7,7 +7,7 @@ const Promotion = () => {
       href="/products/nike-al8"
       className="py-5 md:mt-10 h-full bg-Promotion-bg bg-cover bg-no-repeat bg-center md:py-20 px-5 w-full mx-auto flex items-center "
     >
-      <div className="mr-auto py-4">
+      <div className="mr-auto py-4 max-w-[100rem] w-[95%] mx-auto">
         <p className=" text-white font-semibold xl:font-bold xl:text-2xl">
           Special Running Shoes
         </p>

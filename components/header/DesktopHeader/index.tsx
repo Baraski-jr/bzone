@@ -2,12 +2,10 @@
 
 import { navLinks } from "@/lib/constants"
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
-import React, { useCallback, useState } from "react"
+import React, { useCallback } from "react"
 import { NavLinkProps } from "@/types"
 import { CartModel } from "@/components/ui/cartModel"
-import { ShoppingCart } from "lucide-react"
 
 const DesktopHeader = ({
   isOpenCart,
@@ -37,7 +35,7 @@ const DesktopHeader = ({
       {/* Control for the opening and closing of QuickCartView*/}
       <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
 
-      <div className="flex items-center justify-between h-24 mx-8">
+      <div className="max-w-[100rem] w-[95%] mx-auto flex items-center justify-between h-24">
         {/* logo */}
         <Link
           href="/"

@@ -13,7 +13,7 @@ const FooterComponent = () => {
 
   return (
     <footer className="bg-[#141414] text-gray-300">
-      <div className="container w-[95%] mx-auto">
+      <div className=" max-w-[100rem] w-[95%] mx-auto">
         {/* The First Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
           {/* First Col*/}

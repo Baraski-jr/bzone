@@ -31,7 +31,7 @@ const LandingHero = () => {
 
   return (
     <section className="flex md:items-center pb-7 bg-hero-bg bg-cover bg-top w-full pt-5">
-      <div className="mx-auto w-[95%] space-y-7 pt-12 md:pt-0">
+      <div className="max-w-[100rem] w-[95%] mx-auto space-y-7 pt-12 md:pt-0">
         {/* main */}
         {/* Start here */}
         <Gutter />
@@ -60,7 +60,6 @@ const LandingHero = () => {
                       {name}{" "}
                     </h1>
                     <Link
-                      // href={`/products/shoes/${slugify(product.title)}`}
                       href={`/products?category=all-products`}
                       className="inline-block rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"
                     >
@@ -79,31 +78,27 @@ const LandingHero = () => {
                   </div>
                   {/* social media icons */}
                   <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
-                    <a
+                    <span
                       title="facebook"
-                      href="#"
-                      className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
                     >
                       f
-                    </a>
+                    </span>
                     <a
                       title="X"
-                      href="#"
-                      className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
                     >
                       X
                     </a>
                     <a
                       title="lindkin"
-                      href="#"
-                      className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
                     >
                       ln
                     </a>
                     <a
                       title="telegram"
-                      href="#"
-                      className="text-green-500 grid place-content-center rounded-lg w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
                     >
                       T
                     </a>

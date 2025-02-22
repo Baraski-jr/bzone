@@ -5,7 +5,7 @@ import React from "react"
 const CollectionCategory: React.FC = () => {
   return (
     <section className="mt-6 md:mt-14 ">
-      <div className="grid grid-cols-1 md:grid-cols-2 w-[95%] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 max-w-[100rem] w-[95%] mx-auto ">
         {/* left */}
         <Link href={"/products/"} className="block overflow-hidden">
           <Image

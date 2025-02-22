@@ -27,7 +27,7 @@ const Collection: React.FC<CollectionProps> = async ({
     return (
       <section className="mt-6 md:mt-10 flex items-center">
         {/* Header */}
-        <div className="w-[95%] mx-auto">
+        <div className=" max-w-[100rem] w-[95%] mx-auto ">
           <header className="text-center space-y-2 py-5 px-2">
             <h1 className="font-bold text-slate-700 text-xl md:text-2xl capitalize">
               {caterory.name}
