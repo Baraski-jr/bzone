@@ -48,10 +48,10 @@ const Add: React.FC<AddProp> = ({
     return (
       <div>
         {/* Quantity button */}
-        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 hover:border-slate-800 w-fit h-8">
+        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 hover:border-slate-800 w-fit h-12 ">
           <button
             type="button"
-            className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-transform duration-200"
+            className="px-4 h-full text-white cursor-pointer hover:bg-slate-900 disabled:cursor-not-allowed transition-all duration-300"
             onClick={() => handleQuantity("d")}
             disabled={quantity === 1}
           >
@@ -60,7 +60,7 @@ const Add: React.FC<AddProp> = ({
           <span className="block px-3">{quantity}</span>
           <button
             type="button"
-            className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-transform duration-300"
+            className="px-4 h-full text-white cursor-pointer hover:bg-slate-900 disabled:cursor-not-allowed transition-all duration-300"
             onClick={() => handleQuantity("i")}
             disabled={quantity === stockNumber}
           >
@@ -72,11 +72,9 @@ const Add: React.FC<AddProp> = ({
   }
 
   return (
-    <div className="w-full flex flex-col md:flex-row md:items-center gap-7">
+    <div className="w-full flex md:items-center gap-7">
       <ControlQuantity />
       <div className="flex-1 flex items-center gap-x-5 w-full">
-        {/* Add Cart 
-        button */}
         <button
           type="button"
           onClick={() => addItem(wixClient, productId, varianId, quantity)}

@@ -83,15 +83,15 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
     )
 
     return (
-      <div className="max-w-[300rem] w-[90%] mx-auto">
+      <div className="max-w-[95rem] w-[90%] mx-auto">
         <Gutter />
         <section className="py-7">
-          <CustomNav name={product.name!} />
+          <CustomNav name={product.name || ""} />
           <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
             {product.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
-            <ProductGallary product={product!} />
+            <ProductGallary product={product || ""} />
             <div className="w-full flex flex-col gap-6">
               <h2 className="hidden md:block font-semibold text-xl md:text-2xl">
                 {product.name}
@@ -208,29 +208,29 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
           </div>
         </section>
         {/* Similar prodcuts */}
-        <section className="mt-4 space-y-2">
-          <h2 className="text-center font-semibold text-lg md:text-xl lg:text-2xl">
-            People Also Bought
-          </h2>
-          <p className="text-center text-slate-700 ">
-            Here’s some of our most similar products people are buying. Click to
-            discover trending style.
-          </p>
-          <div className="flex gap-x-4 w-[85%] mx-auto py-8">
-            <section className="space-y-5 md:space-y-4">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-9">
-                {SimilarProducts.map((product) => (
-                  <ProductCart key={product._id} product={product} />
-                ))}
-              </div>
-            </section>
+        <section className="my-5 space-y-3">
+          <div className="space-y-2">
+            <h2 className="text-center font-semibold text-lg md:text-xl lg:text-2xl">
+              People Also Bought
+            </h2>
+            <p className="text-center text-slate-700 ">
+              Here’s some of our most similar products people are buying. Click
+              to discover trending style.
+            </p>
           </div>
+          <section className="space-y-5 md:space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-9">
+              {SimilarProducts.map((product) => (
+                <ProductCart key={product._id} product={product} />
+              ))}
+            </div>
+          </section>
         </section>
       </div>
     )
   } catch (error) {
     return (
-      <div className="flex flex-col justify-center items-center  space-y-4 min-h-[60dvh]">
+      <div className="flex flex-col justify-center items-center space-y-4 min-h-[60dvh]">
         <p className="">Product not available</p>
         <Link
           href={"/products"}
