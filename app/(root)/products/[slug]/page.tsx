@@ -143,7 +143,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 />
               )}
               {/* Shipping estimate detail cart */}
-              <div className="flex divide-x-[1px] space-x-2 items-center border-[2px] border-slate-100 p-3 rounded-md">
+              <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-md">
                 <div className="flex flex-col justify-center space-y-2 items-center px-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -194,13 +194,16 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                   </p>
                 </div>
               </div>
-              {product.additionalInfoSections?.map((section: any) => (
-                <AdditionInforComponent
-                  key={section.title}
-                  title={section.title || ""}
-                  description={section.description || ""}
-                />
-              ))}
+              {/* Additianl information section */}
+              <div className="">
+                {product.additionalInfoSections?.map((section: any) => (
+                  <AdditionInforComponent
+                    key={section.title}
+                    title={section.title || ""}
+                    description={section.description || ""}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
