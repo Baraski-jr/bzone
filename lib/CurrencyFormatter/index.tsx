@@ -1,8 +1,15 @@
-"use client"
+const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
+  currency: "USD",
+  style: "currency",
+  minimumFractionDigits: 0,
+})
 
-export const priceFormatter = async (number: number) => {
-  return new Intl.NumberFormat("GAM", {
-    style: "currency",
-    currency: "GMD",
-  }).format(number)
+export function formatCurrency(amount: number) {
+  return CURRENCY_FORMATTER.format(amount)
+}
+
+const NUMBER_FORMATTER = new Intl.NumberFormat("en-US")
+
+export function formatNumber(number: number) {
+  return NUMBER_FORMATTER.format(number)
 }

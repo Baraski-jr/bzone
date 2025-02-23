@@ -8,13 +8,13 @@ export const SkeletonCartModal = () => {
           <ul className="pb-8">
             <li className="py-7 border-b-2 border-slate-100 w-full">
               <div className="flex gap-x-4 w-full">
-                <div className="w-24 h-20 skeleton"></div>
+                <div className="w-24 h-20 skeleton animate-pulse"></div>
                 <div className="space-y-1 w-full">
                   <div className="skeleton w-1/3 h-4"></div>
                   <div className="skeleton w-1/4 h-4"></div>
                   <div className="flex items-baseline justify-between pr-2">
                     <div className="skeleton w-1/6 h-4"></div>
-                    <div className="w-1/6 h-8 skeleton"></div>
+                    <div className="w-1/6 h-8 skeleton animate-pulse"></div>
                   </div>
                 </div>
               </div>
@@ -25,17 +25,17 @@ export const SkeletonCartModal = () => {
         <div className="py-6 pr-2 space-y-3 mb-auto absolute bottom-0 w-[85%] bg-white">
           {/* Total */}
           <div className="flex justify-between items-center">
-            <div className="h-8 w-1/3 skeleton"></div>
-            <div className="h-8 w-1/3 skeleton"></div>
+            <div className="h-8 w-1/3 skeleton animate-pulse"></div>
+            <div className="h-8 w-1/3 skeleton animate-pulse"></div>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
-            <div className="w-3/4 h-4 skeleton"></div>
+            <div className="w-3/4 h-4 skeleton animate-pulse"></div>
           </div>
-          <div className="w-3/4 h-4  skeleton"></div>
+          <div className="w-3/4 h-4  skeleton animate-pulse"></div>
           {/* Button */}
           <div className="flex gap-x-5">
-            <div className="full h-12 w-full skeleton"></div>
-            <div className="full h-12 w-full skeleton"></div>
+            <div className="full h-12 w-full skeleton animate-pulse"></div>
+            <div className="full h-12 w-full skeleton animate-pulse"></div>
           </div>
         </div>
       </div>
