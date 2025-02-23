@@ -42,7 +42,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `/payment-success?amount=${amount}`,
       },
     })
 
@@ -80,6 +80,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       {errorMessage && <div>{errorMessage}</div>}
 
       <button
+        type="button"
         disabled={!stripe || loading}
         className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
       >

@@ -45,7 +45,7 @@ export default function Page() {
           {/* Customer information */}
           <section className="w-full py-12 order-2 lg:order-1">
             {/* Express Checkout section*/}
-            <div className="space-y-2 text-center">
+            {/* <div className="space-y-2 text-center">
               <p className="text-center text-slate-400 text-sm">
                 Express checkout
               </p>
@@ -64,19 +64,19 @@ export default function Page() {
                   className="mx-auto"
                 />
               </button>
-            </div>
+            </div> */}
             {/* OR design section */}
-            <div className="py-3 flex items-center gap-x-2">
+            {/* <div className="py-3 flex items-center gap-x-2">
               <div className="w-full py-[.1rem] rounded-full bg-slate-200"></div>
               <p className="text-slate-500 text-sm">OR</p>
               <div className="w-full py-[.1rem] rounded-full bg-slate-200"></div>
-            </div>
+            </div> */}
             {/* Contact form section */}
-            <div className="py-3 space-y-3">
+            {/* <div className="py-3 space-y-3">
               <div className="flex justify-between">
-                <h3 className="font-semibold text-2xl">Contact</h3>
-                {/* <Link href={'sing-up'} className='text-blue-500 underline text-sm' >Log in</Link> */}
-              </div>
+                <h3 className="font-semibold text-2xl">Contact</h3> */}
+            {/* <Link href={'sing-up'} className='text-blue-500 underline text-sm' >Log in</Link> */}
+            {/* </div>
               <div className="">
                 <input
                   className="border-b-2 border-slate-300 py-2 w-full rounded-sm focus:outline-none focus:border-slate-900"
@@ -90,9 +90,9 @@ export default function Page() {
                 <input type="checkbox" name="offer" id="" />
                 <p className="text-sm ">Email me with news and offers</p>
               </div>
-            </div>
+            </div> */}
             {/* Delivery section posponded */}
-            <div className=""></div>
+            {/* <div className=""></div> */}
             {/* Payment section */}
             {/* <PaymentComponent /> */}
             <Elements
