@@ -5,7 +5,14 @@ import { useCartStore } from "@/hooks/useCartStore"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { media as wixMedia } from "@wix/sdk"
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js"
+import CheckoutPage from "./CheckoutPage"
 
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
+}
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 export default function Page() {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
@@ -42,7 +49,10 @@ export default function Page() {
               <p className="text-center text-slate-400 text-sm">
                 Express checkout
               </p>
-              <button className="bg-yellow-400 py-2 w-full lg:w-60 rounded-sm">
+              <button
+                type="button"
+                className="bg-yellow-400 py-2 w-full lg:w-60 rounded-sm"
+              >
                 <Image
                   width={70}
                   height={50}
@@ -84,7 +94,17 @@ export default function Page() {
             {/* Delivery section posponded */}
             <div className=""></div>
             {/* Payment section */}
-            <PaymentComponent />
+            {/* <PaymentComponent /> */}
+            <Elements
+              stripe={stripePromise}
+              options={{
+                mode: "payment",
+                amount: 50,
+                currency: "usd",
+              }}
+            >
+              <CheckoutPage amount={50} />
+            </Elements>
           </section>
 
           {/* Product information */}
