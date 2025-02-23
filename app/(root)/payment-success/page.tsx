@@ -1,10 +1,15 @@
 import Gutter from "@/components/Gutter"
 
-export default function PaymentSuccess({
-  searchParams: { amount },
+type SearchParams = {
+  amount: string
+}
+export default async function PaymentSuccess({
+  searchParams,
 }: {
-  searchParams: { amount: string }
+  searchParams: Promise<SearchParams>
 }) {
+  const searchParamProps = await searchParams
+
   return (
     <>
       <Gutter />
@@ -13,7 +18,7 @@ export default function PaymentSuccess({
           <h1 className="text-4xl font-extrabold mb-2">Thank you!</h1>
           <h2 className="text-2xl">You successfully sent</h2>
           <div className="bg-white p-2 rounded-md text-purple-500 mt-5 text-4xl font-bold">
-            ${amount}
+            ${searchParamProps.amount}
           </div>
         </div>
       </main>
