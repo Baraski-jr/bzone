@@ -51,7 +51,7 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `${process.env.DOMAIN_NAME}/payment-success?amount=${amount}`,
+        return_url: `/payment-success?amount=${amount}`,
       },
     })
 
@@ -59,9 +59,6 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
       // This point is only reached if there's an immediate error when
       // confirming the payment. Show the error to your customer (for example, payment details incomplete)
       setErrorMessage(error.message)
-    } else {
-      // The payment UI automatically closes with a success animation.
-      // Your customer is redirected to your `return_url`.
     }
 
     setLoading(false)
@@ -84,12 +81,11 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
+      {errorMessage && <div className="text-red-600 mb-4">{errorMessage}</div>}
       {clientSecret && <PaymentElement />}
       <div className="mt-4">
         <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
       </div>
-
-      {errorMessage && <div>{errorMessage}</div>}
 
       <button
         type="submit"
