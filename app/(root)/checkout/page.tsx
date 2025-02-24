@@ -55,7 +55,7 @@ export default function Page() {
                 currency: "usd",
               }}
             >
-              <CheckoutForm amount={convertToSubcurrency(50)} />
+              <CheckoutForm amount={50} />
             </Elements>
           </section>
 
