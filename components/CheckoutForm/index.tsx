@@ -1,7 +1,12 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+  LinkAuthenticationElement,
+} from "@stripe/react-stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 
@@ -10,6 +15,8 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
   const elements = useElements()
   const [errorMessage, setErrorMessage] = useState<string>()
   const [clientSecret, setClientSecret] = useState("")
+  const [email, setEmail] = useState<string>()
+
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -78,11 +85,14 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
       {clientSecret && <PaymentElement />}
+      <div className="mt-4">
+        <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
+      </div>
 
       {errorMessage && <div>{errorMessage}</div>}
 
       <button
-        type="button"
+        type="submit"
         disabled={!stripe || loading}
         className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
       >
