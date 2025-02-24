@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
 import Link from "next/link"
 import CheckoutForm from "@/components/CheckoutForm"
+import { SHIPINGCOST } from "@/lib/constants"
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
@@ -18,7 +19,6 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 export default function Page() {
   const [totalPrice, setTotalPrice] = useState(5)
   const [totalItems, setTotalItems] = useState(0)
-  const SHIPINGCOST = 200
   const { cart, counter } = useCartStore()
 
   useEffect(() => {

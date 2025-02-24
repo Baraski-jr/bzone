@@ -8,7 +8,7 @@ export const navLinks = [
     url: "/products",
   },
 ]
-
+export const SHIPINGCOST = 200
 export const IMAGE_PLACEHOLDER = "/product.png"
 export const CATERORY_IMAGE_PLACEHOLDER = "/category.png"
 export const VARIANT_ID = "00000000-0000-0000-0000-000000000000"

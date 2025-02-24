@@ -51,7 +51,7 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `/payment-success?amount=${amount}`,
+        return_url: `https://b-zone.vercel.app/payment-success?amount=${amount}`,
       },
     })
 
