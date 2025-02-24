@@ -7,7 +7,8 @@ import { media as wixMedia } from "@wix/sdk"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
-import CheckoutForm from "@/components/CheckoutForm"
+// import CheckoutForm from "@/components/CheckoutForm"
+import CheckoutPage from "./CheckoutPage"
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
@@ -55,7 +56,7 @@ export default function Page() {
                 currency: "usd",
               }}
             >
-              <CheckoutForm amount={50} />
+              <CheckoutPage amount={50} />
             </Elements>
           </section>
 
