@@ -84,12 +84,11 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
+      {clientSecret && <PaymentElement />}
+      {errorMessage && <div>{errorMessage}</div>}
       <div className="mt-4">
         <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
       </div>
-      {clientSecret && <PaymentElement />}
-
-      {errorMessage && <div>{errorMessage}</div>}
 
       {stripe && elements && (
         <button
