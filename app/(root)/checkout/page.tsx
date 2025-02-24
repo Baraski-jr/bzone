@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
 // import CheckoutForm from "@/components/CheckoutForm"
 import CheckoutPage from "./CheckoutPage"
+import Link from "next/link"
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
@@ -19,7 +20,7 @@ export default function Page() {
   const [totalPrice, setTotalPrice] = useState(5)
   const [totalItems, setTotalItems] = useState(0)
   const SHIPINGCOST = 200
-  const { cart } = useCartStore()
+  const { cart, counter } = useCartStore()
 
   useEffect(() => {
     cart?.lineItems &&
@@ -40,9 +41,19 @@ export default function Page() {
   return (
     <section className="w-[85%] mx-auto">
       <Gutter />
-      {!cart ? (
-        <p className="Cart is empty"></p>
+      {!cart || counter === 0 ? (
+        <div className="flex flex-col justify-center items-center  space-y-4 min-h-[60dvh]">
+          <p className="">Your cart is empty</p>
+          <Link
+            // onClick={() => setIsOpenCart((prev) => !prev)}
+            href={"/products"}
+            className="border-b-2 hover:shadow-primary hover:shadow-sm border-b-primary block w-1/2 text-center py-2 px-3 rounded-full transition-all duration-300"
+          >
+            Go Shopping
+          </Link>
+        </div>
       ) : (
+        // <p className="">Cart is empty</p>
         <section className="flex flex-col lg:flex-row gap-x-3">
           {/* Customer information */}
           <section className="w-full py-12 order-2 lg:order-1">
