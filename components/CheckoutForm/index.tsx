@@ -8,6 +8,7 @@ import {
   LinkAuthenticationElement,
 } from "@stripe/react-stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 
 const CheckoutForm = ({ amount }: { amount: number }) => {
   const stripe = useStripe()
@@ -83,20 +84,22 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
-      {clientSecret && <PaymentElement />}
       <div className="mt-4">
         <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
       </div>
+      {clientSecret && <PaymentElement />}
 
       {errorMessage && <div>{errorMessage}</div>}
 
-      <button
-        type="button"
-        disabled={!stripe || loading}
-        className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
-      >
-        {!loading ? `Pay GMD${amount}` : "Processing..."}
-      </button>
+      {stripe && elements && (
+        <button
+          type="button"
+          disabled={!stripe || loading}
+          className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
+        >
+          {!loading ? `Pay ${formatCurrency(amount)}` : "Processing..."}
+        </button>
+      )}
     </form>
   )
 }

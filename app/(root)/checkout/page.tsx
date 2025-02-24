@@ -15,7 +15,7 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 
 export default function Page() {
-  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(5)
   const [totalItems, setTotalItems] = useState(0)
   const SHIPINGCOST = 200
   const { cart } = useCartStore()
@@ -51,11 +51,11 @@ export default function Page() {
               stripe={stripePromise}
               options={{
                 mode: "payment",
-                amount: convertToSubcurrency(totalPrice),
+                amount: convertToSubcurrency(50),
                 currency: "usd",
               }}
             >
-              <CheckoutForm amount={convertToSubcurrency(totalPrice)} />
+              <CheckoutForm amount={convertToSubcurrency(50)} />
             </Elements>
           </section>
 
