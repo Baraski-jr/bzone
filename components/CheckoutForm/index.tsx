@@ -1,21 +1,13 @@
-"use client"
+// "use client"
 
 import React, { useEffect, useState } from "react"
-import {
-  useStripe,
-  useElements,
-  PaymentElement,
-  LinkAuthenticationElement,
-} from "@stripe/react-stripe-js"
+import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
-import { formatCurrency } from "@/lib/CurrencyFormatter"
 
 const CheckoutForm = ({ amount }: { amount: number }) => {
   const stripe = useStripe()
   const elements = useElements()
   const [errorMessage, setErrorMessage] = useState<string>()
-  const [email, setEmail] = useState<string>()
-
   const [clientSecret, setClientSecret] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -51,7 +43,7 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `/payment-success?amount=${amount}`,
+        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
       },
     })
 
@@ -85,20 +77,16 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
       {clientSecret && <PaymentElement />}
-      {errorMessage && <div>{errorMessage}</div>}
-      <div className="mt-4">
-        <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
-      </div>
 
-      {stripe && elements && (
-        <button
-          type="button"
-          disabled={!stripe || loading}
-          className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
-        >
-          {!loading ? `Pay ${formatCurrency(amount)}` : "Processing..."}
-        </button>
-      )}
+      {errorMessage && <div>{errorMessage}</div>}
+
+      <button
+        type="button"
+        disabled={!stripe || loading}
+        className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
+      >
+        {!loading ? `Pay $${amount}` : "Processing..."}
+      </button>
     </form>
   )
 }
