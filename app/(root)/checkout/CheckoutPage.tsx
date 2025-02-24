@@ -17,7 +17,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: convertToSubcurrency(amount) }),
+      body: JSON.stringify({ amount: amount }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
@@ -26,6 +26,8 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setLoading(true)
+
+    console.log("click form submited")
 
     if (!stripe || !elements) {
       return
@@ -43,7 +45,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `https://b-zone.vercel.app/payment-success?amount=${amount}`,
+        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
       },
     })
 
@@ -76,9 +78,8 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
-      {clientSecret && <PaymentElement />}
-
       {errorMessage && <div>{errorMessage}</div>}
+      {clientSecret && <PaymentElement />}
 
       <button
         type="button"
