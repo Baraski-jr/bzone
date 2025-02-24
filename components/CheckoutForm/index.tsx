@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 
 const CheckoutForm = ({ amount }: { amount: number }) => {
   const stripe = useStripe()
@@ -43,7 +44,7 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `${process.env.DOMAIN_NAME}/payment-success?amount=${amount}`,
       },
     })
 
@@ -85,7 +86,7 @@ const CheckoutForm = ({ amount }: { amount: number }) => {
         disabled={!stripe || loading}
         className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
       >
-        {!loading ? `Pay $${amount}` : "Processing..."}
+        {!loading ? `Pay ${formatCurrency(amount)}` : "Processing..."}
       </button>
     </form>
   )

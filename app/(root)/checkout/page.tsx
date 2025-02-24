@@ -7,9 +7,8 @@ import { media as wixMedia } from "@wix/sdk"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
-// import CheckoutForm from "@/components/CheckoutForm"
-import CheckoutPage from "./CheckoutPage"
 import Link from "next/link"
+import CheckoutForm from "@/components/CheckoutForm"
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined")
@@ -28,7 +27,7 @@ export default function Page() {
         cart!.lineItems!.reduce(
           (sum, item) =>
             sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
-          6
+          0
         )
       )
 
@@ -63,11 +62,11 @@ export default function Page() {
               stripe={stripePromise}
               options={{
                 mode: "payment",
-                amount: convertToSubcurrency(50),
+                amount: convertToSubcurrency(totalPrice),
                 currency: "usd",
               }}
             >
-              <CheckoutPage amount={50} />
+              <CheckoutForm amount={totalPrice + SHIPINGCOST} />
             </Elements>
           </section>
 
@@ -111,7 +110,7 @@ export default function Page() {
                 className="text-sm border-b-2 border-slate-300 py-3 px-3 text-slate-700 w-[90%] rounded-sm focus:outline-none focus:border-blue-500 hover:border-blue-200"
               />
               <button
-                type="submit"
+                type="button"
                 className="w-[20%] text-sm py-3 px-3 bg-slate-200 hover:bg-slate-300 transition-all duration-300 "
               >
                 APPLY

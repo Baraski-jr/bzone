@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react"
 import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
-import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
 
 const CheckoutPage = ({ amount }: { amount: number }) => {
   const stripe = useStripe()
@@ -82,7 +81,6 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       {clientSecret && <PaymentElement />}
 
       <button
-        type="button"
         disabled={!stripe || loading}
         className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
       >
