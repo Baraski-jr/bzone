@@ -1,25 +1,12 @@
 "use client"
 
 import { CheckoutBtn } from "@/components/CheckoutButton"
-import { useCartStore } from "@/hooks/useCartStore"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
-export const EstimateCard = () => {
+export function EstimateCard() {
   const [totalPrice, setTotalPrice] = useState(0)
-
-  const { cart } = useCartStore()
-
-  useEffect(() => {
-    cart?.lineItems &&
-      setTotalPrice(
-        cart!.lineItems!.reduce(
-          (sum, item) =>
-            sum + Number.parseFloat(item.fullPrice?.amount!) * item.quantity!,
-          0
-        )
-      )
-  }, [cart])
 
   return (
     <>
@@ -40,13 +27,13 @@ export const EstimateCard = () => {
           />
           <p className="text-sm text-slate-700">
             Do you want a gift wrap? Only{" "}
-            <span className="font-semibold">GMD10.00</span>
+            <span className="font-semibold">{formatCurrency(2)}</span>
           </p>
         </div>
         {/* Total */}
         <div className="flex justify-between items-center">
           <h3 className="">Subtotal</h3>
-          <h3 className="font-bold">GMD{totalPrice}.00</h3>
+          <h3 className="font-bold">{formatCurrency(totalPrice)}</h3>
         </div>
 
         <p className="text-sm text-slate-700">
@@ -71,7 +58,6 @@ export const EstimateCard = () => {
             </Link>
           </p>
         </div>
-
         <CheckoutBtn />
 
         <p className="text-center text-sm">Guarantee Safe Checkout</p>
