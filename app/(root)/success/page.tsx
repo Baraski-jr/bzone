@@ -1,20 +1,21 @@
 "use client"
 import { useCartStore } from "@/hooks/useCartStore"
 import { useWixClient } from "@/hooks/useWixCient"
-import { useSearchParams } from "next/navigation"
-import React, { useEffect } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
+import React, { useEffect, Suspense } from "react"
 
-function page() {
+function SuccessPageContent() {
   const searchParams = useSearchParams()
   const orderNumber = searchParams.get("orderNumber")
   const { emptyCart } = useCartStore()
   const wixClient = useWixClient()
+  const router = useRouter()
 
   useEffect(() => {
     if (orderNumber) {
       emptyCart(wixClient)
     }
-  }, [orderNumber, emptyCart])
+  }, [orderNumber, wixClient, emptyCart]) // Add emptyCart to the dependency array
 
   return (
     <div className="w-full min-h-screen bg-gray-50 flex items-center justify-center">
@@ -40,24 +41,27 @@ function page() {
             Thank You for Your Purchase!
           </h3>
           <p className="text-slate-700 text-sm">
-            Your order number is <strong>{orderNumber}</strong>.
+            Your order number is <b className="text-green-600">{orderNumber}</b>
+            .
           </p>
           <p className="text-slate-700 text-sm">
             We appreciate your business and hope you enjoy your purchase.
           </p>
         </div>
-        <div className="flex items-center mt-4 justify-center gap-4">
+        <div className="flex flex-col md:flex-row items-center mt-4 justify-center gap-4">
           <button
+            aria-label="View Your Orders"
             type="button"
             className="bg-green-600 hover:bg-green-700 py-1 px-3 text-base rounded-sm text-white"
-            onClick={() => (window.location.href = "/orders")}
+            onClick={() => router.push("/")}
           >
             View Your Orders
           </button>
           <button
+            aria-label="Continue Shopping"
             type="button"
             className="border-2 border-slate-100 py-1 px-3 text-base rounded-sm"
-            onClick={() => (window.location.href = "/products")}
+            onClick={() => router.push("/products")}
           >
             Continue Shopping
           </button>
@@ -67,4 +71,12 @@ function page() {
   )
 }
 
-export default page
+function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessPageContent />
+    </Suspense>
+  )
+}
+
+export default Page
