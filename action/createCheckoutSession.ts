@@ -25,8 +25,14 @@ export async function createCheckoutSession(
     // Determine the base URL
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? `https://${process.env.VERCEL_URL}`
+        ? `https://b-zone.vercel.app/`
         : `${process.env.NEXT_PUBLIC_BASE_URL}`
+
+    // VERCEL_URL=https://b-zone.vercel.app/
+    // const baseUrl =
+    // process.env.NODE_ENV === "production"
+    //   ? `${process.env.VERCEL_URL}`
+    //   : `${process.env.NEXT_PUBLIC_BASE_URL}`
 
     // Ensure the base URL is valid
     if (!baseUrl) {
