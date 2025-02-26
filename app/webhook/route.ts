@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
 
   if (!signature)
     return NextResponse.json({ error: "No signature" }, { status: 400 })
+  console.log("webhook")
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string
   if (!webhookSecret) {
