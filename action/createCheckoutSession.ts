@@ -6,16 +6,11 @@ import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
 import { currentCart } from "@wix/ecom"
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 import { media as wixMedia } from "@wix/sdk"
+import { Metadata } from "@/types"
 
 // export type ProductProps = {
 //   product: currentCart.LineItem[]
 // }
-
-export type Metadata = {
-  orderNumber: string
-  customerName: string
-  customerEmail?: string
-}
 
 export async function createCheckoutSession(
   products: currentCart.LineItem[],
@@ -30,9 +25,9 @@ export async function createCheckoutSession(
 
     // VERCEL_URL=https://b-zone.vercel.app/
     // const baseUrl =
-    // process.env.NODE_ENV === "production"
-    //   ? `${process.env.VERCEL_URL}`
-    //   : `${process.env.NEXT_PUBLIC_BASE_URL}`
+    //   process.env.NODE_ENV === "production"
+    //     ? `${process.env.VERCEL_URL}`
+    //     : `http:/localhost:3000`
 
     // Ensure the base URL is valid
     if (!baseUrl) {
@@ -47,13 +42,12 @@ export async function createCheckoutSession(
 
     // Create a new checkout session with the provided items
     const session = await stripe.checkout.sessions.create({
-      payment_intent_data: {
-        metadata,
-      },
+      metadata,
       mode: "payment",
       allow_promotion_codes: true,
       success_url: successUrl,
       cancel_url: cancelUrl,
+      // billing_address_collection: "auto",
       line_items: products.map((item: currentCart.LineItem) => ({
         price_data: {
           currency: "usd",
@@ -64,7 +58,7 @@ export async function createCheckoutSession(
             name: item.productName?.original || "Unnamed Product",
             description: `Product ID: ${item._id}`,
             metadata: {
-              id: item._id || "",
+              id: item._id!,
             },
             images: [
               item.image

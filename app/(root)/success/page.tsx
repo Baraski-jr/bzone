@@ -12,10 +12,29 @@ function SuccessPageContent() {
   const router = useRouter()
 
   useEffect(() => {
-    if (orderNumber) {
-      emptyCart(wixClient)
+    const handleOrderSuccess = async () => {
+      if (orderNumber) {
+        try {
+          emptyCart(wixClient)
+          console.log("Cart emptied successfully.")
+          // Optionally store order if needed
+          // await storeOrder(orderNumber)
+        } catch (error) {
+          console.error("Failed to empty cart:", error)
+        }
+      }
     }
-  }, [orderNumber, wixClient, emptyCart]) // Add emptyCart to the dependency array
+
+    handleOrderSuccess()
+  }, [orderNumber, wixClient, emptyCart]) // Add storeOrder to the dependency array
+
+  if (!orderNumber) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-red-500">Invalid order number. Please try again.</p>
+      </div>
+    )
+  }
 
   return (
     <div className="w-full min-h-screen bg-gray-50 flex items-center justify-center">
@@ -53,7 +72,7 @@ function SuccessPageContent() {
             aria-label="View Your Orders"
             type="button"
             className="bg-green-600 hover:bg-green-700 py-1 px-3 text-base rounded-sm text-white"
-            onClick={() => router.push("/")}
+            onClick={() => router.push(`/orders?orderNumber=${orderNumber}`)}
           >
             View Your Orders
           </button>

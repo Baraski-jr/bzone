@@ -1,4 +1,5 @@
 import { wixClientServer } from "@/lib/wix/ClientServer"
+import { products } from "@wix/stores"
 
 interface CollectionFilters {
   limit?: number
@@ -85,4 +86,13 @@ export const queryProducts = async ({
   // }
   const items = await query.find()
   return items
+}
+
+export async function getSingleProduct({ id }: { id: string }) {
+  const wixCient = await wixClientServer()
+  const response = await wixCient.products.getProduct(id)
+  const productId = response.product?._id
+  const prodctName = response.product?.name
+  const images = response.product?.media?.mainMedia?.image?.url
+  return { productId, prodctName, images }
 }

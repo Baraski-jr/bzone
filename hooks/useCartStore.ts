@@ -1,4 +1,5 @@
 import { WixClient } from "@/context/wixContext"
+import { OrderInfo } from "@/types"
 import { currentCart } from "@wix/ecom"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
@@ -23,11 +24,13 @@ type CartState = {
     productId: string,
     quantity: number
   ) => void
+  storeOrder: (orderInfo: OrderInfo) => void // Add storeOrder function
+  orderInfo?: OrderInfo // Add orderInfo property
 }
 
 export const useCartStore = create<CartState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cartOpen: false,
       setCartOpen: (val) => set({ cartOpen: val }),
       cart: [],
@@ -99,7 +102,7 @@ export const useCartStore = create<CartState>()(
             isLoading: false,
           })
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
       },
       removeItem: async (wixClient, itemId) => {
@@ -111,6 +114,15 @@ export const useCartStore = create<CartState>()(
           counter: response.cart?.lineItems.length,
           isLoading: false,
         })
+      },
+
+      // Store order information
+      storeOrder: (orderInfo: OrderInfo) => {
+        // Store the order information in the state or local storage
+        set((state) => ({
+          ...state,
+          orderInfo,
+        }))
       },
     }),
     { name: "cart-storage" }

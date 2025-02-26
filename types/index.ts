@@ -205,3 +205,31 @@ interface Variant {
   }
   _id: string
 }
+
+export type Metadata = {
+  orderNumber: string
+  customerName: string
+  customerEmail?: string
+}
+
+export type OrderProduct = {
+  _key: string
+  product: {
+    _type: "reference"
+    _ref: string
+  }
+  quantity: number
+}
+
+export type OrderInfo = {
+  type: string
+  orderNumber: string
+  customerName: string
+  stripeCheckoutSessionId: string
+  currency: string
+  amountDiscount: number
+  orderDate: string | number
+  products: OrderProduct[]
+  totalPrices: number
+  status: "paid" | "pending" | "failed"
+}
