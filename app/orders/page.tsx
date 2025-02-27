@@ -125,7 +125,7 @@ export default async function OrderPage({
 
               <div className="flex gap-4 mb-4 justify-center items-center">
                 <Link
-                  href={`/orders/${searchParamProps.orderNumber}/invoice`}
+                  href={`/`}
                   className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
                 >
                   Home

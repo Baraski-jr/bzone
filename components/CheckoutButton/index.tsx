@@ -1,5 +1,6 @@
 "use client"
 
+import { createCheckoutSession } from "@/action/createCheckoutSession"
 import { useCartStore } from "@/hooks/useCartStore"
 import { Metadata } from "@/types"
 import { currentCart } from "@wix/ecom"
@@ -25,26 +26,20 @@ export const CheckoutBtn = () => {
         // customerEmail: "jrbaraski@gmail.com ",
       }
 
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ products: productData, metadata }),
-      })
+      // console.log(productData)
 
-      const data = await response.json()
+      const checkoutUrl = await createCheckoutSession(productData, metadata)
 
-      if (data.url) {
-        window.location.href = data.url
+      if (checkoutUrl) {
+        console.log(checkoutUrl)
+        window.location.href = checkoutUrl
       }
     } catch (error) {
-      console.error("Error creating checkout session", error)
+      console.error("Enter createing checkout session", error)
     } finally {
       setIsLoading(false)
     }
   }
-
   return (
     <button
       type="button"
@@ -56,3 +51,4 @@ export const CheckoutBtn = () => {
     </button>
   )
 }
+0

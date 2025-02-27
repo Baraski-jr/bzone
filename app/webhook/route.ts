@@ -1,33 +1,30 @@
 "use server"
 import { redis } from "@/lib/redis"
-import stripe from "@/lib/stripe"
 import { Metadata } from "@/types"
 import { headers } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
+import { stripe } from "@/lib/stripe"
 
 export async function POST(req: NextRequest) {
-  const body = await req.text()
-  const headersList = await headers()
-  const signature = headersList.get("stripe-signature")
-
-  if (!signature) {
-    console.error("No signature")
-    return NextResponse.json({ error: "No signature" }, { status: 400 })
-  }
-
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string
-  if (!webhookSecret) {
-    console.error("Stripe webhook secret is not set.")
-    return NextResponse.json(
-      { error: "Stripe webhook secret is not set." },
-      { status: 400 }
-    )
-  }
-
   let event: Stripe.Event
 
   try {
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string
+    if (!webhookSecret) {
+      console.error("Stripe webhook secret is not set.")
+      return NextResponse.json(
+        { error: "Stripe webhook secret is not set." },
+        { status: 400 }
+      )
+    }
+    const body = await req.text()
+    const headersList = await headers()
+    const signature = headersList.get("stripe-signature")
+    if (!signature) {
+      console.error("No signature")
+      return NextResponse.json({ error: "No signature" }, { status: 400 })
+    }
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (error) {
     console.error(`Webhook Error: ${error}`)
