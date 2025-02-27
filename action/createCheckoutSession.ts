@@ -12,10 +12,6 @@ import { Metadata } from "@/types"
 import { headers } from "next/headers"
 import { stripe } from "@/lib/stripe"
 
-// export type ProductProps = {
-//   product: currentCart.LineItem[]
-// }
-
 export async function createCheckoutSession(
   products: currentCart.LineItem[],
   metadata: Metadata
