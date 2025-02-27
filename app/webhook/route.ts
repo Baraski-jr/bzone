@@ -11,12 +11,14 @@ export async function POST(req: NextRequest) {
   const headersList = await headers()
   const signature = headersList.get("stripe-signature")
 
-  if (!signature)
+  if (!signature) {
+    console.error("No signature")
     return NextResponse.json({ error: "No signature" }, { status: 400 })
-  console.log("webhook")
+  }
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string
   if (!webhookSecret) {
+    console.error("Stripe webhook secret is not set.")
     return NextResponse.json(
       { error: "Stripe webhook secret is not set." },
       { status: 400 }
@@ -28,6 +30,7 @@ export async function POST(req: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (error) {
+    console.error(`Webhook Error: ${error}`)
     return NextResponse.json(
       { error: `Webhook Error: ${error}` },
       { status: 400 }
@@ -39,10 +42,11 @@ export async function POST(req: NextRequest) {
 
     try {
       const order = await createOrder(session)
-      console.log("Order created in Successfull: ", order)
+      console.log("Order created successfully: ", order)
     } catch (error) {
+      console.error(`Error creating order: ${error}`)
       return NextResponse.json(
-        { error: `Error creating order : ${error}` },
+        { error: `Error creating order: ${error}` },
         { status: 500 }
       )
     }
@@ -50,6 +54,7 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ received: true })
 }
+
 async function createOrder(session: Stripe.Checkout.Session) {
   const {
     id,
@@ -84,12 +89,10 @@ async function createOrder(session: Stripe.Checkout.Session) {
     orderNumber,
     customerName,
     stripeCheckoutSessionId: id,
-
     currency,
     amountDiscount: total_details?.amount_discount
       ? total_details.amount_discount / 100
       : 0,
-
     products: rediProducts,
     totalPrices: amount_total ? amount_total / 100 : 0,
     status: "paid",
