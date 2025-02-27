@@ -4,6 +4,7 @@ import { OrderInfo } from "@/types"
 import { Redis } from "@upstash/redis"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
 type SearchParams = {
   orderNumber: string
@@ -14,15 +15,17 @@ export default async function OrderPage({
 }: {
   searchParams: Promise<SearchParams>
 }) {
-  const searchParamProps = await searchParams
-
   try {
+    const searchParamProps = await searchParams
+    if (!searchParamProps.orderNumber) {
+      notFound() // This will render the 404 page
+    }
     const redis = Redis.fromEnv()
     const cacheKey = `order:${searchParamProps.orderNumber}`
     // Check cache
     const order = (await redis.get(cacheKey)) as OrderInfo | null
     if (!order) {
-      return null
+      return notFound()
     }
 
     return (
