@@ -57,56 +57,58 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <>
-      <div className="relative py-5 mb-1 md:py-0 h-full rounded-md hover:bg-slate-50 transition-all duration-200">
+      <div className="relative mt-2 md:py-0 h-full rounded-md hover:shadow-lg bg-white transition-all duration-200">
         <div className="block overflow-hidden bg-[#F5F5F5]">
           <ProductImage />
         </div>
-        <div className="space-y-[12px] pt-3 px-2">
-          <h2 className="text-sm capitalize line-clamp-1">{product.name}</h2>
-          {product.priceData?.price === product.priceData?.discountedPrice ? (
-            <h3 className="text-sm font-semibold text-slate-500">
+        <div className="flex flex-col justify-between gap-3">
+          <div className="space-y-2 pt-2 text-center">
+            <h2 className="text-sm font-semibold capitalize line-clamp-1 mx-2">
+              {product.name}
+            </h2>
+            {/* {product.priceData?.price === product.priceData?.discountedPrice ? ( */}
+            <h3 className="text-sm font-semibold text-slate-700  mx-2">
               {new Intl.NumberFormat("GAM", {
                 style: "currency",
                 currency: "GMD",
               }).format(product.priceData?.price || 0)}
               {/* {priceFormatter(product.priceData?.price || 0)} */}
             </h3>
-          ) : (
-            <div className="flex items-center gap-2">
-              <h2 className="text-sm  text-slate-500">
-                {new Intl.NumberFormat("GAM", {
-                  style: "currency",
-                  currency: "GMD",
-                }).format(product.priceData?.discountedPrice || 0)}
-                {/* {priceFormatter(product.priceData?.discountedPrice || 0)} */}
-              </h2>
-              <h3 className="text-xs text-red-500 line-through">
-                {new Intl.NumberFormat("GAM", {
-                  style: "currency",
-                  currency: "GMD",
-                }).format(product.priceData?.price || 0)}
-                {/* {priceFormatter(product.priceData?.price || 0)} */}
-              </h3>
-            </div>
-          )}
+          </div>
+          {/* // ) : ( */}
+          {/* // <div className="flex items-center gap-2">
+            //   <h2 className="text-sm  text-slate-500">
+            //     {new Intl.NumberFormat("GAM", { */}
+          {/* //       style: "currency",
+            //       currency: "GMD",
+            //     }).format(product.priceData?.discountedPrice || 0)}
+            //     {/* {priceFormatter(product.priceData?.discountedPrice || 0)} */}
+          {/* //   </h2>
+            //   <h3 className="text-xs text-red-500 line-through">
+            //     {new Intl.NumberFormat("GAM", { */}
+          {/* //       style: "currency",
+            //       currency: "GMD",
+            //     }).format(product.priceData?.price || 0)}
+            //     {/* {priceFormatter(product.priceData?.price || 0)} */}
+          {/* //   </h3>
+            // </div> */}
+          {/* // )} */}
 
           {/* Add to cart button */}
-          <div className="flex-1 flex items-center gap-x-5 w-full">
-            {/* Add Cart button */}
-            <button
-              type="button"
-              onClick={() => haddleAddToCart()}
-              disabled={product.stock?.quantity! < 1}
-              className={`${
-                product.stock?.quantity! < 1 || isLoading
-                  ? "cursor-not-allowed bg-slate-300"
-                  : "cursor-pointer bg-slate-950 hover:text-white"
-              } 
-                flex-1 bg-opacity-0 hover:bg-opacity-95  border-2 border-slate-800  text-base h-12 transition-all duration-300`}
-            >
-              Add to cart
-            </button>
-          </div>
+          {/* Add Cart button */}
+          <button
+            type="button"
+            onClick={() => haddleAddToCart()}
+            disabled={product.stock?.quantity! < 1}
+            className={`${
+              product.stock?.quantity! < 1 || isLoading
+                ? "cursor-not-allowed bg-slate-300"
+                : "cursor-pointer bg-slate-950 hover:text-white"
+            } 
+                flex-1 bg-opacity-0 hover:bg-opacity-95 py-2 border-2 border-slate-400  text-base h-12 transition-all duration-500`}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </>

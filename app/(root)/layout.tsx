@@ -7,12 +7,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <section className="min-h-dvh flex flex-col justify-between">
+    <main className="min-h-dvh flex flex-col justify-between bg-gray-50">
       <div>
         <HeaderComponent />
         <main>{children}</main>
       </div>
       <FooterComponent />
-    </section>
+    </main>
   )
 }

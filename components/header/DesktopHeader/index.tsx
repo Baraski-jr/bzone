@@ -4,10 +4,16 @@ import { navLinks } from "@/lib/constants"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import React, { useCallback, useState } from "react"
+import React, { useCallback } from "react"
 import { NavLinkProps } from "@/types"
 import { CartModel } from "@/components/ui/cartModel"
-import { useCartStore } from "@/hooks/useCartStore"
+import {
+  ClerkLoaded,
+  SignedIn,
+  SignInButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs"
 
 const DesktopHeader = ({
   isOpenCart,
@@ -20,6 +26,10 @@ const DesktopHeader = ({
   counter: number
   isScrolled: boolean
 }) => {
+  // Clerk
+  const { user } = useUser()
+  // console.log(user)
+
   const pathname = usePathname()
   const homePage =
     pathname === "/" && !isScrolled
@@ -51,13 +61,17 @@ const DesktopHeader = ({
           {navLinks.map(({ url, label }: NavLinkProps) => {
             const isActive =
               pathname.split("?")[0].toLowerCase() === url.toLowerCase()
-            const linkClass = isActive
-              ? `font-bold underline-offset-3`
-              : `font-light`
+            // const linkClass = isActive
+            //   ? ` bg-opacity-20 border-b-2 border-l-2`
+            //   : `font-medium`
             return (
               <Link
                 key={label}
-                className={`inline-block capitalize text-white text-base hover:underline ${linkClass} transition-all duration-200`}
+                className={`${
+                  isActive
+                    ? ` bg-opacity-20 border-b-2 border-l-2`
+                    : `font-medium`
+                } py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-10 hover:border-b-2 inline-block capitalize text-white text-base  transition-all duration-200`}
                 href={url}
               >
                 {label}
@@ -65,21 +79,73 @@ const DesktopHeader = ({
             )
           })}
         </nav>
-        {/* Cart icon with counter */}
-        <div
-          onClick={() => toggleCart()}
-          className="flex w-10 relative cursor-pointer"
-        >
-          <Image
-            width={25}
-            height={50}
-            src="/icons/bag.png"
-            alt="Cart"
-            className="w-auto"
-          />
-          <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
-            {counter}
-          </span>
+
+        <div className="flex items-center gap-4">
+          {/* Cart icon with counter */}
+          <button
+            type="button"
+            onClick={() => toggleCart()}
+            className="py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-20 flex relative cursor-pointer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-shopping-cart"
+            >
+              <circle cx="8" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" />
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+            </svg>
+            <span className="absolute -top-2 -right-1 bg-green-400 text-white w-6 h-6 rounded-full grid place-content-center">
+              {counter}
+            </span>
+          </button>
+          {/* User */}
+          <ClerkLoaded>
+            <SignedIn>
+              <Link
+                className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
+                href={`/orders`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-package"
+                >
+                  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+                  <path d="M12 22V12" />
+                  <polyline points="3.29 7 12 12 20.71 7" />
+                  <path d="m7.5 4.27 9 5.15" />
+                </svg>
+                {/* <PackageIcon className="w-8 h-8 text-white" /> */}
+              </Link>
+            </SignedIn>{" "}
+            {user ? (
+              <div className="flex items-center gap-2">
+                <UserButton />
+                <div className="hidden sm:block text-xs text-white">
+                  <p className=""> Welcome Back</p>
+                  <p className="font-bold ">{user.username}</p>
+                </div>
+              </div>
+            ) : (
+              <SignInButton />
+            )}
+          </ClerkLoaded>
         </div>
       </div>
     </div>

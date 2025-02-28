@@ -24,13 +24,11 @@ type CartState = {
     productId: string,
     quantity: number
   ) => void
-  storeOrder: (orderInfo: OrderInfo) => void // Add storeOrder function
-  orderInfo?: OrderInfo // Add orderInfo property
 }
 
 export const useCartStore = create<CartState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       cartOpen: false,
       setCartOpen: (val) => set({ cartOpen: val }),
       cart: [],
@@ -114,15 +112,6 @@ export const useCartStore = create<CartState>()(
           counter: response.cart?.lineItems.length,
           isLoading: false,
         })
-      },
-
-      // Store order information
-      storeOrder: (orderInfo: OrderInfo) => {
-        // Store the order information in the state or local storage
-        set((state) => ({
-          ...state,
-          orderInfo,
-        }))
       },
     }),
     { name: "cart-storage" }

@@ -3,9 +3,22 @@ import React from "react"
 
 const CustomNav = ({ name }: { name?: string }) => {
   return (
-    <div className="font-mono font-semibold text-sm text-slate-600 pb-3">
-      <Link href={"/"}>Home</Link> /<Link href={"/products"}> product</Link>
-      {name && <span className="pl-2"> / {name}</span>}
+    <div className="font-mono font-semibold text-xs text-slate-500 ">
+      <Link
+        className="hover:font-bold hover:text-slate-700 transition-all duration-300"
+        href={"/"}
+      >
+        Home
+      </Link>{" "}
+      •{" "}
+      <Link
+        className="hover:font-bold hover:text-slate-700 transition-all duration-300"
+        href={"/products"}
+      >
+        {" "}
+        Product
+      </Link>
+      {name && <span className="pl-2">• {name}</span>}
     </div>
   )
 }

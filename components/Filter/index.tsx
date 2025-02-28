@@ -41,6 +41,7 @@ const Filter = () => {
         name="category"
         className="py-2 px-4 rounded-sm text-xs font-medium bg-[#EBEDED]"
         onChange={handleFilterChange}
+        title="Category"
       >
         <option value="all-products">Category</option>
         <option value="men">Men</option>
@@ -48,8 +49,8 @@ const Filter = () => {
         <option value="kid">Kid</option>
       </select>
       <select
-        name=""
-        id=""
+        name="all-filters"
+        id="all-filters"
         title="All Filters"
         className="py-2 px-4 rounded-sm text-xs font-medium bg-[#EBEDED]"
         aria-label="All Filters"

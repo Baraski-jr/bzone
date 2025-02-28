@@ -84,8 +84,8 @@ export const queryProducts = async ({
   //   if (sortType === "asc") query.ascending(sortBy)
   //   if (sortType === "desc") query.descending(sortBy)
   // }
-  const items = await query.find()
-  return items
+  const products = await query.find()
+  return products
 }
 
 export async function getSingleProduct({ id }: { id: string }) {
