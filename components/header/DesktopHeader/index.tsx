@@ -60,9 +60,7 @@ const DesktopHeader = ({
           {navLinks.map(({ url, label }: NavLinkProps) => {
             const isActive =
               pathname.split("?")[0].toLowerCase() === url.toLowerCase()
-            // const linkClass = isActive
-            //   ? ` bg-opacity-20 border-b-2 border-l-2`
-            //   : `font-medium`
+
             return (
               <Link
                 key={label}

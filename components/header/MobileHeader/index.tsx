@@ -128,30 +128,7 @@ const MobileHeader = ({
 
           {/* User */}
           <ClerkLoaded>
-            <SignedIn>
-              {/* <Link
-                className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
-                href={`/orders`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-package"
-                >
-                  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
-                  <path d="M12 22V12" />
-                  <polyline points="3.29 7 12 12 20.71 7" />
-                  <path d="m7.5 4.27 9 5.15" />
-                </svg>
-              </Link> */}
-            </SignedIn>{" "}
+            <SignedIn></SignedIn>{" "}
             {user ? (
               <div className="flex items-center gap-2">
                 <UserButton />
@@ -167,7 +144,9 @@ const MobileHeader = ({
         )}
 
         <div
-          className={`z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0 ${animation} transition-all ease-in-out duration-500`}
+          className={`${
+            openMenu ? "translate-y-0" : "translate-y-[100rem]"
+          } z-30 border-t-2 border-slate-300 flex flex-col items-center gap-5 px-5 pt-[40%] min-h-dvh w-full bg-[#84BA86] absolute top-[5rem] left-0  transition-all ease-in-out duration-500`}
         >
           {navLinks.map(({ label, url }: NavLinkProps) => {
             const isActive =
@@ -176,13 +155,40 @@ const MobileHeader = ({
             return (
               <Link
                 key={label}
-                className={`inline-block capitalize text-white text-xl  ${linkClass}`}
+                className={`${
+                  isActive
+                    ? ` bg-opacity-20 border-b-2 border-l-2`
+                    : `font-medium`
+                } py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-10 hover:border-b-2 inline-block capitalize text-white text-base  transition-all duration-200`}
                 href={url}
               >
                 {label}
               </Link>
             )
           })}
+          <Link
+            className="relative flex gap-2 items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
+            href={`/orders`}
+          >
+            {/* <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-package"
+            >
+              <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+              <path d="M12 22V12" />
+              <polyline points="3.29 7 12 12 20.71 7" />
+              <path d="m7.5 4.27 9 5.15" />
+            </svg> */}
+            <span className="">My Orders</span>
+          </Link>
         </div>
       </div>
     </div>
