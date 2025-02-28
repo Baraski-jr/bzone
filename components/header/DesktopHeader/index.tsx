@@ -2,7 +2,6 @@
 
 import { navLinks } from "@/lib/constants"
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
 import { NavLinkProps } from "@/types"

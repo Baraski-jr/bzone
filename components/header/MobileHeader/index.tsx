@@ -1,12 +1,18 @@
 "use client"
 
 import Link from "next/link"
-import React, { useCallback, useEffect, useState } from "react"
-import Image from "next/image"
+import React, { useCallback, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
 import { CartModel } from "@/components/ui/cartModel"
+import {
+  ClerkLoaded,
+  SignedIn,
+  SignInButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs"
 
 const MobileHeader = ({
   counter,
@@ -20,6 +26,8 @@ const MobileHeader = ({
   isOpenCart: boolean
   setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
+  // Clerk
+  const { user } = useUser()
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
 
@@ -90,10 +98,12 @@ const MobileHeader = ({
           B-ZONE{" "}
         </Link>
         {/* Cart icons */}
-        {!openMenu && (
-          <div
+
+        <div className="flex gap-4 items-center">
+          <button
+            type="button"
             onClick={() => toggleCart()}
-            className="flex w-10 relative cursor-pointer"
+            className="py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-20 flex relative cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +124,44 @@ const MobileHeader = ({
             <span className="absolute -top-2 -right-1 bg-red-500 text-white w-6 h-6 rounded-full grid place-content-center">
               {counter}
             </span>
-          </div>
-        )}
+          </button>
+
+          {/* User */}
+          <ClerkLoaded>
+            <SignedIn>
+              {/* <Link
+                className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
+                href={`/orders`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-package"
+                >
+                  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+                  <path d="M12 22V12" />
+                  <polyline points="3.29 7 12 12 20.71 7" />
+                  <path d="m7.5 4.27 9 5.15" />
+                </svg>
+              </Link> */}
+            </SignedIn>{" "}
+            {user ? (
+              <div className="flex items-center gap-2">
+                <UserButton />
+              </div>
+            ) : (
+              <SignInButton />
+            )}
+          </ClerkLoaded>
+        </div>
+
         {isOpenCart && (
           <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
         )}
