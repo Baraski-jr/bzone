@@ -122,7 +122,7 @@ const MobileHeader = ({
             <div
               className={`${
                 openMenu ? "translate-y-0" : "-translate-y-96"
-              } rounded-b-xl bg-primary border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out delay-75 duration-500`}
+              } rounded-b-xl bg-primary shadow-lg border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out delay-75 duration-500`}
             >
               <div className="flex flex-col justify-center gap-4 w-full p-5">
                 <div className="flex justify-between items-center">
