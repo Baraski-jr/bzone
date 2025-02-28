@@ -66,9 +66,9 @@ const DesktopHeader = ({
                 key={label}
                 className={`${
                   isActive
-                    ? ` bg-opacity-20 border-b-2 border-l-2`
-                    : `font-medium`
-                } py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-10 hover:border-b-2 inline-block capitalize text-white text-base  transition-all duration-200`}
+                    ? ` bg-opacity-20 border-slate-50 border-b-2`
+                    : `font-medium border-b-[1px]`
+                } py-2 px-4 rounded-md border-transparent active:bg-opacity-60 hover:border-slate-50 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`}
                 href={url}
               >
                 {label}

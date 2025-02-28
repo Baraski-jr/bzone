@@ -11,6 +11,8 @@ import { SkeletonCollection } from "@/components/ui/Skeleton/SkeletonCollection"
 export default async function Home() {
   return (
     <section className="relative">
+      <HeaderComponent />
+
       <LandingHero />
       <CollectionCategory />
       <Suspense fallback={<SkeletonCollection />}>

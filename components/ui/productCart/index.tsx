@@ -28,7 +28,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
     >
       {/* To show the product is sold out */}
       {product.stock?.quantity! < 1 && (
-        <div className="bg-red-500 py-2 px-3 aspect-auto rounded-sm grid place-content-center absolute top-2 right-0 z-40">
+        <div className="bg-red-500 py-2 px-3 aspect-auto rounded-sm grid place-content-center absolute top-2 right-0 z-10">
           <p className="text-base font-mono text-white font-medium tracking-wide">
             Sold Out
           </p>
