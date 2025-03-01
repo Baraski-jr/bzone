@@ -78,27 +78,55 @@ const LandingHero = () => {
                   </div>
                   {/* social media icons */}
                   <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
-                    <span
+                    <a
                       title="facebook"
-                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="a-hover cursor-pointer text-primary relative flex items-center justify-center rounded-full w-9 aspect-square font-bold text-base bg-white transition-all ease-in-out duration-200"
                     >
-                      f
-                    </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#84BA86"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-facebook"
+                      >
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                      </svg>
+                    </a>
                     <a
                       title="X"
-                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className=" a-hover cursor-pointer text-primary relative flex items-center justify-center rounded-full w-9 aspect-square font-bold text-base bg-white transition-all ease-in-out duration-200"
                     >
                       X
                     </a>
                     <a
                       title="lindkin"
-                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="a-hover cursor-pointer text-primary relative flex items-center justify-center rounded-full w-9 aspect-square font-bold text-base bg-white transition-all ease-in-out duration-200"
                     >
-                      ln
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#84BA86"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-linkedin"
+                      >
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect width="4" height="12" x="2" y="9" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
                     </a>
                     <a
                       title="telegram"
-                      className="cursor-pointer text-green-500 grid place-content-center rounded-sm w-[2rem] h-[2rem] font-bold text-base bg-white transition-all duration-200"
+                      className="a-hover cursor-pointer text-primary relative flex items-center justify-center rounded-full w-9 aspect-square font-bold text-base bg-white transition-all ease-in-out duration-200"
                     >
                       T
                     </a>
@@ -115,7 +143,7 @@ const LandingHero = () => {
               <div
                 className={`${
                   name === slide ? "bg-opacity-50" : "bg-opacity-15"
-                } drop-shadow-lg rounded-full cursor-pointer bg-white w-[6rem] h-[6rem] relative hover:scale-105 transition-all duration-500`}
+                } drop-shadow-lg rounded-full cursor-pointer bg-white w-[6rem] h-[6rem] relative hover:scale-105 a-hover transition-all duration-500`}
                 onClick={() => swiperRef.current.swiper.slideTo(id)}
               >
                 <Image

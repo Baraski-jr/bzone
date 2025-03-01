@@ -53,23 +53,32 @@
   background-color: hsl(0, 0%, 83%);
 }
 
-/* @keyframes skeleton-loading {
-  0% {
-  }
-  100% {
-    background-color: hsl(200, 20%, 95%);
-  }
+.a-hover::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  inset: -3px;
+  border-radius: inherit;
+
+  background: conic-gradient(greenyellow 100%, transparent 100%);
 }
 
-.overlay-skeleton {
-  animation: overlay-skeleton-loading 1s linear infinite alternate;
+@property --fill {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
 }
 
-@keyframes overlay-skeleton-loading {
-  0% {
-    background-color: hsl(206, 4%, 67%);
-  }
-  100% {
-    background-color: hsl(206, 4%, 69%);
-  }
-} */
+.a-hover:hover {
+  color: greenyellow;
+  --fill: 100%;
+}
+.a-hover::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  inset: -3px;
+  border-radius: inherit;
+  background: conic-gradient(greenyellow var(--fill), transparent var(--fill));
+  transition: --fill 0.6s ease-in-out;
+}
