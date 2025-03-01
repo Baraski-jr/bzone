@@ -67,18 +67,6 @@ export const useCartStore = create<CartState>()(
         }
       },
 
-      emptyCart: async (wixClient) => {
-        try {
-          const response = await wixClient.currentCart.deleteCurrentCart()
-          set({
-            isLoading: false,
-            counter: 0,
-          })
-        } catch (err) {
-          set((prev) => ({ ...prev, isLoading: false }))
-        }
-      },
-
       addItem: async (wixClient, productId, varianId, quantity) => {
         set((state) => ({ ...state, isLoading: true }))
         try {
@@ -113,7 +101,20 @@ export const useCartStore = create<CartState>()(
           isLoading: false,
         })
       },
+      emptyCart: async (wixClient) => {
+        try {
+          const response = await wixClient.currentCart.deleteCurrentCart()
+          set({
+            isLoading: false,
+            counter: 0,
+          })
+          localStorage.removeItem("cart-storage") // Clear cart from local storage
+        } catch (err) {
+          set((prev) => ({ ...prev, isLoading: false }))
+        }
+      },
     }),
+
     { name: "cart-storage" }
   )
 )

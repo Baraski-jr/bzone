@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
@@ -35,12 +35,25 @@ const MobileHeader = ({
     setIsOpenCart((prev) => !prev)
   }, [setIsOpenCart])
 
-  const handleMenue = () => {
-    // Close the cart Modal when the menu is open
-    setIsOpenCart(false)
+  // Prevent the user from clicking on the body when the menu is open
+  useEffect(() => {
+    if (openMenu) {
+      document.body.classList.add("overflow-hidden")
+    } else {
+      document.body.classList.remove("overflow-hidden")
+    }
+  }, [openMenu])
 
-    setOpenMenu((prev) => !prev)
+  const handleMenu = () => {
+    setOpenMenu(!openMenu)
   }
+
+  // const handleMenue = () => {
+  //   // Close the cart Modal when the menu is open
+  //   setIsOpenCart(false)
+
+  //   setOpenMenu((prev) => !prev)
+  // }
 
   const homePage =
     pathname === "/" && !isScrolled
@@ -57,7 +70,7 @@ const MobileHeader = ({
       >
         <div className="flex justify-between items-center mx-auto w-[95%] ">
           {/* Menu */}
-          <button type="button" onClick={() => handleMenue()}>
+          <button type="button" onClick={handleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -77,18 +90,17 @@ const MobileHeader = ({
           </button>
           {/* logo */}
           <Link
-            href="/"
+            href={"/"}
             className="font-bold text-2xl )font-serif italic text-slate-50"
           >
             B-ZONE{" "}
           </Link>
 
           {/* Cart icons */}
-
           <div className="flex gap-4 items-center">
             <button
               type="button"
-              onClick={() => toggleCart()}
+              onClick={toggleCart}
               className="py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-20 flex relative cursor-pointer"
             >
               <svg
@@ -116,18 +128,18 @@ const MobileHeader = ({
           {/* Menu */}
           <div
             className={`${
-              !openMenu && "hidden"
-            } absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70`}
+              openMenu ? " translate-y-0" : "-translate-y-[100%]"
+            } absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform duration-0 ease-in-out`}
           >
             <div
               className={`${
-                openMenu ? "translate-y-0" : "-translate-y-96"
-              } rounded-b-xl bg-primary shadow-lg border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out delay-75 duration-500`}
+                openMenu ? "translate-y-0" : "-translate-y-[100%]"
+              } rounded-b-xl bg-primary shadow-lg border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out duration-500`}
             >
               <div className="flex flex-col justify-center gap-4 w-full p-5">
                 <div className="flex justify-between items-center">
                   <button
-                    onClick={() => handleMenue()}
+                    onClick={handleMenu}
                     className="self-start hover:rotate-180 active:-rotate-180 transform transition-all duration-200 mb-3"
                     type="button"
                   >
