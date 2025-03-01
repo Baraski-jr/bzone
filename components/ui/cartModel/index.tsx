@@ -36,20 +36,30 @@ export const CartModel = ({
           0
         )
       )
-  }, [cart])
+    // Prevent the user from clicking on the body when the menu is open
+    const CartButton = () => {
+      if (isOpenCart) {
+        document.body.classList.add("overflow-hidden")
+      } else {
+        document.body.classList.remove("overflow-hidden")
+      }
+    }
+    CartButton()
+  }, [cart, isOpenCart])
 
   return (
     <div
       className={`${
-        !isOpenCart && "hidden"
-      } ${animation} fixed z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-40 transition-all ease-linear duration-300`}
+        isOpenCart ? " translate-x-0 " : "translate-x-[100%] delay-500 "
+      } ${animation} fixed z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-40 transition-transform ease-linear duration-0`}
     >
       <div
-        className={`w-10/12 lg:w-2/4 min-h-screen ml-auto bg-white px-5 md:px-12 shadow-xl flex flex-col gap-6 justify-between`}
+        className={`${
+          isOpenCart ? " translate-x-0 " : "translate-x-[100%] "
+        } w-10/12 lg:w-2/4 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
       >
         <div className="py-2">
           {/* header section */}
-
           <header className="py-2 text-lg font-semibold flex justify-between items-center border-b-2 border-slate-300">
             <h2 className="">Shopping cart ({counter})</h2>
             <button

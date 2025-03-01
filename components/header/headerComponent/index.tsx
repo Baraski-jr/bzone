@@ -4,6 +4,7 @@ import MobileHeader from "../MobileHeader"
 import DesktopHeader from "../DesktopHeader"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
+import { CartModel } from "@/components/ui/cartModel"
 
 const HeaderComponent = () => {
   const { counter, getCart } = useCartStore()
@@ -37,9 +38,9 @@ const HeaderComponent = () => {
 
   return (
     <header>
+      <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
       <MobileHeader
         counter={counter}
-        isOpenCart={isOpenCart}
         setIsOpenCart={setIsOpenCart}
         isScrolled={isScrolled}
       />

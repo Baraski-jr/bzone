@@ -5,7 +5,6 @@ import React, { useCallback, useEffect, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
-import { CartModel } from "@/components/ui/cartModel"
 import {
   ClerkLoaded,
   SignedIn,
@@ -17,13 +16,10 @@ import {
 const MobileHeader = ({
   counter,
   isScrolled,
-  isOpenCart,
   setIsOpenCart,
 }: {
   counter: number
   isScrolled: boolean
-
-  isOpenCart: boolean
   setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   // Clerk
@@ -48,13 +44,6 @@ const MobileHeader = ({
     setOpenMenu(!openMenu)
   }
 
-  // const handleMenue = () => {
-  //   // Close the cart Modal when the menu is open
-  //   setIsOpenCart(false)
-
-  //   setOpenMenu((prev) => !prev)
-  // }
-
   const homePage =
     pathname === "/" && !isScrolled
       ? "bg-opacity-0"
@@ -62,9 +51,6 @@ const MobileHeader = ({
 
   return (
     <>
-      {isOpenCart && (
-        <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
-      )}
       <div
         className={`md:hidden w-full flex items-center z-20 h-20 fixed bg-primary ${homePage} `}
       >
@@ -128,13 +114,15 @@ const MobileHeader = ({
           {/* Menu */}
           <div
             className={`${
-              openMenu ? " translate-y-0" : "-translate-y-[100%]"
-            } absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform duration-0 ease-in-out`}
+              openMenu ? " translate-y-0 " : "-translate-y-[100%] delay-500 "
+            } absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform ease-in-out duration-0`}
           >
             <div
               className={`${
-                openMenu ? "translate-y-0" : "-translate-y-[100%]"
-              } rounded-b-xl bg-primary shadow-lg border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out duration-500`}
+                openMenu
+                  ? "translate-y-0  duration-500"
+                  : "-translate-y-[100%]  duration-500"
+              }  bg-primary drop-shadow-xl rounded-b-xl border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out`}
             >
               <div className="flex flex-col justify-center gap-4 w-full p-5">
                 <div className="flex justify-between items-center">
