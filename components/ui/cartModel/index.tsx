@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { CheckoutBtn } from "@/components/CheckoutButton"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
@@ -20,6 +20,7 @@ export const CartModel = ({
   const pathname = usePathname()
   const isActive = pathname.split("?")[0].toLowerCase() === "/cart"
   const [totalPrice, setTotalPrice] = useState(0)
+  const cartModelRef = useRef<HTMLDivElement>(null)
 
   const animation = isOpenCart ? "right-0" : "-right-[100%]"
 
@@ -47,16 +48,40 @@ export const CartModel = ({
     CartButton()
   }, [cart, isOpenCart])
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        cartModelRef.current &&
+        !cartModelRef.current.contains(event.target as Node)
+      ) {
+        setIsOpenCart(false)
+      }
+    }
+
+    if (isOpenCart) {
+      document.addEventListener("mousedown", handleClickOutside)
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpenCart, setIsOpenCart])
+
   return (
     <div
       className={`${
-        isOpenCart ? " translate-x-0 " : "translate-x-[100%] delay-500 "
+        isOpenCart
+          ? " cursor-pointer translate-x-0 "
+          : "translate-x-[100%] delay-500 "
       } ${animation} fixed z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-40 transition-transform ease-linear duration-0`}
     >
       <div
+        ref={cartModelRef}
         className={`${
           isOpenCart ? " translate-x-0 " : "translate-x-[100%] "
-        } w-10/12 lg:w-2/4 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
+        } cursor-default w-10/12 lg:w-2/4 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
       >
         <div className="py-2">
           {/* header section */}

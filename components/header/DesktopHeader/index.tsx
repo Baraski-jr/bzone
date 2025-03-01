@@ -42,11 +42,8 @@ const DesktopHeader = ({
 
   return (
     <div
-      className={`fixed top-0 z-50 hidden md:block w-full ${homePage} transition-all duration-300`}
+      className={`fixed top-0 z-30 hidden md:block w-full ${homePage} transition-all duration-300`}
     >
-      {/* Control for the opening and closing of QuickCartView */}
-      <CartModel isOpenCart={isOpenCart} setIsOpenCart={setIsOpenCart} />
-
       <div className="flex items-center justify-between h-24 mx-8">
         {/* Logo */}
         <Link
@@ -81,7 +78,7 @@ const DesktopHeader = ({
           {/* Cart icon with counter */}
           <button
             type="button"
-            onClick={() => toggleCart()}
+            onClick={toggleCart}
             className="py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-20 flex relative cursor-pointer"
           >
             <svg

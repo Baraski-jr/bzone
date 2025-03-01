@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
@@ -26,6 +26,7 @@ const MobileHeader = ({
   const { user } = useUser()
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const toggleCart = useCallback(() => {
     setIsOpenCart((prev) => !prev)
@@ -43,6 +44,24 @@ const MobileHeader = ({
   const handleMenu = () => {
     setOpenMenu(!openMenu)
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpenMenu(false)
+      }
+    }
+
+    if (openMenu) {
+      document.addEventListener("mousedown", handleClickOutside)
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [openMenu])
 
   const homePage =
     pathname === "/" && !isScrolled
@@ -77,7 +96,7 @@ const MobileHeader = ({
           {/* logo */}
           <Link
             href={"/"}
-            className="font-bold text-2xl )font-serif italic text-slate-50"
+            className="font-bold text-2xl font-serif italic text-slate-50"
           >
             B-ZONE{" "}
           </Link>
@@ -113,16 +132,17 @@ const MobileHeader = ({
 
           {/* Menu */}
           <div
+            ref={menuRef}
             className={`${
               openMenu ? " translate-y-0 " : "-translate-y-[100%] delay-500 "
-            } absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform ease-in-out duration-0`}
+            } cursor-pointer absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform ease-in-out duration-0`}
           >
             <div
               className={`${
                 openMenu
                   ? "translate-y-0  duration-500"
                   : "-translate-y-[100%]  duration-500"
-              }  bg-primary drop-shadow-xl rounded-b-xl border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out`}
+              }  cursor-default bg-primary drop-shadow-xl rounded-b-xl border-t-2 flex flex-col items-center gap-5 min-h-16 w-full transition-all ease-in-out`}
             >
               <div className="flex flex-col justify-center gap-4 w-full p-5">
                 <div className="flex justify-between items-center">
