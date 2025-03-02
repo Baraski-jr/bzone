@@ -11,6 +11,7 @@ import DOMPurify from "isomorphic-dompurify"
 import Link from "next/link"
 import ProductCart from "@/components/ui/productCart"
 import { AdditionInforComponent } from "@/components/additionInforSection"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 
 type ParamType = {
   slug: string
@@ -73,9 +74,8 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
       .items[0]
 
     // Similar prodcuts
-
     const products = await queryProducts({
-      collectionId: "2fb9fd43-c692-06fd-5842-d4b954a284d8",
+      collectionId: product.collectionIds && product.collectionIds[0],
       limit: 8,
     })
     const SimilarProducts = products.items.filter(
@@ -86,7 +86,9 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
       <div className="max-w-[95rem] w-[90%] mx-auto">
         <Gutter />
         <section className="py-7">
-          <CustomNav name={product.name || ""} />
+          <div className="pb-3">
+            <CustomNav name={product.name || ""} />
+          </div>
           <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
             {product.name}
           </h2>
@@ -100,24 +102,15 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 {product.priceData?.price ===
                 product.priceData?.discountedPrice ? (
                   <h3 className="font-medium text-2xl">
-                    {new Intl.NumberFormat("GAM", {
-                      style: "currency",
-                      currency: "GMD",
-                    }).format(product.priceData?.price || 0)}
+                    {formatCurrency(product.priceData?.price || 0)}
                   </h3>
                 ) : (
                   <div className="flex items-center gap-4">
                     <h3 className="text-sm text-red-500 line-through">
-                      {new Intl.NumberFormat("GAM", {
-                        style: "currency",
-                        currency: "GMD",
-                      }).format(product.priceData?.price || 0)}
+                      {formatCurrency(product.priceData?.price || 0)}
                     </h3>
                     <h2 className="font-medium text-lg">
-                      {new Intl.NumberFormat("GAM", {
-                        style: "currency",
-                        currency: "GMD",
-                      }).format(product.priceData?.discountedPrice || 0)}
+                      {formatCurrency(product.priceData?.discountedPrice || 0)}
                     </h2>
                   </div>
                 )}

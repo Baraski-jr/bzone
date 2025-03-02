@@ -8,6 +8,7 @@ import { products } from "@wix/stores"
 import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 interface ProductCartProps {
   product: products.Product
 }
@@ -57,42 +58,33 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <>
-      <div className="relative flex flex-col justify-between mt-2 h-full rounded-md hover:shadow-lg bg-white transition-all duration-200">
+      <div className="relative mt-2 md:mt-0 flex flex-col justify-between h-full rounded-md hover:shadow-lg bg-white transition-all duration-200">
         <div className="block overflow-hidden bg-[#F5F5F5]">
           <ProductImage />
         </div>
         <div className="flex flex-col justify-between  gap-3">
           <div className="space-y-2 text-center">
-            <h2 className="text-sm font-semibold capitalize line-clamp-1 mx-2">
-              {product.name}
-            </h2>
-            {/* {product.priceData?.price === product.priceData?.discountedPrice ? ( */}
-            <h3 className="text-sm font-semibold text-slate-700  mx-2">
-              {new Intl.NumberFormat("GAM", {
-                style: "currency",
-                currency: "GMD",
-              }).format(product.priceData?.price || 0)}
-              {/* {priceFormatter(product.priceData?.price || 0)} */}
-            </h3>
+            <Link
+              href={`/products/${product.slug}`}
+              className="hover:underline text-slate-700 pt-2"
+            >
+              <h2 className="">{product.name}</h2>
+            </Link>
+            {product.priceData?.price === product.priceData?.discountedPrice ? (
+              <h3 className="text-sm font-semibold text-slate-900  mx-2">
+                {formatCurrency(product.priceData?.price || 0)}
+              </h3>
+            ) : (
+              <div className="flex justify-center items-center gap-2">
+                <h2 className="text-sm  text-slate-500">
+                  {formatCurrency(product.priceData?.discountedPrice || 0)}
+                </h2>
+                <h2 className="text-xs text-red-500 line-through">
+                  {formatCurrency(product.priceData?.price || 0)}
+                </h2>
+              </div>
+            )}
           </div>
-          {/* // ) : ( */}
-          {/* // <div className="flex items-center gap-2">
-            //   <h2 className="text-sm  text-slate-500">
-            //     {new Intl.NumberFormat("GAM", { */}
-          {/* //       style: "currency",
-            //       currency: "GMD",
-            //     }).format(product.priceData?.discountedPrice || 0)}
-            //     {/* {priceFormatter(product.priceData?.discountedPrice || 0)} */}
-          {/* //   </h2>
-            //   <h3 className="text-xs text-red-500 line-through">
-            //     {new Intl.NumberFormat("GAM", { */}
-          {/* //       style: "currency",
-            //       currency: "GMD",
-            //     }).format(product.priceData?.price || 0)}
-            //     {/* {priceFormatter(product.priceData?.price || 0)} */}
-          {/* //   </h3>
-            // </div> */}
-          {/* // )} */}
 
           {/* Add to cart button */}
           {/* Add Cart button */}

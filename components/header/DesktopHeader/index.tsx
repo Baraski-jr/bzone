@@ -5,7 +5,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
 import { NavLinkProps } from "@/types"
-import { CartModel } from "@/components/ui/cartModel"
 import {
   ClerkLoaded,
   SignedIn,

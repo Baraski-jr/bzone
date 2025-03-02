@@ -55,7 +55,7 @@ export const queryCollections = async ({
 export const queryProducts = async ({
   slug,
   limit,
-  collectionId,
+  collectionId = "",
   max,
   min,
   // sort,

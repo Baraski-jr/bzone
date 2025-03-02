@@ -46,27 +46,26 @@ const Add: React.FC<AddProp> = ({
 
   const ControlQuantity = () => {
     return (
-      <div>
-        {/* Quantity button */}
-        <div className="flex flex-2 justify-center items-center border-2 border-slate-100 hover:border-slate-800 w-fit h-12 ">
-          <button
-            type="button"
-            className="px-4 h-full text-white cursor-pointer hover:bg-slate-900 disabled:cursor-not-allowed transition-all duration-300"
-            onClick={() => handleQuantity("d")}
-            disabled={quantity === 1}
-          >
-            -
-          </button>
-          <span className="block px-3">{quantity}</span>
-          <button
-            type="button"
-            className="px-4 h-full text-white cursor-pointer hover:bg-slate-900 disabled:cursor-not-allowed transition-all duration-300"
-            onClick={() => handleQuantity("i")}
-            disabled={quantity === stockNumber}
-          >
-            +
-          </button>
-        </div>
+      <div className="flex flex-2 justify-center items-center rounded-full border-2 border-transparent hover:border-slate-100 h-12  px-2 bg-slate-200 bg-opacity-55 transition-all duration-150">
+        <button
+          type="button"
+          className="font-semibold rounded-full h-8 aspect-square flex items-center justify-center cursor-pointer text-white hover:scale-105 active:scale-75 bg-primary disabled:cursor-not-allowed disabled:bg-opacity-70 transition-transform duration-100"
+          onClick={() => handleQuantity("d")}
+          disabled={quantity === 1}
+        >
+          -
+        </button>
+        <span className=" h-full aspect-square flex items-center justify-center">
+          {quantity}
+        </span>
+        <button
+          type="button"
+          className="font-semibold rounded-full h-8 aspect-square flex items-center justify-center cursor-pointer text-white hover:scale-105 active:scale-75 bg-primary disabled:cursor-not-allowed disabled:bg-opacity-70 transition-transform duration-100"
+          onClick={() => handleQuantity("i")}
+          disabled={quantity === stockNumber}
+        >
+          +
+        </button>
       </div>
     )
   }
@@ -79,7 +78,7 @@ const Add: React.FC<AddProp> = ({
           type="button"
           onClick={() => addItem(wixClient, productId, varianId, quantity)}
           disabled={isLoading || stockNumber < 1}
-          className="flex-1 bg-opacity-0  hover:bg-opacity-95 bg-slate-950 border-2 border-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:cursor-not-allowed"
+          className="flex-1 bg-opacity-0  hover:bg-opacity-95 rounded-full bg-primary border-2 border-primary hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
         >
           {name}
         </button>

@@ -1,5 +1,4 @@
 import { WixClient } from "@/context/wixContext"
-import { OrderInfo } from "@/types"
 import { currentCart } from "@wix/ecom"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
@@ -7,7 +6,7 @@ import { persist } from "zustand/middleware"
 type CartState = {
   cartOpen: boolean
   setCartOpen: (val: boolean) => void
-  cart: currentCart.Cart
+  cart: currentCart.Cart | undefined
   isLoading: boolean
   counter: number
   getCart: (wixClient: WixClient) => void
@@ -105,6 +104,7 @@ export const useCartStore = create<CartState>()(
         try {
           const response = await wixClient.currentCart.deleteCurrentCart()
           set({
+            cart: undefined,
             isLoading: false,
             counter: 0,
           })

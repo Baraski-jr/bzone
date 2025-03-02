@@ -48,9 +48,11 @@ function ProductGallary(product: ProductGallaryProps) {
       {product.product.media?.items?.length ?? 0 > 1 ? (
         <div className="md:flex">
           {/* Thumbnails for larger screens */}
-          <div className="hidden md:block">
-            <ThumbnailImage direction="flex-col" />
-          </div>
+          {(product.product.media?.items?.length ?? 0) != 1 && (
+            <div className="hidden md:block">
+              <ThumbnailImage direction="flex-col" />
+            </div>
+          )}
           {/* Main product image */}
           <div className="relative md:w-full overflow-hidden">
             <div className="">
@@ -76,9 +78,11 @@ function ProductGallary(product: ProductGallaryProps) {
             </div>
           </div>
           {/* Thumbnails for mobile view */}
-          <div className="md:hidden pt-5">
-            <ThumbnailImage />
-          </div>
+          {(product.product.media?.items?.length ?? 0) != 1 && (
+            <div className="md:hidden pt-5">
+              <ThumbnailImage />
+            </div>
+          )}
         </div>
       ) : (
         <div className="relative md:w-full overflow-hidden">

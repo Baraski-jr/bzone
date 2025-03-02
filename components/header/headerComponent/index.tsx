@@ -7,13 +7,15 @@ import { useCartStore } from "@/hooks/useCartStore"
 import { CartModel } from "@/components/ui/cartModel"
 
 const HeaderComponent = () => {
-  const { counter, getCart } = useCartStore()
+  const { counter, cart, getCart } = useCartStore()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
 
   const wixClient = useWixClient()
   useEffect(() => {
-    getCart(wixClient)
+    if (counter > 0 && cart) {
+      getCart(wixClient)
+    }
   }, [wixClient, getCart])
 
   useEffect(() => {

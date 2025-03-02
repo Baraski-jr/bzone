@@ -36,7 +36,7 @@ export default async function Page({
 
   try {
     const collection = await querySingleCollectionBySlug({
-      slug: searchParamProps.category || "all-products",
+      slug: searchParamProps.category,
     })
 
     const collectionId =
@@ -58,40 +58,6 @@ export default async function Page({
         ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
         : 0,
     })
-
-    // console.log(products)
-    // // Shop Collection
-    // const ShopCollection = async () => {
-    //   return (
-    //     <>
-    //       <div className="flex gap-x-4 w-[85%] mx-auto py-8">
-    //         {/* <SideBarFilter /> */}
-    //         <section className="space-y-5 md:space-y-4">
-    //           <CustomNav name={collectionName} />
-    //           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-9">
-    //             {products.items.map((product) => (
-    //               <AnimatePresence key={product._id}>
-    //                 <motion.div
-    //                   initial={{ opacity: 0 }}
-    //                   animate={{ opacity: 1 }}
-    //                   exit={{ opacity: 0 }}
-    //                   transition={{ duration: 0.5 }}
-    //                 >
-    //                   <ProductCart key={product._id} product={product} />
-    //                 </motion.div>
-    //               </AnimatePresence>
-    //             ))}
-    //           </div>
-    //         </section>
-    //       </div>
-    //       <Pagination
-    //         currentPage={products?.currentPage ?? 0}
-    //         hasPrev={products?.hasPrev()!}
-    //         hasNext={products?.hasNext()!}
-    //       />
-    //     </>
-    //   )
-    // }
 
     return (
       <>

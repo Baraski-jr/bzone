@@ -9,6 +9,7 @@ import { useCartStore } from "@/hooks/useCartStore"
 import { media as wixMedia } from "@wix/sdk"
 import { Quantity } from "@/components/Quantity"
 import { usePathname } from "next/navigation"
+import { formatCurrency } from "@/lib/CurrencyFormatter"
 
 export const CartModel = ({
   setIsOpenCart,
@@ -22,7 +23,7 @@ export const CartModel = ({
   const [totalPrice, setTotalPrice] = useState(0)
   const cartModelRef = useRef<HTMLDivElement>(null)
 
-  const animation = isOpenCart ? "right-0" : "-right-[100%]"
+  // const animation = isOpenCart ? "right-0" : "-right-[100%]"
 
   const wixClient = useWixClient()
 
@@ -75,7 +76,7 @@ export const CartModel = ({
         isOpenCart
           ? " cursor-pointer translate-x-0 "
           : "translate-x-[100%] delay-500 "
-      } ${animation} fixed z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-40 transition-transform ease-linear duration-0`}
+      } fixed z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-40 transition-transform ease-linear duration-0`}
     >
       <div
         ref={cartModelRef}
@@ -121,7 +122,7 @@ export const CartModel = ({
               </Link>
             </div>
           ) : (
-            <div className="overflow-y-scroll divide-y-2 divide-slate-100 ">
+            <div className="divide-y-2 divide-slate-100 ">
               <ul className="pb-8">
                 {cart.lineItems?.map((item) => (
                   <li
@@ -153,10 +154,7 @@ export const CartModel = ({
                           {item.productName?.original ?? ""}
                         </Link>
                         <p className="text-slate-700 text-sm">
-                          {new Intl.NumberFormat("GAM", {
-                            style: "currency",
-                            currency: "GMD",
-                          }).format(parseFloat(item.fullPrice?.amount!))}
+                          {formatCurrency(parseFloat(item.fullPrice?.amount!))}
                         </p>
                         <div className="flex justify-between pr-2">
                           <button
@@ -165,7 +163,24 @@ export const CartModel = ({
                             onClick={() => removeItem(wixClient, item._id!)}
                             className="underline text-xs text-slate-600 cursor-pointer disabled:cursor-not-allowed"
                           >
-                            Remove
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="lucide lucide-trash-2 hover:text-red-500 transition-colors duration-100"
+                            >
+                              <path d="M3 6h18" />
+                              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                              <line x1="10" x2="10" y1="11" y2="17" />
+                              <line x1="14" x2="14" y1="11" y2="17" />
+                            </svg>
                           </button>
                           <Quantity
                             isLoading={isLoading}
@@ -188,12 +203,7 @@ export const CartModel = ({
           {/* Total */}
           <div className="flex justify-between items-center">
             <h3 className="text-xl">Subtotal</h3>
-            <h3 className="font-bold text-xl">
-              {new Intl.NumberFormat("GAM", {
-                style: "currency",
-                currency: "GMD",
-              }).format(totalPrice)}
-            </h3>
+            <h3 className="font-bold text-xl">{formatCurrency(totalPrice)}</h3>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
             <p className="text-sm text-slate-700">
@@ -219,7 +229,6 @@ export const CartModel = ({
             </p>
           </div>
           {/* Button */}
-
           <div className="flex gap-x-5">
             {!isActive && (
               <Link

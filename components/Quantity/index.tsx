@@ -26,27 +26,26 @@ export const Quantity = ({
     })
   }
   return (
-    <div>
-      {/* Quantity button */}
-      <div className="flex flex-2 justify-center items-center border-2 border-slate-300 w-fit h-8">
-        <button
-          type="button"
-          className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-transform duration-200"
-          onClick={() => handleQuantity("d")}
-          disabled={quantity === 1 || isLoading}
-        >
-          -
-        </button>
-        <span className="block px-3">{quantity}</span>
-        <button
-          type="button"
-          className="px-3 cursor-pointer hover:bg-slate-300 disabled:cursor-not-allowed transition-all duration-300"
-          onClick={() => handleQuantity("i")}
-          disabled={quantity === stockNumber || isLoading}
-        >
-          +
-        </button>
-      </div>
+    <div className="flex flex-2 justify-center items-center rounded-full border-2 border-transparent hover:border-slate-100 h-12  px-2 bg-slate-200 bg-opacity-55 transition-all duration-150">
+      <button
+        type="button"
+        className="rounded-full h-8 aspect-square flex items-center justify-center font-semibold cursor-pointer text-white hover:scale-105 active:scale-75 bg-primary disabled:cursor-not-allowed disabled:bg-opacity-70 transition-transform duration-100"
+        onClick={() => handleQuantity("d")}
+        disabled={quantity === 1 || isLoading}
+      >
+        -
+      </button>
+      <span className="h-full aspect-square flex items-center justify-center">
+        {quantity}
+      </span>
+      <button
+        type="button"
+        className="rounded-full h-8 aspect-square flex items-center justify-center font-semibold cursor-pointer text-white hover:scale-105 active:scale-75 bg-primary disabled:cursor-not-allowed disabled:bg-opacity-70 transition-transform duration-100"
+        onClick={() => handleQuantity("i")}
+        disabled={quantity === stockNumber || isLoading}
+      >
+        +
+      </button>
     </div>
   )
 }
