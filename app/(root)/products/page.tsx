@@ -36,7 +36,7 @@ export default async function Page({
 
   try {
     const collection = await querySingleCollectionBySlug({
-      slug: searchParamProps.category,
+      slug: searchParamProps.category || "all-products",
     })
 
     const collectionId =
