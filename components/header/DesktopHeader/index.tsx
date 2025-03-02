@@ -137,7 +137,9 @@ const DesktopHeader = ({
                 </div>
               </div>
             ) : (
-              <SignInButton />
+              <div className="bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md transition-all duration-200">
+                <SignInButton />
+              </div>
             )}
           </ClerkLoaded>
         </div>
