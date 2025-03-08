@@ -3,7 +3,6 @@ import LandingHero from "@/components/ui/hero"
 import Collections from "@/components/collectionComponent"
 import CollectionCategory from "@/components/collectionCategories"
 import Promotion from "@/components/promotion"
-import FooterComponent from "@/components/ui/footer"
 import FreeReview from "@/components/FreeReview"
 import React, { Suspense } from "react"
 import { SkeletonCollection } from "@/components/ui/Skeleton/SkeletonCollection"
@@ -36,7 +35,6 @@ export default async function Home() {
       </Suspense>
       <Promotion />
       <FreeReview />
-      <FooterComponent />
     </section>
   )
 }

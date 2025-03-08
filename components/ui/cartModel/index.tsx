@@ -1,4 +1,5 @@
 "use client"
+import { useScroll } from "motion/react"
 
 import Image from "next/image"
 import Link from "next/link"
@@ -23,7 +24,7 @@ export const CartModel = ({
   const [totalPrice, setTotalPrice] = useState(0)
   const cartModelRef = useRef<HTMLDivElement>(null)
 
-  // const animation = isOpenCart ? "right-0" : "-right-[100%]"
+  const { scrollYProgress } = useScroll()
 
   const wixClient = useWixClient()
 
