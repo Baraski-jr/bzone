@@ -5,13 +5,13 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
 import { NavLinkProps } from "@/types"
-import {
-  ClerkLoaded,
-  SignedIn,
-  SignInButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs"
+// import {
+//   ClerkLoaded,
+//   SignedIn,
+//   SignInButton,
+//   UserButton,
+//   useUser,
+// } from "@clerk/nextjs"
 
 const DesktopHeader = ({
   isOpenCart,
@@ -25,7 +25,7 @@ const DesktopHeader = ({
   isScrolled: boolean
 }) => {
   // Clerk
-  const { user } = useUser()
+  // const { user } = useUser()
   // console.log(user)
 
   const pathname = usePathname()
@@ -101,7 +101,7 @@ const DesktopHeader = ({
             </span>
           </button>
           {/* User */}
-          <ClerkLoaded>
+          {/* <ClerkLoaded>
             <SignedIn>
               <Link
                 className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
@@ -124,9 +124,8 @@ const DesktopHeader = ({
                   <polyline points="3.29 7 12 12 20.71 7" />
                   <path d="m7.5 4.27 9 5.15" />
                 </svg>
-                {/* <PackageIcon className="w-8 h-8 text-white" /> */}
               </Link>
-            </SignedIn>{" "}
+            </SignedIn>
             {user ? (
               <div className="flex items-center gap-2">
                 <UserButton />
@@ -140,7 +139,7 @@ const DesktopHeader = ({
                 <SignInButton />
               </div>
             )}
-          </ClerkLoaded>
+          </ClerkLoaded> */}
         </div>
       </div>
     </div>

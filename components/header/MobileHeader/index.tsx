@@ -5,13 +5,13 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
-import {
-  ClerkLoaded,
-  SignedIn,
-  SignInButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs"
+// import {
+//   ClerkLoaded,
+//   SignedIn,
+//   SignInButton,
+//   UserButton,
+//   useUser,
+// } from "@clerk/nextjs"
 
 const MobileHeader = ({
   counter,
@@ -23,7 +23,7 @@ const MobileHeader = ({
   setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   // Clerk
-  const { user } = useUser()
+  // const { user } = useUser()
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
@@ -167,7 +167,7 @@ const MobileHeader = ({
                       <path d="m6 6 12 12" />
                     </svg>
                   </button>
-                  <ClerkLoaded>
+                  {/* <ClerkLoaded>
                     <SignedIn></SignedIn>{" "}
                     {user ? (
                       <UserButton />
@@ -176,7 +176,7 @@ const MobileHeader = ({
                         <SignInButton />
                       </div>
                     )}
-                  </ClerkLoaded>
+                  </ClerkLoaded> */}
                 </div>
                 {navLinks.map(({ label, url }: NavLinkProps) => {
                   const isActive =
