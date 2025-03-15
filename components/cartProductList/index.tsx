@@ -6,11 +6,12 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { media as wixMedia } from "@wix/sdk"
 import { useCartStore } from "@/hooks/useCartStore"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
+import { Quantity } from "../Quantity"
 
 export const CartProductList = () => {
   const wixClient = useWixClient()
 
-  const { cart, removeItem } = useCartStore()
+  const { cart, isLoading, removeItem } = useCartStore()
 
   return (
     <section>
@@ -71,7 +72,11 @@ export const CartProductList = () => {
                     {formatCurrency(Number(item.fullPrice?.amount!))}
                   </p>
                   <div className="order-3 md:order-2">
-                    {/* <ControlQuantity product={item} /> */}
+                    <Quantity
+                      isLoading={isLoading}
+                      stockNumber={item.availability?.quantityAvailable || 0}
+                      productId={item._id || ""}
+                    />
                   </div>
                   <p className="text-slate-700 text-sm order-2 md:order-3">
                     <span className="md:hidden">Total price:</span>{" "}

@@ -1,11 +1,11 @@
 export const navLinks = [
   {
     label: "home",
-    url: "/",
+    url: "${process.env.NEXT_PUBLIC_BASE_URL}",
   },
   {
     label: "Products",
-    url: "/products",
+    url: process.env.NEXT_PUBLIC_BASE_URL + "/products",
   },
 ]
 export const SHIPINGCOST = 200
