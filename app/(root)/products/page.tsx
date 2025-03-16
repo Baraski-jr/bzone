@@ -52,11 +52,11 @@ export default async function Page({
       min: parseInt(searchParamProps?.min),
       max: parseInt(searchParamProps?.max),
       collectionId: collectionId,
-      limit: PRODUCT_PER_PAGE,
+      // limit: PRODUCT_PER_PAGE,
       // sort: Sort ?? "",
-      pageNumber: parseInt(searchParamProps?.page)
-        ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
-        : 0,
+      // pageNumber: parseInt(searchParamProps?.page)
+      //   ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
+      //   : 0,
     })
 
     return (

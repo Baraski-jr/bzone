@@ -120,8 +120,8 @@ export const CartModel = ({
               </Link>
             </div>
           ) : (
-            <div className="divide-y-2 divide-slate-100 ">
-              <ul className="pb-8">
+            <div className="max-h-[60vh] portrait:max-h-dvh overflow-y-scroll divide-y-2 divide-slate-100 ">
+              <ul className="pb-8 ">
                 {cart.lineItems?.map((item) => (
                   <li
                     key={item._id}
@@ -197,7 +197,7 @@ export const CartModel = ({
           )}
         </div>
         {/* Sub footer */}
-        <div className="py-6 pr-2 space-y-3 sticky bottom-0">
+        <div className="bg-white py-6 pr-2 space-y-3 sticky bottom-0">
           {/* Total */}
           <div className="flex justify-between items-center">
             <h3 className="text-xl">Subtotal</h3>

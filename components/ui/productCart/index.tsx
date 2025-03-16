@@ -85,13 +85,11 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
               </div>
             )}
           </div>
-
-          {/* Add to cart button */}
-          {/* Add Cart button */}
+          {/* Add to cart button */}{" "}
           <button
             type="button"
             onClick={haddleAddToCart}
-            disabled={product.stock?.quantity! < 1 || isLoading}
+            disabled={product.stock?.quantity! < 1}
             className="flex-1 bg-opacity-0  hover:bg-opacity-95  bg-primary border-2 py-2 border-primary hover:text-white text-base h-20 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
           >
             Add to cart

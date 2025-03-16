@@ -47,6 +47,7 @@ const Filter = () => {
         <option value="men">Men</option>
         <option value="women">Women</option>
         <option value="kid">Kid</option>
+        <option value="watches">Watches</option>
       </select>
       <select
         name="all-filters"
