@@ -6,7 +6,7 @@ import { Metadata } from "@/types"
 import { currentCart } from "@wix/ecom"
 import { useEffect, useState } from "react"
 
-export const CheckoutBtn = () => {
+export const CheckoutBtn = ({ name = "Checkout" }: { name?: string }) => {
   const [isLoading, setIsLoading] = useState(false)
   const { cart, counter } = useCartStore()
   const [productData, setProductData] = useState<currentCart.LineItem[]>([])
@@ -47,7 +47,7 @@ export const CheckoutBtn = () => {
       disabled={isLoading || counter === 0}
       className="block w-full text-center text-sm bg-black hover:bg-opacity-90 text-white p-3 disabled:bg-opacity-75 disabled:cursor-not-allowed"
     >
-      {isLoading ? "Processing..." : "Checkout"}
+      {isLoading ? "Processing..." : name}
     </button>
   )
 }

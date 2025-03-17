@@ -12,6 +12,7 @@ import Link from "next/link"
 import ProductCart from "@/components/ui/productCart"
 import { AdditionInforComponent } from "@/components/additionInforSection"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
+import { CheckoutBtn } from "@/components/CheckoutButton"
 
 type ParamType = {
   slug: string
@@ -121,13 +122,18 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                   __html: DOMPurify.sanitize(product.description || ""),
                 }}
               ></div>
-              {product.variants && product.productOptions ? (
-                <CustomizeProduct
-                  product={product}
-                  productId={product._id!}
-                  variants={product.variants}
-                  productOptions={product.productOptions}
-                />
+              {/* Variation */}
+              {/* {product.variants && product.productOptions ? ( 
+              <CustomizeProduct
+                //   product={product}
+                //   productId={product._id!}
+                //   variants={product.variants}
+                //   productOptions={product.productOptions}
+                // /> */}
+              {/* // ) : ( */}
+
+              {product.stock?.quantity == 1 ? (
+                <CheckoutBtn name="Buy Now" />
               ) : (
                 <Add
                   productId={product._id!}
@@ -135,6 +141,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                   stockNumber={product.stock?.quantity || 0}
                 />
               )}
+
               {/* Shipping estimate detail cart */}
               <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-md">
                 <div className="flex flex-col justify-center space-y-2 items-center px-2">
