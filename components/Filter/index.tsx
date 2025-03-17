@@ -44,10 +44,11 @@ const Filter = () => {
         title="Category"
       >
         <option value="all-products">Category</option>
-        <option value="men">Men</option>
-        <option value="women">Women</option>
-        <option value="kid">Kid</option>
+        <option value="men">Men' Shoe</option>
+        <option value="women">Women' Shoe</option>
+        <option value="kid">Kid' Shoe</option>
         <option value="watches">Watches</option>
+        <option value="laptops">Laptops</option>
       </select>
       <select
         name="all-filters"
