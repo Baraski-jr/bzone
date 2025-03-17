@@ -1,5 +1,4 @@
 import Add from "@/components/AddToCart"
-import CustomizeProduct from "@/components/customizeProduct"
 import CustomNav from "@/components/CustomNav"
 import Gutter from "@/components/Gutter"
 import ProductGallary from "@/components/ProductGallary"
@@ -12,7 +11,7 @@ import Link from "next/link"
 import ProductCart from "@/components/ui/productCart"
 import { AdditionInforComponent } from "@/components/additionInforSection"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
-import { CheckoutBtn } from "@/components/CheckoutButton"
+import { BuyBtn } from "@/components/buyButton"
 
 type ParamType = {
   slug: string
@@ -133,7 +132,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
               {/* // ) : ( */}
 
               {product.stock?.quantity == 1 ? (
-                <CheckoutBtn name="Buy Now" />
+                <BuyBtn product={product} />
               ) : (
                 <Add
                   productId={product._id!}

@@ -10,6 +10,7 @@ import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { CheckoutBtn } from "@/components/CheckoutButton"
+import { BuyBtn } from "@/components/buyButton"
 interface ProductCartProps {
   product: products.Product
 }
@@ -95,7 +96,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           >
             Add to cart
           </button>
-          <CheckoutBtn name="Buy Now" />
+          <BuyBtn product={product} />
         </div>
       </div>
     </>

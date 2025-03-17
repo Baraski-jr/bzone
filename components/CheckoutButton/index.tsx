@@ -3,17 +3,48 @@
 import { createCheckoutSession } from "@/action/createCheckoutSession"
 import { useCartStore } from "@/hooks/useCartStore"
 import { Metadata } from "@/types"
-import { currentCart } from "@wix/ecom"
 import { useEffect, useState } from "react"
 
+export interface LineItem {
+  price_data: {
+    currency: string
+    unit_amount: number | number
+    product_data: {
+      name: string
+      description: string
+      metadata: {
+        id: string
+      }
+      images: string[]
+    }
+  }
+  quantity: number
+}
 export const CheckoutBtn = ({ name = "Checkout" }: { name?: string }) => {
   const [isLoading, setIsLoading] = useState(false)
   const { cart, counter } = useCartStore()
-  const [productData, setProductData] = useState<currentCart.LineItem[]>([])
+  const [productData, setProductData] = useState<LineItem[]>([])
 
   useEffect(() => {
     if (cart?.lineItems) {
-      setProductData(cart.lineItems)
+      const items: LineItem[] = cart.lineItems.map((item) => ({
+        price_data: {
+          currency: "usd",
+          unit_amount: Number(item.price?.amount) || 0,
+          product_data: {
+            name: item.productName?.original || "Unnamed Product",
+            description: `Product ID: ${item._id}`,
+            metadata: {
+              id: item._id!,
+            },
+            images: [
+              item.image ? item.image : "https://via.placeholder.com/150",
+            ],
+          },
+        },
+        quantity: item.quantity ?? 1,
+      }))
+      setProductData(items)
     }
   }, [cart])
 

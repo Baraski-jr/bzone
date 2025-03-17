@@ -11,9 +11,10 @@ import { media as wixMedia } from "@wix/sdk"
 import { Metadata } from "@/types"
 import { headers } from "next/headers"
 import { stripe } from "@/lib/stripe"
+import { LineItem } from "@/components/buyButton"
 
 export async function createCheckoutSession(
-  products: currentCart.LineItem[],
+  products: LineItem[],
   metadata: Metadata
 ) {
   const baseUrl: string = (await headers()).get("origin") as string
@@ -38,21 +39,26 @@ export async function createCheckoutSession(
         success_url: successUrl,
         cancel_url: cancelUrl,
         // billing_address_collection: "auto",
-        line_items: products.map((item: currentCart.LineItem) => ({
+        line_items: products.map((item: LineItem) => ({
           price_data: {
             currency: "usd",
             unit_amount: convertToSubcurrency(
-              Number(item.fullPrice?.amount) ?? 0
+              Number(item.price_data.unit_amount) ?? 0
             ),
             product_data: {
-              name: item.productName?.original || "Unnamed Product",
-              description: `Product ID: ${item._id}`,
+              name: item.price_data.product_data.name,
+              description: `Product ID: ${item.price_data.product_data.description}`,
               metadata: {
-                id: item._id!,
+                id: item.price_data.product_data.description,
               },
               images: [
-                item.image
-                  ? wixMedia.getScaledToFillImageUrl(item.image, 100, 100, {})
+                item.price_data.product_data.images
+                  ? wixMedia.getScaledToFillImageUrl(
+                      item.price_data.product_data.images[0],
+                      100,
+                      100,
+                      {}
+                    )
                   : IMAGE_PLACEHOLDER,
               ],
             },
