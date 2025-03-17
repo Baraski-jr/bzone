@@ -20,7 +20,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   const wixClient = useWixClient()
 
-  const { addItem, isLoading } = useCartStore()
+  const { addItem } = useCartStore()
 
   const ProductImage: React.FC = () => (
     <Link
