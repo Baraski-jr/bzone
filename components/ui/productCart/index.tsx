@@ -9,6 +9,7 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
+import { CheckoutBtn } from "@/components/CheckoutButton"
 interface ProductCartProps {
   product: products.Product
 }
@@ -94,6 +95,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           >
             Add to cart
           </button>
+          <CheckoutBtn name="Buy Now" />
         </div>
       </div>
     </>
