@@ -20,7 +20,7 @@ export interface LineItem {
   }
   quantity: number
 }
-export const CheckoutBtn = ({ name = "Checkout" }: { name?: string }) => {
+export const CheckoutBtn = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { cart, counter } = useCartStore()
   const [productData, setProductData] = useState<LineItem[]>([])
@@ -78,7 +78,7 @@ export const CheckoutBtn = ({ name = "Checkout" }: { name?: string }) => {
       disabled={isLoading || counter === 0}
       className="block w-full text-center text-sm bg-black hover:bg-opacity-90 text-white p-3 disabled:bg-opacity-75 disabled:cursor-not-allowed"
     >
-      {isLoading ? "Processing..." : name}
+      {isLoading ? "Processing..." : "Checkout"}
     </button>
   )
 }

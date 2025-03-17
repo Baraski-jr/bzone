@@ -11,7 +11,7 @@ import { Metadata } from "next"
 import { NetworkError } from "@/components/Erros/networkErro"
 import ShopCollection from "@/components/ShopCollection"
 
-const PRODUCT_PER_PAGE = 12
+const PRODUCT_PER_PAGE = 15
 
 export const metadata: Metadata = {
   title: "Product listing",
@@ -52,11 +52,11 @@ export default async function Page({
       min: parseInt(searchParamProps?.min),
       max: parseInt(searchParamProps?.max),
       collectionId: collectionId,
-      // limit: PRODUCT_PER_PAGE,
+      limit: PRODUCT_PER_PAGE,
       // sort: Sort ?? "",
-      // pageNumber: parseInt(searchParamProps?.page)
-      //   ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
-      //   : 0,
+      pageNumber: parseInt(searchParamProps?.page)
+        ? parseInt(searchParamProps.page) * PRODUCT_PER_PAGE
+        : 0,
     })
 
     return (
@@ -68,6 +68,9 @@ export default async function Page({
           <ShopCollection
             collectionName={collectionName}
             products={{ products: products.items }}
+            currentPage={products?.currentPage ?? 0}
+            hasPrev={products?.hasPrev()!}
+            hasNext={products?.hasNext()!}
           />
         </Suspense>
       </>
