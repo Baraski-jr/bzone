@@ -68,7 +68,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           <div className="space-y-2 text-center">
             <Link
               href={`/products/${product.slug}`}
-              className="hover:underline text-slate-700 pt-2"
+              className="link link-animated text-slate-700 pt-2 mx-1"
             >
               <h2 className="">{product.name}</h2>
             </Link>
@@ -92,7 +92,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             type="button"
             onClick={haddleAddToCart}
             disabled={product.stock?.quantity! < 1}
-            className="flex-1 bg-opacity-0  hover:bg-opacity-95  bg-primary border-2 py-2 border-primary hover:text-white text-base h-20 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
+            className="flex-1 bg-opacity-0  hover:bg-opacity-95  bg-primary border-2 py-2 border-primary  hover:text-white text-base h-20 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
           >
             Add to cart
           </button>

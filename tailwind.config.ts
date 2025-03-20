@@ -7,8 +7,13 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/flyonui/dist/js/*.js",
+    "../path/to/raty-js/**/*.js",
   ],
   prefix: "",
+  flyonui: {
+    themes: ["light", "dark"],
+  },
   theme: {
     container: {
       center: true,
@@ -28,7 +33,11 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("flyonui"),
+    require("flyonui/plugin"),
+  ],
 } satisfies Config
 
 export default config

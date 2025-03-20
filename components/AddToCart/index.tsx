@@ -78,7 +78,7 @@ const Add: React.FC<AddProp> = ({
           type="button"
           onClick={() => addItem(wixClient, productId, varianId, quantity)}
           disabled={isLoading || stockNumber < 1}
-          className="flex-1 bg-opacity-0  hover:bg-opacity-95 rounded-full bg-primary border-2 border-primary hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
+          className="flex-1 bg-opacity-0  hover:bg-opacity-95 rounded-full bg-primary border-2 border-primary !text-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
         >
           {name}
         </button>

@@ -1,5 +1,4 @@
 import Add from "@/components/AddToCart"
-import CustomNav from "@/components/CustomNav"
 import Gutter from "@/components/Gutter"
 import ProductGallary from "@/components/ProductGallary"
 import { VARIANT_ID } from "@/lib/constants"
@@ -12,6 +11,7 @@ import ProductCart from "@/components/ui/productCart"
 import { AdditionInforComponent } from "@/components/additionInforSection"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { BuyBtn } from "@/components/buyButton"
+import BreadCrumb from "@/components/BreadCrumb"
 
 type ParamType = {
   slug: string
@@ -87,7 +87,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
         <Gutter />
         <section className="py-7">
           <div className="pb-3">
-            <CustomNav name={product.name || ""} />
+            <BreadCrumb name={product.name || ""} />
           </div>
           <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
             {product.name}

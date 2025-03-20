@@ -10,8 +10,9 @@ import {
 import { Metadata } from "next"
 import { NetworkError } from "@/components/Erros/networkErro"
 import ShopCollection from "@/components/ShopCollection"
+import LoadingSpinner from "@/components/LoadingSpinner"
 
-const PRODUCT_PER_PAGE = 15
+const PRODUCT_PER_PAGE = 5
 
 export const metadata: Metadata = {
   title: "Product listing",
@@ -60,12 +61,13 @@ export default async function Page({
     })
 
     return (
-      <>
+      <Suspense fallback={<LoadingSpinner />}>
         <Gutter />
         <SubHero title={collectionName!} />
         <Suspense fallback={<SkeletonShopCollection />}>
           <Filter />
           <ShopCollection
+            totalPages={products.totalPages ?? 0}
             collectionName={collectionName}
             products={{ products: products.items }}
             currentPage={products?.currentPage ?? 0}
@@ -73,10 +75,9 @@ export default async function Page({
             hasNext={products?.hasNext()!}
           />
         </Suspense>
-      </>
+      </Suspense>
     )
   } catch (error) {
-    console.log(error)
     return (
       <div className="relative">
         <Gutter />

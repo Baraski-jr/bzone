@@ -80,7 +80,7 @@ export const CartModel = ({
         ref={cartModelRef}
         className={`${
           isOpenCart ? " translate-x-0 " : "translate-x-[100%] "
-        } cursor-default w-10/12 lg:w-2/4 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
+        } cursor-default w-10/12 lg:w-2/5 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
       >
         <div className="py-2">
           {/* header section */}
@@ -120,7 +120,7 @@ export const CartModel = ({
               </Link>
             </div>
           ) : (
-            <div className="max-h-[60vh] portrait:max-h-dvh overflow-y-scroll divide-y-2 divide-slate-100 ">
+            <div className="max-h-[60vh] portrait:max-h-dvh vertical-scrollbar rounded-scrollbar  divide-y-2 divide-slate-100 ">
               <ul className="pb-8 ">
                 {cart.lineItems?.map((item) => (
                   <li
@@ -147,7 +147,7 @@ export const CartModel = ({
                       <figcaption className="space-y-1 w-full">
                         <Link
                           href={item.url ?? ""}
-                          className="hover:underline underline-offset-2"
+                          className="hover:underline underline-offset-2 !text-slate-900"
                         >
                           {item.productName?.original ?? ""}
                         </Link>
@@ -197,10 +197,10 @@ export const CartModel = ({
           )}
         </div>
         {/* Sub footer */}
-        <div className="bg-white py-6 pr-2 space-y-3 sticky bottom-0">
+        <div className="bg-white py-6 pr-2 space-y-3 sticky bottom-0 ">
           {/* Total */}
           <div className="flex justify-between items-center">
-            <h3 className="text-xl">Subtotal</h3>
+            <h3 className="text-xl ">Subtotal</h3>
             <h3 className="font-bold text-xl">{formatCurrency(totalPrice)}</h3>
           </div>
           <div className="border-b-2 border-slate-200 pb-3">
