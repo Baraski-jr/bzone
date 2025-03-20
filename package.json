@@ -57,6 +57,7 @@
     "@types/swiper": "^6.0.0",
     "eslint": "^9.17.0",
     "eslint-config-next": "15.1.3",
+    "flyonui": "^1.3.0",
     "json-server": "^1.0.0-beta.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
