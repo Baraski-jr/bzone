@@ -1,7 +1,7 @@
 export const navLinks = [
   {
     label: "home",
-    url: "${process.env.NEXT_PUBLIC_BASE_URL}",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
   },
   {
     label: "Products",

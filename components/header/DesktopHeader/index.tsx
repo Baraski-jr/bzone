@@ -53,24 +53,26 @@ const DesktopHeader = ({
         </Link>
         {/* Navigation links */}
         <nav className="flex gap-5">
-          {navLinks.map(({ url, label }: NavLinkProps) => {
-            const isActive =
-              pathname.split("?")[0].toLowerCase() === url.toLowerCase()
+          {navLinks.map(
+            ({ url = "/", label }: { url?: string; label: string }) => {
+              const isActive =
+                pathname.split("?")[0].toLowerCase() === url.toLowerCase()
 
-            return (
-              <Link
-                key={label}
-                className={`${
-                  isActive
-                    ? ` bg-opacity-20 border-slate-50 border-b-2`
-                    : `font-medium border-b-[1px]`
-                } py-2 px-4 rounded-md border-transparent active:bg-opacity-60 hover:border-slate-50 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`}
-                href={url}
-              >
-                {label}
-              </Link>
-            )
-          })}
+              return (
+                <Link
+                  key={label}
+                  className={`${
+                    isActive
+                      ? ` bg-opacity-20 border-slate-50 border-b-2`
+                      : `font-medium border-b-[1px]`
+                  } py-2 px-4 rounded-md border-transparent active:bg-opacity-60 hover:border-slate-50 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`}
+                  href={url}
+                >
+                  {label}
+                </Link>
+              )
+            }
+          )}
         </nav>
 
         <div className="flex items-center gap-4">
