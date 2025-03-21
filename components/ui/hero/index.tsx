@@ -1,63 +1,35 @@
-"use client"
-
 import Image from "next/image"
-import React, { useRef, useState } from "react"
+import React from "react"
 import Link from "next/link"
 import Gutter from "@/components/Gutter"
 import { shoeSlides } from "@/lib/constants"
 import { shoeSlide } from "@/types"
-import { Swiper, SwiperSlide } from "swiper/react"
-
-import "swiper/css"
-import "swiper/css/autoplay"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
 
 const LandingHero = () => {
-  const [slide, setSlide] = useState("React Infinity")
-  const swiperRef = useRef<any>(null)
-
-  const handleSlideChange = () => {
-    const swiperInstance = swiperRef.current.swiper
-    const slides = document.querySelectorAll(".swiper-slide Image")
-
-    slides.forEach((slide, index) => {
-      if (index === swiperInstance.realIndex) {
-        slide.classList.add("slide-in")
-        slide.classList.remove("slide-out")
-      }
-    })
-  }
-
   return (
-    <section className="flex md:items-center pb-7 bg-hero-bg bg-cover bg-top w-full pt-5">
-      <div className="max-w-[100rem] w-[95%] mx-auto space-y-7 pt-12 md:pt-0">
-        {/* main */}
-        {/* Start here */}
-        <Gutter />
-        <div className="w-full overflow-hidden">
-          <Swiper
-            ref={swiperRef}
-            spaceBetween={50}
-            slidesPerView={1}
-            loop={true}
-            onSlideChange={handleSlideChange}
-            autoplay={{ delay: 500, disableOnInteraction: false }}
-          >
+    <div className="bg-hero-bg bg-cover bg-top pt-5 ">
+      <Gutter />
+      <div
+        id="horizontal-thumbnails"
+        data-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": "true", "isInfinite": "true", "isCentered": "true", "isDraggable": "true", "speed": 6000 }'
+        className="relative  flex md:items-center "
+      >
+        <div className="carousel space-y-4">
+          <div className="carousel-body carousel-dragging:transition-none h-3/4 opacity-0">
+            {/* <!-- Slide 1 --> */}
             {shoeSlides.map(({ id, name, image, price }: shoeSlide) => (
-              <SwiperSlide key={id}>
-                <div className="md:flex justify-between">
+              <div key={id} className="carousel-slide w-full">
+                <div className="md:flex w-11/12 mx-auto justify-between">
                   {/* left */}
                   <div className="place-content-center w-full md:w-1/4 md:space-y-8 space-y-5">
                     <div className="bg-slate-950 px-4 py-2 text-white font-semibold w-fit">
-                      ${price.discountPrice} -{" "}
+                      ${price.discountPrice} -
                       <span className="line-through">
                         ${price.originalPrice}
                       </span>
                     </div>
                     <h1 className="md:text-6xl text-5xl font-bold text-white uppercase">
-                      {" "}
-                      {name}{" "}
+                      {name}
                     </h1>
                     <Link
                       href={`/products?category=all-products`}
@@ -132,33 +104,30 @@ const LandingHero = () => {
                     </a>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
-        </div>
-        {/* play button & switch btn */}
-        <div className="flex justify-center md:justify-end gap-8 pt-4 md:pt-5 w-full">
-          {shoeSlides.map(({ id, name, image }: shoeSlide) => (
-            <div key={id} onClick={() => setSlide(name)}>
+          </div>
+
+          {/* Pagination btton images */}
+          <div className="carousel-pagination gap-4 flex justify-end pt-4 w-11/12 mx-auto pb-3">
+            {shoeSlides.map(({ id, name, image }: shoeSlide) => (
               <div
-                className={`${
-                  name === slide ? "bg-opacity-50" : "bg-opacity-15"
-                } drop-shadow-lg rounded-full cursor-pointer bg-white w-[6rem] h-[6rem] relative hover:scale-105 a-hover transition-all duration-500`}
-                onClick={() => swiperRef.current.swiper.slideTo(id)}
+                key={id}
+                className="w-15 aspect-square md:w-20 carousel-pagination-item carousel-active:bg-opacity-50 bg-opacity-30 drop-shadow-lg rounded-full cursor-pointer bg-white relative hover:scale-105 transition-all duration-500"
               >
                 <Image
-                  width={100}
+                  width={50}
                   height={50}
-                  className="drop-shadow-xl w-[6.5rem] max-w-[8rem] absolute right-0 bottom-5 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700"
+                  className="drop-shadow-xl w-16 md:w-25 absolute -left-1 bottom-4 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700"
                   src={image}
                   alt={name}
                 />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
