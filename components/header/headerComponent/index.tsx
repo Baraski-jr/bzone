@@ -16,7 +16,7 @@ const HeaderComponent = () => {
     if (counter > 0 && cart) {
       getCart(wixClient)
     }
-  }, [wixClient, getCart])
+  }, [wixClient, getCart, counter, cart])
 
   useEffect(() => {
     const handleScroll = () => {

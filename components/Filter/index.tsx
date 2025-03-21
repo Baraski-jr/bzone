@@ -39,7 +39,7 @@ const Filter = () => {
       {/* TODO: Filter Categories */}
       <div className="relative w-full md:w-1/2 md:max-w-60">
         <select
-          className="select select-filled "
+          className="select select-filled"
           aria-label="Filled select"
           id="selectFilled"
           onChange={handleFilterChange}
@@ -47,9 +47,9 @@ const Filter = () => {
           name="category"
         >
           <option value="all-products">Category</option>
-          <option value="men">Men' Shoe</option>
-          <option value="women">Women' Shoe</option>
-          <option value="kid">Kid' Shoe</option>
+          <option value="men">Men Shoe</option>
+          <option value="women">Women Shoe</option>
+          <option value="kid">Kids Shoe</option>
           <option value="watches">Watches</option>
           <option value="laptops">Laptops</option>
         </select>

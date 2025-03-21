@@ -1,6 +1,5 @@
 import React from "react"
 import { CollectionProps } from "@/types"
-import CollectionBanner from "../ui/CollectionBanner"
 import Crousel from "../crousel"
 import {
   queryProducts,
@@ -35,39 +34,17 @@ const Collection: React.FC<CollectionProps> = async ({
             {/* Temporal */}
             <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
           </header>
-          <div className="sm:flex sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
+          {/* <div className="h-full flex flex-col md:flex-row sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
             <CollectionBanner
               url={`/products?category=${caterory.slug}`}
               bgUrl={caterory.media?.items[0].image?.url || ""}
-            />
-            <div className="overflow-hidden sm:w-full h-fit gap-5 md:gap-0 relative">
-              <div className="md:hidden">
-                <Crousel
-                  products={products.items.map((item) => ({ product: item }))}
-                  categoryId={categoryId}
-                  slidePerView={2}
-                  navigation={true}
-                />
-              </div>
-              <div className="hidden md:block lg:hidden">
-                <Crousel
-                  products={products.items.map((item) => ({ product: item }))}
-                  categoryId={categoryId}
-                  slidePerView={3}
-                  navigation={true}
-                />
-              </div>
-              <div className="hidden lg:block">
-                <Crousel
-                  products={products.items.map((item) => ({ product: item }))}
-                  categoryId={categoryId}
-                  slidePerView={4}
-                  navigation={true}
-                />
-              </div>
-            </div>
-          </div>
+            /> */}
+          <Crousel
+            products={products.items.map((item) => ({ product: item }))}
+            categoryId={categoryId}
+          />
         </div>
+        {/* </div> */}
       </section>
     )
   } catch (error) {

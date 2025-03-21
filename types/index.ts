@@ -52,7 +52,7 @@ interface ProductCartProps {
 
 export interface CrouselType {
   products: ProductCartProps[]
-  categoryId: string
+  categoryId?: string
   id?: string
   navigation?: boolean
   pagination?: string

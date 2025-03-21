@@ -9,7 +9,6 @@ import { useWixClient } from "@/hooks/useWixCient"
 import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
-import { CheckoutBtn } from "@/components/CheckoutButton"
 import { BuyBtn } from "@/components/buyButton"
 interface ProductCartProps {
   product: products.Product

@@ -1,35 +1,48 @@
 "use client"
-
-import React from "react"
-import { Navigation, Pagination, Scrollbar } from "swiper/modules"
+import React, { useEffect, useState } from "react"
 import ProductCart from "../ui/productCart"
-
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/scrollbar"
 import { CrouselType } from "@/types"
 
-const Crousel: React.FC<CrouselType> = ({
-  products,
-  slidePerView = 2,
-  navigation = false,
-}) => {
+const Crousel: React.FC<CrouselType> = ({ products }) => {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return null
+  }
+
   return (
-    <Swiper
-      className="h-full"
-      modules={[Navigation, Pagination, Scrollbar]}
-      spaceBetween={10}
-      slidesPerView={slidePerView}
-      navigation={navigation}
+    <div
+      id="multi-slide"
+      data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "sm": 2, "md": 3, "lg": 4, "xl":5 } }'
+      className="relative h-full w-full"
     >
-      {products.map((product) => (
-        <SwiperSlide key={product.product._id}>
-          <ProductCart product={product.product} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+      <div className="carousel h-full ">
+        <div className="carousel-body h-full opacity-0">
+          {products.map((product) => (
+            <div className="carousel-slide mx-2" key={product.product._id}>
+              <ProductCart product={product.product} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button type="button" className="carousel-prev">
+        <div className=" size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
+          <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
+        </div>
+        <span className="sr-only">Previous</span>
+      </button>
+      <button type="button" className="carousel-next">
+        <span className="sr-only">Next</span>
+        <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
+          <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
+        </span>
+      </button>
+    </div>
   )
 }
 
