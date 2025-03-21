@@ -8,7 +8,6 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./node_modules/flyonui/dist/js/*.js",
-    "../path/to/raty-js/**/*.js",
   ],
   prefix: "",
   flyonui: {

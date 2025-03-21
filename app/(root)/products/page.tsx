@@ -12,7 +12,7 @@ import { NetworkError } from "@/components/Erros/networkErro"
 import ShopCollection from "@/components/ShopCollection"
 import LoadingSpinner from "@/components/LoadingSpinner"
 
-const PRODUCT_PER_PAGE = 5
+const PRODUCT_PER_PAGE = 12
 
 export const metadata: Metadata = {
   title: "Product listing",
