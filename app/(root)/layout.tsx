@@ -12,7 +12,7 @@ export default function RootLayout({
         <HeaderComponent />
         <main>{children}</main>
       </div>
-      {/* <FooterComponent /> */}
+      <FooterComponent />
     </main>
   )
 }
