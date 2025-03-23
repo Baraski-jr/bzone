@@ -30,7 +30,7 @@ function CartPage() {
           <div className="flex-1">
             <CartProductList />
             {/* Add Order Note */}
-            <div className="space-y-8 py-5">
+            {/* <div className="space-y-8 py-5">
               <h4 className="">Add Order Note</h4>
               <textarea
                 className="border-2 text-slate-600 text-sm rounded-md p-3 w-full h-32 md:w-2/3 resize-none focus:outline-none"
@@ -39,7 +39,7 @@ function CartPage() {
                 name="comment"
                 id=""
               ></textarea>
-            </div>
+            </div> */}
           </div>
           <div className="space-y-5">
             <EstimateCard />

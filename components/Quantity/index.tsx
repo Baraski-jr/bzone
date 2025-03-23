@@ -26,7 +26,7 @@ export const Quantity = ({
     })
   }
   return (
-    <div className="flex flex-2 justify-center items-center rounded-full border-2 border-transparent hover:border-slate-100 h-12  px-2 bg-slate-200 bg-opacity-55 transition-all duration-150">
+    <div className="flex flex-2 justify-center items-center rounded-full border-2 border-transparent hover:border-slate-100 h-12 w-fit px-2 bg-slate-200 bg-opacity-55 transition-all duration-150">
       <button
         type="button"
         className="rounded-full h-8 aspect-square flex items-center justify-center font-semibold cursor-pointer text-white hover:scale-105 active:scale-75 bg-primary disabled:cursor-not-allowed disabled:bg-opacity-70 transition-transform duration-100"
