@@ -15,10 +15,9 @@ function CartPage() {
       <Gutter />
       <SubHero title={"Shopping Cart"} />
       {!cart || counter === 0 ? (
-        <div className="flex flex-col justify-center items-center  space-y-4 min-h-[60dvh]">
+        <div className="flex flex-col justify-center items-center space-y-4 min-h-[60dvh]">
           <p className="">Your cart is empty</p>
           <Link
-            // onClick={() => setIsOpenCart((prev) => !prev)}
             href={"/products"}
             className="border-b-2 hover:shadow-primary hover:shadow-sm border-b-primary block w-1/2 text-center py-2 px-3 rounded-full transition-all duration-300"
           >
@@ -26,7 +25,7 @@ function CartPage() {
           </Link>
         </div>
       ) : (
-        <section className="w-[90%] mx-auto lg:flex justify-between gap-x-5 mt-20">
+        <section className="w-[90%] mx-auto lg:flex justify-between gap-x-5 mt-10">
           <div className="flex-1">
             <CartProductList />
             {/* Add Order Note */}
