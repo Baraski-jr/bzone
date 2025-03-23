@@ -109,7 +109,7 @@ export const CartModel = ({
             </button>
           </header>
           {!cart || counter === 0 ? (
-            <div className="flex flex-col justify-center items-center  space-y-4 min-h-[60dvh]">
+            <div className="flex flex-col justify-center items-center space-y-4 min-h-[60dvh]">
               <p className="">Your cart is empty</p>
               <Link
                 onClick={() => setIsOpenCart((prev) => !prev)}
@@ -120,7 +120,7 @@ export const CartModel = ({
               </Link>
             </div>
           ) : (
-            <div className="max-h-[60vh] portrait:max-h-dvh vertical-scrollbar rounded-scrollbar  divide-y-2 divide-slate-100 ">
+            <div className="max-h-[60vh] portrait:max-h-[70dvh] vertical-scrollbar rounded-scrollbar  divide-y-2 divide-slate-100 ">
               <ul className="pb-8 ">
                 {cart.lineItems?.map((item) => (
                   <li
