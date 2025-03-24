@@ -87,4 +87,3 @@ export const CartBuyBtn: React.FC<ProductCartProps> = ({ product }) => {
     </button>
   )
 }
-0

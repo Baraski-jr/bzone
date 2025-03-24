@@ -24,10 +24,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const { addItem } = useCartStore()
 
   const ProductImage: React.FC = () => (
-    <Link
-      href={`/products/${product.slug}`}
-      className="overflow-hidden bg-[#F5F5F5] block h-full"
-    >
+    <div className="overflow-hidden bg-[#F5F5F5] block h-full">
       {/* To show the product is sold out */}
       {product.stock?.quantity! < 1 && (
         <div className="bg-red-500 py-2 px-3 aspect-auto rounded-sm grid place-content-center absolute top-2 right-0 z-10">
@@ -54,25 +51,16 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           />
         </div>
       )}
-    </Link>
+    </div>
   )
 
   return (
-    // <div className="card group hover:shadow sm:max-w-sm">
-    <Link
-      href={`/products/${product.slug}`}
-      className="card group hover:shadow sm:max-w-sm"
-    >
+    <div className="card group hover:shadow sm:max-w-sm">
       <figure>
         <ProductImage />
       </figure>
       <div className="card-body">
-        <Link
-          href={`/products/${product.slug}`}
-          className="link link-animated card-title mb-2.5"
-        >
-          <h2 className="">{product.name}</h2>
-        </Link>
+        <h2 className="link link-animated card-title mb-2.5">{product.name}</h2>
         <h3 className="text-lg font-semibold text-slate-900 mb-2">
           {formatCurrency(product.priceData?.price || 0)}
         </h3>
@@ -87,54 +75,10 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           >
             Add to cart
           </button>
-
-          {/* <button 
-          className="btn btn-secondary btn-soft">Add to cart</button> */}
         </div>
       </div>
-    </Link>
-    // </div>
+    </div>
   )
 }
 
 export default ProductCart
-
-/* <div className="relative mt-2 md:mt-0 flex flex-col justify-between h-full rounded-md hover:shadow-lg bg-white transition-all duration-200">
-        <div className="block overflow-hidden bg-[#F5F5F5]">
-          <ProductImage />
-        </div>
-        <div className="flex flex-col justify-between  gap-3">
-          <div className="space-y-2 text-center">
-            <Link
-              href={`/products/${product.slug}`}
-              className="link link-animated text-slate-700 pt-2 mx-1"
-            >
-              <h2 className="">{product.name}</h2>
-            </Link>
-            {product.priceData?.price === product.priceData?.discountedPrice ? (
-              <h3 className="text-sm font-semibold text-slate-900  mx-2">
-                {formatCurrency(product.priceData?.price || 0)}
-              </h3>
-            ) : (
-              <div className="flex justify-center items-center gap-2">
-                <h2 className="text-sm  text-slate-500">
-                  {formatCurrency(product.priceData?.discountedPrice || 0)}
-                </h2>
-                <h2 className="text-xs text-red-500 line-through">
-                  {formatCurrency(product.priceData?.price || 0)}
-                </h2>
-              </div>
-            )}
-          </div>
-          {/* Add to cart button */
-//   <button
-// type="button"
-// onClick={haddleAddToCart}
-// disabled={product.stock?.quantity! < 1}
-//     className="flex-1 bg-opacity-0  hover:bg-opacity-95  bg-primary border-2 py-2 border-primary  hover:text-white text-base h-20 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
-//   >
-//     Add to cart
-//   </button>
-//   <BuyBtn product={product} />
-// </div>
-// </div>

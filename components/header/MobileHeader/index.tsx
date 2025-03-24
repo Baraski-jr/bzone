@@ -215,3 +215,82 @@ const MobileHeader = ({
 }
 
 export default MobileHeader
+
+/* <button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="top-start-modal" data-overlay="#top-start-modal">Top start</button>
+
+<div id="top-start-modal" class="overlay modal overlay-open:opacity-100 modal-top-start hidden" role="dialog" tabindex="-1">
+  <div class="modal-dialog overlay-open:opacity-100">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Dialog Title</h3>
+        <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#top-start-modal">
+          <span class="icon-[tabler--x] size-4"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the
+        modal, we use an inline style to set a minimum height, thereby extending the length of the overall modal and
+        demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling
+        will move the modal as needed.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-soft btn-secondary" data-overlay="#top-start-modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Center (Default) -->
+
+<button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="top-center-modal" data-overlay="#top-center-modal">Top center (default)</button>
+
+<div id="top-center-modal" class="overlay modal overlay-open:opacity-100 modal-top-center hidden" role="dialog" tabindex="-1">
+  <div class="modal-dialog overlay-open:opacity-100">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Dialog Title</h3>
+        <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#top-center-modal">
+          <span class="icon-[tabler--x] size-4"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the
+        modal, we use an inline style to set a minimum height, thereby extending the length of the overall modal and
+        demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling
+        will move the modal as needed.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-soft btn-secondary" data-overlay="#top-center-modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top End -->
+
+<button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="top-end-modal" data-overlay="#top-end-modal">Top end</button>
+
+<div id="top-end-modal" class="overlay modal overlay-open:opacity-100 modal-top-end hidden" role="dialog" tabindex="-1">
+  <div class="modal-dialog overlay-open:opacity-100">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Dialog Title</h3>
+        <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#top-end-modal">
+          <span class="icon-[tabler--x] size-4"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the
+        modal, we use an inline style to set a minimum height, thereby extending the length of the overall modal and
+        demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling
+        will move the modal as needed.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-soft btn-secondary" data-overlay="#top-end-modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> */
