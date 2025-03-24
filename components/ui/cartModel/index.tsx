@@ -120,7 +120,7 @@ export const CartModel = ({
               </Link>
             </div>
           ) : (
-            <div className="max-h-[60vh]'s  vertical-scrollbar rounded-scrollbar  divide-y-2 divide-slate-100 ">
+            <div className="max-h-[60vh] vertical-scrollbar rounded-scrollbar  divide-y-2 divide-slate-100 ">
               <ul className="pb-8 ">
                 {cart.lineItems?.map((item) => (
                   <li

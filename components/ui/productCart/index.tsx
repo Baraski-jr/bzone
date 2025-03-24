@@ -1,5 +1,6 @@
 "use client"
-import Link from "next/link"
+import DOMPurify from "isomorphic-dompurify"
+
 import React from "react"
 import Image from "next/image"
 
@@ -64,7 +65,12 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
         <h3 className="text-lg font-semibold text-slate-900 mb-2">
           {formatCurrency(product.priceData?.price || 0)}
         </h3>
-        <p className="mb-6 text-clip line-clamp-3">{product.description}</p>
+        <p
+          className="mb-6 text-clip line-clamp-3"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(product.description || ""),
+          }}
+        ></p>
         <div className="card-actions">
           <CartBuyBtn product={product} />
           <button
