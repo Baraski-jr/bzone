@@ -4,17 +4,7 @@ import { navLinks } from "@/lib/constants"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
-import { NavLinkProps } from "@/types"
-// import {
-//   ClerkLoaded,
-//   SignedIn,
-//   SignInButton,
-//   UserButton,
-//   useUser,
-// } from "@clerk/nextjs"
-
 const DesktopHeader = ({
-  isOpenCart,
   setIsOpenCart,
   counter,
   isScrolled,
@@ -24,11 +14,10 @@ const DesktopHeader = ({
   counter: number
   isScrolled: boolean
 }) => {
-  // Clerk
-  // const { user } = useUser()
-  // console.log(user)
-
   const pathname = usePathname()
+  console.log(pathname)
+  const isActive = (href: string) => pathname === href
+
   const homePage =
     pathname === "/" && !isScrolled
       ? "bg-opacity-0"
@@ -55,17 +44,14 @@ const DesktopHeader = ({
         <nav className="flex gap-5">
           {navLinks.map(
             ({ url = "/", label }: { url?: string; label: string }) => {
-              const isActive =
-                pathname.split("?")[0].toLowerCase() === url.toLowerCase()
-
               return (
                 <Link
                   key={label}
-                  className={`${
-                    isActive
-                      ? ` bg-opacity-20 border-slate-50 border-b-2`
-                      : `font-medium border-b-[1px]`
-                  } py-2 px-4 rounded-md border-transparent active:bg-opacity-60 hover:border-slate-50 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`}
+                  className={
+                    isActive(url)
+                      ? ` bg-opacity-20 border-slate-50 border-b-2 py-2 px-4 rounded-md active:bg-opacity-80 hover:border-slate-50 bg-gray-50 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`
+                      : `font-medium border-b-[1px] py-2 px-4 rounded-md border-transparent active:bg-opacity-60 hover:border-slate-50 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`
+                  }
                   href={url}
                 >
                   {label}

@@ -5,14 +5,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
 import { usePathname } from "next/navigation"
-// import {
-//   ClerkLoaded,
-//   SignedIn,
-//   SignInButton,
-//   UserButton,
-//   useUser,
-// } from "@clerk/nextjs"
-
 const MobileHeader = ({
   counter,
   isScrolled,
@@ -22,11 +14,13 @@ const MobileHeader = ({
   isScrolled: boolean
   setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-  // Clerk
-  // const { user } = useUser()
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
+
+  // Acitive navigation link for the menu element itself
+
+  const isActive = (href: string) => pathname === href
 
   const toggleCart = useCallback(() => {
     setIsOpenCart((prev) => !prev)
@@ -167,28 +161,16 @@ const MobileHeader = ({
                       <path d="m6 6 12 12" />
                     </svg>
                   </button>
-                  {/* <ClerkLoaded>
-                    <SignedIn></SignedIn>{" "}
-                    {user ? (
-                      <UserButton />
-                    ) : (
-                      <div className="bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md transition-all duration-200">
-                        <SignInButton />
-                      </div>
-                    )}
-                  </ClerkLoaded> */}
                 </div>
                 {navLinks.map(({ label, url }: NavLinkProps) => {
-                  const isActive =
-                    pathname.split("?")[0].toLowerCase() === url.toLowerCase()
                   return (
                     <Link
                       key={label}
                       className={`${
-                        isActive
-                          ? ` bg-opacity-20 border-slate-50 border-b-2`
-                          : `font-medium border-b-[1px]`
-                      } py-2 px-4 rounded-md border-transparent hover:border-slate-50 active:bg-opacity-60 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`}
+                        isActive(url)
+                          ? ` bg-opacity-20 border-slate-50 border-b-2 py-2 px-4 rounded-md hover:border-slate-50 active:bg-opacity-80 bg-gray-50  hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`
+                          : `font-medium border-b-[1px] py-2 px-4 rounded-md border-transparent hover:border-slate-50 active:bg-opacity-60 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`
+                      } `}
                       href={url}
                     >
                       {label}
