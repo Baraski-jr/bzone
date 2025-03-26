@@ -28,6 +28,8 @@ export const CartModel = ({
   const { cart, counter, isLoading, removeItem } = useCartStore()
 
   useEffect(() => {
+    const ac = new AbortController()
+
     cart?.lineItems &&
       setTotalPrice(
         cart!.lineItems!.reduce(
@@ -36,18 +38,6 @@ export const CartModel = ({
           0
         )
       )
-    // Prevent the user from clicking on the body when the menu is open
-    const CartButton = () => {
-      if (isOpenCart) {
-        document.body.classList.add("overflow-hidden")
-      } else {
-        document.body.classList.remove("overflow-hidden")
-      }
-    }
-    CartButton()
-  }, [cart, isOpenCart])
-
-  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         cartModelRef.current &&
@@ -58,15 +48,16 @@ export const CartModel = ({
     }
 
     if (isOpenCart) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.body.classList.add("overflow-hidden")
+      window.addEventListener("mousedown", handleClickOutside, ac)
     } else {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.body.classList.remove("overflow-hidden")
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
+      ac.abort()
     }
-  }, [isOpenCart, setIsOpenCart])
+  }, [cart, isOpenCart, setIsOpenCart])
 
   return (
     <div
@@ -157,7 +148,7 @@ export const CartModel = ({
                         <div className="flex justify-between pr-2">
                           <button
                             type="button"
-                            disabled={isLoading}
+                            // disabled={isLoading}
                             onClick={() => removeItem(wixClient, item._id!)}
                             className="underline text-xs text-slate-600 cursor-pointer disabled:cursor-not-allowed"
                           >

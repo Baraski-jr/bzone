@@ -59,25 +59,32 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   )
 
   return (
-    <Link
-      href={`/products/${product.slug}`}
-      className="card group hover:shadow sm:max-w-sm"
-    >
+    <div className="">
       <figure>
-        <ProductImage />
+        <Link
+          href={`/products/${product.slug}`}
+          className="card group hover:shadow sm:max-w-sm"
+        >
+          <ProductImage />
+        </Link>
       </figure>
       <div className="card-body">
-        <h2 className="link link-animated w-fit mb-2.5">{product.name}</h2>
+        <Link
+          href={`/products/${product.slug}`}
+          className="link link-animated w-fit mb-2.5"
+        >
+          {product.name}
+        </Link>
         <h3 className="text-lg font-semibold text-slate-900 mb-2">
           {formatCurrency(product.priceData?.price || 0)}
         </h3>
-        <p
+        <div
           className="mb-6 text-sm text-clip line-clamp-3"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(product.description || ""),
           }}
-        ></p>
-        <div className="card-actions">
+        ></div>
+        <div className="card-actions z-10">
           <CartBuyBtn product={product} />
           <button
             type="button"
@@ -89,7 +96,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

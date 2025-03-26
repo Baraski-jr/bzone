@@ -13,10 +13,10 @@ const HeaderComponent = () => {
 
   const wixClient = useWixClient()
   useEffect(() => {
-    if (isOpenCart) {
+    if (isOpenCart && cart) {
       getCart(wixClient)
     }
-  }, [isOpenCart])
+  }, [isOpenCart, cart])
 
   useEffect(() => {
     const handleScroll = () => {
