@@ -77,7 +77,6 @@ const ShopCollection = ({
   return (
     <>
       <div className="flex gap-x-4 w-[85%] mx-auto py-8">
-        {/* <SideBarFilter /> */}
         <section className="space-y-5 md:space-y-4">
           <BreadCrumb name={collectionName} />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-y-10 gap-x-5  mt-4">

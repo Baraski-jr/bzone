@@ -11,6 +11,7 @@ import { useCartStore } from "@/hooks/useCartStore"
 import { VARIANT_ID } from "@/lib/constants"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { CartBuyBtn } from "@/components/CartBuyButton"
+import Link from "next/link"
 interface ProductCartProps {
   product: products.Product
 }
@@ -56,17 +57,20 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   )
 
   return (
-    <div className="card group hover:shadow sm:max-w-sm">
+    <Link
+      href={`/products/${product.slug}`}
+      className="card group hover:shadow sm:max-w-sm"
+    >
       <figure>
         <ProductImage />
       </figure>
       <div className="card-body">
-        <h2 className="link link-animated card-title mb-2.5">{product.name}</h2>
+        <h2 className="link link-animated  mb-2.5">{product.name}</h2>
         <h3 className="text-lg font-semibold text-slate-900 mb-2">
           {formatCurrency(product.priceData?.price || 0)}
         </h3>
         <p
-          className="mb-6 text-clip line-clamp-3"
+          className="mb-6 text-sm text-clip line-clamp-3"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(product.description || ""),
           }}
@@ -83,7 +87,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
