@@ -65,7 +65,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
         <ProductImage />
       </figure>
       <div className="card-body">
-        <h2 className="link link-animated  mb-2.5">{product.name}</h2>
+        <h2 className="link link-animated w-fit mb-2.5">{product.name}</h2>
         <h3 className="text-lg font-semibold text-slate-900 mb-2">
           {formatCurrency(product.priceData?.price || 0)}
         </h3>

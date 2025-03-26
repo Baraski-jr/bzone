@@ -69,7 +69,11 @@ const MobileHeader = ({
       >
         <div className="flex justify-between items-center mx-auto w-[95%] ">
           {/* Menu */}
-          <button type="button" onClick={handleMenu}>
+          <button
+            type="button"
+            onClick={handleMenu}
+            className="py-2 px-4 rounded-md bg-gray-50 bg-opacity-5 hover:bg-opacity-20 flex relative cursor-pointer"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -182,7 +186,7 @@ const MobileHeader = ({
                     pathname.split("?")[0].toLowerCase() === "/orders"
                       ? ` bg-opacity-20 border-slate-50 border-b-2`
                       : `font-medium border-b-[1px]`
-                  } hover:border-b-slate-100 border-transparent  relative flex gap-2 items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 text-white py-2 px-4 rounded-md transition-all duration-200`}
+                  } hover:border-b-slate-100 border-transparent relative flex gap-2 items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-10 text-white py-2 px-4 rounded-md transition-all duration-200`}
                   href={`/orders`}
                 >
                   <span className="">My Orders</span>
