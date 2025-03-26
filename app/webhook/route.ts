@@ -1,10 +1,10 @@
 "use server"
-import { redis } from "@/lib/redis"
 import { Metadata } from "@/types"
 import { headers } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 import { stripe } from "@/lib/stripe"
+import { redis } from "@/lib/redis/index"
 
 export async function POST(req: NextRequest) {
   let event: Stripe.Event

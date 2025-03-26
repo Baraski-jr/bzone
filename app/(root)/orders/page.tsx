@@ -28,7 +28,6 @@ export default async function OrderPage({
     if (!order) {
       return notFound()
     }
-
     return (
       <>
         <Gutter />
