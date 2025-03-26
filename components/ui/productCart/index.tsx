@@ -26,13 +26,15 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const { addItem } = useCartStore()
 
   const ProductImage: React.FC = () => (
-    <div className="overflow-hidden bg-[#F5F5F5] block h-full">
+    <div className="overflow-hidden bg-[#F5F5F5] relative block h-full">
       {/* To show the product is sold out */}
       {product.stock?.quantity! < 1 && (
-        <div className="bg-red-500 py-2 px-3 aspect-auto rounded-sm grid place-content-center absolute top-2 right-0 z-10">
-          <p className="text-base font-mono text-white font-medium tracking-wide">
-            Sold Out
-          </p>
+        <div className="bg-red-500 bg-opacity-0 hover:bg-opacity-10 w-full flex items-center justify-center rounded-full aspect-square absolute transition-all ease-in-out duration-150 z-10">
+          <div className="w-1/4 aspect-square rounded-full bg-red-500 flex items-center justify-center px-2">
+            <p className="text-lg font-bold font-mono text-white tracking-wide">
+              Sold
+            </p>
+          </div>
         </div>
       )}
       {(product.media?.items?.length || 0) > 1 ? (
