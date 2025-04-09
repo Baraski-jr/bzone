@@ -122,7 +122,7 @@ const MobileHeader = ({
                 <circle cx="19" cy="21" r="1" />
                 <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
               </svg>
-              <span className="absolute -top-2 -right-1 bg-green-500 text-white w-6 h-6 rounded-full grid place-content-center">
+              <span className={`absolute -top-2 -right-1 ${counter === 0 ? 'bg-slate-200 text-slate-900': 'bg-green-400 text-white'} w-6 h-6 rounded-full grid place-content-center`}>
                 {counter}
               </span>
             </button>
