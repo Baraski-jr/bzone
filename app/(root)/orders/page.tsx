@@ -26,7 +26,6 @@ export default async function OrderPage({
     // Check cache
     const order = (await redis.get(cacheKey)) as OrderInfo | null
 
-    console.log("Order: ", order)
     if (!order) {
       return notFound()
     }
@@ -94,11 +93,11 @@ export default async function OrderPage({
                   <div className="space-y-4">
                     {order.products.map((product, index) => (
                       <div
-                        key={order.products[index]._key}
+                        key={product._key}
                         className="flex items-center gap-4  p-3 rounded-md"
                       >
                         <Image
-                          src={IMAGE_PLACEHOLDER}
+                          src={product.product.image || IMAGE_PLACEHOLDER}
                           alt={"Product Image"}
                           width={50}
                           height={50}
@@ -130,13 +129,13 @@ export default async function OrderPage({
                 <div className="flex gap-4 mb-4 justify-center items-center">
                   <Link
                     href={`/`}
-                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                    className="btn btn-primary"
                   >
                     Home
                   </Link>
                   <Link
                     href={"/products"}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    className="btn btn-secondary"
                   >
                     Go shopping
                   </Link>

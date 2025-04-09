@@ -6,6 +6,7 @@ import Stripe from "stripe"
 import { stripe } from "@/lib/stripe"
 import { redis } from "@/lib/redis/index"
 import { convertToStandardcurrency } from "@/lib/ConvertToSubcurrency"
+import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 
 export async function POST(req: NextRequest) {
   let event: Stripe.Event
@@ -41,9 +42,7 @@ export async function POST(req: NextRequest) {
 
     try {
       const order = await createOrder(session)
-      console.log("Order created successfully: ", order)
     } catch (error) {
-      console.error(`Error creating order: ${error}`)
       return NextResponse.json(
         { error: `Error creating order: ${error}` },
         { status: 500 }
@@ -77,15 +76,13 @@ async function createOrder(session: Stripe.Checkout.Session) {
   const rediProducts = lineItemsWithProduct.data.map((lineItem) => ({
     _key: crypto.randomUUID(),
     product: {
-      // _type: "reference",
       _ref: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
-      image: (lineItem.price?.product as Stripe.Product)?.images?.[0],
     },
+    image: (lineItem.price?.product as Stripe.Product)?.images?.[0] || IMAGE_PLACEHOLDER,
     quantity: lineItem.quantity || 0,
   }))
 
-  console.log("rediProducts", rediProducts)
-  const order = {
+  const order = { 
     type: crypto.randomUUID(),
     orderNumber,
     customerName,

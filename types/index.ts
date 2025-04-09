@@ -215,8 +215,8 @@ export type Metadata = {
 export type OrderProduct = {
   _key: string
   product: {
-    _type: "reference"
     _ref: string
+    image: string
   }
   quantity: number
 }

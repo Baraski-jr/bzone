@@ -16,9 +16,6 @@ function SuccessPageContent() {
       if (orderNumber && cart) {
         try {
           emptyCart(wixClient)
-          console.log("Cart emptied successfully.")
-          // Optionally store order if needed
-          // await storeOrder(orderNumber)
         } catch (error) {
           console.error("Failed to empty cart:", error)
         }
