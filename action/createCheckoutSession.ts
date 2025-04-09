@@ -58,7 +58,7 @@ export async function createCheckoutSession (
                   : IMAGE_PLACEHOLDER,
               ],
             },
-          },
+          }, 
           quantity: item.quantity ?? 1, // Move quantity to the correct level
         })),
       })

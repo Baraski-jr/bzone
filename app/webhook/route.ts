@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 import { stripe } from "@/lib/stripe"
 import { redis } from "@/lib/redis/index"
+import { convertToStandardcurrency } from "@/lib/ConvertToSubcurrency"
 
 export async function POST(req: NextRequest) {
   let event: Stripe.Event
@@ -56,7 +57,7 @@ export async function POST(req: NextRequest) {
 async function createOrder(session: Stripe.Checkout.Session) {
   const {
     id,
-    amount_total,
+    amount_total, 
     currency,
     metadata,
     created,
@@ -76,13 +77,14 @@ async function createOrder(session: Stripe.Checkout.Session) {
   const rediProducts = lineItemsWithProduct.data.map((lineItem) => ({
     _key: crypto.randomUUID(),
     product: {
-      _type: "reference",
+      // _type: "reference",
       _ref: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
+      image: (lineItem.price?.product as Stripe.Product)?.images?.[0],
     },
     quantity: lineItem.quantity || 0,
   }))
 
-
+  console.log("rediProducts", rediProducts)
   const order = {
     type: crypto.randomUUID(),
     orderNumber,
@@ -90,10 +92,10 @@ async function createOrder(session: Stripe.Checkout.Session) {
     stripeCheckoutSessionId: id,
     currency,
     amountDiscount: total_details?.amount_discount
-      ? total_details.amount_discount / 100
+      ? convertToStandardcurrency(total_details.amount_discount)
       : 0,
     products: rediProducts,
-    totalPrices: amount_total ? amount_total / 100 : 0,
+    totalPrices: amount_total ? convertToStandardcurrency(amount_total ) : 0,
     status: "paid",
     orderDate: created,
   }

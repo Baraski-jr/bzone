@@ -25,6 +25,8 @@ export default async function OrderPage({
     const cacheKey = `order:${searchParamProps.orderNumber}`
     // Check cache
     const order = (await redis.get(cacheKey)) as OrderInfo | null
+
+    console.log("Order: ", order)
     if (!order) {
       return notFound()
     }

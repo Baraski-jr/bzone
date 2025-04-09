@@ -7,13 +7,13 @@ import React, { useEffect, Suspense } from "react"
 function SuccessPageContent() {
   const searchParams = useSearchParams()
   const orderNumber = searchParams.get("orderNumber")
-  const { emptyCart } = useCartStore()
+  const { emptyCart, cart } = useCartStore()
   const wixClient = useWixClient()
   const router = useRouter()
 
   useEffect(() => {
     const handleOrderSuccess = async () => {
-      if (orderNumber) {
+      if (orderNumber && cart) {
         try {
           emptyCart(wixClient)
           console.log("Cart emptied successfully.")
