@@ -1,6 +1,7 @@
 "use client"
 
 import { createCheckoutSession } from "@/action/createCheckoutSession"
+import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 import { Metadata } from "@/types"
 import { products } from "@wix/stores"
 import { useEffect, useState } from "react"
@@ -42,9 +43,8 @@ export const BuyBtn: React.FC<ProductCartProps> = ({ product }) => {
             },
             images: [
               product.media?.items && product.media.items.length > 0
-                ? product.media.items[0].image?.url ||
-                  "https://via.placeholder.com/150"
-                : "https://via.placeholder.com/150",
+                ? product.media.items[0].image?.url!
+                : IMAGE_PLACEHOLDER,
             ],
           },
         },

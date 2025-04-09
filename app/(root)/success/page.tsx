@@ -59,11 +59,11 @@ function SuccessPageContent() {
           <h3 className="text-3xl font-bold mb-4 border-b-2 border-b-slate-200 pb-4">
             Thank You for Your Purchase!
           </h3>
-          <p className="text-slate-700 text-sm">
+          {/* <p className="text-slate-700 text-sm">
             Your order number is <b className="text-green-600">{orderNumber}</b>
             .
-          </p>
-          <p className="text-slate-700 text-sm">
+          </p> */}
+          <p className="text-slate-700 text-base py-2">
             We appreciate your business and hope you enjoy your purchase.
           </p>
         </div>
@@ -71,7 +71,7 @@ function SuccessPageContent() {
           <button
             aria-label="View Your Orders"
             type="button"
-            className="bg-green-600 hover:bg-green-700 py-1 px-3 text-base rounded-sm text-white"
+            className="btn btn-primary"
             onClick={() => router.push(`/orders?orderNumber=${orderNumber}`)}
           >
             View Your Orders
@@ -79,7 +79,7 @@ function SuccessPageContent() {
           <button
             aria-label="Continue Shopping"
             type="button"
-            className="border-2 border-slate-100 py-1 px-3 text-base rounded-sm"
+            className="btn btn-secondary"
             onClick={() => router.push("/products")}
           >
             Continue Shopping
