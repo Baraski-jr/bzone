@@ -2,6 +2,7 @@
 
 import { createCheckoutSession } from "@/action/createCheckoutSession"
 import { useCartStore } from "@/hooks/useCartStore"
+import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 import { Metadata } from "@/types"
 import { useEffect, useState } from "react"
 
@@ -38,7 +39,7 @@ export const CheckoutBtn = () => {
               id: item._id!,
             },
             images: [
-              item.image ? item.image : "https://via.placeholder.com/150",
+              item.image ? item.image : IMAGE_PLACEHOLDER,
             ],
           },
         },

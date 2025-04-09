@@ -78,7 +78,7 @@ export const CartBuyBtn: React.FC<ProductCartProps> = ({ product }) => {
   }
   return (
     <button
-      className="btn btn-primary disabled:cursor-not-allowed"
+      className="w-full btn btn-primary disabled:cursor-not-allowed"
       type="button"
       onClick={handleCheckout}
       disabled={isLoading || product.stock?.quantity == 0}

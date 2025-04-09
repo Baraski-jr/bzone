@@ -1,11 +1,7 @@
 "use server"
 
-// import stripe from "@/lib/stripe"
-
 import type { Stripe } from "stripe"
-
 import convertToSubcurrency from "@/lib/ConvertToSubcurrency"
-import { currentCart } from "@wix/ecom"
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 import { media as wixMedia } from "@wix/sdk"
 import { Metadata } from "@/types"
@@ -13,7 +9,7 @@ import { headers } from "next/headers"
 import { stripe } from "@/lib/stripe"
 import { LineItem } from "@/components/buyButton"
 
-export async function createCheckoutSession(
+export async function createCheckoutSession (
   products: LineItem[],
   metadata: Metadata
 ) {

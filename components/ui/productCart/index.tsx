@@ -90,7 +90,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             type="button"
             onClick={haddleAddToCart}
             disabled={product.stock?.quantity! < 1}
-            className="btn btn-secondary btn-soft disabled:cursor-not-allowed"
+            className="w-full btn btn-secondary btn-soft disabled:cursor-not-allowed"
           >
             Add to cart
           </button>

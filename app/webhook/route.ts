@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "checkout.session.completed") {
+
     const session = event.data.object as Stripe.Checkout.Session
 
     try {
@@ -59,7 +60,7 @@ async function createOrder(session: Stripe.Checkout.Session) {
     currency,
     metadata,
     created,
-    payment_intent,
+    // payment_intent,
     total_details,
   } = session
 
@@ -80,6 +81,7 @@ async function createOrder(session: Stripe.Checkout.Session) {
     },
     quantity: lineItem.quantity || 0,
   }))
+
 
   const order = {
     type: crypto.randomUUID(),
