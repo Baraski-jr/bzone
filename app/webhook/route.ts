@@ -65,6 +65,7 @@ async function createOrder(session: Stripe.Checkout.Session) {
   } = session
 
   const { orderNumber, customerName } = metadata as Metadata
+  console.log(session)
 
   const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(
     id,
@@ -73,30 +74,32 @@ async function createOrder(session: Stripe.Checkout.Session) {
     }
   )
 
-  const rediProducts = lineItemsWithProduct.data.map((lineItem) => ({
-    _key: crypto.randomUUID(),
-    product: {
-      _ref: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
-    },
-    image: (lineItem.price?.product as Stripe.Product)?.images?.[0] || IMAGE_PLACEHOLDER,
-    quantity: lineItem.quantity || 0,
-  }))
+  // const rediProducts = lineItemsWithProduct.data.map((lineItem) => ({
+  //   _key: crypto.randomUUID(),
+  //   product: {
+  //     _ref: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
+  //   },
+
+  //   image: (lineItem.price?.product as Stripe.Product)?.images?.[0] || IMAGE_PLACEHOLDER,
+  //   quantity: lineItem.quantity || 0,
+  // }))
 
   const order = { 
     type: crypto.randomUUID(),
     orderNumber,
     customerName,
     stripeCheckoutSessionId: id,
-    currency,
     amountDiscount: total_details?.amount_discount
       ? convertToStandardcurrency(total_details.amount_discount)
       : 0,
-    products: rediProducts,
+    products: lineItemsWithProduct,
     totalPrices: amount_total ? convertToStandardcurrency(amount_total ) : 0,
     status: "paid",
     orderDate: created,
   }
 
-  await redis.set(`order:${order.orderNumber || ""}`, JSON.stringify(order))
+  // await redis.set(`order:${order.orderNumber || ""}`, JSON.stringify(order))
+  await redis.hset(
+    `order:${order.orderNumber || ""}`, order)
   return order
 }

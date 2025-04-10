@@ -1,5 +1,6 @@
 import Gutter from "@/components/Gutter"
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
+import { convertToStandardcurrency } from "@/lib/ConvertToSubcurrency"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { OrderInfo } from "@/types"
 import { Redis } from "@upstash/redis"
@@ -25,6 +26,7 @@ export default async function OrderPage({
     const cacheKey = `order:${searchParamProps.orderNumber}`
     // Check cache
     const order = (await redis.get(cacheKey)) as OrderInfo | null
+    // console.log("order", order)
 
     if (!order) {
       return notFound()
@@ -32,7 +34,8 @@ export default async function OrderPage({
     return (
       <>
         <Gutter />
-        <div className="w-full min-h-screen py-4 flex items-center justify-center bg-gray-50 p-4">
+        order
+        {/* <div className="w-full min-h-screen py-4 flex items-center justify-center bg-gray-50 p-4">
           <div className="max-w-3xl w-11/12  mx-auto bg-white shadow-md rounded-lg p-6">
             <h2 className="text-2xl font-bold mb-4">My Orders</h2>
 
@@ -87,7 +90,6 @@ export default async function OrderPage({
                   </div>
                 </div>
 
-                {/* Cards */}
                 <div className="mb-6 py-4 px-3">
                   <h3 className="text-xl font-semibold mb-4">Order items</h3>
                   <div className="space-y-4">
@@ -113,12 +115,12 @@ export default async function OrderPage({
                         </div>
                         <div>
                           <p className="text-sm font-semibold">
-                            ${order.totalPrices / 100} each
+                            {formatCurrency(convertToStandardcurrency(order.totalPrices)) } each
                           </p>
                           <p className="text-sm">
-                            Subtotal: $
-                            {(order.totalPrices / 100) *
-                              order.products[index].quantity}
+                            Subtotal: 
+                            {formatCurrency(convertToStandardcurrency(order.totalPrices) *
+                              order.products[index].quantity)}
                           </p>
                         </div>
                       </div>
@@ -143,11 +145,8 @@ export default async function OrderPage({
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </>
     )
   } catch (error) {}
-  // if (!order) {
-  //   return <p>No order data found.</p>
-  // }
 }
