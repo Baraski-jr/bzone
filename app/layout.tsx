@@ -3,7 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 
 // import { Analytics } from "@vercel/analytics/next"
-// import { ClerkProvider } from "@clerk/nextjs"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import { WixClientContextProvider } from "@/context/wixContext"
 import FlyonuiScript from "@/components/FlyonuiScript"
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    // <ClerkProvider dynamic>
+    <ClerkProvider dynamic>
     <html lang="en" data-theme="light" className="antialiased">
       <body className={` overflow-x-hidden ${inter.className} `}>
         <WixClientContextProvider>
@@ -31,6 +31,6 @@ export default function RootLayout({
       </body>
       <FlyonuiScript />
     </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   )
 }

@@ -4,6 +4,16 @@ import { navLinks } from "@/lib/constants"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
+
+import {
+  ClerkLoaded,
+  SignedIn,
+  SignInButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs"
+
+
 const DesktopHeader = ({
   setIsOpenCart,
   counter,
@@ -26,6 +36,11 @@ const DesktopHeader = ({
   const toggleCart = useCallback(() => {
     setIsOpenCart((prev) => !prev)
   }, [setIsOpenCart])
+
+    // Clerk
+  const { user } = useUser()
+  console.log(user)
+
 
   return (
     <div
@@ -88,7 +103,7 @@ const DesktopHeader = ({
             </span>
           </button>
           {/* User */}
-          {/* <ClerkLoaded>
+          <ClerkLoaded>
             <SignedIn>
               <Link
                 className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
@@ -126,7 +141,7 @@ const DesktopHeader = ({
                 <SignInButton />
               </div>
             )}
-          </ClerkLoaded> */}
+          </ClerkLoaded>
         </div>
       </div>
     </div>

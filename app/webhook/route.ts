@@ -41,7 +41,8 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session
 
     try {
-      const order = await createOrder(session)
+      await createOrder(session)
+      console.log(session)
     } catch (error) {
       return NextResponse.json(
         { error: `Error creating order: ${error}` },
@@ -57,10 +58,8 @@ async function createOrder(session: Stripe.Checkout.Session) {
   const {
     id,
     amount_total, 
-    currency,
     metadata,
     created,
-    // payment_intent,
     total_details,
   } = session
 
@@ -74,15 +73,17 @@ async function createOrder(session: Stripe.Checkout.Session) {
     }
   )
 
-  // const rediProducts = lineItemsWithProduct.data.map((lineItem) => ({
-  //   _key: crypto.randomUUID(),
-  //   product: {
-  //     _ref: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
-  //   },
+  const products = lineItemsWithProduct.data.map((lineItem) => ({
+    _key: crypto.randomUUID(),
+    product: {
+      id: (lineItem.price?.product as Stripe.Product)?.metadata?.id,
+      image: (lineItem.price?.product as Stripe.Product)?.images?.[0] || IMAGE_PLACEHOLDER,
+      quantity: lineItem.quantity || 0,
+      name: (lineItem.price?.product as Stripe.Product)?.name || "",
+      price: convertToStandardcurrency(lineItem.price?.unit_amount || 0),
+    },
 
-  //   image: (lineItem.price?.product as Stripe.Product)?.images?.[0] || IMAGE_PLACEHOLDER,
-  //   quantity: lineItem.quantity || 0,
-  // }))
+  }))
 
   const order = { 
     type: crypto.randomUUID(),
@@ -92,14 +93,13 @@ async function createOrder(session: Stripe.Checkout.Session) {
     amountDiscount: total_details?.amount_discount
       ? convertToStandardcurrency(total_details.amount_discount)
       : 0,
-    products: lineItemsWithProduct,
+    products,
     totalPrices: amount_total ? convertToStandardcurrency(amount_total ) : 0,
     status: "paid",
     orderDate: created,
   }
 
-  // await redis.set(`order:${order.orderNumber || ""}`, JSON.stringify(order))
-  await redis.hset(
-    `order:${order.orderNumber || ""}`, order)
+  await redis.hset(`order:${order.orderNumber || ""}`, order);
+
   return order
 }
