@@ -2,8 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
-// import { Analytics } from "@vercel/analytics/next"
-import { ClerkProvider } from "@clerk/nextjs"
+import { Analytics } from "@vercel/analytics/next"
 
 import { WixClientContextProvider } from "@/context/wixContext"
 import FlyonuiScript from "@/components/FlyonuiScript"
@@ -21,16 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider dynamic>
-    <html lang="en" data-theme="light" className="antialiased">
-      <body className={` overflow-x-hidden ${inter.className} `}>
-        <WixClientContextProvider>
-          {children}
-          {/* <Analytics /> */}
-        </WixClientContextProvider>
-      </body>
-      <FlyonuiScript />
-    </html>
-    </ClerkProvider>
+      <html lang="en" data-theme="light" className="antialiased">
+        <body className={` overflow-x-hidden ${inter.className} `}>
+          <WixClientContextProvider>
+            {children}
+            <Analytics />
+          </WixClientContextProvider>
+        </body>
+        <FlyonuiScript />
+      </html>
   )
 }

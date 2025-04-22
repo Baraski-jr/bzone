@@ -215,10 +215,12 @@ export type Metadata = {
 export type OrderProduct = {
   _key: string
   product: {
-    _ref: string
-    image: string
+     id: string
+      image: string
+      quantity: number
+      name: string
+      price: number
   }
-  quantity: number
 }
 
 export type OrderInfo = {

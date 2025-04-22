@@ -5,15 +5,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useCallback } from "react"
 
-import {
-  ClerkLoaded,
-  SignedIn,
-  SignInButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs"
-
-
 const DesktopHeader = ({
   setIsOpenCart,
   counter,
@@ -36,11 +27,6 @@ const DesktopHeader = ({
   const toggleCart = useCallback(() => {
     setIsOpenCart((prev) => !prev)
   }, [setIsOpenCart])
-
-    // Clerk
-  const { user } = useUser()
-  console.log(user)
-
 
   return (
     <div
@@ -102,46 +88,6 @@ const DesktopHeader = ({
               {counter}
             </span>
           </button>
-          {/* User */}
-          <ClerkLoaded>
-            <SignedIn>
-              <Link
-                className="flex-1 relative items-center skew-x-2 bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md"
-                href={`/orders`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-package"
-                >
-                  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
-                  <path d="M12 22V12" />
-                  <polyline points="3.29 7 12 12 20.71 7" />
-                  <path d="m7.5 4.27 9 5.15" />
-                </svg>
-              </Link>
-            </SignedIn>
-            {user ? (
-              <div className="flex items-center gap-2">
-                <UserButton />
-                <div className="hidden sm:block text-xs text-white">
-                  <p className=""> Welcome Back</p>
-                  <p className="font-bold ">{user.username}</p>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-gray-50 bg-opacity-5 hover:bg-opacity-20 text-white py-2 px-4 rounded-md transition-all duration-200">
-                <SignInButton />
-              </div>
-            )}
-          </ClerkLoaded>
         </div>
       </div>
     </div>

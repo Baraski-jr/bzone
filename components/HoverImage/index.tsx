@@ -30,7 +30,7 @@ export const ImageHover = ({ url, hoverUrl, alt }: Props) => {
         priority
         width={2500}
         height={2500}
-        className={`object-contain transition-opacity duration-500 w-auto ${
+        className={`object-cover transition-opacity duration-500 w-auto ${
           isHovered ? "opacity-0" : "opacity-100"
         }`}
       />
@@ -40,7 +40,7 @@ export const ImageHover = ({ url, hoverUrl, alt }: Props) => {
         width={700}
         height={600}
         priority
-        className={`absolute inset-0  w-auto object-contain transition-opacity duration-500 ${
+        className={`absolute inset-0  w-auto object-cover transition-opacity duration-500 ${
           isHovered ? "opacity-100 " : "opacity-0"
         }`}
       />

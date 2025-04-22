@@ -2,8 +2,8 @@ import Gutter from "@/components/Gutter"
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 import { convertToStandardcurrency } from "@/lib/ConvertToSubcurrency"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
+import { redis } from "@/lib/redis"
 import { OrderInfo } from "@/types"
-import { Redis } from "@upstash/redis"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -22,11 +22,7 @@ export default async function OrderPage({
     if (!searchParamProps.orderNumber) {
       return notFound()
     }
-    const redis = Redis.fromEnv()
-    const cacheKey = `order:${searchParamProps.orderNumber}`
-    // Check cache
-    const order = (await redis.get(cacheKey)) as OrderInfo | null
-    // console.log("order", order)
+    const order = await redis.hgetall(`order:${searchParamProps.orderNumber}`) as OrderInfo
 
     if (!order) {
       return notFound()
@@ -34,8 +30,7 @@ export default async function OrderPage({
     return (
       <>
         <Gutter />
-        order
-        {/* <div className="w-full min-h-screen py-4 flex items-center justify-center bg-gray-50 p-4">
+=        <div className="w-full min-h-screen py-4 flex items-center justify-center bg-gray-50 p-4">
           <div className="max-w-3xl w-11/12  mx-auto bg-white shadow-md rounded-lg p-6">
             <h2 className="text-2xl font-bold mb-4">My Orders</h2>
 
@@ -47,7 +42,7 @@ export default async function OrderPage({
                       <h3 className="">Order Number</h3>
                       <p className="text-green-700 text-sm">
                         {" "}
-                        {order.orderNumber}
+                        {String(order.orderNumber)}{" "}
                       </p>
                     </div>
                     <div className="space-y-2">
@@ -68,24 +63,24 @@ export default async function OrderPage({
                       Status:{" "}
                       <span className="ml-2 text-green-700">
                         {" "}
-                        {order.status}{" "}
+                        {String(order.status)}
                       </span>
                     </p>
                     <div className="">
                       <div className="space-y-1">
                         <p>Total Amount</p>
                         <p className="text-end font-bold">
-                          {formatCurrency(order.totalPrices)}
+                          {formatCurrency(Number(order.totalPrices))}
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-red-200 bg-opacity-30 rounded-md p-3 space-y-2">
                     <h2 className="text-sm text-red-800 font-semibold">
-                      Discount Applied: {formatCurrency(order.amountDiscount)}
+                      Discount Applied: {formatCurrency(Number(order.amountDiscount))}
                     </h2>
                     <h2 className="text-sm font-semibold">
-                      Original Subtotal: {formatCurrency(order.totalPrices)}
+                      Original Subtotal: {formatCurrency(Number(order.totalPrices))}
                     </h2>
                   </div>
                 </div>
@@ -110,17 +105,17 @@ export default async function OrderPage({
                             Product_name
                           </p>
                           <p className="text-sm text-gray-8text-green-700">
-                            Quantity: {product.quantity}
+                            Quantity: {product.product.quantity}
                           </p>
                         </div>
                         <div>
                           <p className="text-sm font-semibold">
-                            {formatCurrency(convertToStandardcurrency(order.totalPrices)) } each
+                            {formatCurrency(convertToStandardcurrency(Number(product.product.price))) } each
                           </p>
                           <p className="text-sm">
                             Subtotal: 
-                            {formatCurrency(convertToStandardcurrency(order.totalPrices) *
-                              order.products[index].quantity)}
+                            {formatCurrency(convertToStandardcurrency(Number(product.product.price) *
+                              order.products[index].product.quantity))}
                           </p>
                         </div>
                       </div>
@@ -145,7 +140,7 @@ export default async function OrderPage({
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </>
     )
   } catch (error) {}

@@ -130,16 +130,17 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 //   productOptions={product.productOptions}
                 // /> */}
               {/* // ) : ( */}
+              <div className="space-y-3">
+                {(product.stock?.quantity ?? 0) > 1 && (
+                    <Add
+                      productId={product._id!}
+                      varianId={VARIANT_ID}
+                      stockNumber={product.stock?.quantity || 0}
+                    />
+                )}
 
-              {product.stock?.quantity == 1 ? (
                 <BuyBtn product={product} />
-              ) : (
-                <Add
-                  productId={product._id!}
-                  varianId={VARIANT_ID}
-                  stockNumber={product.stock?.quantity || 0}
-                />
-              )}
+              </div>
 
               {/* Shipping estimate detail cart */}
               <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-md">

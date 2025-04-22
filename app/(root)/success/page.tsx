@@ -13,7 +13,7 @@ function SuccessPageContent() {
 
   useEffect(() => {
     const handleOrderSuccess = async () => {
-      if (orderNumber && cart) {
+      if (orderNumber) {
         try {
           emptyCart(wixClient)
         } catch (error) {

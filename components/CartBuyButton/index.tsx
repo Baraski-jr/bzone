@@ -78,7 +78,7 @@ export const CartBuyBtn: React.FC<ProductCartProps> = ({ product }) => {
   }
   return (
     <button
-      className="w-full btn btn-primary disabled:cursor-not-allowed"
+      className="w-full rounded-md hover:outline-dashed hover:bg-primary bg-primaryPlus hover:bg- border-2 border-primary text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
       type="button"
       onClick={handleCheckout}
       disabled={isLoading || product.stock?.quantity == 0}

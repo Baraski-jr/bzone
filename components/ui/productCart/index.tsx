@@ -51,7 +51,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             src={product.media?.items?.[0]?.image?.url || "/product.png"}
             alt={product.media?.items?.[0]?.image?.altText || ""}
             sizes="80vw"
-            className=" object-contain w-auto transition-opacity duration-500 "
+            className=" object-cover w-auto transition-opacity duration-500 "
           />
         </div>
       )}
@@ -90,7 +90,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             type="button"
             onClick={haddleAddToCart}
             disabled={product.stock?.quantity! < 1}
-            className="w-full btn btn-secondary btn-soft disabled:cursor-not-allowed"
+            className="w-full bg-opacity-0 hover:bg-opacity-95 rounded-md bg-primary border-2 border-primary text-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
           >
             Add to cart
           </button>

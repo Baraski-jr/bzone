@@ -29,6 +29,8 @@ const config = {
       },
       colors: {
         primary: "#84BA86",
+        primaryPlus: "#7aac7c",
+
       },
     },
   },

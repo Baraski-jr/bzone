@@ -81,9 +81,9 @@ export const BuyBtn: React.FC<ProductCartProps> = ({ product }) => {
       type="button"
       onClick={handleCheckout}
       disabled={isLoading || product.stock?.quantity == 0}
-      className="block w-full text-center text-sm bg-black hover:bg-opacity-90 text-white p-3 disabled:bg-opacity-75 disabled:cursor-not-allowed"
+      className="w-full hover:bg-opacity-100 bg-opacity-95 rounded-md hover:border-2 bg-primary border-2 border-primary text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
     >
-      {isLoading ? "Processing..." : "Buy"}
+      {isLoading ? "Processing..." : "BUY NOW"}
     </button>
   )
 }
