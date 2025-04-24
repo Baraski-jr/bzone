@@ -34,6 +34,7 @@
     "motion": "^12.4.7",
     "next": "^15.2.3",
     "next-auth": "^4.24.11",
+    "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-medium-image-zoom": "^5.2.13",
@@ -48,6 +49,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.0.0-beta.3",
     "@types/ioredis": "^4.28.10",
     "@types/js-cookie": "^3.0.6",
     "@types/micro-cors": "^0.1.5",
