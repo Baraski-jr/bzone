@@ -58,6 +58,7 @@ export const CartModel = ({
       ac.abort()
     }
   }, [cart, isOpenCart, setIsOpenCart])
+  
 
   return (
     <div

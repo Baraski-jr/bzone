@@ -11,7 +11,7 @@ function CartPage() {
   const { cart, counter } = useCartStore()
 
   return (
-    <div className="">
+    <div className="pb-20">
       <Gutter />
       <SubHero title={"Shopping Cart"} />
       {!cart || counter === 0 ? (

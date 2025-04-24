@@ -51,7 +51,6 @@ export const BuyBtn: React.FC<ProductCartProps> = ({ product }) => {
         quantity: 1,
       },
     ])
-    // console.log(productData)
   }, [product])
 
   const handleCheckout = async () => {
@@ -63,7 +62,6 @@ export const BuyBtn: React.FC<ProductCartProps> = ({ product }) => {
         // customerEmail: "jrbaraski@gmail.com ",
       }
 
-      // console.log(productData)
 
       const checkoutUrl = await createCheckoutSession(productData, metadata)
 

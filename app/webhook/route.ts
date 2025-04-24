@@ -42,7 +42,6 @@ export async function POST(req: NextRequest) {
 
     try {
       await createOrder(session)
-      console.log(session)
     } catch (error) {
       return NextResponse.json(
         { error: `Error creating order: ${error}` },
@@ -64,7 +63,6 @@ async function createOrder(session: Stripe.Checkout.Session) {
   } = session
 
   const { orderNumber, customerName } = metadata as Metadata
-  console.log(session)
 
   const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(
     id,

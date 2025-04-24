@@ -51,7 +51,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             src={product.media?.items?.[0]?.image?.url || "/product.png"}
             alt={product.media?.items?.[0]?.image?.altText || ""}
             sizes="80vw"
-            className=" object-cover w-auto transition-opacity duration-500 "
+            className="object-cover w-auto transition-opacity duration-500 "
           />
         </div>
       )}

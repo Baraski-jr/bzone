@@ -12,6 +12,7 @@ export const CartProductList = () => {
   const wixClient = useWixClient()
 
   const { cart, isLoading, removeItem } = useCartStore()
+  
 
   return (
     <section>
@@ -84,7 +85,7 @@ export const CartProductList = () => {
               {/* Right side */}
               <div className="flex flex-col md:items-center h-fit md:flex-row gap-2 md:gap-4 md justify-start md:justify-between w-[50%]">
                 <p className="text-slate-700 text-sm order-1 hidden md:block">
-                  <span className="">Price: </span>
+                  <span className="md:hidden">Price: </span>
                   {formatCurrency(Number(item.fullPrice?.amount!))}
                 </p>
                 <Link
@@ -124,9 +125,9 @@ export const CartProductList = () => {
                     </svg>
                   </button>
                 </div>
-                <p className="text-slate-700 text-sm order-2 md:order-3">
-                  <span className="md:hidden">Total price:</span>{" "}
-                  {formatCurrency(Number(item.fullPrice?.amount!))}
+                <p className="text-slate-700 text-base order-2 md:order-3">
+                  <span className="md:hidden">Total price:</span>
+                  {formatCurrency(Number(item.fullPrice?.amount!)) }
                 </p>
               </div>
             </div>

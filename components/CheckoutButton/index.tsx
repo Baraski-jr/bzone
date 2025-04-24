@@ -77,7 +77,7 @@ export const CheckoutBtn = () => {
       type="button"
       onClick={handleCheckout}
       disabled={isLoading || counter === 0}
-      className="block w-full text-center text-sm bg-black hover:bg-opacity-90 text-white p-3 disabled:bg-opacity-75 disabled:cursor-not-allowed"
+      className="w-full bg-primary border-2 hover:border-black border-transparent text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
     >
       {isLoading ? "Processing..." : "Checkout"}
     </button>
