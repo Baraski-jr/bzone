@@ -11,7 +11,7 @@ const LandingHero = () => {
       <Gutter />
       <div
         id="horizontal-thumbnails"
-        data-carousel='{ "loadingClasses": "opacity-0", "isAutoPlay": "true", "isInfinite": "true", "isCentered": "true", "isDraggable": "true", "speed": 6000 }'
+        data-carousel='{ "loadingClasses": "opacity-0", "isInfinite": "true", "isCentered": "true", "isDraggable": "true", "speed": 6000 }'
         className="relative  flex md:items-center max-w-[100rem] w-[95%] mx-auto"
       >
         <div className="carousel space-y-4">

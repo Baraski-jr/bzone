@@ -7,7 +7,7 @@ const Crousel: React.FC<CrouselType> = ({ products }) => {
   return (
     <div
       id="multi-slide"
-      data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "md": 3, "lg": 4, "xl":5 } }'
+      data-carousel='{ "loadingClasses": "isDraggable": "true", "opacity-0", "slidesQty": { "xs": 1, "md": 3, "lg": 4, "xl":5 } }'
       className="relative h-full w-full"
     >
       <div className="carousel h-full">

@@ -4,7 +4,7 @@ import Link from "next/link"
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import { navLinks } from "@/lib/constants"
 import { NavLinkProps } from "@/types"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 const MobileHeader = ({
   counter,
   isScrolled,
@@ -17,10 +17,22 @@ const MobileHeader = ({
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+
 
   // Acitive navigation link for the menu element itself
 
   const isActive = (href: string) => pathname === href
+  const handleLinkClick = (url: string) => {
+    setOpenMenu(false)
+    if (window.location.pathname === url) {
+      // Same path: refresh the page
+      router.refresh()
+    } else {
+      // Different path: navigate normally
+      router.push(url)
+    }
+  }
 
   const toggleCart = useCallback(() => {
     setIsOpenCart((prev) => !prev)
@@ -170,6 +182,10 @@ const MobileHeader = ({
                   return (
                     <Link
                       key={label}
+                      onClick={(e) => {
+                        e.preventDefault()  // stop normal navigation
+                        handleLinkClick(url)
+                      }}
                       className={`${
                         isActive(url)
                           ? ` bg-opacity-20 border-slate-50 border-b-2 py-2 px-4 rounded-md hover:border-slate-50 active:bg-opacity-80 bg-gray-50  hover:bg-opacity-10 inline-block capitalize text-white text-base  transition-all duration-200`
