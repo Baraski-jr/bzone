@@ -12,7 +12,6 @@ export const CartProductList = () => {
   const wixClient = useWixClient()
 
   const { cart, isLoading, removeItem } = useCartStore()
-  
 
   return (
     <section>

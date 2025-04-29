@@ -1,5 +1,5 @@
 const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
-  currency: "USD", // Use USD for the $ symbol
+  currency: "GMD", // Use GMD for the Gambian Dalasi symbol
   style: "currency",
   minimumFractionDigits: 2,
 })

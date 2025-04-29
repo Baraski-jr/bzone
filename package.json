@@ -24,6 +24,7 @@
     "@wix/sdk": "^1.15.9",
     "@wix/stores": "^1.0.347",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.6.0",
     "clsx": "^2.1.1",
     "debug": "^4.4.0",
     "glob": "^11.0.0",

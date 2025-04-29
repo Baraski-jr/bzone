@@ -3,10 +3,8 @@
 import { CheckoutBtn } from "@/components/CheckoutButton"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import Link from "next/link"
-import { useState } from "react"
 
-export function EstimateCard() {
-  const [totalPrice, setTotalPrice] = useState(0)
+export function EstimateCard({totalPrice}: {totalPrice: number}) {
 
   return (
     <>

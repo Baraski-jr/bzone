@@ -71,7 +71,7 @@ const FooterComponent = () => {
                 </Link>
                 <Link
                   className="block hover:text-[#84BA86] active:underline transition-colors duration-200"
-                  href="/products/all"
+                  href="/products"
                 >
                   Products
                 </Link>
