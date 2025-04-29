@@ -10,7 +10,7 @@ const Crousel: React.FC<CrouselType> = ({ products }) => {
       data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "md": 3, "lg": 4, "xl":5 } }'
       className="relative h-full w-full"
     >
-      <div className="carousel h-full bg-pink-300">
+      <div className="carousel h-full">
         <div className="carousel-body h-full opacity-0">
           {products.map((product) => (
             <div className="carousel-slide mx-2" key={product.product._id}>
