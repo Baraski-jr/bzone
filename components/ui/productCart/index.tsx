@@ -77,7 +77,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
           {formatCurrency(product.priceData?.price || 0)}
         </h3>
         <div
-          className="mb-6 text-sm text-clip line-clamp-3"
+          className="mb-6 text-sm text-clip line-clamp-2"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(product.description || ""),
           }}

@@ -15,9 +15,9 @@ const FooterComponent = () => {
     <footer className="bg-[#141414] text-gray-300">
       <div className="max-w-[100rem] w-[95%] mx-auto">
         {/* The First Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
+        <div className="grid grid-cols-1 md:grid-cols-2 py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
           {/* First Col*/}
-          <div className="space-y-2">
+          <div className="space-y-2 w-fit">
             <Link
               href="/"
               className="font-bold text-3xl font-serif italic text-white"
@@ -25,11 +25,9 @@ const FooterComponent = () => {
               {" "}
               B-ZONE{" "}
             </Link>
-            <div className="w-full md:w-[90%]">
               <p className="">
-                Super class, cute, comfortable. You can wear them with just about anything.
+                Super class, cute, comfortable. <br /> You can wear them with just about anything.
               </p>
-            </div>
             {/* Social Media Links */}
             <div className="flex space-x-2 pt-2">
               <Link
@@ -56,7 +54,7 @@ const FooterComponent = () => {
             </div>
           </div>
           {/* Second */}
-          <div className="flex w-full justify-between">
+          <div className="grid grid-cols-2 content-between">
             <div className="">
               <h1 className="text-lg text-white font-semibold pb-2">
                 Quick Links

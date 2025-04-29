@@ -19,6 +19,9 @@ export default async function Home() {
           name="NEW ARRIVAL"
           />
       </Suspense>
+      
+      <Promotion />
+
       <Suspense fallback={<SkeletonCollection />}>
         <Collections
           categoryId={process.env.WOMEN_PRODUCTS_CATEGORY_ID!}
@@ -26,7 +29,7 @@ export default async function Home() {
           name="TOP TENDING"
         />
       </Suspense>
-      <Promotion />
+
       <FreeReview />
     </section>
   )

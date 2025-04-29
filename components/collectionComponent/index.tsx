@@ -34,7 +34,6 @@ const Collection: React.FC<CollectionProps> = async ({
             categoryId={categoryId}
           />
         </div>
-        {/* </div> */}
       </section>
     )
   } catch (error) {
