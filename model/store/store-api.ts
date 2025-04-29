@@ -15,6 +15,7 @@ interface ProductsFilters {
   min?: number
   // sort?: any
   pageNumber?: number
+  ribbon?: string
 }
 // Fetch category
 export const querySingleCollectionBySlug = async ({
@@ -58,6 +59,7 @@ export const queryProducts = async ({
   collectionId = "",
   max,
   min,
+  ribbon,
   // sort,
   pageNumber,
 }: ProductsFilters = {}) => {
@@ -68,6 +70,8 @@ export const queryProducts = async ({
   if (limit) query = query.limit(limit)
   if (slug) query = query.eq("slug", slug)
   if (collectionId) query = query.eq("collectionIds", collectionId)
+  // if (ribbon) query = query.eq("ribbon", ribbon) // 👈 Filter by ribbon
+
 
   // Added
   if (max) query = query.lt("priceData.price", max || 999999)

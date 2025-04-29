@@ -66,7 +66,8 @@ export interface CrouselType {
 export interface CollectionProps {
   categoryId: string
   limit: number
-  subTitle: string
+  name: string
+  sortByNewArrivals?: boolean
 }
 
 export interface NavLinkProps {

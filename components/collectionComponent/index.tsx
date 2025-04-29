@@ -10,7 +10,7 @@ import { SkeletonCollection } from "../ui/Skeleton/SkeletonCollection"
 
 const Collection: React.FC<CollectionProps> = async ({
   categoryId,
-  subTitle,
+  name,
   limit,
 }) => {
   try {
@@ -19,20 +19,14 @@ const Collection: React.FC<CollectionProps> = async ({
       limit: limit,
     })
 
-    const caterory = await querySingleCollectionById({
-      collectionId: categoryId,
-    })
-
     return (
       <section className="mt-6 md:mt-10 flex items-center">
         {/* Header */}
         <div className=" max-w-[100rem] w-[95%] mx-auto ">
-          <header className="text-center space-y-2 py-5 px-2">
-            <h1 className="font-bold text-slate-700 text-xl md:text-2xl capitalize">
-              {caterory.name}
+          <header className="py-5 font-bold px-2">
+            <h1 className="font-extrabold text-slate-900 text-xl md:text-2xl lg:text-3xl uppercase">
+              {name}
             </h1>
-            {/* Temporal */}
-            <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
           </header>
 
           <Crousel
