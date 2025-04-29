@@ -26,9 +26,9 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const { addItem } = useCartStore()
 
   const ProductImage: React.FC = () => (
-    <div className="overflow-hidden bg-[#F5F5F5] relative block h-full">
+    <div className="overflow-hidden relative block h-full">
       {/* To show the product is sold out */}
-      {product.stock?.quantity! < 1 && (
+      {(product.stock?.quantity ?? 0) < 1 && (
         <div className="bg-red-500 bg-opacity-0 hover:bg-opacity-10 w-full flex items-center justify-center rounded-full aspect-square absolute transition-all ease-in-out duration-150 z-10">
           <div className="w-1/4 aspect-square rounded-full bg-red-500 flex items-center justify-center px-2">
             <p className="text-lg font-bold font-mono text-white tracking-wide">
@@ -51,7 +51,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             src={product.media?.items?.[0]?.image?.url || "/product.png"}
             alt={product.media?.items?.[0]?.image?.altText || ""}
             sizes="80vw"
-            className="object-cover w-auto transition-opacity duration-500 "
+            className="object-cover w-full transition-opacity duration-500 "
           />
         </div>
       )}
@@ -60,14 +60,12 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <div className="">
-      <figure>
         <Link
           href={`/products/${product.slug}`}
-          className="card group hover:shadow sm:max-w-sm"
+          className="card group hover:shadow"
         >
           <ProductImage />
         </Link>
-      </figure>
       <div className="card-body">
         <Link
           href={`/products/${product.slug}`}
