@@ -34,11 +34,7 @@ const Collection: React.FC<CollectionProps> = async ({
             {/* Temporal */}
             <p className="text-slate-500 text-sm md:text-base">{subTitle}</p>
           </header>
-          {/* <div className="h-full flex flex-col md:flex-row sm:items-center md:items-start lg:gap-4 gap-2 gap-y-3 sm:gap-y-0 md:space-x-4">
-            <CollectionBanner
-              url={`/products?category=${caterory.slug}`}
-              bgUrl={caterory.media?.items[0].image?.url || ""}
-            /> */}
+
           <Crousel
             products={products.items.map((item) => ({ product: item }))}
             categoryId={categoryId}

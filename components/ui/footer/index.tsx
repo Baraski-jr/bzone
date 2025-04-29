@@ -13,7 +13,7 @@ const FooterComponent = () => {
 
   return (
     <footer className="bg-[#141414] text-gray-300">
-      <div className=" max-w-[100rem] w-[95%] mx-auto">
+      <div className="max-w-[100rem] w-[95%] mx-auto">
         {/* The First Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:justify-items-end py-14 space-y-8 md:space-y-0 border-b-2 border-gray-500">
           {/* First Col*/}
@@ -27,8 +27,7 @@ const FooterComponent = () => {
             </Link>
             <div className="w-full md:w-[90%]">
               <p className="">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit
-                eaque animi doloribus itaque obcaecati est!
+                Super class, cute, comfortable. You can wear them with just about anything.
               </p>
             </div>
             {/* Social Media Links */}
@@ -79,7 +78,7 @@ const FooterComponent = () => {
                   className="block hover:text-[#84BA86] active:underline transition-colors duration-200"
                   href="/cart"
                 >
-                  Carts
+                  My Cart
                 </Link>
               </div>
             </div>
