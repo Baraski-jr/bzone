@@ -12,6 +12,7 @@ import { VARIANT_ID } from "@/lib/constants"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { CartBuyBtn } from "@/components/CartBuyButton"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 interface ProductCartProps {
   product: products.Product
 }
@@ -19,10 +20,10 @@ interface ProductCartProps {
 const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const haddleAddToCart = () => {
     addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
+
   }
-
+  const pathname = usePathname()
   const wixClient = useWixClient()
-
   const { addItem } = useCartStore()
 
   const ProductImage: React.FC = () => (
@@ -60,41 +61,70 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <div className="">
-        <Link
-          href={`/products/${product.slug}`}
-          className="card group hover:shadow"
-        >
-          <ProductImage />
-        </Link>
-      <div className="card-body">
-        <Link
-          href={`/products/${product.slug}`}
-          className="link link-animated w-fit mb-2.5"
-        >
-          {product.name}
-        </Link>
-        <h3 className="text-lg font-semibold text-slate-900 mb-2">
-          {formatCurrency(product.priceData?.price || 0)}
-        </h3>
-        <div
-          className="mb-6 text-sm text-clip line-clamp-2"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(product.description || ""),
-          }}
-        ></div>
-        <div className="card-actions z-10">
-          <CartBuyBtn product={product} />
-          <button
-            type="button"
-            onClick={haddleAddToCart}
-            disabled={product.stock?.quantity! < 1}
-            className="w-full bg-opacity-0 hover:bg-opacity-95 rounded-md bg-primary border-2 border-primary text-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
+      {pathname === '/' ? (
+          <Link
+            href={`/products/${product.slug}`}
+            className="card group hover:shadow"
+          
           >
-            Add to cart
-          </button>
-        </div>
-      </div>
+            <ProductImage />
+            <div className="card-body text-center">
+              <h3
+                className="font-medium text-slate-900 text-base mb-2.5"
+              >
+                {product.name}
+              </h3> 
+              <h3 className="text-base font-semibold text-slate-900 mb-2">
+                {formatCurrency(product.priceData?.price || 0)}
+              </h3>
+            </div>
+          </Link>
+        )
+        :(
+          <div className="hover:bg-white hover:drop-shadow-md transition-all duration-300">
+            <Link
+              href={`/products/${product.slug}`}
+              className="card group hover:shadow"
+            >
+              <ProductImage />
+            </Link>
+            <div className="card-body ">
+              <Link
+                href={`/products/${product.slug}`}
+                className="link link-animated w-fit mb-2.5"
+              >
+                {product.name}
+              </Link>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                {formatCurrency(product.priceData?.price || 0)}
+              </h3>
+              <div
+                className="mb-6 text-sm text-clip line-clamp-2"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(product.description || ""),
+                }}
+              ></div>
+              {
+                pathname !== '/' && (
+                <div className="card-actions z-10">
+                  <CartBuyBtn product={product} />
+                  <button
+                    type="button"
+                    onClick={haddleAddToCart}
+                    disabled={product.stock?.quantity! < 1}
+                    className="w-full bg-opacity-0 hover:bg-opacity-95 rounded-md bg-primary border-2 border-primary text-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
+                  >
+                    Add to cart
+                  </button>
+                </div>
+                )
+              }
+            </div>
+          </div>
+        )}
     </div>
+    
+
   )
 }
 

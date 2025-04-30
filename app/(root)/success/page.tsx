@@ -69,7 +69,8 @@ function SuccessPageContent() {
             aria-label="View Your Orders"
             type="button"
             className="btn btn-primary"
-            onClick={() => router.push(`/orders?orderNumber=${orderNumber}`)}
+            onClick={() => router.push(`/orders/${orderNumber}`)
+            }
           >
             View Your Orders
           </button>

@@ -16,7 +16,6 @@ const MobileHeader = ({
 }) => {
   const [openMenu, setOpenMenu] = useState(false)
   const pathname = usePathname()
-  const menuRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
 
@@ -51,23 +50,23 @@ const MobileHeader = ({
     setOpenMenu(!openMenu)
   }
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpenMenu(false)
-      }
-    }
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+  //       setOpenMenu(false)
+  //     }
+  //   }
 
-    if (openMenu) {
-      document.addEventListener("mousedown", handleClickOutside)
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
+  //   if (openMenu) {
+  //     document.addEventListener("mousedown", handleClickOutside)
+  //   } else {
+  //     document.removeEventListener("mousedown", handleClickOutside)
+  //   }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [openMenu])
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside)
+  //   }
+  // }, [openMenu])
 
   const homePage =
     pathname === "/" && !isScrolled
@@ -142,7 +141,6 @@ const MobileHeader = ({
 
           {/* Menu */}
           <div
-            ref={menuRef}
             className={`${
               openMenu ? " translate-y-0 " : "-translate-y-[100%] delay-500 "
             } cursor-pointer absolute z-50 top-0 left-0 min-h-screen w-full bg-slate-900 bg-opacity-70 transition-transform ease-in-out duration-0`}

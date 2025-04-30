@@ -24,15 +24,18 @@ const Collection: React.FC<CollectionProps> = async ({
         {/* Header */}
         <div className=" max-w-[100rem] w-[95%] mx-auto ">
           <header className="py-5 font-bold px-2">
-            <h1 className="font-extrabold text-slate-900 text-xl md:text-2xl lg:text-3xl uppercase">
+            <h1 className="my-3 font-extrabold text-slate-900 text-xl md:text-2xl lg:text-3xl uppercase">
               {name}
             </h1>
           </header>
 
-          <Crousel
-            products={products.items.map((item) => ({ product: item }))}
-            categoryId={categoryId}
-          />
+          <div className="">
+            <Crousel
+              products={products.items.map((item) => ({ product: item }))}
+              categoryId={categoryId}
+            />
+          </div>
+
         </div>
       </section>
     )
