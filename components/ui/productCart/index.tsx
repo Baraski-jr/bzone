@@ -22,7 +22,6 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
     addItem(wixClient, product._id ?? "", VARIANT_ID, 1)
 
   }
-  const pathname = usePathname()
   const wixClient = useWixClient()
   const { addItem } = useCartStore()
 
@@ -61,71 +60,36 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
 
   return (
     <div className="">
-      {pathname === '/' ? (
-          <Link
-            href={`/products/${product.slug}`}
-            className="card group hover:shadow"
-          
-          >
-            <ProductImage />
-            <div className="card-body text-center">
-              <h3
-                className="font-medium text-slate-900 text-base mb-2.5"
-              >
-                {product.name}
-              </h3> 
-              <h3 className="text-base font-semibold text-slate-900 mb-2">
-                {formatCurrency(product.priceData?.price || 0)}
-              </h3>
-            </div>
-          </Link>
-        )
-        :(
-          <div className="hover:bg-white hover:drop-shadow-md transition-all duration-300">
-            <Link
-              href={`/products/${product.slug}`}
-              className="card group hover:shadow"
+      <Link
+        href={`/products/${product.slug}`}
+        className="card group hover:shadow"
+      >
+        <ProductImage />
+      </Link>
+      <div className="pt-3">
+        <Link
+          href={`/products/${product.slug}`}
+          className="link link-animated w-fit"
+        >
+          {product.name}
+        </Link>
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm md:text-base font-semibold text-slate-900">
+            {formatCurrency(product.priceData?.price || 0)}
+          </h3>
+            {/* <CartBuyBtn product={product} /> */}
+            <button
+              type="button"
+              onClick={haddleAddToCart}
+              disabled={product.stock?.quantity! < 1}
+              className="py-1 px-3 rounded-full bg-opacity-0 hover:bg-opacity-95 bg-primary border-[1px] border-primary text-slate-950 hover:text-white transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
             >
-              <ProductImage />
-            </Link>
-            <div className="card-body ">
-              <Link
-                href={`/products/${product.slug}`}
-                className="link link-animated w-fit mb-2.5"
-              >
-                {product.name}
-              </Link>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                {formatCurrency(product.priceData?.price || 0)}
-              </h3>
-              <div
-                className="mb-6 text-sm text-clip line-clamp-2"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(product.description || ""),
-                }}
-              ></div>
-              {
-                pathname !== '/' && (
-                <div className="card-actions z-10">
-                  <CartBuyBtn product={product} />
-                  <button
-                    type="button"
-                    onClick={haddleAddToCart}
-                    disabled={product.stock?.quantity! < 1}
-                    className="w-full bg-opacity-0 hover:bg-opacity-95 rounded-md bg-primary border-2 border-primary text-slate-950 hover:text-white text-base h-12 transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
-                  >
-                    Add to cart
-                  </button>
-                </div>
-                )
-              }
-            </div>
-          </div>
-        )}
-    </div>
-    
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            </button>
 
-  )
-}
-
+        </div>
+      </div>
+    </div> 
+    )
+  }
 export default ProductCart
