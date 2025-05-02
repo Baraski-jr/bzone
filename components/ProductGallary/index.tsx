@@ -20,7 +20,7 @@ function ProductGallary(product: ProductGallaryProps) {
     direction?: string
   }) => {
     return (
-      <div className={`flex ${direction} gap-3 pr-3`}>
+      <div className={`flex ${direction} items-center gap-3 pr-3`}>
         {product.product.media?.items?.map((item: any, imgIndex: number) => {
           return (
             <div
@@ -34,7 +34,7 @@ function ProductGallary(product: ProductGallaryProps) {
                 priority
                 src={item.image?.url || IMAGE_PLACEHOLDER}
                 alt={item.image?.altText || ""}
-                className="w-auto cursor-pointer"
+                className="w-auto min-w-8 sm:min-w-min aspect-square object-cover cursor-pointer"
               />
             </div>
           )
@@ -46,15 +46,15 @@ function ProductGallary(product: ProductGallaryProps) {
   return (
     <>
       {product.product.media?.items?.length ?? 0 > 1 ? (
-        <div className="md:flex">
+        <div className="sm:flex">
           {/* Thumbnails for larger screens */}
           {(product.product.media?.items?.length ?? 0) != 1 && (
-            <div className="hidden md:block">
+            <div className="hidden sm:block">
               <ThumbnailImage direction="flex-col" />
             </div>
           )}
           {/* Main product image */}
-          <div className="relative md:w-full overflow-hidden">
+          <div className="relative sm:w-full overflow-hidden">
             <div className="">
               <Zoom>
                 <Image
@@ -79,13 +79,13 @@ function ProductGallary(product: ProductGallaryProps) {
           </div>
           {/* Thumbnails for mobile view */}
           {(product.product.media?.items?.length ?? 0) != 1 && (
-            <div className="md:hidden pt-5">
+            <div className="sm:hidden pt-5 flex items-center overflow-x-hidden">
               <ThumbnailImage />
             </div>
           )}
         </div>
       ) : (
-        <div className="relative md:w-full overflow-hidden">
+        <div className="relative sm:w-full overflow-hidden">
           <div className="">
             <Zoom>
               <Image

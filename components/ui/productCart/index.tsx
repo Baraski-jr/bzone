@@ -69,7 +69,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
       <div className="pt-3">
         <Link
           href={`/products/${product.slug}`}
-          className="link link-animated w-fit"
+          className="link link-animated w-fit mb-2"
         >
           {product.name}
         </Link>

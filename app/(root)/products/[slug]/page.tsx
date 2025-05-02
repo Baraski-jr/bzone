@@ -89,13 +89,13 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
           <div className="pb-3">
             <BreadCrumb name={product.name || ""} />
           </div>
-          <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
+          <h2 className="sm:hidden font-semibold text-xl sm:text-2xl pb-3 pl-3">
             {product.name}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-10 ">
             <ProductGallary product={product || ""} />
             <div className="w-full flex flex-col gap-6">
-              <h2 className="hidden md:block font-semibold text-xl md:text-2xl">
+              <h2 className="hidden sm:block font-semibold text-xl sm:text-2xl">
                 {product.name}
               </h2>
               <div className="py-2 border-y-4 border-gray-50">
@@ -143,7 +143,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
               </div>
 
               {/* Shipping estimate detail cart */}
-              <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-md">
+              <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-sm">
                 <div className="flex flex-col justify-center space-y-2 items-center px-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +210,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
         {/* Similar prodcuts */}
         <section className="my-5 space-y-3">
           <div className="space-y-2">
-            <h2 className="text-center font-semibold text-lg md:text-xl lg:text-2xl">
+            <h2 className="text-center font-semibold text-lg sm:text-xl lg:text-2xl">
               People Also Bought
             </h2>
             <p className="text-center text-slate-700 ">
@@ -218,8 +218,8 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
               to discover trending style.
             </p>
           </div>
-          <section className="space-y-5 md:space-y-4">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 md:gap-x-5 md:gap-y-9">
+          <section className="space-y-5 sm:space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 gap-3 sm:gap-x-5 sm:gap-y-9">
               {SimilarProducts.map((product) => (
                 <ProductCart key={product._id} product={product} />
               ))}
