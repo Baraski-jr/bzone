@@ -72,7 +72,7 @@ export const CartModel = ({
         ref={cartModelRef}
         className={`${
           isOpenCart ? " translate-x-0 " : "translate-x-[100%] "
-        } cursor-default w-10/12 lg:w-2/5 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
+        } cursor-default w-10/12 md:w-1/2 lg:w-2/5 min-h-screen ml-auto rounded-l-xl drop-shadow-xl bg-white px-5 md:px-12  flex flex-col gap-6 justify-between transition-all ease-in-out duration-500`}
       >
         <div className="py-2">
           {/* header section */}
