@@ -12,6 +12,7 @@ import { AdditionInforComponent } from "@/components/additionInforSection"
 import { formatCurrency } from "@/lib/CurrencyFormatter"
 import { BuyBtn } from "@/components/buyButton"
 import BreadCrumb from "@/components/BreadCrumb"
+import CustomizeProduct from "@/components/customizeProduct"
 
 type ParamType = {
   slug: string
@@ -73,6 +74,11 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
     const product = (await queryProducts({ slug: param.slug, limit: 1 }))
       .items[0]
 
+
+      console.log("product", product)
+
+      
+
     // Similar prodcuts
     const products = await queryProducts({
       collectionId: product.collectionIds && product.collectionIds[0],
@@ -122,14 +128,14 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 }}
               ></div>
               {/* Variation */}
-              {/* {product.variants && product.productOptions ? ( 
+              {product.variants && product.productOptions ? ( 
               <CustomizeProduct
-                //   product={product}
-                //   productId={product._id!}
-                //   variants={product.variants}
-                //   productOptions={product.productOptions}
-                // /> */}
-              {/* // ) : ( */}
+                  product={product}
+                  productId={product._id!}
+                  variants={product.variants}
+                  productOptions={product.productOptions}
+                />
+              ) : (
               <div className="space-y-3">
                 {(product.stock?.quantity ?? 0) > 1 && (
                     <Add
@@ -141,6 +147,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
 
                 <BuyBtn product={product} />
               </div>
+                )}
 
               {/* Shipping estimate detail cart */}
               <div className="flex justify-center items-center divide-x-[1px] space-x-2 border-[2px] border-slate-100 p-3 rounded-md">

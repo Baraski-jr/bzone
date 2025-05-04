@@ -14,45 +14,41 @@ interface ProductGallaryProps {
 function ProductGallary(product: ProductGallaryProps) {
   const [index, setIndex] = useState(0)
 
-  const ThumbnailImage = ({
-    direction = "flex-row",
-  }: {
-    direction?: string
-  }) => {
+  const ThumbnailImage = () => {
     return (
-      <div className={`flex ${direction} gap-3 pr-3`}>
+      <>
         {product.product.media?.items?.map((item: any, imgIndex: number) => {
           return (
             <div
               onMouseOver={() => setIndex(imgIndex)}
               key={imgIndex}
-              className={`overflow-hidden bg-[#F5F5F5] px-2 border-2 border-transparent hover:border-slate-300 h-fit transition-all duration-300`}
-            >
+              className={`overflow-hidden bg-[#F5F5F5] p-1 border-2 border-transparent hover:border-slate-300 transition-all duration-300`}
+              >
               <Image
                 width={60}
                 height={60}
                 priority
                 src={item.image?.url || IMAGE_PLACEHOLDER}
                 alt={item.image?.altText || ""}
-                className="w-auto cursor-pointer"
-              />
+                className="min-w-8 aspect-square cursor-pointer"
+                />
             </div>
           )
         })}
-      </div>
+      </>
     )
   }
 
   return (
     <>
       {product.product.media?.items?.length ?? 0 > 1 ? (
-        <div className="md:flex">
+        <div className="sm:flex">
           {/* Thumbnails for larger screens */}
-          {(product.product.media?.items?.length ?? 0) != 1 && (
-            <div className="hidden md:block">
-              <ThumbnailImage direction="flex-col" />
-            </div>
-          )}
+          <div className="space-y-1 mr-3 hidden sm:block sm:h-[80dvh] lg:h-dvh overflow-y-scroll" >
+            {(product.product.media?.items?.length ?? 0) != 1 && (
+                <ThumbnailImage  />
+            )}
+          </div>
           {/* Main product image */}
           <div className="relative md:w-full overflow-hidden">
             <div className="">
@@ -72,17 +68,17 @@ function ProductGallary(product: ProductGallaryProps) {
                     "product image"
                   }
                   title="Click to zoom in"
-                  className="align-middle mx-auto w-auto hover:scale-105 hover:-translate-y-2 transition-all duration-300"
+                  className="align-middle object-cover  md:max-h-[50rem]  mx-auto w-auto hover:scale-105 hover:-translate-y-2 transition-all duration-300"
                 />
               </Zoom>
             </div>
           </div>
           {/* Thumbnails for mobile view */}
-          {(product.product.media?.items?.length ?? 0) != 1 && (
-            <div className="md:hidden pt-5">
-              <ThumbnailImage />
-            </div>
-          )}
+          <div className="flex items-center min-h-15 sm:hidden w-full" >
+            {(product.product.media?.items?.length ?? 0) != 1 && (
+                <ThumbnailImage />
+            )}
+          </div>
         </div>
       ) : (
         <div className="relative md:w-full overflow-hidden">
