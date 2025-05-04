@@ -59,7 +59,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   )
 
   return (
-    <div className="p-2 hover:shadow-md transition-all duration-300 bg-white border border-slate-200">
+    <div className="p-2 hover:shadow-sm transition-all duration-300 hover:bg-white">
       <Link
         href={`/products/${product.slug}`}
         className="block"
@@ -84,7 +84,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
               disabled={product.stock?.quantity! < 1}
               className="py-1 px-3 rounded-full bg-opacity-0 hover:bg-opacity-95 bg-primary border-[1px] border-primary text-slate-950 hover:text-white transition-all duration-300 disabled:bg-opacity-80 disabled:text-white disabled:cursor-not-allowed"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
             </button>
 
         </div>

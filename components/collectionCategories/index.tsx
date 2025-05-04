@@ -10,7 +10,7 @@ const CollectionCategory: React.FC = () => {
         <Link href={"/products/"} className="block overflow-hidden">
           <Image
             className="object-cover object-right-bottom w-full hover:-rotate-2 hover:scale-105 ease-linear transition-all duration-500"
-            src={"/banner-image-new.jpg"}
+            src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/banner-image-new_vvz4xx`}
             width={400}
             height={250}
             alt="New Arrival"
@@ -25,7 +25,8 @@ const CollectionCategory: React.FC = () => {
           >
             <Image
               className="object-cover object-right-bottom w-full h-full hover:rotate-1 hover:scale-110 ease-linear transition-all duration-500"
-              src={"/banner-image-trend.jpg"}
+              // src={"/banner-image-trend.jpg"}
+              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/banner-image-trend_o8jji0`}
               width={400}
               height={250}
               alt="trending now"
@@ -40,7 +41,7 @@ const CollectionCategory: React.FC = () => {
             >
               <Image
                 className="object-cover object-right-bottom w-full h-full hover:rotate-1 hover:scale-110 ease-linear transition-all duration-700"
-                src={"/banner-image-campaign.jpg"}
+                src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/banner-image-campaign_tvdi6v`}
                 width={400}
                 height={250}
                 alt="campaign"
@@ -53,7 +54,7 @@ const CollectionCategory: React.FC = () => {
             >
               <Image
                 className="object-cover object-right-bottom w-full h-full hover:rotate-1 hover:scale-110 ease-linear transition-all duration-700"
-                src={"/banner-image-lookbook.jpg"}
+                src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/banner-image-lookbook_dgqavi`}
                 width={400}
                 height={250}
                 alt="lookbook"

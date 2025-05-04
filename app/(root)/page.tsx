@@ -15,7 +15,7 @@ export default async function Home() {
       <Suspense fallback={<SkeletonCollection />}>
         <Collections
           categoryId={process.env.MEN_PRODUCTS_CATEGORY_ID!}
-          limit={6}
+          limit={10}
           name="NEW ARRIVAL"
           />
       </Suspense>
@@ -25,7 +25,7 @@ export default async function Home() {
       <Suspense fallback={<SkeletonCollection />}>
         <Collections
           categoryId={process.env.WOMEN_PRODUCTS_CATEGORY_ID!}
-          limit={6}
+          limit={10}
           name="TOP TENDING"
         />
       </Suspense>

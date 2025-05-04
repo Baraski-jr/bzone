@@ -18,6 +18,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "app-uploads-cdn.fera.ai",
       },
+      {
+        protocol: "https",
+        hostname: "asset.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com", // Added Cloudinary's domain
+      },
     ],
   },
 }

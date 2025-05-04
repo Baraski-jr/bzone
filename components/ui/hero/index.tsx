@@ -1,8 +1,10 @@
+'use client'
 import Image from "next/image"
 import React from "react"
 import Link from "next/link"
 import Gutter from "@/components/Gutter"
 import { shoeSlides } from "@/lib/constants"
+import { CldImage } from "next-cloudinary" // Adjust the import path if necessary
 import { shoeSlide } from "@/types"
 
 const LandingHero = () => {
@@ -40,13 +42,23 @@ const LandingHero = () => {
                   </div>
                   {/* middle */}
                   <div className="flex-1 md:pt-16 md:pr-28 py-4 flex items-center justify-center">
-                    <Image
+                    {/* <Image
                       width={844}
                       height={530}
                       src={image}
-                      alt={name}
                       className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[80%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
-                    />
+                      alt={name}
+                      /> */}
+                    <CldImage
+                      src={image} // Use this sample image or upload your own via the Media Explorer
+                      width="844" // Transform the image: auto-crop to square aspect_ratio
+                      className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[80%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
+                      height="530"
+                      crop={{
+                        type: 'auto',
+                        source: true
+                      }} alt={name}                    
+                      />
                   </div>
                   {/* social media icons */}
                   <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">

@@ -18,7 +18,8 @@ export const shoeSlides = [
   {
     id: 0,
     name: "React Infinity",
-    image: "/hero/slider-img2.webp",
+    // image: "/hero/slider-img2.webp",
+    image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/slider-img2_ocuo6f`,
     color: "gray",
     price: {
       originalPrice: 1200,
@@ -28,7 +29,8 @@ export const shoeSlides = [
   {
     id: 1,
     name: "Airmax Racing",
-    image: "/hero/slider-img3.webp",
+    // image: "/hero/slider-img3.webp",
+    image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/slider-img3_lqkpoo`,
     color: "blue-500",
     price: {
       originalPrice: 1000,
@@ -38,7 +40,8 @@ export const shoeSlides = [
   {
     id: 2,
     name: "Running Airmax",
-    image: "/hero/slider-img1.webp",
+    // image: "/hero/slider-img1.webp",
+    image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/slider-img1_da7vpd`,
     color: "orange-500",
 
     price: {
