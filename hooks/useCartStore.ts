@@ -56,22 +56,6 @@ export const useCartStore = create<CartState>()(
         }
       },
 
-      // Get cart
-      getCart: async (wixClient) => {
-        set((state) => ({ ...state, isLoading: true }))
-        try {
-          const cart = await wixClient.currentCart.getCurrentCart()
-          set({
-            cart: cart || undefined,
-            isLoading: false,
-            counter: cart?.lineItems.length || 0,
-          })
-        } catch (err) {
-          console.error(err)
-          set((prev) => ({ ...prev, isLoading: false }))
-        }
-      },
-
       // Add item
       addItem: async (wixClient, productId, varianId, quantity) => {
         set((state) => ({ ...state, isLoading: true }))
@@ -96,6 +80,22 @@ export const useCartStore = create<CartState>()(
         } catch (error) {
           console.error(error)
           set((state) => ({ ...state, isLoading: false }))
+        }
+      },
+
+      // Get cart
+      getCart: async (wixClient) => {
+        set((state) => ({ ...state, isLoading: true }))
+        try {
+          const cart = await wixClient.currentCart.getCurrentCart()
+          set({
+            cart: cart || undefined,
+            isLoading: false,
+            counter: cart?.lineItems.length || 0,
+          })
+        } catch (err) {
+          console.error(err)
+          set((prev) => ({ ...prev, isLoading: false }))
         }
       },
 
