@@ -60,7 +60,7 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   )
 
   return (
-    <div className="p-2 hover:shadow-sm transition-all duration-300 hover:bg-white">
+    <div className="p-2 hover:shadow-sm transition-all duration-300 border md:border-none">
       <Link
         href={`/products/${product.slug}`}
         className="block"

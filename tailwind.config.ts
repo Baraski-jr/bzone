@@ -23,9 +23,9 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        "hero-bg": "url('/hero/hero-bg.jpeg')",
-        "Promotion-bg": "url(/background/bg-shoes.jpg)",
-        "subHero-bg": "url(/background/bg-shoes-slide.jpeg)",
+        "hero-bg": `url('https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/hero-bg_vnsryj')`,
+        "Promotion-bg": `url(https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/bg-shoes_ypcaqj)`,
+        "subHero-bg": `url(https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/bg-shoes-slide_t9dw7n)`,
       },
       colors: {
         primary: "#84BA86",

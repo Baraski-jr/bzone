@@ -9,14 +9,14 @@ import { shoeSlide } from "@/types"
 
 const LandingHero = () => {
   return (
-    <div className="bg-hero-bg bg-cover bg-top pt-5 md:pb-5">
+    <div className="bg-hero-bg bg-cover bg-top md:pb-5">
       <Gutter />
       <div
         id="horizontal-thumbnails"
         data-carousel='{ "loadingClasses": "opacity-0", "isInfinite": "true", "isCentered": "true", "isDraggable": "true", "speed": 6000 }'
         className="relative  flex md:items-center max-w-[100rem] w-[95%] mx-auto"
       >
-        <div className="carousel space-y-4">
+        <div className="carousel space-y-4 md:space-y-8">
           <div className="carousel-body carousel-dragging:transition-none h-3/4 opacity-0">
             {/* <!-- Slide 1 --> */}
             {shoeSlides.map(({ id, name, image, price }: shoeSlide) => (
@@ -41,24 +41,20 @@ const LandingHero = () => {
                     </Link>
                   </div>
                   {/* middle */}
-                  <div className="flex-1 md:pt-16 md:pr-28 py-4 flex items-center justify-center">
-                    {/* <Image
-                      width={844}
-                      height={530}
-                      src={image}
-                      className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[80%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
-                      alt={name}
-                      /> */}
-                    <CldImage
-                      src={image} // Use this sample image or upload your own via the Media Explorer
-                      width="844" // Transform the image: auto-crop to square aspect_ratio
-                      className="lg:w-[35rem] hover:drop-shadow-2xl drop-shadow-md mx-auto w-[80%] md:w-[60%] md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000 hover:cursor-[url('/icons/cursor.svg'),_auto]"
-                      height="530"
-                      crop={{
-                        type: 'auto',
-                        source: true
-                      }} alt={name}                    
-                      />
+                  <div className="flex-1 mx-auto md:pr-28 px-5 py-4 flex items-center justify-center">
+                    <div className="relative w-3/4 md:w-2/3">
+                      <CldImage
+                        src={image} // Use this sample image or upload your own via the Media Explorer
+                        width="844" // Transform the image: auto-crop to square aspect_ratio
+                        height="530"
+                        className="hover:drop-shadow-2xl drop-shadow-md mx-auto md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000"
+                        style={{ width: "auto", height: "auto" }}
+                        crop={{
+                          type: 'auto',
+                          source: true
+                        }} alt={name}                    
+                        />
+                    </div>
                   </div>
                   {/* social media icons */}
                   <div className="flex-2 hidden md:grid place-content-center space-y-3 px-1">
@@ -119,9 +115,8 @@ const LandingHero = () => {
               </div>
             ))}
           </div>
-
           {/* Pagination btton images */}
-          <div className="flex items-center mx-auto w-[95%] pt-3">
+          <div className="flex items-center mx-auto w-[95%] pt-3 md:mt-10">
             <Link
               href={`/products?category=all-products`}
               className="block min-w-fit md:hidden rounded-full text-white font-semibold border-2 px-5 md:px-8 py-3 uppercase hover:bg-white hover:text-green-600 hover:translate-x-2 hover:-rotate-2 active:rotate-3 origin-center hover:scale-105 hover:drop-shadow-2xl transition-all duration-500"
@@ -135,9 +130,9 @@ const LandingHero = () => {
                   className="w-15 aspect-square md:w-20 carousel-pagination-item carousel-active:bg-opacity-70 bg-opacity-30 drop-shadow-lg rounded-full cursor-pointer bg-white relative hover:scale-105 transition-all duration-500"
                 >
                   <Image
-                    width={50}
-                    height={50}
-                    className="drop-shadow-xl w-16 md:w-25 absolute -left-1 bottom-4 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700"
+                    width={70}
+                    height={70}
+                    className="drop-shadow-xl absolute -left-1 md:-left-1 bottom-4 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700"
                     src={image}
                     alt={name}
                   />
