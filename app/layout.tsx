@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
-import { Analytics } from "@vercel/analytics/next"
+// import { Analytics } from "@vercel/analytics/next"
 
 import { WixClientContextProvider } from "@/context/wixContext"
 import FlyonuiScript from "@/components/FlyonuiScript"
@@ -24,7 +24,7 @@ export default function RootLayout({
         <body className={` overflow-x-hidden ${inter.className} `}>
           <WixClientContextProvider>
             {children}
-            <Analytics />
+            {/* <Analytics /> */}
           </WixClientContextProvider>
         </body>
         <FlyonuiScript />

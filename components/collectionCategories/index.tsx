@@ -12,7 +12,7 @@ const CollectionCategory: React.FC = () => {
             className="object-cover object-right-bottom w-full hover:-rotate-2 hover:scale-105 ease-linear transition-all duration-500"
             src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/banner-image-new_vvz4xx`}
             width={400}
-            height={250}
+            height={200}
             alt="New Arrival"
           />
         </Link>

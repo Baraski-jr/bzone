@@ -73,11 +73,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
     const param = await params
     const product = (await queryProducts({ slug: param.slug, limit: 1 }))
       .items[0]
-
-
       console.log("product", product)
-
-      
 
     // Similar prodcuts
     const products = await queryProducts({
