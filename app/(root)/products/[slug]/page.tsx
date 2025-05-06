@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
           <div className="pb-3">
             <BreadCrumb name={product.name || ""} />
           </div>
-          <h2 className="md:hidden font-semibold text-xl md:text-2xl pb-3 pl-3">
+          <h2 className="md:hidden font-semibold text-xl md:text-base pb-3 pl-3">
             {product.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
@@ -124,22 +124,22 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
                 }}
               ></div>
               {/* Variation */}
-              {product.variants && product.productOptions ? ( 
-              <CustomizeProduct
+              {/* {product.variants && product.productOptions ? (  *
+               {/* <CustomizeProduct
                   product={product}
                   productId={product._id!}
                   variants={product.variants}
                   productOptions={product.productOptions}
-                />
-              ) : (
-              <div className="space-y-3">
+                /> 
+              // ) : (
+              // <div className="space-y-3">
                 {(product.stock?.quantity ?? 0) > 1 && (
-                    <Add
-                      productId={product._id!}
-                      varianId={VARIANT_ID}
-                      stockNumber={product.stock?.quantity || 0}
-                    />
-                )}
+                    // <Add
+                    //   productId={product._id!}
+                    //   varianId={VARIANT_ID}
+                    //   stockNumber={product.stock?.quantity || 0}
+                    // />
+                // )}
 
                 <BuyBtn product={product} />
               </div>
