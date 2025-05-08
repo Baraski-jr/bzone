@@ -10,7 +10,6 @@ import {
 import { Metadata } from "next"
 import { NetworkError } from "@/components/Erros/networkErro"
 import ShopCollection from "@/components/ShopCollection"
-import LoadingSpinner from "@/components/LoadingSpinner"
 
 const PRODUCT_PER_PAGE = 20
 
@@ -56,7 +55,7 @@ export default async function Page({
     })
 
     return (
-      <Suspense fallback={<LoadingSpinner />}>
+      <>
         <Gutter />
         <SubHero title={collectionName!} />
         <Suspense fallback={<SkeletonShopCollection />}>
@@ -70,7 +69,7 @@ export default async function Page({
             hasNext={products?.hasNext()!}
           />
         </Suspense>
-      </Suspense>
+      </>
     )
   } catch (error) {
     return (

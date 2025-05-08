@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image"
 import React from "react"
 import Link from "next/link"
 import Gutter from "@/components/Gutter"
@@ -45,14 +44,10 @@ const LandingHero = () => {
                     <div className="relative w-3/4 md:w-2/3">
                       <CldImage
                         src={image} // Use this sample image or upload your own via the Media Explorer
-                        width="844" // Transform the image: auto-crop to square aspect_ratio
-                        height="530"
+                        width={844} // Transform the image: auto-crop to square aspect_ratio
+                        height={530}
                         className="hover:drop-shadow-2xl drop-shadow-md mx-auto md:hover:-translate-x-10 hover:translate-x-4 hover:scale-105 md:hover:scale-110 hover:skew-x-2 hover:-skew-y-2 hover:rotate-12 active:rotate-[20deg] ease-in-out transition-all duration-1000"
-                        style={{ width: "auto", height: "auto" }}
-                        crop={{
-                          type: 'auto',
-                          source: true
-                        }} alt={name}                    
+                        alt={name}                    
                         />
                     </div>
                   </div>
@@ -129,12 +124,12 @@ const LandingHero = () => {
                   key={id}
                   className="w-15 aspect-square md:w-20 carousel-pagination-item carousel-active:bg-opacity-70 bg-opacity-30 drop-shadow-lg rounded-full cursor-pointer bg-white relative hover:scale-105 transition-all duration-500"
                 >
-                  <Image
+                  <CldImage
                     width={70}
                     height={70}
                     className="drop-shadow-xl absolute -left-1 md:-left-1 bottom-4 hover:-rotate-2 active:rotate-2 active:duration-100 hover:drop-shadow-2xl transition-all duration-700"
                     src={image}
-                    alt={name}
+                    alt={name}  
                   />
                 </div>
               ))}

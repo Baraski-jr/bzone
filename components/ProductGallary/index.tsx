@@ -8,16 +8,17 @@ import { products } from "@wix/stores"
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
 
 interface ProductGallaryProps {
-  product: products.Product
+  Media: products.Media
 }
 
-function ProductGallary(product: ProductGallaryProps) {
+function ProductGallary({Media}: {Media: products.Media}) {
   const [index, setIndex] = useState(0)
 
+  // console.log("Product Gallary: ", Media)
   const ThumbnailImage = () => {
     return (
       <>
-        {product.product.media?.items?.map((item: any, imgIndex: number) => {
+        {Media.items?.map((item: any, imgIndex: number) => {
           return (
             <div
               onMouseOver={() => setIndex(imgIndex)}
@@ -41,11 +42,11 @@ function ProductGallary(product: ProductGallaryProps) {
 
   return (
     <>
-      {product.product.media?.items?.length ?? 0 > 1 ? (
+      {Media.items?.length ?? 0 > 1 ? (
         <div className="sm:flex">
           {/* Thumbnails for larger screens */}
           <div className="space-y-1 mr-3 hidden sm:block sm:h-[80dvh] lg:h-dvh overflow-y-scroll" >
-            {(product.product.media?.items?.length ?? 0) != 1 && (
+            {(Media.items?.length ?? 0) != 1 && (
                 <ThumbnailImage  />
             )}
           </div>
@@ -58,13 +59,13 @@ function ProductGallary(product: ProductGallaryProps) {
                   width={600}
                   height={700}
                   src={
-                    product.product.media?.items
-                      ? product.product.media.items[index]?.image?.url ||
+                    Media.items
+                      ? Media.items[index]?.image?.url ||
                         IMAGE_PLACEHOLDER
                       : IMAGE_PLACEHOLDER
                   }
                   alt={
-                    product.product.media?.items?.[index]?.image?.altText ||
+                    Media.items?.[index]?.image?.altText ||
                     "product image"
                   }
                   title="Click to zoom in"
@@ -75,7 +76,7 @@ function ProductGallary(product: ProductGallaryProps) {
           </div>
           {/* Thumbnails for mobile view */}
           <div className="flex items-center min-h-15 sm:hidden w-full" >
-            {(product.product.media?.items?.length ?? 0) != 1 && (
+            {(Media?.items?.length ?? 0) != 1 && (
                 <ThumbnailImage />
             )}
           </div>
@@ -89,11 +90,11 @@ function ProductGallary(product: ProductGallaryProps) {
                 width={600}
                 height={700}
                 src={
-                  product.product.media?.mainMedia?.image?.url ||
+                  Media.mainMedia?.image?.url ||
                   IMAGE_PLACEHOLDER
                 }
                 alt={
-                  product.product.media?.mainMedia?.image?.altText ||
+                  Media.mainMedia?.image?.altText ||
                   "product image"
                 }
                 title="Click to zoom in"

@@ -9,6 +9,10 @@ export const navLinks = [
     url: "/products",
     // url: process.env.NEXT_PUBLIC_BASE_URL + "/products",
   },
+  // {
+  //   label: "My Orders",
+  //   url: "/orders",
+  // },
 ]
 export const SHIPINGCOST = 200
 export const IMAGE_PLACEHOLDER = "/product.png"

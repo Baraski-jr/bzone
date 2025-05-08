@@ -195,7 +195,7 @@ const MobileHeader = ({
                     </Link>
                   )
                 })}
-                <Link
+                {/* <Link
                   className={`${
                     pathname.split("?")[0].toLowerCase() === "/orders"
                       ? ` bg-opacity-20 border-slate-50 border-b-2`
@@ -204,7 +204,7 @@ const MobileHeader = ({
                   href={`/orders`}
                 >
                   <span className="">My Orders</span>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

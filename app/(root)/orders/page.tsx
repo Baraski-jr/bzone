@@ -23,6 +23,10 @@ export default async function OrderPage({
     //   return notFound()
     // }
     // const order = await redis.hgetall(`order:${searchParamProps.orderNumber}`) as OrderInfo
+    // const order = await redis.hgetall(`order:${searchParamProps.orderNumber}`) as OrderInfo
+    // const order = await redis.hkeys("key");
+
+    // console.log(order)
 
     // if (!order) {
     //   return notFound()

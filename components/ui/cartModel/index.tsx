@@ -59,7 +59,6 @@ export const CartModel = ({
     }
   }, [cart, isOpenCart, setIsOpenCart])
   
-
   return (
     <div
       className={`${

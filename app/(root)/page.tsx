@@ -6,11 +6,15 @@ import Promotion from "@/components/promotion"
 import FreeReview from "@/components/FreeReview"
 import React, { Suspense } from "react"
 import { SkeletonCollection } from "@/components/ui/Skeleton/SkeletonCollection"
+import LoadingSpinner from "@/components/LoadingSpinner"
 export default async function Home() {
   return (
     <section className="relative">
       <HeaderComponent />
-      <LandingHero />
+      <Suspense fallback={<LoadingSpinner />}>
+        <LandingHero />
+      </Suspense>
+
       <CollectionCategory />
       <Suspense fallback={<SkeletonCollection />}>
         <Collections
