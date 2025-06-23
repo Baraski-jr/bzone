@@ -81,7 +81,7 @@ const LandingHero = () => {
         <div className="carousel-pagination gap-4 flex justify-end w-full md:w-11/12 mx-auto pt-6 pb-3">
           {shoeSlides.map(({ id, name, image, color }, index) => {
             return (
-              <button
+              <button 
                 key={id}
                 onClick={() => emblaApi?.scrollTo(index)}
                 className={`w-16 bg-${color} aspect-square md:w-20 carousel-pagination-item carousel-active:bg-opacity-70 bg-opacity-30 drop-shadow-lg rounded-full cursor-pointer relative hover:scale-105 transition-all duration-500`}
