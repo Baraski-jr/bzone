@@ -1,4 +1,4 @@
-import HeaderComponent from "@/components/header/headerComponent"
+// import HeaderComponent from "@/components/header/headerComponent"
 import LandingHero from "@/components/ui/hero"
 import Collections from "@/components/collectionComponent"
 import CollectionCategory from "@/components/collectionCategories"
@@ -10,7 +10,7 @@ import LoadingSpinner from "@/components/LoadingSpinner"
 export default async function Home() {
   return (
     <section className="relative">
-      <HeaderComponent />
+      {/* <HeaderComponent /> */}
       <Suspense fallback={<LoadingSpinner />}>
         <LandingHero />
       </Suspense>
