@@ -1,9 +1,7 @@
-import Add from "@/components/AddToCart"
 import Gutter from "@/components/Gutter"
 import { queryProducts } from "@/model/store/store-api"
 import { products } from "@wix/stores"
 import React from "react"
-import DOMPurify from "isomorphic-dompurify"
 import Link from "next/link"
 import ProductCart from "@/components/ui/productCart"
 import BreadCrumb from "@/components/BreadCrumb"
@@ -67,8 +65,6 @@ export default async function Page({ params }: { params: Promise<ParamType> }) {
   try {
     const param = await params
     const product = (await queryProducts({ slug: param.slug, limit: 1 })).items[0]
-      // console.log("product", product)
-      // console.log("product Variant", product.variants)
 
     // Similar prodcuts
     const products = await queryProducts({

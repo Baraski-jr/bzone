@@ -4,12 +4,7 @@ import Image from "next/image"
 import "react-medium-image-zoom/dist/styles.css"
 import Zoom from "react-medium-image-zoom"
 import { products } from "@wix/stores"
-
 import { IMAGE_PLACEHOLDER } from "@/lib/constants"
-
-interface ProductGallaryProps {
-  Media: products.Media
-}
 
 function ProductGallary({Media}: {Media: products.Media}) {
   const [index, setIndex] = useState(0)

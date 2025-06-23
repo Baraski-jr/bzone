@@ -24,7 +24,7 @@ export const shoeSlides = [
     name: "React Infinity",
     // image: "/hero/slider-img2.webp",
     image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1/slider-img2_ocuo6f`,
-    color: "gray",
+    color: "white",
     price: {
       originalPrice: 1200,
       discountPrice: 999,

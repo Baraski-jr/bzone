@@ -28,9 +28,6 @@ const CustomizeProduct = ({
   selectedOptions: { [key: string]: string}
 }) => {
 
-
-  // console.log("Product Options: ", productOptions[0].choices)
-
   const isAvailableForPurchase = useMemo(() => {
     if (!product.manageVariants && product.stock?.inStock) {
       return true
@@ -45,7 +42,6 @@ const CustomizeProduct = ({
   useEffect(() => {
     const variant = variants.find((v) => {
       const variantChoices = v.choices
-      // console.log("Variant Choices : ", variantChoices)
       
       if (!variantChoices) return false
       return Object.entries(selectedOptions).every(
@@ -84,15 +80,8 @@ const CustomizeProduct = ({
           </h4>
           <div className="flex flex-wrap items-center gap-3">
             {option.choices?.map((choice) => {
-              // const disabled = !isVariantInStock({
-              //   ...selectedOptions,
-              //   [option.name!]: choice.description!,
-              // })
-
               const selected = selectedOptions[option.name!] === choice.description
 
-              // console.log("Selected: ", choice)
-              // setSelectedProduct(choice)
               const clickHandler = () => {
                 setSelectedProduct(choice)
                 handleOptionSelect(option.name!, choice.description!)

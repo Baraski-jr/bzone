@@ -16,17 +16,11 @@ function MainProductDisplay({product}: {product: products.Product}) {
   const [selectedOptions, setSelectedOptions] = useState<{[key: string]: string}>({})
   const [selectedProduct, setSelectedProduct] = useState<products.Choice | undefined>(undefined)
 
-//   console.log("selected Product: ", selectedProduct)
-
   useEffect(() => {
     const choice = product.productOptions?.length && product.productOptions.length > 0 && product.productOptions[0].choices
     choice &&  setSelectedProduct(choice[0])
   }, [])
-
-//   console.log("Product Variant: ", product)
   
-  // console.log("Choice: ", choice && choice[0].media || [])
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-10 ">
         {product.productOptions && product.productOptions.length > 0 ? (
